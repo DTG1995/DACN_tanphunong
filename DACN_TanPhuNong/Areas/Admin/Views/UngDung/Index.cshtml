@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Title = "Quản trị";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>Trang Chủ
+        <small>tùy chỉnh trang chủ</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Trang chủ</a></li>
+        <li class="active">Quản trị</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <section class="content" style="min-height: unset; padding-bottom: 0px;">
+            <div class="box box-solid">
+                <div class="box-header with-border" data-id="1" style="cursor: pointer;">
+                    <i class="fa fa-header"></i>
+                    <h3 class="box-title">Header</h3>
+                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" data-id="1">
+                    <form action="#" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2  control-label" for="txtTenDN">Tên Doanh Nghiệp: </label>
+                            <div class="col-sm-10 ">
+                                <input class="form-control" name="txtTenDN" id="txtTenDN" value="@ViewBag.NameEnterprise" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="txtMoTa">Mô Tả Ngắn: </label>
+                            <div class="col-sm-10">
+                                <input class="form-control" name="txtMoTa" id="txtMoTa" value="@ViewBag.DesEnterprise" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="file-upload">Logo Doanh Nghiệp: </label>
+                            <div class="col-sm-10">
+                                <label for="file-upload" class="custom-file-upload">
+                                    <img width="100" height="100" id="imgshow" src="@Url.Content("~/images/"+ViewBag.logo)" style="cursor: pointer; border: 1px solid;" />
+                                </label>
+                                <input id="file-upload" type="file" name="logo" accept="image/*" style="display: none;" />
+                                <small id="msgTBfile">Click vào hình để thay đổi logo</small>
+                            </div>
+                        </div>
+                        <div class="form-group pull-right">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+    </div>
+    <div class="row">
+        <section class="content" style="min-height: unset; padding-bottom: 0px;" >
+            <div class="box box-solid">
+                <div class="box-header with-border" data-id="2" style="cursor: pointer;">
+                    <i class="fa fa-paper-plane-o"></i>
+                    <h3 class="box-title">Nội dung trang chủ</h3>
+                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" data-id="2">
+                    <form action="SaveContentHome" method="POST" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <textarea name="txtContentHome" id="txtContentHome">@ViewBag.ContentHome</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group pull-right">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+    </div>
+    <div class="row">
+        <section class="content" style="min-height: unset; padding-bottom: 0px;">
+            <div class="box box-solid">
+                <div class="box-header with-border" data-id="3" style="cursor: pointer;">
+                    <i class="fa fa-id-card-o"></i>
+                    <h3 class="box-title">Footer</h3>
+                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" data-id="3">
+                    <form action="#">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" for="txtVeChungToi"><i class="fa fa-users"></i> Về chúng tôi </label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" name="txtVeChungToi" id="txtVeChungToi"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" for="txtLienHe"><i class="fa fa-id-card"></i> Liên hệ </label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" name="txtLienHe" id="txtLienHe"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" for="txtSanPham"><i class="fa fa-product-hunt"></i> Sản phẩm </label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" name="txtSanPham" id="txtSanPham"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group pull-right">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+    </div>
+</section>
+<!-- CK Editor -->
+@Scripts.Render("~/Scripts/admin/ckeditor/ckeditor.js")
+
+<script>
+    $(function () {
+        CKEDITOR.replace("txtContentHome");
+        var config = {};
+        config.toolbarGroups = [
+                { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+                { name: 'forms', groups: ['forms'] },
+                { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+                { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+                { name: 'insert', groups: ['insert'] },
+                { name: 'links', groups: ['links'] },
+                { name: 'styles', groups: ['styles'] },
+                { name: 'colors', groups: ['colors'] },
+                { name: 'tools', groups: ['tools'] },
+                { name: 'others', groups: ['others'] },
+                { name: 'document', groups: ['document', 'mode', 'doctools'] }
+            ];
+
+        config.removeButtons = 'Cut,Copy,Paste,Templates,Save,NewPage,Preview,Print,SelectAll,Redo,Undo,PasteText,PasteFromWord,Find,Scayt,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,ImageButton,HiddenField,Button,BidiRtl,BidiLtr,Language,Smiley,PageBreak,Anchor,ShowBlocks';
+        
+        CKEDITOR.replace("txtVeChungToi", config);
+        CKEDITOR.replace("txtLienHe", config);
+        CKEDITOR.replace("txtSanPham", config);
+        jQuery(".box-header").click(function () {
+            var btnId = $(this).data('id');
+            jQuery('.box-body[data-id=' + btnId + ']').toggle();
+            if ($('.box-body[data-id=' + btnId + ']').css('display') == 'none') {
+                $(this).children().next('b').html("<i class='fa fa-angle-left '></i>");
+            }else $(this).children().next('b').html("<i class='fa fa-angle-down '></i>"); 
+        });
+    });
+
+
+    
+</script>
+
+<script>
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgshow').attr('src', e.target.result);
+            }
+            $('#msgTBfile').html("Đã chọn file: " + input.files[0].name);
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#file-upload").change(function () {
+        readURL(this);
+    });
+</script>

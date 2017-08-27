@@ -1,0 +1,51 @@
+﻿@model DACN_TanPhuNong.Models.tb_NguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_NguoiDung</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LaQTV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaQTV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianDNCuoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianDNCuoi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TenDangNhap }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
