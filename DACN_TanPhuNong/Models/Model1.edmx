@@ -4,15 +4,19 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db_tanphunongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db_tanphunongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tb_BaiViet">
           <Key>
             <PropertyRef Name="MaBV" />
           </Key>
           <Property Name="MaBV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TieuDe" Type="nvarchar" MaxLength="250" />
+          <Property Name="TomTat" Type="ntext" />
           <Property Name="NoiDung" Type="ntext" />
           <Property Name="LoaiBaiViet" Type="int" />
           <Property Name="NgayViet" Type="datetime" />
+          <Property Name="HinhAnh" Type="nvarchar" MaxLength="100" />
+          <Property Name="NguoiViet" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tb_DoiTac">
           <Key>
@@ -35,6 +39,7 @@
           <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
           <Property Name="LoaiCha" Type="int" />
           <Property Name="TrangThai" Type="bit" />
+          <Property Name="NguoiThem" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tb_NguoiDung">
           <Key>
@@ -43,14 +48,25 @@
           <Property Name="TenDangNhap" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="MatKhau" Type="varchar" MaxLength="50" />
           <Property Name="TrangThai" Type="bit" />
-          <Property Name="LaQTV" Type="bit" />
+          <Property Name="LoaiND" Type="varchar" MaxLength="50" />
           <Property Name="ThoiGianDNCuoi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_NhatKy">
+          <Key>
+            <PropertyRef Name="MaNK" />
+          </Key>
+          <Property Name="MaNK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NguoiDung" Type="nvarchar" MaxLength="50" />
+          <Property Name="DoiTuong" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThaoTac" Type="nvarchar" MaxLength="250" />
+          <Property Name="MaDoiTuong" Type="int" />
         </EntityType>
         <EntityType Name="tb_SanPham">
           <Key>
             <PropertyRef Name="MaSP" />
           </Key>
           <Property Name="MaSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HinhAnh" Type="nvarchar" MaxLength="100" />
           <Property Name="TenSanPham" Type="nvarchar" MaxLength="100" />
           <Property Name="UuDiem" Type="ntext" />
           <Property Name="DacDiem" Type="ntext" />
@@ -62,6 +78,7 @@
           <Property Name="GiaThanh" Type="money" />
           <Property Name="TrangThai" Type="bit" />
           <Property Name="MaLoai" Type="int" Nullable="false" />
+          <Property Name="NguoiThem" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tb_TuyChon">
           <Key>
@@ -82,6 +99,18 @@
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="ChiTiet" Type="ntext" />
         </EntityType>
+        <Association Name="FK_tb_BaiViet_tb_NguoiDung">
+          <End Role="tb_NguoiDung" Type="Self.tb_NguoiDung" Multiplicity="0..1" />
+          <End Role="tb_BaiViet" Type="Self.tb_BaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_NguoiDung">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="tb_BaiViet">
+              <PropertyRef Name="NguoiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tb_LoaiSP_tb_LoaiSP">
           <End Role="tb_LoaiSP" Type="Self.tb_LoaiSP" Multiplicity="0..1" />
           <End Role="tb_LoaiSP1" Type="Self.tb_LoaiSP" Multiplicity="*" />
@@ -91,6 +120,18 @@
             </Principal>
             <Dependent Role="tb_LoaiSP1">
               <PropertyRef Name="LoaiCha" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_LoaiSP_tb_NguoiDung">
+          <End Role="tb_NguoiDung" Type="Self.tb_NguoiDung" Multiplicity="0..1" />
+          <End Role="tb_LoaiSP" Type="Self.tb_LoaiSP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_NguoiDung">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="tb_LoaiSP">
+              <PropertyRef Name="NguoiThem" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -106,25 +147,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tb_SanPham_tb_NguoiDung">
+          <End Role="tb_NguoiDung" Type="Self.tb_NguoiDung" Multiplicity="0..1" />
+          <End Role="tb_SanPham" Type="Self.tb_SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_NguoiDung">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="tb_SanPham">
+              <PropertyRef Name="NguoiThem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="db_tanphunongModelStoreContainer">
           <EntitySet Name="tb_BaiViet" EntityType="Self.tb_BaiViet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_DoiTac" EntityType="Self.tb_DoiTac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_LoaiSP" EntityType="Self.tb_LoaiSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_NguoiDung" EntityType="Self.tb_NguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_NhatKy" EntityType="Self.tb_NhatKy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_SanPham" EntityType="Self.tb_SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_TuyChon" EntityType="Self.tb_TuyChon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_VanPhong" EntityType="Self.tb_VanPhong" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tb_BaiViet_tb_NguoiDung" Association="Self.FK_tb_BaiViet_tb_NguoiDung">
+            <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+            <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
+          </AssociationSet>
           <AssociationSet Name="FK_tb_LoaiSP_tb_LoaiSP" Association="Self.FK_tb_LoaiSP_tb_LoaiSP">
             <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
             <End Role="tb_LoaiSP1" EntitySet="tb_LoaiSP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_LoaiSP_tb_NguoiDung" Association="Self.FK_tb_LoaiSP_tb_NguoiDung">
+            <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+            <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
           </AssociationSet>
           <AssociationSet Name="FK_tb_SanPham_tb_LoaiSP" Association="Self.FK_tb_SanPham_tb_LoaiSP">
             <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
             <End Role="tb_SanPham" EntitySet="tb_SanPham" />
           </AssociationSet>
+          <AssociationSet Name="FK_tb_SanPham_tb_NguoiDung" Association="Self.FK_tb_SanPham_tb_NguoiDung">
+            <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+            <End Role="tb_SanPham" EntitySet="tb_SanPham" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_tanphunongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -136,6 +201,11 @@
           <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LoaiBaiViet" Type="Int32" />
           <Property Name="NgayViet" Type="DateTime" Precision="3" />
+          <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TieuDe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TomTat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiViet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_NguoiDung" Relationship="db_tanphunongModel.FK_tb_BaiViet_tb_NguoiDung" FromRole="tb_BaiViet" ToRole="tb_NguoiDung" />
         </EntityType>
         <EntityType Name="tb_DoiTac">
           <Key>
@@ -161,16 +231,8 @@
           <NavigationProperty Name="tb_LoaiSP1" Relationship="Self.FK_tb_LoaiSP_tb_LoaiSP" FromRole="tb_LoaiSP" ToRole="tb_LoaiSP1" />
           <NavigationProperty Name="tb_LoaiSP2" Relationship="Self.FK_tb_LoaiSP_tb_LoaiSP" FromRole="tb_LoaiSP1" ToRole="tb_LoaiSP" />
           <NavigationProperty Name="tb_SanPham" Relationship="Self.FK_tb_SanPham_tb_LoaiSP" FromRole="tb_LoaiSP" ToRole="tb_SanPham" />
-        </EntityType>
-        <EntityType Name="tb_NguoiDung">
-          <Key>
-            <PropertyRef Name="TenDangNhap" />
-          </Key>
-          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TrangThai" Type="Boolean" />
-          <Property Name="LaQTV" Type="Boolean" />
-          <Property Name="ThoiGianDNCuoi" Type="DateTime" Precision="3" />
+          <Property Name="NguoiThem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_NguoiDung" Relationship="db_tanphunongModel.FK_tb_LoaiSP_tb_NguoiDung" FromRole="tb_LoaiSP" ToRole="tb_NguoiDung" />
         </EntityType>
         <EntityType Name="tb_SanPham">
           <Key>
@@ -189,6 +251,9 @@
           <Property Name="TrangThai" Type="Boolean" />
           <Property Name="MaLoai" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tb_LoaiSP" Relationship="Self.FK_tb_SanPham_tb_LoaiSP" FromRole="tb_SanPham" ToRole="tb_LoaiSP" />
+          <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiThem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tb_NguoiDung" Relationship="db_tanphunongModel.FK_tb_SanPham_tb_NguoiDung" FromRole="tb_SanPham" ToRole="tb_NguoiDung" />
         </EntityType>
         <EntityType Name="tb_TuyChon">
           <Key>
@@ -237,7 +302,6 @@
           <EntitySet Name="tb_BaiViet" EntityType="Self.tb_BaiViet" />
           <EntitySet Name="tb_DoiTac" EntityType="Self.tb_DoiTac" />
           <EntitySet Name="tb_LoaiSP" EntityType="Self.tb_LoaiSP" />
-          <EntitySet Name="tb_NguoiDung" EntityType="Self.tb_NguoiDung" />
           <EntitySet Name="tb_SanPham" EntityType="Self.tb_SanPham" />
           <EntitySet Name="tb_TuyChon" EntityType="Self.tb_TuyChon" />
           <EntitySet Name="tb_VanPhong" EntityType="Self.tb_VanPhong" />
@@ -249,7 +313,80 @@
             <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
             <End Role="tb_SanPham" EntitySet="tb_SanPham" />
           </AssociationSet>
+          <EntitySet Name="tb_NhatKy" EntityType="db_tanphunongModel.tb_NhatKy" />
+          <EntitySet Name="tb_NguoiDung" EntityType="db_tanphunongModel.tb_NguoiDung" />
+          <AssociationSet Name="FK_tb_BaiViet_tb_NguoiDung" Association="db_tanphunongModel.FK_tb_BaiViet_tb_NguoiDung">
+            <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+            <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_LoaiSP_tb_NguoiDung" Association="db_tanphunongModel.FK_tb_LoaiSP_tb_NguoiDung">
+            <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+            <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_SanPham_tb_NguoiDung" Association="db_tanphunongModel.FK_tb_SanPham_tb_NguoiDung">
+            <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+            <End Role="tb_SanPham" EntitySet="tb_SanPham" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tb_NhatKy">
+          <Key>
+            <PropertyRef Name="MaNK" />
+          </Key>
+          <Property Name="MaNK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NguoiDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DoiTuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThaoTac" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MaDoiTuong" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_NguoiDung">
+          <Key>
+            <PropertyRef Name="TenDangNhap" />
+          </Key>
+          <Property Name="TenDangNhap" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TrangThai" Type="Boolean" />
+          <Property Name="LoaiND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ThoiGianDNCuoi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_BaiViet" Relationship="db_tanphunongModel.FK_tb_BaiViet_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_BaiViet" />
+          <NavigationProperty Name="tb_LoaiSP" Relationship="db_tanphunongModel.FK_tb_LoaiSP_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_LoaiSP" />
+          <NavigationProperty Name="tb_SanPham" Relationship="db_tanphunongModel.FK_tb_SanPham_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_SanPham" />
+        </EntityType>
+        <Association Name="FK_tb_BaiViet_tb_NguoiDung">
+          <End Type="db_tanphunongModel.tb_NguoiDung" Role="tb_NguoiDung" Multiplicity="0..1" />
+          <End Type="db_tanphunongModel.tb_BaiViet" Role="tb_BaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_NguoiDung">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="tb_BaiViet">
+              <PropertyRef Name="NguoiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_LoaiSP_tb_NguoiDung">
+          <End Type="db_tanphunongModel.tb_NguoiDung" Role="tb_NguoiDung" Multiplicity="0..1" />
+          <End Type="db_tanphunongModel.tb_LoaiSP" Role="tb_LoaiSP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_NguoiDung">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="tb_LoaiSP">
+              <PropertyRef Name="NguoiThem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_SanPham_tb_NguoiDung">
+          <End Type="db_tanphunongModel.tb_NguoiDung" Role="tb_NguoiDung" Multiplicity="0..1" />
+          <End Type="db_tanphunongModel.tb_SanPham" Role="tb_SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_NguoiDung">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="tb_SanPham">
+              <PropertyRef Name="NguoiThem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -259,6 +396,10 @@
           <EntitySetMapping Name="tb_BaiViet">
             <EntityTypeMapping TypeName="db_tanphunongModel.tb_BaiViet">
               <MappingFragment StoreEntitySet="tb_BaiViet">
+                <ScalarProperty Name="NguoiViet" ColumnName="NguoiViet" />
+                <ScalarProperty Name="TomTat" ColumnName="TomTat" />
+                <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
                 <ScalarProperty Name="MaBV" ColumnName="MaBV" />
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
                 <ScalarProperty Name="LoaiBaiViet" ColumnName="LoaiBaiViet" />
@@ -282,6 +423,7 @@
           <EntitySetMapping Name="tb_LoaiSP">
             <EntityTypeMapping TypeName="db_tanphunongModel.tb_LoaiSP">
               <MappingFragment StoreEntitySet="tb_LoaiSP">
+                <ScalarProperty Name="NguoiThem" ColumnName="NguoiThem" />
                 <ScalarProperty Name="MaLoaiSP" ColumnName="MaLoaiSP" />
                 <ScalarProperty Name="TenLoaiSP" ColumnName="TenLoaiSP" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
@@ -290,20 +432,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tb_NguoiDung">
-            <EntityTypeMapping TypeName="db_tanphunongModel.tb_NguoiDung">
-              <MappingFragment StoreEntitySet="tb_NguoiDung">
-                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
-                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-                <ScalarProperty Name="LaQTV" ColumnName="LaQTV" />
-                <ScalarProperty Name="ThoiGianDNCuoi" ColumnName="ThoiGianDNCuoi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tb_SanPham">
             <EntityTypeMapping TypeName="db_tanphunongModel.tb_SanPham">
               <MappingFragment StoreEntitySet="tb_SanPham">
+                <ScalarProperty Name="NguoiThem" ColumnName="NguoiThem" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
                 <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
                 <ScalarProperty Name="UuDiem" ColumnName="UuDiem" />
@@ -337,6 +470,28 @@
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="ChiTiet" ColumnName="ChiTiet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_NhatKy">
+            <EntityTypeMapping TypeName="db_tanphunongModel.tb_NhatKy">
+              <MappingFragment StoreEntitySet="tb_NhatKy">
+                <ScalarProperty Name="MaDoiTuong" ColumnName="MaDoiTuong" />
+                <ScalarProperty Name="ThaoTac" ColumnName="ThaoTac" />
+                <ScalarProperty Name="DoiTuong" ColumnName="DoiTuong" />
+                <ScalarProperty Name="NguoiDung" ColumnName="NguoiDung" />
+                <ScalarProperty Name="MaNK" ColumnName="MaNK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_NguoiDung">
+            <EntityTypeMapping TypeName="db_tanphunongModel.tb_NguoiDung">
+              <MappingFragment StoreEntitySet="tb_NguoiDung">
+                <ScalarProperty Name="ThoiGianDNCuoi" ColumnName="ThoiGianDNCuoi" />
+                <ScalarProperty Name="LoaiND" ColumnName="LoaiND" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

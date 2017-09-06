@@ -4,104 +4,123 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<section class="content-header">
+    <h1>
+        Loại sản phẩm
+        <small>Chi tiết loại sản phẩm</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
+        <li><a href="@Url.Action("Index")"> Loại sản phẩm</a></li>
+        <li><a class="active">Chi tiết loại sản phẩm</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Chi tiết loại sản phẩm</h3>
+                </div>
+                <div class="box-body">
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TenSanPham)
+                            </dt>
 
-<h2>Details</h2>
+                            <dd>
+                                @Html.DisplayFor(model => model.TenSanPham)
+                            </dd>
 
-<div>
-    <h4>tb_SanPham</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSanPham)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.UuDiem)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenSanPham)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.UuDiem)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UuDiem)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DacDiem)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UuDiem)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.DacDiem)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DacDiem)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ThanhPhanChinh)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DacDiem)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.ThanhPhanChinh)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ThanhPhanChinh)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.LuuY)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ThanhPhanChinh)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.LuuY)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LuuY)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.QuyCachDongGoi)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LuuY)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.QuyCachDongGoi)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.QuyCachDongGoi)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.XuatXu)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.QuyCachDongGoi)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.XuatXu)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.XuatXu)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CachDung)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.XuatXu)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.CachDung)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CachDung)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.GiaThanh)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CachDung)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.GiaThanh)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaThanh)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TrangThai)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.GiaThanh)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.TrangThai)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.tb_LoaiSP.TenLoaiSP)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TrangThai)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.tb_LoaiSP.TenLoaiSP)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tb_LoaiSP.TenLoaiSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tb_LoaiSP.TenLoaiSP)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaSP }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                        </dl>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSP }) |
+                        @Html.ActionLink("Quay lại danh sách", "Index")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

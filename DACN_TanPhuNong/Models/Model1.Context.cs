@@ -28,9 +28,10 @@ namespace DACN_TanPhuNong.Models
         public virtual DbSet<tb_BaiViet> tb_BaiViet { get; set; }
         public virtual DbSet<tb_DoiTac> tb_DoiTac { get; set; }
         public virtual DbSet<tb_LoaiSP> tb_LoaiSP { get; set; }
-        public virtual DbSet<tb_NguoiDung> tb_NguoiDung { get; set; }
         public virtual DbSet<tb_SanPham> tb_SanPham { get; set; }
         public virtual DbSet<tb_TuyChon> tb_TuyChon { get; set; }
         public virtual DbSet<tb_VanPhong> tb_VanPhong { get; set; }
+        public virtual DbSet<tb_NhatKy> tb_NhatKy { get; set; }
+        public virtual DbSet<tb_NguoiDung> tb_NguoiDung { get; set; }
     }
 }

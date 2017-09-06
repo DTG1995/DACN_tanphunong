@@ -5,60 +5,95 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<section class="content-header">
+    <h1>
+        Đối tác
+        <small>danh sách đối tác</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
+        <li><a class="active">Đối tác</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách đối tác</h3>
+                    <a href="@Url.Action("Create")" class="btn btn-primary" style="float: right">Thêm mới</a>
+                </div>
+                <div class="box-body">
+                    <table id="datatable" class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TenDT)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SDT)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DiaChi)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ChiTiet)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.WebsiteDT)
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenDT)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SDT)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DiaChi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ChiTiet)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.WebsiteDT)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Sửa", "Edit", new { id = item.MaDT }) |
+                                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaDT }) |
+                                        @Html.ActionLink("Xóa", "Delete", new { id = item.MaDT })
+                                    </td>
+                                </tr>
+                            }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenDT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChiTiet)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WebsiteDT)
-        </th>
-        <th></th>
-    </tr>
+                            </tbody>
+                    </table>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenDT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChiTiet)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WebsiteDT)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaDT }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaDT }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaDT })
-        </td>
-    </tr>
-}
-
-</table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+@Styles.Render("~/Content/admin/dataTables.bootstrap.min.css")
+@Scripts.Render("~/Scripts/admin/jquery.dataTables.min.js")
+@Scripts.Render("~/Scripts/admin/dataTables.bootstrap.min.js")
+<script>
+    $("#datatable").DataTable();
+</script>

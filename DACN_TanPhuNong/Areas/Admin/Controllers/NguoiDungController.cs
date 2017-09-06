@@ -46,8 +46,20 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="TenDangNhap,MatKhau,TrangThai,LaQTV,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
+        public ActionResult Create([Bind(Include="TenDangNhap,MatKhau,TrangThai,LoaiND,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
         {
+            var loaiND = Request.Params.GetValues("LoaiND");
+            if (loaiND != null)
+            {
+               string str = "";
+                for (int i = 0; i < loaiND.Count(); i++)
+                {
+                    str += loaiND[i] + ";";
+                }
+                tb_nguoidung.LoaiND = str.Remove(str.Length -1);
+            }
+            
+            
             if (ModelState.IsValid)
             {
                 db.tb_NguoiDung.Add(tb_nguoidung);
@@ -78,7 +90,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="TenDangNhap,MatKhau,TrangThai,LaQTV,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
+        public ActionResult Edit([Bind(Include="TenDangNhap,MatKhau,TrangThai,LoaiND,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
         {
             if (ModelState.IsValid)
             {

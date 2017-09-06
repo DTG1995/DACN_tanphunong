@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using DACN_TanPhuNong.Models;
 
@@ -17,7 +13,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // GET: /Admin/BaiViet/
         public ActionResult Index()
         {
-            return View(db.tb_BaiViet.ToList());
+            return View(db.tb_BaiViet.Where(x=>x.LoaiBaiViet==0).ToList());
         }
 
         // GET: /Admin/BaiViet/Details/5
@@ -46,8 +42,9 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="MaBV,NoiDung,LoaiBaiViet,NgayViet")] tb_BaiViet tb_baiviet)
+        public ActionResult Create([Bind(Include="MaBV,NoiDung,NgayViet,HinhAnh")] tb_BaiViet tb_baiviet)
         {
+            tb_baiviet.LoaiBaiViet = 0;
             if (ModelState.IsValid)
             {
                 db.tb_BaiViet.Add(tb_baiviet);
@@ -78,8 +75,9 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="MaBV,NoiDung,LoaiBaiViet,NgayViet")] tb_BaiViet tb_baiviet)
+        public ActionResult Edit([Bind(Include="MaBV,NoiDung,NgayViet,HinhAnh")] tb_BaiViet tb_baiviet)
         {
+            tb_baiviet.LoaiBaiViet = 0;
             if (ModelState.IsValid)
             {
                 db.Entry(tb_baiviet).State = EntityState.Modified;

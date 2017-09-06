@@ -1,11 +1,29 @@
-﻿<!DOCTYPE html>
+﻿@using DACN_TanPhuNong.Models
+@{
+    db_tanphunongEntities db = new db_tanphunongEntities();
+    var listLSP = db.tb_LoaiSP.Where(x => x.LoaiCha == null).ToList();
+}
+@helper renderLSP(tb_LoaiSP lsp)
+{
+    <li>
+        @Html.ActionLink(lsp.TenLoaiSP,"AllByLoai","SanPhamHome",new {id=lsp.MaLoaiSP},null)
+        <ul>
+            @{
+                var listLoaiCha = lsp.tb_LoaiSP1.ToList();
+                foreach (var t in listLoaiCha)
+                {
+                    @renderLSP(t)
+                }
+            }
+        </ul>
+    </li>
+}
+<!DOCTYPE html>
 <!-- saved from url=(0021)http://tanphunong.vn/ -->
 <html lang="en-US" prefix="og: http://ogp.me/ns#">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Tân Phú Nông - Vững bước cùng nhà nông - Tân Phú Nông</title>
-   
-    
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -144,30 +162,21 @@
     <nav id="main-nav" class="clearfix">
         <div class="container clearfix">
             <ul>
-                <li class=" current-menu-item "><a href="#">Trang chủ</a></li>
+                <li class=" current-menu-item "><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
                 <li >
-                    <a href="#">Sản phẩm</a>
+                    
+                    <a href="@Url.Action("Index", "SanPhamHome")">Sản phẩm</a>
                     <ul>
-                        <li >
-                            <a href="#">Phân bón</a>
-                            <ul>
-                                <li ><a href="#">Phân bón hữu cơ</a></li>
-                                <li ><a href="#">Phân bón vô cơ</a></li>
-                            </ul>
-                        </li>
-                        <li  >
-                            <a href="#">Thuốc BVTV</a>
-                            <ul >
-                                <li><a href="#">Thuốc trừ sâu</a></li>
-                                <li><a href="#">Thuốc trừ bệnh</a></li>
-                            </ul>
-                        </li>
+                        @for (int i = 0; i < listLSP.Count; i++)
+                        {
+                            @renderLSP(listLSP[i])
+                        }
                     </ul>
                 </li>
-                <li><a href="#">Đại lý</a></li>
-                <li><a href="#">Đối tác</a></li>
-                <li><a href="#">Thông tin</a></li>
-                <li><a href="#">Tuyển dụng</a></li>
+                <li>@Html.ActionLink("Đại lý", "Index", "DaiLyHome")</li>
+                <li>@Html.ActionLink("Đối tác", "Index", "DoiTacHome")</li>
+                <li>@Html.ActionLink("Thông tin", "Index", "TinTucHome")</li>
+                <li>@Html.ActionLink("Tuyển dụng", "Index", "TuyenDungHome")</li>
                 <li><a href="#">Liên hệ</a></li>
             </ul>
             <select>
@@ -196,11 +205,11 @@
             <div style="max-width: 1350px;">
                     <div class="theme-default">
                         <div id="metaslider_24" >
-                            <img src="./images/bannertpn2-837x248.jpg"  >
-                            <img src="./images/bannertpn1-1050x311.jpg" >
-                            <img src="./images/slider-3-976x366-976x289.jpg" >
-                            <img src="./images/lua-980x290.jpg" >
-                            <img src="./images/tanphunongx-1350x400.jpg">
+                            <img src="@Url.Content("~/images/bannertpn2-837x248.jpg")"/>
+                            <img src="@Url.Content("~/images/bannertpn1-1050x311.jpg")"/>
+                            <img src="@Url.Content("~/images/slider-3-976x366-976x289.jpg")"/>
+                            <img src="@Url.Content("~/images/lua-980x290.jpg")"/>
+                            <img src="@Url.Content("~/images/tanphunongx-1350x400.jpg")"/>
                          </div>
                     </div>
                 <script type="text/javascript">
@@ -253,9 +262,7 @@
                     <aside id="text-2" class="widget widget_text">
                         <h3 class="widget-title">Về chúng tôi</h3>
                         <div class="textwidget">
-                            Công ty TNHH Sản xuất-Dịch vụ-Thương mại Tân Phú Nông là 1 doanh nghiệp chuyên kinh doanh trong lĩnh vực vật tư nông nghiệp, có trụ sở đặt tại số 1 đường Hồ Xuân Hương, phường 9, thành phố Đà Lạt, tỉnh Lâm Đồng.
-
-                            – Công ty TNHH SX-DV-TM Tân Phú Nông được thành lập ngày 26/04/2005, sau 10 năm hoạt động Công ty đã từng bước trưởng thành và lớn mạnh (mở rộng), mang tính chuyên nghiệp cao.
+                            @Html.Raw(db.tb_TuyChon.Where(x => x.TenTuyChon == "VeChungToi").Select(x => x.NoiDungTuyChon).FirstOrDefault())
                         </div>
                     </aside>
                 </div>
@@ -263,17 +270,7 @@
                     <aside id="text-3" class="widget widget_text">
                         <h3 class="widget-title">Liên hệ</h3>
                         <div class="textwidget">
-                            <b>Công ty TNHH Sản xuất-Dịch vụ-Thương mại Tân Phú Nông</b>
-                            <br>
-                            <b>Địa chỉ văn phòng </b>: Số 01B Hồ Xuân Hương, phường 9, TP Đà Lạt, Tỉnh Lâm Đồng, Việt Nam<br>
-                            <b>Trung tâm phân phối</b>: Số 57 Hồ Xuân Hương, phường 9, TP Đà Lạt, Tỉnh Lâm Đồng, Việt Nam
-                            <br>
-                            Chăm sóc khách hàng:<br>
-                            Cô Ngọc Thủy – Điện thoại: 0633 828958 – Di động: 0982785 629
-                            <br>
-                            Cô Hạnh Trang – Điện thoại: 063 3549797 – Di động: 0125 970 33 79
-                            <br>
-                            Cô Hồng Nhung – Điện thoại: 063 3810168 – Di động: 0986 873 037
+                            @Html.Raw(db.tb_TuyChon.Where(x => x.TenTuyChon == "LienHe").Select(x => x.NoiDungTuyChon).FirstOrDefault())
                         </div>
                     </aside>
                 </div>
@@ -281,19 +278,7 @@
                     <aside id="text-4" class="widget widget_text">
                         <h3 class="widget-title">Sản phẩm</h3>
                         <div class="textwidget">
-                            <ul>
-                                <li>1. Phân bón đất: Phân phức hợp, Phân đơn, Phân hữu cơ </li>
-                                <li>
-                                    2. Phân bón chuyên dụng cho hệ thống tưới nhỏ giọt
-                                </li>
-                                <li>3. Phân bón lá: Hữu cơ, Vô cơ, Kích thích tố sinh trưởng </li>
-                                <li>
-                                    4. Thuốc BVTV: Thuốc bệnh, Thuốc sâu, Thuốc diệt cỏ
-                                </li>
-                                <li>
-                                    5. Vật tư nông nghiệp: Màng phủ nông nghiệp
-                                </li>
-                            </ul>
+                            @Html.Raw(db.tb_TuyChon.Where(x => x.TenTuyChon == "SanPhamFooter").Select(x => x.NoiDungTuyChon).FirstOrDefault())
                         </div>
                     </aside>
                 </div>

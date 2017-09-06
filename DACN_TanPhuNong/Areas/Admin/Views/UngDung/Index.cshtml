@@ -2,6 +2,7 @@
     ViewBag.Title = "Quản trị";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <section class="content-header">
     <h1>Trang Chủ
         <small>tùy chỉnh trang chủ</small>
@@ -22,7 +23,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body" data-id="1">
-                    <form action="#" class="form-horizontal">
+                    <form class="form-horizontal">
                         <div class="form-group">
                             <label class="col-sm-2  control-label" for="txtTenDN">Tên Doanh Nghiệp: </label>
                             <div class="col-sm-10 ">
@@ -43,11 +44,14 @@
                                 </label>
                                 <input id="file-upload" type="file" name="logo" accept="image/*" style="display: none;" />
                                 <small id="msgTBfile">Click vào hình để thay đổi logo</small>
+
+                                <input type="text" id="txthinhAnh" name="txthinhAnh" />
+                                <input type="button" onclick="chosseImage('txthinhAnh')" value="Chon hinh"/>
                             </div>
                         </div>
                         <div class="form-group pull-right">
                             <div class="col-sm-12">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                                <button onclick="SaveHeader()" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
                             </div>
                         </div>
                     </form>
@@ -66,7 +70,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body" data-id="2">
-                    <form action="SaveContentHome" method="POST" class="form-horizontal">
+                    <form class="form-horizontal">
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <textarea name="txtContentHome" id="txtContentHome">@ViewBag.ContentHome</textarea>
@@ -75,7 +79,7 @@
 
                         <div class="form-group pull-right">
                             <div class="col-sm-12">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                                <button onclick="SaveContent()" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
                             </div>
                         </div>
                     </form>
@@ -94,12 +98,11 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body" data-id="3">
-                    <form action="#">
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="txtVeChungToi"><i class="fa fa-users"></i> Về chúng tôi </label>
                                 <div class="col-sm-12">
-                                    <textarea class="form-control" name="txtVeChungToi" id="txtVeChungToi"></textarea>
+                                    <textarea class="form-control" name="txtVeChungToi" id="txtVeChungToi">@ViewBag.VeChungToi</textarea>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +110,7 @@
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="txtLienHe"><i class="fa fa-id-card"></i> Liên hệ </label>
                                 <div class="col-sm-12">
-                                    <textarea class="form-control" name="txtLienHe" id="txtLienHe"></textarea>
+                                    <textarea class="form-control" name="txtLienHe" id="txtLienHe">@ViewBag.LienHe</textarea>
                                 </div>
                             </div>
                         </div>
@@ -115,29 +118,33 @@
                             <div class="form-group">
                                 <label class="col-sm-12 control-label" for="txtSanPham"><i class="fa fa-product-hunt"></i> Sản phẩm </label>
                                 <div class="col-sm-12">
-                                    <textarea class="form-control" name="txtSanPham" id="txtSanPham"></textarea>
+                                    <textarea class="form-control" name="txtSanPham" id="txtSanPham">@ViewBag.SanPhamFooter</textarea>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group pull-right">
                             <div class="col-sm-12">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                                <button onclick=" SaveFooter() " class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <!-- /.box-body -->
             </div>
         </section>
     </div>
+    
 </section>
 <!-- CK Editor -->
 @Scripts.Render("~/Scripts/admin/ckeditor/ckeditor.js")
 
 <script>
     $(function () {
-        CKEDITOR.replace("txtContentHome");
+        CKEDITOR.replace("txtContentHome", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+        });
         var config = {};
         config.toolbarGroups = [
                 { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
@@ -166,8 +173,59 @@
             }else $(this).children().next('b').html("<i class='fa fa-angle-down '></i>"); 
         });
     });
+    function chosseImage(fname) {
+        //var left = (screen.width / 2) - (w / 2);
+        //var top = (screen.height / 2) - (h / 2);
+        val = document.getElementById(fname).value;
+        // to handle in IE 7.0          
+        if (window.showModalDialog) {
+            retVal = window.showModalDialog("@Url.Content("~/Areas/Admin/browser/ChonImage.aspx")?idparent=" + fname + "&ControlVal=" + val, 'Show Popup Window', "dialogHeight:660px,dialogWidth:800px,resizable:no,center:yes,");
+            document.getElementById(fname).value = retVal;
+        }
+        else {
+            retVal = window.open("@Url.Content("~/Areas/Admin/browser/ChonImage.aspx")?idparent=" + fname + "&ControlVal=" + val, 'Show Popup Window', 'height=660,width=800,resizable=no,modal=yes,center=yes');
+            retVal.focus();
+        }
+    }
 
 
+    function SaveFooter() {
+        var txtVeChungToi = CKEDITOR.instances['txtVeChungToi'].getData();
+        var txtLienHe = CKEDITOR.instances['txtLienHe'].getData();
+        var txtSanPham = CKEDITOR.instances['txtSanPham'].getData();
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("SaveFooter","UngDung")",
+            data: {
+                txtVeChungToi: txtVeChungToi,
+                txtLienHe: txtLienHe,
+                txtSanPham: txtSanPham
+            },
+            dataType: "text",
+            success: function(resultData) {
+                alert(resultData);
+            }
+        });
+    }
+
+    function SaveContent() {
+        var txtContentHome = CKEDITOR.instances['txtContentHome'].getData();
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("SaveContentHome","UngDung")",
+            data: {
+                txtContentHome: txtContentHome
+            },
+        dataType: "text",
+        success: function(resultData) {
+            alert(resultData);
+        }
+    });
+    }
+    function SaveHeader() {
+        
+    }
+    
     
 </script>
 

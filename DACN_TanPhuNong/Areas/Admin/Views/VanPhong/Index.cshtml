@@ -5,69 +5,27 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            Data Tables
-            <small>advanced tables</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Data tables</li>
-        </ol>
-    </section>
-    <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Danh sách món</h3>
-                        <button type="button" class="btn btn-primary" style="float: right" data-toggle="modal" data-target="#myModal">Thêm mới</button>
-                        <div id="myModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Thêm mới món</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- Body-->
-                                        <html:form action="/admin/mon/them" method="post">
-                                            <html:hidden styleclass="form-control" property="maMon"></html:hidden>
-                                            <div class="form-group">
-                                                <label for="pwd">Tên món:</label>
-                                                <html:text styleclass="form-control" property="tenMon"></html:text>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="pwd">Mô tả:</label>
-                                                <html:text styleclass="form-control" property="moTa"></html:text>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="pwd">Hình ảnh:</label>
-                                                <html:text styleclass="form-control" property="hinhAnh"></html:text>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="pwd">Giá:</label>
-                                                <html:text styleclass="form-control" property="gia"></html:text>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                                                <html:submit styleclass="btn btn-primary" property="submit" value="submit">Thêm</html:submit>
-                                            </div>
-                                        </html:form>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <table id="datatable" class="table">
-                            <thead>
+<section class="content-header">
+    <h1>
+        Văn phòng
+        <small>danh sách văn phòng</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
+        <li><a class="active">Văn phòng</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách văn phòng</h3>
+                    <a href="@Url.Action("Create")" class="btn btn-primary" style="float: right">Thêm mới</a>
+                </div>
+                <div class="box-body">
+                    <table id="datatable" class="table">
+                        <thead>
                             <tr>
                                 <th>
                                     @Html.DisplayNameFor(model => model.TenVP)
@@ -86,43 +44,49 @@
                                 </th>
                                 <th></th>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.TenVP)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.DiaChi)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.SDT)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Email)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ChiTiet)
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Edit", "Edit", new {id = item.MaVP}) |
-                                            @Html.ActionLink("Details", "Details", new {id = item.MaVP}) |
-                                            @Html.ActionLink("Delete", "Delete", new {id = item.MaVP})
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenVP)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DiaChi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SDT)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ChiTiet)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Sửa", "Edit", new { id = item.MaVP }) |
+                                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaVP }) |
+                                        @Html.ActionLink("Xóa", "Delete", new { id = item.MaVP })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
 
-                    </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
+                <!-- /.box-body -->
             </div>
-            <!-- /.col -->
+            <!-- /.box -->
         </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+@Styles.Render("~/Content/admin/dataTables.bootstrap.min.css")
+@Scripts.Render("~/Scripts/admin/jquery.dataTables.min.js")
+@Scripts.Render("~/Scripts/admin/dataTables.bootstrap.min.js")
+<script>
+    $("#datatable").DataTable();
+</script>

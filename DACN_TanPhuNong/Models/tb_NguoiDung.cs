@@ -14,10 +14,21 @@ namespace DACN_TanPhuNong.Models
     
     public partial class tb_NguoiDung
     {
+        public tb_NguoiDung()
+        {
+            this.tb_BaiViet = new HashSet<tb_BaiViet>();
+            this.tb_LoaiSP = new HashSet<tb_LoaiSP>();
+            this.tb_SanPham = new HashSet<tb_SanPham>();
+        }
+    
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
         public Nullable<bool> TrangThai { get; set; }
-        public Nullable<bool> LaQTV { get; set; }
+        public string LoaiND { get; set; }
         public Nullable<System.DateTime> ThoiGianDNCuoi { get; set; }
+    
+        public virtual ICollection<tb_BaiViet> tb_BaiViet { get; set; }
+        public virtual ICollection<tb_LoaiSP> tb_LoaiSP { get; set; }
+        public virtual ICollection<tb_SanPham> tb_SanPham { get; set; }
     }
 }

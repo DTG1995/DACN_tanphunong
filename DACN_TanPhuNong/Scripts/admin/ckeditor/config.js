@@ -22,4 +22,7 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	config.removeButtons = 'Cut,Copy,Paste,Templates,Save,NewPage,Preview,Print,SelectAll,About';
+	config.extraPlugins = 'uploadimage';
+	config.extraPlugins = 'uploadwidget';
+	config.extraPlugins = 'filebrowser';
 };

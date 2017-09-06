@@ -1,4 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@Html.Raw(ViewBag.ContentHome)
+@{
+    HtmlString str = new HtmlString(ViewBag.ContentHome);
+}
+@Html.Raw(str);

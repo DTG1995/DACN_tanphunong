@@ -5,55 +5,89 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<section class="content-header">
+    <h1>
+        Tin tức
+        <small>Sửa tin tức</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
+        <li><a href="@Url.Action("Index")"> Tin tức</a></li>
+        <li><a class="active">Sửa tin tức</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Sửa tin tức</h3>
+                </div>
+                <div class="box-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>tb_BaiViet</h4>
+                            <hr />
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.MaBV)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TieuDe, new {@class = "control-label col-md-2"})
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TieuDe)
+                                    @Html.ValidationMessageFor(model => model.TieuDe)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TomTat, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TomTat)
+                                    @Html.ValidationMessageFor(model => model.TomTat)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NoiDung, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.NoiDung)
+                                    @Html.ValidationMessageFor(model => model.NoiDung)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NgayViet, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.NgayViet)
+                                    @Html.ValidationMessageFor(model => model.NgayViet)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HinhAnh, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.HinhAnh)
+                                    @Html.ValidationMessageFor(model => model.HinhAnh)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Lưu" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>tb_BaiViet</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.MaBV)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NoiDung, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NoiDung)
-                @Html.ValidationMessageFor(model => model.NoiDung)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LoaiBaiViet, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LoaiBaiViet)
-                @Html.ValidationMessageFor(model => model.LoaiBaiViet)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgayViet, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayViet)
-                @Html.ValidationMessageFor(model => model.NgayViet)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                    <div>
+                        @Html.ActionLink("Quay lại danh sách", "Index")
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
+</section>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

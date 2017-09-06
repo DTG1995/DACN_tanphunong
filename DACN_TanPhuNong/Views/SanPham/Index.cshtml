@@ -1,0 +1,27 @@
+﻿@using DACN_TanPhuNong.Models
+@model List<DACN_TanPhuNong.Models.tb_LoaiSP>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@helper renderLoaiSP(tb_LoaiSP lsp)
+{
+    <li>
+        @lsp.TenLoaiSP
+        <ul>
+            @{
+                var listLoaiCha = lsp.tb_LoaiSP1.ToList();
+                foreach (var t in listLoaiCha)
+                {
+                    @renderLoaiSP(t)
+                }
+            }
+        </ul>
+    </li>
+}
+<ul>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        @renderLoaiSP(Model[i])
+    }
+</ul>

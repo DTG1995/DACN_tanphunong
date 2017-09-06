@@ -1,0 +1,100 @@
+﻿@model IEnumerable<DACN_TanPhuNong.Models.tb_SanPham>
+
+@{
+    ViewBag.Title = "AllByLoai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AllByLoai</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UuDiem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DacDiem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhPhanChinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuuY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuyCachDongGoi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.XuatXu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CachDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaThanh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tb_LoaiSP.TenLoaiSP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UuDiem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DacDiem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThanhPhanChinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuuY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuyCachDongGoi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.XuatXu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CachDung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaThanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HinhAnh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tb_LoaiSP.TenLoaiSP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaSP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaSP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaSP })
+        </td>
+    </tr>
+}
+
+</table>

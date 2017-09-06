@@ -8,12 +8,16 @@
         <EntityTypeShape EntityType="db_tanphunongModel.tb_BaiViet" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tanphunongModel.tb_DoiTac" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tanphunongModel.tb_LoaiSP" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_tanphunongModel.tb_NguoiDung" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tanphunongModel.tb_SanPham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tanphunongModel.tb_TuyChon" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_tanphunongModel.tb_VanPhong" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="db_tanphunongModel.FK_tb_LoaiSP_tb_LoaiSP" ManuallyRouted="false" />
         <AssociationConnector Association="db_tanphunongModel.FK_tb_SanPham_tb_LoaiSP" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="db_tanphunongModel.tb_NhatKy" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="db_tanphunongModel.tb_NguoiDung" Width="1.5" PointX="3.25" PointY="5.125" />
+        <AssociationConnector Association="db_tanphunongModel.FK_tb_BaiViet_tb_NguoiDung" />
+        <AssociationConnector Association="db_tanphunongModel.FK_tb_LoaiSP_tb_NguoiDung" />
+        <AssociationConnector Association="db_tanphunongModel.FK_tb_SanPham_tb_NguoiDung" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

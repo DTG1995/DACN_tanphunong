@@ -4,40 +4,73 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+<section class="content-header">
+    <h1>
+        Tin tức
+        <small>Chi tiết tin tức</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
+        <li><a href="@Url.Action("Index")"> Tin tức</a></li>
+        <li><a class="active">Chi tiết tin tức</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Chi tiết tin tức</h3>
+                </div>
+                <div class="box-body">
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TieuDe)
+                            </dt>
 
-<h2>Details</h2>
+                            <dd>
+                                @Html.DisplayFor(model => model.TieuDe)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TomTat)
+                            </dt>
 
-<div>
-    <h4>tb_BaiViet</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.TomTat)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.NoiDung)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.NoiDung)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiBaiViet)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.NgayViet)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiBaiViet)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.NgayViet)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayViet)
-        </dt>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.HinhAnh)
+                            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayViet)
-        </dd>
+                            <dd>
+                                @Html.DisplayFor(model => model.HinhAnh)
+                            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaBV }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                        </dl>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaBV }) |
+                        @Html.ActionLink("Quay lại danh sách", "Index")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

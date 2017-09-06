@@ -161,15 +161,35 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\browser\ChonImage.aspx.cs">
+      <DependentUpon>ChonImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Areas\Admin\browser\ChonImage.aspx.designer.cs">
+      <DependentUpon>ChonImage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\browser\ImageBrowserCkeditor.aspx.cs">
+      <DependentUpon>ImageBrowserCkeditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Areas\Admin\browser\ImageBrowserCkeditor.aspx.designer.cs">
+      <DependentUpon>ImageBrowserCkeditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\Controllers\BaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoiTacController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\NguoiDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TuyenDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\UngDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\VanPhongController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DaiLyHomeController.cs" />
+    <Compile Include="Controllers\DoiTacController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SanPhamHomeController.cs" />
+    <Compile Include="Controllers\TinTucHomeController.cs" />
+    <Compile Include="Controllers\TuyenDungHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +222,9 @@
     <Compile Include="Models\tb_NguoiDung.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tb_NhatKy.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tb_SanPham.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -215,6 +238,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\browser\ChonImage.aspx" />
+    <Content Include="Areas\Admin\browser\ImageBrowserCkeditor.aspx" />
     <Content Include="Content\admin\AdminLTE.min.css" />
     <Content Include="Content\admin\bootstrap-toggle.min.css" />
     <Content Include="Content\admin\bootstrap.min.css" />
@@ -223,6 +248,7 @@
     <Content Include="Content\admin\skins\_all-skins.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\admin\adminlte.min.js" />
     <Content Include="Scripts\admin\bootstrap-toggle.min.js" />
@@ -377,6 +403,7 @@
     <Content Include="Scripts\admin\ckeditor\plugins\copyformatting\styles\copyformatting.css" />
     <Content Include="Scripts\admin\ckeditor\plugins\dialog\dialogDefinition.js" />
     <Content Include="Scripts\admin\ckeditor\plugins\div\dialogs\div.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\filebrowser\plugin.js" />
     <Content Include="Scripts\admin\ckeditor\plugins\find\dialogs\find.js" />
     <Content Include="Scripts\admin\ckeditor\plugins\flash\dialogs\flash.js" />
     <Content Include="Scripts\admin\ckeditor\plugins\flash\images\placeholder.png" />
@@ -535,6 +562,48 @@
     <Content Include="Scripts\admin\ckeditor\plugins\templates\templates\images\template1.gif" />
     <Content Include="Scripts\admin\ckeditor\plugins\templates\templates\images\template2.gif" />
     <Content Include="Scripts\admin\ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadimage\plugin.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\dev\cors.html" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\dev\filereaderplugin.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\dev\upload.html" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\az.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\ca.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\cs.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\da.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\de-ch.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\de.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\el.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\en.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\eo.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\es-mx.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\es.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\eu.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\fr.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\gl.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\hr.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\hu.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\id.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\it.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\ja.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\km.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\ko.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\ku.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\nb.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\nl.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\no.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\oc.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\pl.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\pt-br.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\pt.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\ru.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\sk.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\sv.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\tr.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\ug.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\uk.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\zh-cn.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\lang\zh.js" />
+    <Content Include="Scripts\admin\ckeditor\plugins\uploadwidget\plugin.js" />
     <Content Include="Scripts\admin\ckeditor\plugins\wsc\dialogs\ciframe.html" />
     <Content Include="Scripts\admin\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
     <Content Include="Scripts\admin\ckeditor\plugins\wsc\dialogs\wsc.css" />
@@ -574,7 +643,6 @@
     <Content Include="Content\nivo-slider.css" />
     <Content Include="Content\services.css" />
     <Content Include="Content\style.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -590,11 +658,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DoiTac\Create.cshtml" />
     <Content Include="Areas\Admin\Views\DoiTac\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\DoiTac\Details.cshtml" />
@@ -632,11 +695,6 @@
     <Content Include="Areas\Admin\Views\VanPhong\Details.cshtml" />
     <Content Include="Areas\Admin\Views\VanPhong\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\VanPhong\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\NguoiDung\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\NguoiDung\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\NguoiDung\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\NguoiDung\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\NguoiDung\Index.cshtml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -660,6 +718,22 @@
     <Content Include="Scripts\admin\ckeditor\README.md" />
     <Content Include="Scripts\admin\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\Admin\Views\UngDung\Index.cshtml" />
+    <Content Include="Areas\Admin\uploader\uploader.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiViet\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiViet\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiViet\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiViet\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiViet\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDung\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDung\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDung\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDung\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDung\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -698,10 +772,18 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\SanPham\Index.cshtml" />
+    <Content Include="Views\SanPhamHome\Index.cshtml" />
+    <Content Include="Views\SanPhamHome\AllByLoai.cshtml" />
+    <Content Include="Views\DaiLyHome\Index.cshtml" />
+    <Content Include="Views\DoiTac\Index.cshtml" />
+    <Content Include="Views\TinTucHome\Index.cshtml" />
+    <Content Include="Views\TuyenDungHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -7,8 +7,7 @@
 
 <h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(FormMethod.Get)) 
 {
     @Html.AntiForgeryToken()
     
@@ -42,10 +41,20 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LaQTV, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LoaiND, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LaQTV)
-                @Html.ValidationMessageFor(model => model.LaQTV)
+                <div class="checkbox">
+                    <label><input type="checkbox" name="LoaiND" value="0"/>Quản trị viên</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" name="LoaiND" value="1"/>Quản lý sản phẩm</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" name="LoaiND" value="2"/>Viết bài tin tức</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" name="LoaiND" value="3" />Viết bài bài tuyển dụng</label>
+                </div>
             </div>
         </div>
 
@@ -68,7 +77,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
