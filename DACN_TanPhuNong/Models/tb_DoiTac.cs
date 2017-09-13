@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Web.Mvc;
+
 namespace DACN_TanPhuNong.Models
 {
     using System;
@@ -29,6 +31,7 @@ namespace DACN_TanPhuNong.Models
         [Required(ErrorMessage = "Địa chỉ đối tác không được để trống", AllowEmptyStrings = false)]
         public string DiaChi { get; set; }
         [Display(Name = "Giới thiệu")]
+        [AllowHtml]
         public string ChiTiet { get; set; }
         [Display(Name = "Trang web")]
         public string WebsiteDT { get; set; }

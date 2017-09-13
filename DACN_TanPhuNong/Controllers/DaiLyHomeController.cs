@@ -14,7 +14,14 @@ namespace DACN_TanPhuNong.Controllers
         // GET: /DaiLyHome/
         public ActionResult Index()
         {
+            ViewBag.CurrentMenu = "DaiLy";
+
             return View(db.tb_VanPhong.ToList());
         }
-	}
+
+        public ActionResult Details(int? id)
+        {
+            return View(db.tb_VanPhong.Find(id));
+        }
+    }
 }

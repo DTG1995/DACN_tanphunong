@@ -1,0 +1,105 @@
+﻿<!-- sidebar menu: : style can be found in sidebar.less -->
+<ul class="sidebar-menu" data-widget="tree">
+    <li class="header">MAIN NAVIGATION</li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Ứng Dụng</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-circle-o"></i> Trang chủ</a></li>
+        </ul>
+    </li>
+    <li class=" treeview">
+        <a href="#">
+            <i class="fa fa-object-group"></i> <span>Loại Sản Phẩm</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index","LoaiSP")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="@Url.Action("Create","LoaiSP")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+        </ul>
+    </li>
+    <li class=" treeview ">
+        <a href="#">
+            <i class="fa fa-product-hunt"></i> <span>Sản Phẩm</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index","SanPham")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="@Url.Action("Create","SanPham")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+        </ul>
+    </li>
+    <li class=" treeview ">
+        <a href="#">
+            <i class="fa fa-building"></i> <span>Văn Phòng</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index","VanPhong")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="@Url.Action("Create", "VanPhong")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+        </ul>
+    </li>
+    <li class=" treeview ">
+        <a href="#">
+            <i class="fa fa-handshake-o"></i> <span>Đối Tác</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "DoiTac")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="@Url.Action("Create", "DoiTac")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+        </ul>
+    </li>
+    <li class=" treeview ">
+        <a href="#">
+            <i class="fa fa-address-book"></i> <span>Người dùng</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index","NguoiDung")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="@Url.Action("Create", "NguoiDung")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+        </ul>
+    </li>
+    <li class=" treeview ">
+        <a href="#">
+            <i class="fa fa-newspaper-o"></i> <span>Tin tức</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "BaiViet")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="@Url.Action("Create", "BaiViet")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+        </ul>
+    </li>
+    <li class=" treeview ">
+        <a href="#">
+            <i class="fa fa-puzzle-piece"></i> <span>Tuyển dụng</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "TuyenDung")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="@Url.Action("Create", "TuyenDung")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="@Url.Action("Index","NhatKy")">
+            <i class="fa fa-history"></i> <span>Lịch sử thao tác</span>
+        </a>
+    </li>
+</ul>
+

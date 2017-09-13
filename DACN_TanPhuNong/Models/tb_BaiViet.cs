@@ -8,6 +8,8 @@
 //------------------------------------------------------------------------------
 
 
+using System.Web.Mvc;
+
 namespace DACN_TanPhuNong.Models
 {
     using System;
@@ -25,12 +27,12 @@ namespace DACN_TanPhuNong.Models
         public string TomTat { get; set; }
         [Display(Name = "Nội dung")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Nội dung không được trống")]
+        [AllowHtml]
         public string NoiDung { get; set; }
         public Nullable<int> LoaiBaiViet { get; set; }
         [Display(Name = "Ngày viết")]
         public Nullable<System.DateTime> NgayViet { get; set; }
         [Display(Name = "Hình ảnh")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Hình ảnh không được trống")]
         public string HinhAnh { get; set; }
         [Display(Name = "Người viết")]
         public string NguoiViet { get; set; }

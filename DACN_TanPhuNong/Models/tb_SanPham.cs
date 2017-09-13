@@ -8,6 +8,8 @@
 //------------------------------------------------------------------------------
 
 
+using System.Web.Mvc;
+
 namespace DACN_TanPhuNong.Models
 {
     using System;
@@ -25,10 +27,13 @@ namespace DACN_TanPhuNong.Models
         public string UuDiem { get; set; }
         [Display(Name = "Đặc điểm")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Đặc điểm không được để trống")]
+        [AllowHtml]
         public string DacDiem { get; set; }
         [Display(Name = "Thành phần chính")]
+        [AllowHtml]
         public string ThanhPhanChinh { get; set; }
         [Display(Name = "Lưu ý")]
+        [AllowHtml]
         public string LuuY { get; set; }
         [Display(Name = "Quy cách đóng gói")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Quy cách đóng gói không được để trống")]
@@ -36,6 +41,7 @@ namespace DACN_TanPhuNong.Models
         [Display(Name = "Xuất xứ")]
         public string XuatXu { get; set; }
         [Display(Name = "Cách dùng")]
+        [AllowHtml]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Cách dùng không được để trống")]
         public string CachDung { get; set; }
         [Display(Name = "Giá tham khảo")]

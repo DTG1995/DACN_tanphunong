@@ -1,0 +1,49 @@
+﻿@using DACN_TanPhuNong.Controllers
+@model DACN_TanPhuNong.Models.tb_SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="post">
+    <article>
+        <header class="entry-header">
+            <h2 class="entry-title">
+                @Model.TenSanPham
+            </h2><!-- .entry-title -->
+        </header>
+        <div class="entry-meta-bar clearfix">
+            <div class="entry-meta">
+                <span class="byline">
+                    <span class="author "><a class="url fn n" href="http://tanphunong.vn/author/tuanitpro/">@(Model.tb_NguoiDung == null ? "Nặc danh" : Model.tb_NguoiDung.TenDangNhap)</a></span>
+                </span>
+           		<span class="category"><a href="@Url.RouteUrl("LoaiSanPham", new { id = Model.tb_LoaiSP.MaLoaiSP, title = UrlEncode.ToFriendlyUrl(Model.tb_LoaiSP.TenLoaiSP) })" rel="category tag">@Model.tb_LoaiSP.TenLoaiSP</a></span>
+            </div><!-- .entry-meta -->
+        </div>
+        <div class="entry-content clearfix">
+            <p>&nbsp;</p>
+            <p><img class=" size-full  aligncenter" src="@Model.HinhAnh" alt="25-5-5-bag" width="500" height="801"></p>
+            <p><strong>Ưu điểm:</strong></p>
+               @Html.Raw(Model.UuDiem.Replace("\r\n","<br/>"))
+            <p><strong>Đặc điểm:</strong></p>
+               @Html.Raw(Model.DacDiem)
+            <p><strong>Thành phần chính:</strong></p>
+                @Html.Raw(Model.ThanhPhanChinh)
+            <p><strong>Lưu ý:</strong></p>
+            @Html.Raw(Model.LuuY)
+            <p><strong>Quy cách đóng gói:&nbsp;@Model.QuyCachDongGoi</strong></p>
+            <p><strong>Xuất xứ:&nbsp;@Model.XuatXu</strong></p>
+            <p><strong>Cách dùng:</strong></p>
+            <p>&nbsp;</p>
+            @Html.Raw(Model.CachDung)
+        </div>
+
+        
+
+        <div id="comments" class="comments-area">
+        </div><!-- #comments .comments-area -->
+    </article>
+</section>
+
+

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using DACN_TanPhuNong.Filter;
 using DACN_TanPhuNong.Models;
 
 namespace DACN_TanPhuNong.Areas.Admin.Controllers
@@ -15,12 +16,14 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         private db_tanphunongEntities db = new db_tanphunongEntities();
 
         // GET: /Admin/DoiTac/
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Index()
         {
             return View(db.tb_DoiTac.ToList());
         }
 
         // GET: /Admin/DoiTac/Details/5
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +39,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         }
 
         // GET: /Admin/DoiTac/Create
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Create()
         {
             return View();
@@ -46,11 +50,14 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Create([Bind(Include="MaDT,TenDT,SDT,Email,DiaChi,ChiTiet,WebsiteDT")] tb_DoiTac tb_doitac)
         {
             if (ModelState.IsValid)
             {
                 db.tb_DoiTac.Add(tb_doitac);
+                db.SaveChanges();
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Đối tác", MaDoiTuong = tb_doitac.MaDT, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm đối tác \"" + tb_doitac.TenDT + "\"" });
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -59,6 +66,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         }
 
         // GET: /Admin/DoiTac/Edit/5
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,11 +86,13 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Edit([Bind(Include="MaDT,TenDT,SDT,Email,DiaChi,ChiTiet,WebsiteDT")] tb_DoiTac tb_doitac)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_doitac).State = EntityState.Modified;
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Đối tác", MaDoiTuong = tb_doitac.MaDT, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa đối tác \"" + tb_doitac.TenDT + "\"" });
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -90,6 +100,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         }
 
         // GET: /Admin/DoiTac/Delete/5
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,10 +118,12 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // POST: /Admin/DoiTac/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult DeleteConfirmed(int id)
         {
             tb_DoiTac tb_doitac = db.tb_DoiTac.Find(id);
             db.tb_DoiTac.Remove(tb_doitac);
+            db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Đối tác", MaDoiTuong = tb_doitac.MaDT, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Xóa đối tác \"" + tb_doitac.TenDT + "\"" });
             db.SaveChanges();
             return RedirectToAction("Index");
         }

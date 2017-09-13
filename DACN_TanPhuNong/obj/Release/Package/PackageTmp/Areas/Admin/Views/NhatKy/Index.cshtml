@@ -1,0 +1,73 @@
+﻿@model IEnumerable<DACN_TanPhuNong.Models.tb_NhatKy>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        Nhật ký
+        <small>danh sách nhật ký</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
+        <li><a class="active">nhật ký</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách hoạt động</h3>
+                </div>
+                <div class="box-body">
+                    <table id="datatable" class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NguoiDung)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DoiTuong)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ThaoTac)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MaDoiTuong)
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NguoiDung)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DoiTuong)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ThaoTac)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaDoiTuong)
+                                    </td>
+                                </tr>
+                            }
+
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@Styles.Render("~/Content/admin/dataTables.bootstrap.min.css")
+@Scripts.Render("~/Scripts/admin/jquery.dataTables.min.js")
+@Scripts.Render("~/Scripts/admin/dataTables.bootstrap.min.js")
+<script>
+    $("#datatable").DataTable();
+</script>

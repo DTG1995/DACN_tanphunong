@@ -175,25 +175,27 @@
     <Compile Include="Areas\Admin\browser\ImageBrowserCkeditor.aspx.designer.cs">
       <DependentUpon>ImageBrowserCkeditor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoiTacController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\NguoiDungController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhatKyController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TuyenDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\UngDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\VanPhongController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DaiLyHomeController.cs" />
-    <Compile Include="Controllers\DoiTacController.cs" />
+    <Compile Include="Controllers\DoiTacHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamHomeController.cs" />
     <Compile Include="Controllers\TinTucHomeController.cs" />
     <Compile Include="Controllers\TuyenDungHomeController.cs" />
+    <Compile Include="Controllers\UrlEncode.cs" />
+    <Compile Include="Filter\AdminFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -734,6 +736,15 @@
     <Content Include="Areas\Admin\Views\NguoiDung\Details.cshtml" />
     <Content Include="Areas\Admin\Views\NguoiDung\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NguoiDung\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhatKy\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDung\PhanQuyen.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDung\SavePhanQuyen.cshtml" />
+    <Content Include="Areas\Admin\Views\NguoiDung\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LeftMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\_Menu.cshtml" />
+    <Content Include="Areas\Admin\Views\UngDung\LienHe.cshtml" />
+    <None Include="Properties\PublishProfiles\dacn_tanphunong.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -747,7 +758,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -762,23 +775,20 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\SanPham\Index.cshtml" />
     <Content Include="Views\SanPhamHome\Index.cshtml" />
     <Content Include="Views\SanPhamHome\AllByLoai.cshtml" />
     <Content Include="Views\DaiLyHome\Index.cshtml" />
-    <Content Include="Views\DoiTac\Index.cshtml" />
     <Content Include="Views\TinTucHome\Index.cshtml" />
     <Content Include="Views\TuyenDungHome\Index.cshtml" />
+    <Content Include="Views\DoiTacHome\Index.cshtml" />
+    <Content Include="Views\SanPhamHome\Details.cshtml" />
+    <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\Home\LienHe.cshtml" />
+    <Content Include="Views\TinTucHome\Details.cshtml" />
+    <Content Include="Views\TuyenDungHome\Details.cshtml" />
+    <Content Include="Views\DaiLyHome\Details.cshtml" />
+    <Content Include="Views\DoiTacHome\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,8 +4,12 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using DACN_TanPhuNong.Filter;
 using DACN_TanPhuNong.Models;
 
 namespace DACN_TanPhuNong.Areas.Admin.Controllers
@@ -15,27 +19,16 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         private db_tanphunongEntities db = new db_tanphunongEntities();
 
         // GET: /Admin/NguoiDung/
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Index()
         {
-            return View(db.tb_NguoiDung.ToList());
+            return View(db.tb_NguoiDung.Where(x=>x.TrangThai??false).ToList());
         }
 
-        // GET: /Admin/NguoiDung/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tb_NguoiDung tb_nguoidung = db.tb_NguoiDung.Find(id);
-            if (tb_nguoidung == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tb_nguoidung);
-        }
-
+        
+        
         // GET: /Admin/NguoiDung/Create
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +39,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Create([Bind(Include="TenDangNhap,MatKhau,TrangThai,LoaiND,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
         {
             var loaiND = Request.Params.GetValues("LoaiND");
@@ -64,6 +58,8 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             {
                 db.tb_NguoiDung.Add(tb_nguoidung);
                 db.SaveChanges();
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Người dùng", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm người dùng \"" + tb_nguoidung.TenDangNhap + "\"" });
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -71,6 +67,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         }
 
         // GET: /Admin/NguoiDung/Edit/5
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -90,11 +87,13 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Edit([Bind(Include="TenDangNhap,MatKhau,TrangThai,LoaiND,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tb_nguoidung).State = EntityState.Modified;
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Người dùng", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa người dùng \"" + tb_nguoidung.TenDangNhap + "\"" });
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -102,6 +101,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         }
 
         // GET: /Admin/NguoiDung/Delete/5
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -119,14 +119,99 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // POST: /Admin/NguoiDung/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [AdminFilter(AllowPermit = "0")]
         public ActionResult DeleteConfirmed(string id)
         {
             tb_NguoiDung tb_nguoidung = db.tb_NguoiDung.Find(id);
-            db.tb_NguoiDung.Remove(tb_nguoidung);
+            tb_nguoidung.TrangThai = false;
+            db.Entry(tb_nguoidung).State =EntityState.Modified;
+            db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Người dùng", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Xóa người dùng \"" + tb_nguoidung.TenDangNhap + "\"" });
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
+        public ActionResult PhanQuyen()
+        {
+            return View(db.tb_NguoiDung.Where(x => x.TrangThai ?? false).ToList());
+        }
+
+        [HttpPost]
+        [AdminFilter(AllowPermit = "0")]
+        public ActionResult PhanQuyen(string username, string phanquyen)
+        {
+            tb_NguoiDung tb_nguoidung = db.tb_NguoiDung.Find(username);
+            tb_nguoidung.LoaiND = phanquyen;
+            db.Entry(tb_nguoidung).State = EntityState.Modified;
+            db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Người dùng", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Phân quyền người dùng \"" + tb_nguoidung.TenDangNhap + "\"" });
+            db.SaveChanges();
+            return View("SavePhanQuyen");
+        }
+        [NonAction]
+        [AdminFilter(AllowPermit = "0")]
+        static string GetMd5Hash(MD5 md5Hash, string input)
+        {
+
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login([Bind(Include = "TenDangNhap,MatKhau")] tb_NguoiDung tb_nguoidung)
+        {
+            if (!string.IsNullOrEmpty(tb_nguoidung.TenDangNhap) || !string.IsNullOrEmpty(tb_nguoidung.TenDangNhap))
+            {
+                MD5 md5 = MD5.Create();
+                string passHash = GetMd5Hash(md5, tb_nguoidung.MatKhau);
+
+                tb_NguoiDung user_Login = db.tb_NguoiDung.Where(x => x.TenDangNhap == tb_nguoidung.TenDangNhap &&
+                                                                     x.MatKhau == passHash).FirstOrDefault();
+                if (user_Login == null)
+                {
+                    ViewBag.LoginFailer = "Tài khoản hoặc mật khẩu không đúng";
+                    ModelState.AddModelError("LoginFailer", "Tài khoản hoặc mật khẩu không đúng");
+                    return View();
+                }
+                else
+                {
+
+
+                    FormsAuthentication.SetAuthCookie(user_Login.TenDangNhap, false);
+                    Session["IsAdmin"] = true;
+                    Session["Permit"] = user_Login.LoaiND;
+                    Session["username"] = user_Login.TenDangNhap;
+                    Session["UserLogin"] = user_Login;
+                    return RedirectToAction("Index", "Admin");
+
+                }
+            }
+            return View();
+        }
+
+        [AdminFilter(AllowPermit = "0")]
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

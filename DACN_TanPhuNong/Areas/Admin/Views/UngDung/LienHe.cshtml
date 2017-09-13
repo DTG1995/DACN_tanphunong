@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Trang Chủ
+        <small>tùy chỉnh liên hệ</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Trang chủ</a></li>
+        <li class="active">Quản trị</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <section class="content" style="min-height: unset; padding-bottom: 0px;">
+            <div class="box box-solid">
+                <div class="box-header with-border" data-id="2" style="cursor: pointer;">
+                    <i class="fa fa-paper-plane-o"></i>
+                    <h3 class="box-title">Nội dung trang liên hệ</h3>
+                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" data-id="2">
+                    
+                    <form class="form-horizontal" method="POST">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <textarea name="txtContact" id="txtContact">@ViewBag.ContentLienHe</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group pull-right">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+    </div>
+</section>
+<!-- CK Editor -->
+@Scripts.Render("~/Scripts/admin/ckeditor/ckeditor.js")
+<script>
+CKEDITOR.replace("txtContact", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+});
+    </script>

@@ -1,0 +1,38 @@
+﻿@model DACN_TanPhuNong.Models.tb_BaiViet
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="post">
+    <article>
+        <header class="entry-header">
+            <h2 class="entry-title">
+                @Model.TieuDe
+            </h2><!-- .entry-title -->
+        </header>
+        <div class="entry-meta-bar clearfix">
+            <div class="entry-meta">
+                <span class="byline">
+                    <span class="author "><a class="url fn n" href="http://tanphunong.vn/author/tuanitpro/">@(Model.tb_NguoiDung == null ? "Nặc danh" : Model.tb_NguoiDung.TenDangNhap)</a></span>
+                </span>
+                <span class="posted-on">@((Model.NgayViet ?? DateTime.Now).ToString("dd/MM/yyyy hh:mm:ss"))</span>
+            </div><!-- .entry-meta -->
+        </div>
+        <div class="entry-content clearfix">
+            <p>&nbsp;</p>
+            <p><img class=" size-full  aligncenter" src="@Model.HinhAnh" alt="25-5-5-bag" width="500" height="801"></p>
+            <p>
+                <strong>
+                    @Html.Raw(Model.TomTat.Replace("\r\n", "<br/>"))
+                </strong>
+            </p>
+            <p>&nbsp;</p>
+
+            @Html.Raw(Model.NoiDung)
+        </div>
+        <div id="comments" class="comments-area">
+        </div><!-- #comments .comments-area -->
+    </article>
+</section>

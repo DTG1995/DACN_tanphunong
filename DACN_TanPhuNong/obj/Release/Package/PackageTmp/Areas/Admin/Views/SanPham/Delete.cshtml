@@ -1,0 +1,132 @@
+﻿@model DACN_TanPhuNong.Models.tb_SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        Sản phẩm
+        <small>Xóa sản phẩm</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
+        <li><a href="@Url.Action("Index")"> Sản phẩm</a></li>
+        <li><a class="active">Xóa sản phẩm</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Xóa sản phẩm</h3>
+                </div>
+                <div class="box-body">
+                    <h3>Bạn có chắc chắn muốn xóa sản phẩm này?</h3>
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TenSanPham)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.TenSanPham)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.UuDiem)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.UuDiem)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DacDiem)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DacDiem)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ThanhPhanChinh)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ThanhPhanChinh)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.LuuY)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.LuuY)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.QuyCachDongGoi)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.QuyCachDongGoi)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.XuatXu)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.XuatXu)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CachDung)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.CachDung)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.GiaThanh)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.GiaThanh)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TrangThai)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.TrangThai)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.tb_LoaiSP.TenLoaiSP)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.tb_LoaiSP.TenLoaiSP)
+                            </dd>
+
+                        </dl>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                                @Html.ActionLink("Quay lại danh sách", "Index")
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

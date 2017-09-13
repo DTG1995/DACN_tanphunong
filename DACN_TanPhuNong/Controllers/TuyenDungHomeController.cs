@@ -14,7 +14,13 @@ namespace DACN_TanPhuNong.Controllers
         // GET: /TuyenDungHome/
         public ActionResult Index()
         {
+            ViewBag.CurrentMenu = "TuyenDung";
             return View(db.tb_BaiViet.Where(x=>x.LoaiBaiViet==1).ToList());
+        }
+        public ActionResult Details(int? id)
+        {
+            ViewBag.CurrentMenu = "TuyenDung";
+            return View(db.tb_BaiViet.Find(id));
         }
 	}
 }

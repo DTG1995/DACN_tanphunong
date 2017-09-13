@@ -1,0 +1,22 @@
+﻿@using DACN_TanPhuNong.Controllers
+@model IEnumerable<DACN_TanPhuNong.Models.tb_DoiTac>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Thông tin đối tác</h2>
+
+
+@foreach (var item in Model)
+{
+    <section class="post">
+        <p><b>Tên đối tác: </b>@item.TenDT</p>
+        <p><b>Địa chỉ: </b>@item.DiaChi</p>
+        <p><b>Số điện thoại: </b>@item.SDT</p>
+        <p><b>Email: </b>@item.Email</p>
+        <p><b>Website: </b>@item.WebsiteDT</p>
+        <a href="@Url.RouteUrl("DoiTacDetails",new{id=item.MaDT, title=UrlEncode.ToFriendlyUrl(item.TenDT)})" title="@item.TenDT">Xem giới thiệu</a>
+    </section>
+
+}

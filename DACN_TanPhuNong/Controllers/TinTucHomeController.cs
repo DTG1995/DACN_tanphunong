@@ -14,7 +14,14 @@ namespace DACN_TanPhuNong.Controllers
         // GET: /TinTucHome/
         public ActionResult Index()
         {
+            ViewBag.CurrentMenu = "TinTuc";
             return View(db.tb_BaiViet.Where(x=>x.LoaiBaiViet==0).ToList());
+        }
+
+        public ActionResult Details(int? id)
+        {
+            ViewBag.CurrentMenu = "TinTuc";
+            return View(db.tb_BaiViet.Find(id));
         }
 	}
 }

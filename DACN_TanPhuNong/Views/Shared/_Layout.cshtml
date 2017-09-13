@@ -1,12 +1,17 @@
-﻿@using DACN_TanPhuNong.Models
+﻿@using DACN_TanPhuNong.Controllers
+@using DACN_TanPhuNong.Models
 @{
     db_tanphunongEntities db = new db_tanphunongEntities();
     var listLSP = db.tb_LoaiSP.Where(x => x.LoaiCha == null).ToList();
+    string NameEnterprise = (db.tb_TuyChon.Where(x => x.TenTuyChon == "NameEnterprise").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "Tân Phú Nông");
+    string DesEnterprise = (db.tb_TuyChon.Where(x => x.TenTuyChon == "DesEnterprise").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "Tân Phú Nông");
+    string[] slideShow = (db.tb_TuyChon.Where(x => x.TenTuyChon == "SlideShow").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "").Split(';');
 }
 @helper renderLSP(tb_LoaiSP lsp)
 {
     <li>
-        @Html.ActionLink(lsp.TenLoaiSP,"AllByLoai","SanPhamHome",new {id=lsp.MaLoaiSP},null)
+        <a title="@lsp.TenLoaiSP" href="@Url.RouteUrl("LoaiSanPham", new { id = lsp.MaLoaiSP, title = UrlEncode.ToFriendlyUrl(lsp.TenLoaiSP) })">@lsp.TenLoaiSP</a>
+        
         <ul>
             @{
                 var listLoaiCha = lsp.tb_LoaiSP1.ToList();
@@ -23,7 +28,7 @@
 <html lang="en-US" prefix="og: http://ogp.me/ns#">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Tân Phú Nông - Vững bước cùng nhà nông - Tân Phú Nông</title>
+    <title>@NameEnterprise - @DesEnterprise - @NameEnterprise</title>
     <style type="text/css">
         img.wp-smiley,
         img.emoji {
@@ -144,110 +149,105 @@
 
 <div class="wrapper">
 
-<header id="branding">
-    <div class="container clearfix">
-        <div class="hgroup-wrap clearfix">
-            <section class="hgroup-right"></section><!-- .hgroup-right -->
-            <hgroup id="site-logo" class="clearfix">
-                <h1 id="site-title">
-                    <a href="http://tanphunong.vn/" title="Tân Phú Nông" rel="home">
-                        Tân Phú Nông
-                    </a>
-                </h1>
-                <h2 id="site-description">Công ty TNHH Sản xuất Dịch vụ Thương mại Tân Phú Nông</h2>
-
-            </hgroup><!-- #site-logo -->
-        </div><!-- .hgroup-wrap -->
-    </div><!-- .container -->
-    <nav id="main-nav" class="clearfix">
+    <header id="branding">
         <div class="container clearfix">
-            <ul>
-                <li class=" current-menu-item "><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
-                <li >
-                    
-                    <a href="@Url.Action("Index", "SanPhamHome")">Sản phẩm</a>
-                    <ul>
-                        @for (int i = 0; i < listLSP.Count; i++)
-                        {
-                            @renderLSP(listLSP[i])
-                        }
-                    </ul>
-                </li>
-                <li>@Html.ActionLink("Đại lý", "Index", "DaiLyHome")</li>
-                <li>@Html.ActionLink("Đối tác", "Index", "DoiTacHome")</li>
-                <li>@Html.ActionLink("Thông tin", "Index", "TinTucHome")</li>
-                <li>@Html.ActionLink("Tuyển dụng", "Index", "TuyenDungHome")</li>
-                <li><a href="#">Liên hệ</a></li>
-            </ul>
-            <select>
-                <option value="#" selected="selected">Trang chủ</option>
-                <option value="#">Sản phẩm</option>
-                <option value="#">- Phân bón</option>
-                <option value="#">- - Phân bón hữu cơ</option>
-                <option value="#">- - Phân bón vô cơ</option>
-                <option value="#">- Thuốc BVTV</option>
-                <option value="#">- - Thuốc trừ sâu</option>
-                <option value="#">- - Thuốc trừ bệnh</option>
-                <option value="#">Đại lý</option>
-                <option value="#">Đối tác</option>
-                <option value="#">Thông tin</option>
-                <option value="#">Tuyển dụng</option>
-                <option value="#">Liên hệ</option>
-            </select>
+            <div class="hgroup-wrap clearfix">
+                <section class="hgroup-right"></section><!-- .hgroup-right -->
+                <hgroup id="site-logo" class="clearfix">
+                    <h1 id="site-title">
+                        <a href="@Url.Action("Index","Home")" title="@NameEnterprise" rel="home">
+                            @NameEnterprise
+                        </a>
+                    </h1>
+                    <h2 id="site-description">@DesEnterprise</h2>
+
+                </hgroup><!-- #site-logo -->
+            </div><!-- .hgroup-wrap -->
         </div><!-- .container -->
-    </nav><!-- #main-nav -->
-</header>
+        <nav id="main-nav" class="clearfix">
+            <div class="container clearfix">
+                <ul class="root l_tinynav1">
+                    <li class="@(ViewBag.CurrentMenu =="TrangChu"?"current-menu-item":"")"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                    <li class="@(ViewBag.CurrentMenu =="SanPham"?"current-menu-item":"")">
+
+                        <a href="@Url.Action("Index", "SanPhamHome")">Sản phẩm</a>
+                        <ul>
+                            @for (int i = 0; i < listLSP.Count; i++)
+                            {
+                                @renderLSP(listLSP[i])
+                            }
+                        </ul>
+                    </li>
+                    <li class="@(ViewBag.CurrentMenu =="DaiLy"?"current-menu-item":"")">@Html.ActionLink("Đại lý", "Index", "DaiLyHome")</li>
+                    <li class="@(ViewBag.CurrentMenu =="DoiTac"?"current-menu-item":"")">@Html.ActionLink("Đối tác", "Index", "DoiTacHome")</li>
+                    <li class="@(ViewBag.CurrentMenu =="TinTuc"?"current-menu-item":"")">@Html.ActionLink("Tin tức", "Index", "TinTucHome")</li>
+                    <li class="@(ViewBag.CurrentMenu =="TuyenDung"?"current-menu-item":"")">@Html.ActionLink("Tuyển dụng", "Index", "TuyenDungHome")</li>
+                    <li class="@(ViewBag.CurrentMenu =="LienHe"?"current-menu-item":"")"><a href="@Url.Action("LienHe","Home")">Liên hệ</a></li>
+                </ul>
+                
+            </div><!-- .container -->
+        </nav><!-- #main-nav -->
+    </header>
+    <div class="">
+        @if (slideShow.Length > 0) { 
+        <!-- meta slider -->
+        <div style="max-width: 1350px;">
+            <div class="theme-default">
+                <div id="metaslider_24">
+                    @for (int i = 0; i < slideShow.Length; i++)
+                    {
+                        <img src="@slideShow[i]"/>
+                    }
+                </div>
+            </div>
+            <script type="text/javascript">
+                var metaslider_24 = function($) {
+                    $('#metaslider_24').nivoSlider({
+                        boxCols: 7,
+                        boxRows: 5,
+                        pauseTime: 3000,
+                        effect: "random",
+                        controlNav: false,
+                        directionNav: true,
+                        pauseOnHover: true,
+                        animSpeed: 600,
+                        prevText: "&lt;",
+                        nextText: "&gt;",
+                        slices: 15,
+                        manualAdvance: false
+                    });
+                };
+                var timer_metaslider_24 = function() {
+                    var slider = !window.jQuery ? window.setTimeout(timer_metaslider_24, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_24, 1) : metaslider_24(window.jQuery);
+                };
+                timer_metaslider_24();
+            </script>
+        </div>
+        <!--// meta slider-->
+        }
+    </div>
 
 <div id="main" class="container clearfix">
-    <div class="container">
-        <div class="widget">
-            <!-- meta slider -->
-            <div style="max-width: 1350px;">
-                    <div class="theme-default">
-                        <div id="metaslider_24" >
-                            <img src="@Url.Content("~/images/bannertpn2-837x248.jpg")"/>
-                            <img src="@Url.Content("~/images/bannertpn1-1050x311.jpg")"/>
-                            <img src="@Url.Content("~/images/slider-3-976x366-976x289.jpg")"/>
-                            <img src="@Url.Content("~/images/lua-980x290.jpg")"/>
-                            <img src="@Url.Content("~/images/tanphunongx-1350x400.jpg")"/>
-                         </div>
-                    </div>
-                <script type="text/javascript">
-                    var metaslider_24 = function($) {
-                        $('#metaslider_24').nivoSlider({
-                            boxCols: 7,
-                            boxRows: 5,
-                            pauseTime: 3000,
-                            effect: "random",
-                            controlNav: false,
-                            directionNav: true,
-                            pauseOnHover: true,
-                            animSpeed: 600,
-                            prevText: "&lt;",
-                            nextText: "&gt;",
-                            slices: 15,
-                            manualAdvance: false
-                        });
-                    };
-                    var timer_metaslider_24 = function() {
-                        var slider = !window.jQuery ? window.setTimeout(timer_metaslider_24, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_24, 1) : metaslider_24(window.jQuery);
-                    };
-                    timer_metaslider_24();
-                </script>
-            </div>
-            <!--// meta slider-->
-        </div>
-    </div>
-    <div id="container">
 
-        <div id="content">
-            <section class="page ">
-                <article style="padding: 15px;">
-                    @RenderBody()
-                 
-                </article>
-            </section>
-        </div><!-- #content -->
+    <div id="container">
+        <div id="primary" class="no-margin-left">
+            <div id="content">
+                @RenderBody()
+
+            </div><!-- #content -->
+        </div>
+        <div id="secondary">
+
+
+            <aside id="search-2" class="widget widget_search">
+                <form action="@Url.Action("Index","Home")" class="searchform clearfix" method="get">
+                    <label class="assistive-text" for="s">Search</label>
+                    <input type="text" placeholder="Search" class="s field" name="s">
+                </form>
+            </aside><aside id="text-5" class="widget widget_text">
+                <div class="textwidget"><img src="http://tanphunong.vn/wp-content/uploads/2015/11/Banner.jpg" width="100%"></div>
+            </aside>
+        </div>
     </div><!-- #container -->
 
 </div><!-- #main -->
@@ -290,7 +290,7 @@
         <div class="container">
             <div class="copyright">Copyright © 2017 <a href="#" title="Tân Phú Nông"><span>Tân Phú Nông</span></a>
             </div><!-- .copyright -->
-            <div class="footer-right"></div>
+            <div class="footer-right"><a href="@Url.Action("Index","Admin",new{area="Admin"})">Quản trị viên</a></div>
             <div style="clear: both;"></div>
         </div><!-- .container -->
     </div><!-- #site-generator -->
@@ -301,9 +301,29 @@
 </div><!-- .wrapper -->
     @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
     @Scripts.Render("~/Scripts/jquery.nivo.slider.pack.js")
-    
+    <script type="text/javascript">
+        !function (e, t, a) {
+            e.fn.tinyNav = function (n) {
+                var i = e.extend({ active: "current-menu-item", header: !1 }, n); return this.each(function () {
+                    a++; var n = e(this), l = "tinynav", r = l + a, o = ".l_" + r, c = e("<select/>").addClass(l + " " + r); if (n.is("ul,ol")) {
+                        var s = "";
+                        n.addClass("l_" + r).find("a").each(function () {
+                            s += '<option value="' + e(this).attr("href") + '">';
+                            var t;
+                            for (t = 0; t < e(this).parents("ul, ol").length - 1; t++) s += "- ";
+                            s += e(this).text() + "</option>";
+                        }), c.append(s), i.header || c.find(":eq(" + e(o + " li").index(e(o + " li." + i.active)) + ")").attr("selected", !0), c.change(function () { t.location.href = e(this).val() }), e(o).after(c), i.label && c.before(e("<label/>").attr("for", r).addClass(l + "_label " + r + "_label").append(i.label));
+                    }
+                })
+            }
+        }(jQuery, this, 0), jQuery(function () {
+            jQuery("#main-nav .root").tinyNav({ active: "current-menu-item" });
+
+        });
+    </script>
     <script>
         $(document).ready(function () {
+            
             $(".back-to-top").hide();
             $(function () {
                 $(window).scroll(function () {

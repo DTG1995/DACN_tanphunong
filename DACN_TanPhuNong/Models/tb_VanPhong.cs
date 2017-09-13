@@ -17,6 +17,8 @@
 //------------------------------------------------------------------------------
 
 
+using System.Web.Mvc;
+
 namespace DACN_TanPhuNong.Models
 {
     using System;
@@ -35,6 +37,7 @@ namespace DACN_TanPhuNong.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
         [Display(Name = "Giới thiệu")]
+        [AllowHtml]
         public string ChiTiet { get; set; }
     }
 }

@@ -1,0 +1,30 @@
+﻿@model DACN_TanPhuNong.Models.tb_VanPhong
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="post">
+    <article>
+        <header class="entry-header">
+            <h2 class="entry-title">
+                @Model.TenVP
+            </h2><!-- .entry-title -->
+        </header>
+        <div class="entry-content clearfix">
+            <p>&nbsp;</p>
+            <p><b>Tên đại lý: </b> @Model.TenVP</p>
+
+            <p><b>Địa chỉ: </b>@Model.DiaChi</p>
+            <p><b>Số điện thoại: </b>@Model.TenVP</p>
+            <p><b>Email: </b>@Model.TenVP</p>
+            
+            <p>&nbsp;</p>
+
+            @Html.Raw(Model.ChiTiet)
+        </div>
+        <div id="comments" class="comments-area">
+        </div><!-- #comments .comments-area -->
+    </article>
+</section>
+

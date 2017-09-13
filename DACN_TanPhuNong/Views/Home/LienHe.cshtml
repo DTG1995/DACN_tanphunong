@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    HtmlString str = new HtmlString(ViewBag.ContentLienHe);
+}
+
+<section class="page ">
+    <article style="padding: 15px;">
+        @Html.Raw(str);
+    </article>
+</section>
