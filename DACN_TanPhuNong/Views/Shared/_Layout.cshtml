@@ -14,8 +14,45 @@
     @Styles.Render("~/Content/owl.theme.default.min.css")
     @Styles.Render("~/Content/owl-custom.css")
     @Styles.Render("~/Content/main.css")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fa {
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
 
+.fa:hover {
+    opacity: 0.7;
+}
 
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+</style>
 </head>
 <body>
     <ul class="langDesktop">
@@ -67,9 +104,9 @@
                                         <li><a href="#">@GlobalRes.Careers</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">@GlobalRes.Partners</a></li>
+                                <li><a href="@Url.Action("DanhSachDoiTac","DoiTacHome")">@GlobalRes.Partners</a></li>
 
-                                <li><a href="#">@GlobalRes.Contact</a></li>
+                                <li><a href="@Url.Action("GuiPhanHoi","PhanHoiHome")">@GlobalRes.Contact</a></li>
                             </ul>
 
                         </nav>
@@ -80,7 +117,7 @@
                             <div class="site-description">Công ty TNHH SX-TM-DV</div>
                             <h1 class="site-title image-logo">
                                 <a href="#" rel="home">
-                                    Tân Phú Nông
+                                    @GlobalRes.TanPhuNong
                                 </a>
                             </h1>
                         </div>
@@ -98,20 +135,33 @@
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 description-company">
                 <h1>Tân phú nông</h1>
                 <h3>Vững bước nhà nông</h3>
+                <p>
+                    Công ty TNHH Sản xuất-Dịch vụ-Thương mại Tân Phú Nông là 1 doanh nghiệp chuyên kinh doanh trong lĩnh vực vật tư nông nghiệp, có trụ sở đặt tại số 1 đường Hồ Xuân Hương, phường 9, thành phố Đà Lạt, tỉnh Lâm Đồng. – Công ty TNHH SX-DV-TM Tân Phú Nông được thành lập ngày 26/04/2005, sau 10 năm hoạt động Công ty đã từng bước trưởng thành và lớn mạnh (mở rộng), mang tính chuyên nghiệp cao.
+
+                </p>
                 <p>&copy; 2017| ĐTG</p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 contact">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <h5><b>Số điện thoại</b></h5>
-                        <h1>0633 828958 </h1>
-                        <h3>Số 01B Hồ Xuân Hương, phường 9, TP Đà Lạt, Tỉnh Lâm Đồng, Việt Nam</h3>
+                        <h5><b>LIÊN HỆ </b></h5>
+                        <p>Số điện thoại : 0633 828958 </p>
+                        <p>Số 01B Hồ Xuân Hương, phường 9, TP Đà Lạt, Tỉnh Lâm Đồng, Việt Nam</p>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <h5><b>Mạng xã hội</b></h5>
-                        <ul>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <h5 style="text-align:center;width:100%;"><b>Mạng xã hội</b></h5>
+                        <ul style="list-style-type:none;text-align:center;width:100%;">
                             <li>
-                                <a href="#">Fb</a>
+                                <a href="#" class="fa fa-facebook">@GlobalRes.TanPhuNong</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-twitter">@GlobalRes.TanPhuNong</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-google">@GlobalRes.TanPhuNong</a>
+                            </li>
+                            <li>
+                                <a href="#" class="fa fa-youtube">@GlobalRes.TanPhuNong</a>
                             </li>
                         </ul>
                     </div>

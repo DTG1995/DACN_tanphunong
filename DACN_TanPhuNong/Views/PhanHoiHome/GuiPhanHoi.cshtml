@@ -1,0 +1,64 @@
+﻿@model DACN_TanPhuNong.Models.tb_PhanHoi
+
+@{
+    ViewBag.Title = GlobalRes.Feedback;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .field-validation-error{
+        color:red;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+
+            <h2 style="text-align:center;">@GlobalRes.Feedback</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="col-md-10">
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.HoTen,new {@class="form-control" })
+                            @Html.ValidationMessageFor(model => model.HoTen)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.SDT, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SDT)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.NoiDung, new { @class = "form-control",@style="resize:none;" })
+                            @Html.ValidationMessageFor(model => model.NoiDung)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="@GlobalRes.Feedback" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

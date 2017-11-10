@@ -225,4 +225,37 @@
   <data name="Vission_low" xml:space="preserve">
     <value>vission</value>
   </data>
+  <data name="ListPartners" xml:space="preserve">
+    <value>List Partners</value>
+  </data>
+  <data name="TanPhuNong" xml:space="preserve">
+    <value>Tan Phu Nong</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>The email not valid</value>
+  </data>
+  <data name="ErrorPhone" xml:space="preserve">
+    <value>The phone number not valid</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>FullName</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>PhoneNumber</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>This field is required</value>
+  </data>
+  <data name="Statuts" xml:space="preserve">
+    <value>Statuts</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Send Feedback</value>
+  </data>
 </root>

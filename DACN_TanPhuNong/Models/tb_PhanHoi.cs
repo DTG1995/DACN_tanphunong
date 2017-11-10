@@ -11,13 +11,31 @@ namespace DACN_TanPhuNong.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tb_PhanHoi
     {
         public int MaPH { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Languages.GlobalRes))]
+        [Display(Name = "Content", ResourceType = typeof(Languages.GlobalRes))]
         public string NoiDung { get; set; }
+
         public Nullable<int> TrangThai { get; set; }
+
+        [Display(Name = "Email", ResourceType = typeof(Languages.GlobalRes))]
+        [Required(ErrorMessageResourceName ="Required",ErrorMessageResourceType =typeof(Languages.GlobalRes))]
+        [EmailAddress(ErrorMessageResourceName ="ErrorEmail",ErrorMessageResourceType =typeof(Languages.GlobalRes))]
         public string Email { get; set; }
+
+        [Display(Name = "PhoneNumber", ResourceType = typeof(Languages.GlobalRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Languages.GlobalRes))]
+        [RegularExpression("^[0-9]*$",ErrorMessageResourceName ="ErrorPhone",ErrorMessageResourceType =typeof(Languages.GlobalRes))]
+        [StringLength(11,ErrorMessageResourceName ="ErrorPhone",ErrorMessageResourceType =typeof(Languages.GlobalRes),MinimumLength =10)]
         public string SDT { get; set; }
+
+        [Display(Name ="FullName",ResourceType =typeof(Languages.GlobalRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Languages.GlobalRes))]
+        public string HoTen { get; set; }
     }
 }

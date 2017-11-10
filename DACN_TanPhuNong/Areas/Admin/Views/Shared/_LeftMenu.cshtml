@@ -131,7 +131,21 @@
             </ul>
         </li>
     }
-    
+    @if (arr[0] == 1)
+    {
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-puzzle-piece"></i> <span>Phản hồi</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("Index", "PhanHoi")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            </ul>
+        </li>
+    }
+
     <li>
         <a href="@Url.Action("Index","NhatKy")">
             <i class="fa fa-history"></i> <span>Lịch sử thao tác</span>
