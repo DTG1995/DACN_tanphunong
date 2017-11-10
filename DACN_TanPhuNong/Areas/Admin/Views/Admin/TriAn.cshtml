@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "TriAn";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Tin tức
+        <small>thêm tin tức</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
+        <li><a href="@Url.Action("Index")"> Tin tức</a></li>
+        <li><a class="active">Thêm mới</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Thêm mới</h3>
+                </div>
+                <div class="box-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@Scripts.Render("~/Scripts/admin/ckeditor/ckeditor.js")
+<script>
+    CKEDITOR.replace("NoiDung", {
+        filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+        filebrowserWindowWidth: '750',
+        filebrowserWindowHeight: '600'
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

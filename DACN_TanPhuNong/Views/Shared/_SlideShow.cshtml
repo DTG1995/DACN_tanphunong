@@ -1,0 +1,9 @@
+﻿@model string[]
+<!--Test ảo vãi-->
+@for (int i = 0; i < Model.Length; i++)
+{
+    <div class="owl-slide">
+        <img src="@Url.Content(Model[i])" />
+    </div>
+}
+

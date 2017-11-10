@@ -1,0 +1,9 @@
+﻿@model List<DACN_TanPhuNong.Models.tb_LoaiSPTrans>
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.RouteUrl("LoaiSanPham", new { title = item.TenLoaiSPTrans, id = item.MaLoaiSP })">@item.TenLoaiSPTrans</a></li>    
+}
+
+
+

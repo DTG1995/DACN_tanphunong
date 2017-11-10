@@ -1,4 +1,4 @@
-﻿@using DACN_TanPhuNong.Controllers
+﻿@using DACN_TanPhuNong.Models
 @model IEnumerable<DACN_TanPhuNong.Models.tb_SanPham>
 
 @{
@@ -6,33 +6,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .ul-product {
+        list-style: none;
+        margin-top: 1.75rem;
+    }
+    .ul-product li{
+        padding:20px;
+       
+    }
+    .ul-product li.active{
+        color:#fff;
+        background-color:yellow;
+    }
+    .content-prpduct{
+        min-height:100%;
+    }
+    #list-product {
+        border: 2px solid #000;
+        margin-bottom: 1.75rem;
+      
+    }
+
+</style>
 
 
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                <ul class="ul-product">
+                    <li><a href="@Url.RouteUrl("LoaiSanPham",new {title=ViewBag.LoaiCurrent.TenLoaiSPTrans, id = ViewBag.LoaiCurrent.MaLoaiSP})">Tất cả</a></li>
+                    @foreach (tb_LoaiSPTrans item in ViewBag.ListLSP)
+                    {
+                        <li>
+                            <a href="javascript:;" data-id="@item.MaLoaiSP" data-text="@item.TenLoaiSPTrans">@item.TenLoaiSPTrans</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10 content-product">
+                <h3 class="title-category" style="text-align:center;">Tất cả</h3>
+                <div class="row" id="list-product" style="min-height: @(ViewBag.ListLSP.Count*64)px">
 
-@foreach (var item in Model) {
-    <section  class="post">
-    <article>
-        <figure class="post-featured-image">
-            <a href="@Url.RouteUrl("SanPhamDetails", new { id = item.MaSP,title=UrlEncode.ToFriendlyUrl(item.TenSanPham) })" title="@item.TenSanPham">
-                <img  src="@item.HinhAnh" class="attachment-featured wp-post-image" alt="@item.TenSanPham" title="@item.TenSanPham" style="height: 300px;">
-            </a>
-        </figure>
-        <header class="entry-header">
-            <h2 class="entry-title">
-                <a href="@Url.RouteUrl("SanPhamDetails", new { id = item.MaSP, title = UrlEncode.ToFriendlyUrl(item.TenSanPham) })" title="@item.TenSanPham">@item.TenSanPham</a>
-            </h2><!-- .entry-title -->
-        </header>
-
-        <div class="entry-content clearfix">
-            <p>&nbsp; Ưu điểm: @item.UuDiem.Substring(0,180)...</p>
+                </div>
+                <ul class="pagination"></ul>
+            </div>
         </div>
-        <div class="entry-meta-bar clearfix">
-            <div class="entry-meta">
-                <span class="author vcard"><a class="url fn n" href="#">@(item.NguoiThem??"Người ẩn danh")</a></span>
-                <span class="category"><a href="@Url.RouteUrl("LoaiSanPham", new { id = item.tb_LoaiSP.MaLoaiSP, title = UrlEncode.ToFriendlyUrl(item.tb_LoaiSP.TenLoaiSP) })" rel="category tag">@item.tb_LoaiSP.TenLoaiSP</a></span>
-            </div><!-- .entry-meta -->
-            <a class="readmore" href="@Url.RouteUrl("SanPhamDetails", new { id = item.MaSP, title = UrlEncode.ToFriendlyUrl(item.TenSanPham) })" title="@item.TenSanPham">Chi tiết sản phẩm</a>
-        </div>
-    </article>
-</section>
-}
+    </div>
+</div>

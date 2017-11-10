@@ -1,0 +1,173 @@
+﻿@using DACN_TanPhuNong.Models
+@{
+    ViewBag.Title = "Abouts";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        @GlobalRes.Application
+        <small>@GlobalRes.Home_option</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> @GlobalRes.Home</a></li>
+        <li class="active">@GlobalRes.About</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <section class="content" style="min-height: unset; padding-bottom: 0px;">
+            <div class="box box-solid">
+                <div class="box-header with-border" data-id="1" style="cursor: pointer;">
+                    <i class="fa fa-header"></i>
+                    <h3 class="box-title">@GlobalRes.About</h3>
+                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" data-id="1">
+                    <form class="form-horizontal" action="@Url.Action("Abouts")" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="content">
+                            <div class="row">
+                                <ul class="tabs">
+                                    <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                    <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                                </ul>
+
+                                <div id="tab-1" class="tab-content current">
+                                    <div class="form-group">
+                                        <label class="col-sm-12 control-label" for="lichSuVi">Lịch sử </label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" name="lichSuVi" id="lichSuVi">@ViewBag.LichSuVi</textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div id="tab-2" class="tab-content">
+                                    <div class="form-group">
+                                        <label class="col-sm-12 control-label" for="lichSuEn">History </label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" name="lichSuEn" id="lichSuEn">@ViewBag.LichSuEn</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group pull-right">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> @GlobalRes.Save_Change </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+    </div>
+    <div class="row">
+        <section class="content" style="min-height: unset; padding-bottom: 0px;">
+            <div class="box box-solid">
+                <div class="box-header with-border" data-id="1" style="cursor: pointer;">
+                    <i class="fa fa-header"></i>
+                    <h3 class="box-title">Ds Quan Lys</h3>
+                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" data-id="1">
+                    
+                        @Html.AntiForgeryToken()
+                        <div class="content">
+                            <div class="row">
+                                <table id="tb_DSQL" class="table table-hover" >
+                                    <thead>
+                                        <tr>
+                                            <th>Ho ten</th>
+                                            <th>Chuc Vu</th>
+                                            <th>Cau Noi</th>
+                                            <th>Mo ta</th>
+                                            <th>Sap Xep</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (tb_DoiNguQuanLy item in ViewBag.DSQL)
+                                        {
+                                            var list = item.tb_DoiNguQL_Trans.ToList();
+                                            <tr>                                         
+                                                @if(list.Count>0){
+                                                    <td>@list[0].TenNguoiQL</td>    
+                                                    <td>@list[0].ChucVu</td>    
+                                                    <td>@list[0].CauNoi</td>    
+                                                    <td>@list[0].MoTa</td>    
+                                                }else{
+                                                    <td>Chưa cập nhật</td>
+                                                    <td>Chưa cập nhật</td>
+                                                    <td>Chưa cập nhật</td>
+                                                    <td>Chưa cập nhật</td>
+                                                }
+                                                <td>@item.ThuBac</td>
+                                                <td>
+                                                    <a href="@Url.Action("Edit","DanhSachQuanLy",new{id=item.MaQL})">Edit</a>
+                                                    <a href="@Url.Action("Delete","DanhSachQuanLy",new{id=item.MaQL})">Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+
+
+
+                        <div class="form-group pull-right">
+                            <div class="col-sm-12">
+                                <button  class="btn btn-primary"><i class="fa fa-save"></i>@GlobalRes.Add_new </button>
+                            </div>
+                        </div>
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+    </div>
+</section>
+@Scripts.Render("~/Scripts/admin/ckeditor/ckeditor.js")
+<script>
+    $(function () {
+        CKEDITOR.replace("lichSuVi", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+        });
+        CKEDITOR.replace("lichSuEn", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+        });
+
+
+    });
+
+</script>
+@Styles.Render("~/Content/admin/dataTables.bootstrap.min.css")
+@Scripts.Render("~/Scripts/admin/jquery.dataTables.min.js")
+@Scripts.Render("~/Scripts/admin/dataTables.bootstrap.min.js")
+<script>
+    $("#tb_DSQL").DataTable({
+        columnDefs: [
+         { targets: 'no-sort', orderable: false }
+        ]
+    });
+</script>
+
+
+

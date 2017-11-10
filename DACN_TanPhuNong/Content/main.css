@@ -1,0 +1,486 @@
+
+@media only screen and (max-width:769px){
+    .langDesktop {
+    position: absolute;
+    list-style: none;
+    display: inline-flex;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    }
+   .langDesktop>li.active{
+       border:1px solid #fff;
+       color:red;
+   }
+   .langDesktop>li
+   {
+           margin: 5px;
+   }
+   .langDesktop>li>a{
+       text-decoration:none;
+       color:white;
+   }
+   .langDesktop img{
+       width:40px;
+       height:30px;
+   }
+    #header{
+        height: 1646px;
+        max-height: 850px;
+    }
+    
+    .container{
+        max-width: 1200px;
+        background: transparent;
+    }
+    .header-top {
+        background-repeat: no-repeat;
+        background-position: top;
+        background-attachment: scroll;
+        background-clip: padding-box;
+        background-size: cover;
+        background-origin: padding-box;
+    
+        position: relative;
+        text-align: center;
+        width: auto;
+    }
+    #tooget.locked{
+        position: fixed;
+        top: 0;
+        background: #000;
+        z-index: 100;
+        right: 0;
+    }
+    .header-top .slider-show{
+        height: 1646px;
+        max-height: 850px;
+        width: 100%;
+        opacity: 1;
+        padding: 0px;
+        position: absolute;
+        right: 0;
+        z-index: -1;
+    }
+    .owl-carousel .owl-item img{
+       
+        height: 100%;
+    }
+    #nav{
+        display: none;
+    }
+    #nav.activehover{
+        display: block;
+    }
+    .header-top  .main-menu .toogget-menu,.header-top  .main-menu .closemenu {
+        display: block;
+        vertical-align: middle;
+        border: solid 8px #fff;
+        color: #fff;
+        height: 70px;
+        width: 100%;
+        margin: 0;
+        top: 0;
+        font-size: 26pt;
+    }
+    .header-top .nav-menu {
+        width: 100%;
+        margin:  0;
+    }
+    .header-top .main-menu .nav-menu  ul{
+        list-style: none;
+        margin: 0;
+        margin-right: 29px;
+        padding: 0;
+        border: none;
+        top: 70px;
+        position: fixed;
+        z-index: 99;
+        background: #252525;
+    }
+    .header-top  .main-menu .nav-menu ul> li{
+        width: 100%;
+        margin: 5px 0;
+        float: none;
+        max-width: 100%;
+        display: inline-block;
+        position: static;
+    }
+    .header-top  .main-menu .nav-menu ul> li>ul{
+        display: none;
+    }
+    .header-top  .main-menu .nav-menu ul> li>a{
+        padding: 10px;
+        color: #fff;
+        border-color: transparent;
+        border-width: 5px;
+        text-decoration: none;
+        border-style: solid;
+        font-size: 22px;
+        display: block;
+        letter-spacing: 3px;
+    }
+    
+    .header-top  .main-menu .nav-menu ul> li> ul.activehover{
+        display: block;
+        background: #3e3838;
+        width: max-content;
+        text-align: center;
+        margin-top: 4px;
+        position: absolute;
+        max-width: 474px;
+        z-index: 100;
+    }
+    .header-top  .main-menu .nav-menu ul> li> ul.activehover>li{
+        display: inline-block;
+        width: 100%;
+        margin: 0;
+    }
+    .header-top  .main-menu .nav-menu ul> li> ul.activehover>li>a{
+        font: 700 20px/56px "Roboto Condensed", sans-serif;
+    }
+    .header-top  .main-menu .nav-menu ul> li a:hover{
+        border: 8px solid #fff;
+        font: 700 24px/56px "Roboto Condensed", sans-serif;
+    }
+    .header-top  .main-menu .nav-menu ul> li.active>a{
+        border: 8px solid #fff;
+    }
+    .header-top .header-logo .site-branding{
+        margin: 50px 0;
+    }
+    .header-top .header-logo .site-branding .site-description{
+        font-size: 25px;
+        font-weight: 400;
+        letter-spacing: 35px;
+        padding-left: 35px;
+        color: white;
+        margin-bottom: 30px;
+    }
+    .header-top .header-logo .site-branding a{
+        text-decoration: none;
+        letter-spacing: 15px;
+        font-size: 50pt;
+        color: yellow;
+        font-weight: bold;
+    }
+    .clear{
+        clear: both;
+    }
+    .content-center{
+        text-align: center;
+        padding: 100px;
+        padding-bottom: 10px;
+    }
+    .content-center h1{
+        font-size: 4.5rem;
+    }
+    .img-tron{
+        border-radius: 50%;
+    }
+    .tri-an{
+        background: url('../imgs/lua-mach.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .btn-custom{
+        text-transform: uppercase;
+        background: rgb(70, 69, 69);
+        color: #fff;
+    }
+    #owl-mini-slider{
+        margin-top: 20px;
+    }
+    #owl-mini-slider img{
+        height: 300px;
+        width: 360px
+    
+    }
+    .footer{
+        background-color: #141414;
+        padding: 100px;
+        color: rgb(61, 61, 61);
+    }
+    .footer .description-company h1{
+        letter-spacing: 23px;
+        line-height: 64px;
+        font-weight: bold;
+    }
+    .footer .description-company h3{
+        letter-spacing: 15px;
+    }
+    .row{
+        margin: 0;
+    }
+
+
+    .lich-su{
+        background: url('/images/hinh-nen-lich-su.jpg');
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    .vinh-danh{
+        background: url('/images/logo-tan-phu-nong.png');
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+   .manager-item{
+            text-align: center;
+            margin: auto;
+    }
+    .manager-item img{
+            width:150px;
+            height:200px;
+    }
+    .manager-item h5{
+        font-weight:bold;
+    }
+    q {
+      quotes: "“" "”" "‘" "’";
+    }
+    .manager-item p>span{
+            font-style: italic;
+    }
+    q {
+      quotes: "“" "”" "‘" "’";
+    }
+
+    .manager-item p>span::before{
+        content:open-quote;
+    }
+    .manager-item p>span::after{
+        content:close-quote;
+    }
+}
+@media only screen and (min-width:769px){
+#header{
+    height: 1646px;
+    max-height: 850px;
+}
+
+.container{
+    max-width: 1200px;
+    background: transparent;
+}
+.header-top {
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: scroll;
+    background-clip: padding-box;
+    background-size: cover;
+    background-origin: padding-box;
+
+    position: relative;
+    text-align: center;
+    width: auto;
+}
+#nav.locked{
+    position: fixed;
+    top: 0;
+    background: #000;
+    z-index: 100;
+    right: 0;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+.header-top .slider-show{
+    height: 1646px;
+    max-height: 850px;
+    width: 100%;
+    opacity: 1;
+    padding: 0px;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+}
+.owl-carousel .owl-item img{
+   
+    height: 100%;
+}
+
+.header-top .nav-menu {
+    width: 100%;
+    margin: 140px 0;
+}
+.header-top .main-menu .nav-menu  ul{
+    list-style: none;
+    width: 100%;
+    display: table;
+    padding: 0px;
+}
+.header-top  .main-menu .nav-menu ul> li{
+    display: table-cell;
+    margin-left: 48px;
+}
+.header-top  .main-menu .nav-menu ul> li>ul{
+    display: none;
+}
+.header-top  .main-menu .nav-menu ul> li>a{
+    border: 8px solid transparent;
+    padding: 8px 10px;
+    font: 700 20px/56px "Roboto Condensed", sans-serif;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 3px;
+}
+
+.header-top  .main-menu .nav-menu ul> li> ul.activehover{
+    display: block;
+    background: #3e3838;
+    width: max-content;
+    text-align: center;
+    margin-top: 4px;
+    position: absolute;
+    max-width: 474px;
+    z-index: 100;
+}
+.header-top  .main-menu .nav-menu ul> li> ul.activehover>li{
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+}
+.header-top  .main-menu .nav-menu ul> li> ul.activehover>li>a{
+    font: 700 20px/56px "Roboto Condensed", sans-serif;
+}
+.header-top  .main-menu .nav-menu ul> li a:hover{
+    border: 8px solid #fff;
+    font: 700 20px/56px "Roboto Condensed", sans-serif;
+}
+.header-top  .main-menu .nav-menu ul> li.active>a{
+    border: 8px solid #fff;
+}
+.header-top .header-logo .site-branding{
+    margin: 50px 0;
+}
+.header-top .header-logo .site-branding .site-description{
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    padding-left: 35px;
+    color: white;
+    margin-bottom: 30px;
+}
+.header-top .header-logo .site-branding a{
+    text-decoration: none;
+    letter-spacing: 15px;
+    font-size: 50pt;
+    color: yellow;
+    font-weight: bold;
+}
+.clear{
+    clear: both;
+}
+.content-center{
+    text-align: center;
+    padding: 100px;
+    padding-bottom: 10px;
+}
+.content-center h1{
+    font-size: 4.5rem;
+}
+.img-tron{
+    border-radius: 50%;
+}
+.tri-an{
+    background: url('../imgs/lua-mach.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.btn-custom{
+    text-transform: uppercase;
+    background: rgb(70, 69, 69);
+    color: #fff;
+}
+#owl-mini-slider{
+    margin-top: 20px;
+}
+#owl-mini-slider img{
+    height: 300px;
+    width: 360px
+
+}
+.footer{
+    background-color: #141414;
+    padding: 100px;
+    color: rgb(61, 61, 61);
+}
+.footer .description-company h1{
+    letter-spacing: 23px;
+    line-height: 64px;
+    font-weight: bold;
+}
+.footer .description-company h3{
+    letter-spacing: 15px;
+}
+.row{
+    margin: 0;
+}
+
+    .header-top  .main-menu .toogget-menu,.header-top  .main-menu .closemenu {
+        display: none;
+    }
+
+   .langDesktop {
+    position: absolute;
+    list-style: none;
+    display: inline-flex;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    }
+   .langDesktop>li.active{
+       border:1px solid #fff;
+       color:red;
+   }
+   .langDesktop>li
+   {
+           margin: 5px;
+   }
+   .langDesktop>li>a{
+       text-decoration:none;
+       color:white;
+   }
+   .langDesktop img{
+       width:40px;
+       height:30px;
+   }
+   .lich-su{
+        background: url('/images/hinh-nen-lich-su.jpg');
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    .vinh-danh{
+        background: url('/images/logo-tan-phu-nong.png');
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    .manager-item{
+            text-align: center;
+            margin: auto;
+    }
+    .manager-item img{
+            width:150px;
+            height:200px;
+    }
+    .manager-item h5{
+        font-weight:bold;
+    }
+    q {
+      quotes: "“" "”" "‘" "’";
+    }
+    .manager-item p>span{
+            font-style: italic;
+    }
+    .manager-item p>span::before{
+        content:open-quote;
+    }
+    .manager-item p>span::after{
+        content:close-quote;
+    }
+}

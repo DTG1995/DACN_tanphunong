@@ -19,7 +19,18 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         [AdminFilter(AllowPermit = "0,1")]
         public ActionResult Index()
         {
-            var tb_loaisp = db.tb_LoaiSP.Include(t => t.tb_LoaiSP2);
+            var lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
+            var tb_loaisp = db.tb_LoaiSP.Include(t => t.tb_LoaiSP2).ToList().
+                Select(x => new tb_LoaiSP
+                {
+                    MaLoaiSP = x.MaLoaiSP,
+                    NguoiThem = x.NguoiThem,
+                    LoaiCha = x.LoaiCha,
+                    TrangThai = x.TrangThai,
+                    tb_LoaiSP1 = x.tb_LoaiSP1,
+                    tb_LoaiSP2 = x.tb_LoaiSP2,
+                    tb_LoaiSPTrans = x.tb_LoaiSPTrans.Where(y => y.NgonNgu == lang).ToList()
+                });
             return View(tb_loaisp.Where(x=>x.TrangThai??false).ToList());
         }
 
@@ -43,7 +54,8 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         [AdminFilter(AllowPermit = "0,1")]
         public ActionResult Create()
         {
-            ViewBag.LoaiCha = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP");
+            string lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
+            ViewBag.LoaiCha = new SelectList(db.tb_LoaiSPTrans.Where(x => x.NgonNgu == lang), "MaLoaiSP", "TenLoaiSPTrans");
             return View();
         }
 
@@ -59,13 +71,27 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             {
                 db.tb_LoaiSP.Add(tb_loaisp);
                 db.SaveChanges();
-                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Loại Sản Phẩm", MaDoiTuong = tb_loaisp.MaLoaiSP, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm loại sản phẩm \"" + tb_loaisp.TenLoaiSP + "\"" });
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Loại Sản Phẩm", MaDoiTuong = tb_loaisp.MaLoaiSP, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm loại sản phẩm \""  + "\"" });
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
+            tb_LoaiSPTrans lspVi = new tb_LoaiSPTrans();
+            lspVi.TenLoaiSPTrans = Request.Params["tenVn"];
+            lspVi.MoTaTrans = Request.Params["moTaVn"];
+            lspVi.MaLoaiSP = tb_loaisp.MaLoaiSP;
+            lspVi.NgonNgu = "vi";
+            
+            tb_LoaiSPTrans lspEn = new tb_LoaiSPTrans();
+            lspEn.TenLoaiSPTrans = Request.Params["tenEn"];
+            lspEn.MoTaTrans = Request.Params["moTaEn"];
+            lspEn.MaLoaiSP = tb_loaisp.MaLoaiSP;
+            lspEn.NgonNgu = "en";
+            db.tb_LoaiSPTrans.Add(lspVi);
+            db.tb_LoaiSPTrans.Add(lspEn);
+            db.SaveChanges();
 
-            ViewBag.LoaiCha = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_loaisp.LoaiCha);
-            return View(tb_loaisp);
+           // ViewBag.LoaiCha = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_loaisp.LoaiCha);
+            return RedirectToAction("Index");
         }
 
         // GET: /Admin/LoaiSP/Edit/5
@@ -82,7 +108,8 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.LoaiCha = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_loaisp.LoaiCha);
+            string lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
+            ViewBag.LoaiCha = new SelectList(db.tb_LoaiSPTrans.Where(x=>x.NgonNgu==lang), "MaLoaiSP", "TenLoaiSPTrans", tb_loaisp.LoaiCha);
             return View(tb_loaisp);
         }
 
@@ -97,11 +124,29 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(tb_loaisp).State = EntityState.Modified;
-                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Loại Sản Phẩm", MaDoiTuong = tb_loaisp.MaLoaiSP, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm loại sản phẩm \"" + tb_loaisp.TenLoaiSP + "\"" });
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Loại Sản Phẩm", MaDoiTuong = tb_loaisp.MaLoaiSP, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm loại sản phẩm \"" + "\"" });
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.LoaiCha = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_loaisp.LoaiCha);
+           // ViewBag.LoaiCha = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_loaisp.LoaiCha);
+
+            tb_LoaiSPTrans lspVi = db.tb_LoaiSPTrans.Where(x => x.MaLoaiSP == tb_loaisp.MaLoaiSP && x.NgonNgu == "vi").FirstOrDefault();
+            lspVi = lspVi ?? new tb_LoaiSPTrans();
+            lspVi.TenLoaiSPTrans = Request.Params["tenVn"];
+            
+            lspVi.MoTaTrans = Request.Params["moTaVn"];
+            lspVi.MaLoaiSP = tb_loaisp.MaLoaiSP;
+            lspVi.NgonNgu = "vi";
+
+            tb_LoaiSPTrans lspEn = db.tb_LoaiSPTrans.Where(x => x.MaLoaiSP == tb_loaisp.MaLoaiSP && x.NgonNgu == "en").FirstOrDefault();
+            lspEn = lspEn ?? new tb_LoaiSPTrans();
+            lspEn.TenLoaiSPTrans = Request.Params["tenEn"];
+            lspEn.MoTaTrans = Request.Params["moTaEn"];
+            lspEn.MaLoaiSP = tb_loaisp.MaLoaiSP;
+            lspEn.NgonNgu = "en";
+            db.Entry(lspVi).State = EntityState.Modified;
+            db.Entry(lspEn).State = EntityState.Modified;
+            db.SaveChanges();
             return View(tb_loaisp);
         }
 
@@ -128,8 +173,14 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             tb_LoaiSP tb_loaisp = db.tb_LoaiSP.Find(id);
-            db.Entry(tb_loaisp).State = EntityState.Modified;
-            db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Loại Sản Phẩm", MaDoiTuong = tb_loaisp.MaLoaiSP, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm loại sản phẩm \"" + tb_loaisp.TenLoaiSP + "\"" });
+            foreach (var item in db.tb_LoaiSPTrans.Where(x=>x.MaLoaiSP==id))
+            {
+                db.Entry(item).State = EntityState.Deleted;
+
+            }
+            db.SaveChanges();
+            db.Entry(tb_loaisp).State = EntityState.Deleted;
+            db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Loại Sản Phẩm", MaDoiTuong = tb_loaisp.MaLoaiSP, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm loại sản phẩm \""  + "\"" });
             db.SaveChanges();
             return RedirectToAction("Index");
         }

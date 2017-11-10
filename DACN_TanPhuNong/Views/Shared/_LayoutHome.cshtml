@@ -1,335 +1,232 @@
 ﻿@using DACN_TanPhuNong.Controllers
 @using DACN_TanPhuNong.Models
-@{
-    db_tanphunongEntities db = new db_tanphunongEntities();
-    var listLSP = db.tb_LoaiSP.Where(x => x.LoaiCha == null).ToList();
-    string NameEnterprise = (db.tb_TuyChon.Where(x => x.TenTuyChon == "NameEnterprise").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "Tân Phú Nông");
-    string DesEnterprise = (db.tb_TuyChon.Where(x => x.TenTuyChon == "DesEnterprise").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "Tân Phú Nông");
-    string[] slideShow = (db.tb_TuyChon.Where(x => x.TenTuyChon == "SlideShow").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "").Split(';');
-}
-@helper renderLSP(tb_LoaiSP lsp)
-{
-    <li>
-        <a title="@lsp.TenLoaiSP" href="@Url.RouteUrl("LoaiSanPham", new { id = lsp.MaLoaiSP, title = UrlEncode.ToFriendlyUrl(lsp.TenLoaiSP) })">@lsp.TenLoaiSP</a>
 
-        <ul>
-            @{
-                var listLoaiCha = lsp.tb_LoaiSP1.ToList();
-                foreach (var t in listLoaiCha)
-                {
-                    @renderLSP(t)
-                }
-            }
-        </ul>
-    </li>
-}
+
 <!DOCTYPE html>
-<!-- saved from url=(0021)http://tanphunong.vn/ -->
 <html lang="en-US" prefix="og: http://ogp.me/ns#">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>@NameEnterprise - @DesEnterprise - @NameEnterprise</title>
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
-    <style type="text/css">
-        img#wpstats {
-            display: none;
-        }
-    </style>
-    <style type="text/css">
-        a {
-            color: #57AD68;
-        }
+    <title>@ViewBag.Title</title>
 
-        #site-title a {
-            color:;
-        }
-
-            #site-title a:hover {
-                color:;
-            }
-
-        .wrapper {
-            background: #F8F8F8;
-        }
-
-        .social-icons ul li a {
-            color: #d0d0d0;
-        }
-
-        #main-nav a, #main-nav a:hover, #main-nav a:focus, #main-nav ul li.current-menu-item a, #main-nav ul li.current_page_ancestor a, #main-nav ul li.current-menu-ancestor a, #main-nav ul li.current_page_item a, #main-nav ul li:hover > a {
-            color: #fff;
-        }
-
-        .widget, article {
-            background: #fff;
-        }
-
-        .entry-title, .entry-title a, .entry-title a:focus, h1, h2, h3, h4, h5, h6, .widget-title {
-            color: #1b1e1f;
-        }
-
-            a:focus, a:active, a:hover, .tags a:hover, .custom-gallery-title a, .widget-title a, #content ul a:hover, #content ol a:hover, .widget ul li a:hover, .entry-title a:hover, .entry-meta a:hover, #site-generator .copyright a:hover {
-                color: #439f55;
-            }
-
-        #main-nav {
-            background: #57ad68;
-            border-color: #57ad68;
-        }
-
-            #main-nav ul li ul, body {
-                border-color: #439f55;
-            }
-
-            #main-nav a:hover, #main-nav ul li.current-menu-item a, #main-nav ul li.current_page_ancestor a, #main-nav ul li.current-menu-ancestor a, #main-nav ul li.current_page_item a, #main-nav ul li:hover > a, #main-nav li:hover > a, #main-nav ul ul :hover > a, #main-nav a:focus {
-                background: #439f55;
-            }
-
-            #main-nav ul li ul li a:hover, #main-nav ul li ul li:hover > a, #main-nav ul li.current-menu-item ul li a:hover {
-                color: #439f55;
-            }
-
-        .entry-content {
-            color: #1D1D1D;
-        }
-
-        input[type="reset"], input[type="button"], input[type="submit"], .entry-meta-bar .readmore, #controllers a:hover, #controllers a.active, .pagination span, .pagination a:hover span, .wp-pagenavi .current, .wp-pagenavi a:hover {
-            background: #57ad68;
-            border-color: #57ad68 !important;
-        }
-
-        ::selection {
-            background: #57ad68;
-        }
-
-        blockquote {
-            border-color: #439f55;
-        }
-
-        #controllers a:hover, #controllers a.active {
-            color: #439f55;
-        }
-
-        input[type="reset"]:hover, input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:active, input[type="button"]:active, input[type="submit"]:active, .entry-meta-bar .readmore:hover, .entry-meta-bar .readmore:active, ul.default-wp-page li a:hover, ul.default-wp-page li a:active {
-            background: #439f55;
-            border-color: #439f55;
-        }
-    </style>
-    <style type="text/css" id="custom-background-css">
-        body.custom-background {
-            background-image: url('@Url.Content("~/images/background.png")');
-            background-repeat: repeat;
-            background-position: top left;
-            background-attachment: scroll;
-        }
-    </style>
-    @Styles.Render("~/Content/style.css")
-    @Styles.Render("~/Content/hovercard.css")
-    @Styles.Render("~/Content/services.css")
-    @Styles.Render("~/Content/nivo-slider.css")
-    @Styles.Render("~/Content/default.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/owl.carousel.css")
+    @Styles.Render("~/Content/owl.theme.default.min.css")
+    @Styles.Render("~/Content/owl-custom.css")
+    @Styles.Render("~/Content/main.css")
 
 
 </head>
-<body class="home page custom-background ">
+<body>
+    <ul class="langDesktop">
+        @Url.LangSwithcher(ViewContext.RouteData, "vi")
+        @Url.LangSwithcher(ViewContext.RouteData, "en")
+    </ul>
+    <header id="header">
 
+        <div class="header-top static-area">
+            <div class="container">
+                <div class="row">
+                    <div class="slider-show">
+                        <div id="owl-example" class="owl-carousel">
+                            <!--Test-->
+                           @{Html.RenderAction("SlideShow", "Home");}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 main-menu ">
 
-    <div class="wrapper">
+                        <nav class="nav-menu" style=" background-color: #0000005c;
+">
+                            <label id="tooget" class="toogget-menu">
+                                show
+                            </label>
+                            <ul id="nav">
+                                <li class="active"><a href="#">@GlobalRes.Home</a></li>
+                                <li>
+                                    <a href="#">@GlobalRes.About</a>
+                                    @*<ul class="submenu">
+                                            <li><a href="#">Lịch sử hình thành</a></li>
+                                            <li><a href="#">Sứ mệnh, tầm nhìn và giá trị</a></li>
+                                            <li><a href="#">Đội ngũ quản lý</a></li>
+                                            <li><a href="#">Tuyển dụng</a></li>
+                                        </ul>*@
+                                </li>
+                                <li>
+                                    <a href="#">@GlobalRes.Products</a>
+                                    <ul class="submenu">
+                                        <li><a href="#">@GlobalRes.Fertilzers</a></li>
+                                        <li><a href="#">@GlobalRes.Pesticides</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">@GlobalRes.News_event</a>
+                                    <ul class="submenu">
+                                        <li><a href="#">@GlobalRes.Images</a></li>
+                                        <li><a href="#">Video</a></li>
+                                        <li><a href="#">@GlobalRes.Promotions</a></li>
+                                        <li><a href="#">@GlobalRes.Conferences</a></li>
+                                        <li><a href="#">@GlobalRes.Careers</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">@GlobalRes.Partners</a></li>
 
-        <header id="branding">
-            <div class="container clearfix">
-                <div class="hgroup-wrap clearfix">
-                    <section class="hgroup-right"></section><!-- .hgroup-right -->
-                    <hgroup id="site-logo" class="clearfix">
-                        <h1 id="site-title">
-                            <a href="@Url.Action("Index","Home")" title="@NameEnterprise" rel="home">
-                                @NameEnterprise
-                            </a>
-                        </h1>
-                        <h2 id="site-description">@DesEnterprise</h2>
-
-                    </hgroup><!-- #site-logo -->
-                </div><!-- .hgroup-wrap -->
-            </div><!-- .container -->
-            <nav id="main-nav" class="clearfix">
-                <div class="container clearfix">
-                    <ul class="root l_tinynav1">
-                        <li class="@(ViewBag.CurrentMenu =="TrangChu"?"current-menu-item":"")"><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
-                        <li class="@(ViewBag.CurrentMenu =="SanPham"?"current-menu-item":"")">
-
-                            <a href="@Url.Action("Index", "SanPhamHome")">Sản phẩm</a>
-                            <ul>
-                                @for (int i = 0; i < listLSP.Count; i++)
-                                {
-                                    @renderLSP(listLSP[i])
-                                }
+                                <li><a href="#">@GlobalRes.Contact</a></li>
                             </ul>
-                        </li>
-                        <li class="@(ViewBag.CurrentMenu =="DaiLy"?"current-menu-item":"")">@Html.ActionLink("Đại lý", "Index", "DaiLyHome")</li>
-                        <li class="@(ViewBag.CurrentMenu =="DoiTac"?"current-menu-item":"")">@Html.ActionLink("Đối tác", "Index", "DoiTacHome")</li>
-                        <li class="@(ViewBag.CurrentMenu =="TinTuc"?"current-menu-item":"")">@Html.ActionLink("Tin tức", "Index", "TinTucHome")</li>
-                        <li class="@(ViewBag.CurrentMenu =="TuyenDung"?"current-menu-item":"")">@Html.ActionLink("Tuyển dụng", "Index", "TuyenDungHome")</li>
-                        <li class="@(ViewBag.CurrentMenu =="LienHe"?"current-menu-item":"")"><a href="@Url.Action("LienHe","Home")">Liên hệ</a></li>
-                    </ul>
 
-                </div><!-- .container -->
-            </nav><!-- #main-nav -->
-        </header>
-        <div class="">
-            @if (slideShow.Length > 0)
-            {
-        <!-- meta slider -->
-                <div style="max-width: 1350px;">
-                    <div class="theme-default">
-                        <div id="metaslider_24">
-                            @for (int i = 0; i < slideShow.Length; i++)
-                            {
-                                <img src="@slideShow[i]" />
-                            }
+                        </nav>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 header-logo">
+                        <div class="site-branding">
+                            <div class="site-description">Công ty TNHH SX-TM-DV</div>
+                            <h1 class="site-title image-logo">
+                                <a href="#" rel="home">
+                                    Tân Phú Nông
+                                </a>
+                            </h1>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        var metaslider_24 = function ($) {
-                            $('#metaslider_24').nivoSlider({
-                                boxCols: 7,
-                                boxRows: 5,
-                                pauseTime: 3000,
-                                effect: "random",
-                                controlNav: false,
-                                directionNav: true,
-                                pauseOnHover: true,
-                                animSpeed: 600,
-                                prevText: "&lt;",
-                                nextText: "&gt;",
-                                slices: 15,
-                                manualAdvance: false
-                            });
-                        };
-                        var timer_metaslider_24 = function () {
-                            var slider = !window.jQuery ? window.setTimeout(timer_metaslider_24, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_24, 1) : metaslider_24(window.jQuery);
-                        };
-                        timer_metaslider_24();
-                    </script>
                 </div>
-        <!--// meta slider-->
-            }
-        </div>
-
-        <div id="main" class="container clearfix">
-
-            <div id="container">
-                    <div id="content">
-                        @RenderBody()
-
-                    </div><!-- #content -->
-            </div><!-- #container -->
-
-        </div><!-- #main -->
-
-
-        <footer id="footerarea" class="clearfix">
-
-            <div class="widget-wrap">
-                <div class="container">
-                    <div class="widget-area clearfix">
-                        <div class="col-3">
-                            <aside id="text-2" class="widget widget_text">
-                                <h3 class="widget-title">Về chúng tôi</h3>
-                                <div class="textwidget">
-                                    @Html.Raw(db.tb_TuyChon.Where(x => x.TenTuyChon == "VeChungToi").Select(x => x.NoiDungTuyChon).FirstOrDefault())
-                                </div>
-                            </aside>
-                        </div>
-                        <div class="col-3">
-                            <aside id="text-3" class="widget widget_text">
-                                <h3 class="widget-title">Liên hệ</h3>
-                                <div class="textwidget">
-                                    @Html.Raw(db.tb_TuyChon.Where(x => x.TenTuyChon == "LienHe").Select(x => x.NoiDungTuyChon).FirstOrDefault())
-                                </div>
-                            </aside>
-                        </div>
-                        <div class="col-3">
-                            <aside id="text-4" class="widget widget_text">
-                                <h3 class="widget-title">Sản phẩm</h3>
-                                <div class="textwidget">
-                                    @Html.Raw(db.tb_TuyChon.Where(x => x.TenTuyChon == "SanPhamFooter").Select(x => x.NoiDungTuyChon).FirstOrDefault())
-                                </div>
-                            </aside>
-                        </div>
-                    </div><!-- .widget-area -->
-                </div><!-- .container -->
-            </div><!-- .widget-wrap -->
-
-            <div id="site-generator">
-                <div class="container">
-                    <div class="copyright">
-                        Copyright © 2017 <a href="#" title="Tân Phú Nông"><span>Tân Phú Nông</span></a>
-                    </div><!-- .copyright -->
-                    <div class="footer-right">
-                        <a href="@Url.Action("Index","Admin",new{area="Admin"})">Quản trị viên</a>
-                    </div>
-                    <div style="clear: both;"></div>
-                </div><!-- .container -->
-            </div><!-- #site-generator -->
-            <div class="back-to-top" style="display: none;">
-                <a href="#branding"></a>
             </div>
-        </footer>
-
-    </div><!-- .wrapper -->
-    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
-    @Scripts.Render("~/Scripts/jquery.nivo.slider.pack.js")
-    <script type="text/javascript">
-        !function (e, t, a) {
-            e.fn.tinyNav = function (n) {
-                var i = e.extend({ active: "current-menu-item", header: !1 }, n); return this.each(function () {
-                    a++; var n = e(this), l = "tinynav", r = l + a, o = ".l_" + r, c = e("<select/>").addClass(l + " " + r); if (n.is("ul,ol")) {
-                        var s = "";
-                        n.addClass("l_" + r).find("a").each(function () {
-                            s += '<option value="' + e(this).attr("href") + '">';
-                            var t;
-                            for (t = 0; t < e(this).parents("ul, ol").length - 1; t++) s += "- ";
-                            s += e(this).text() + "</option>";
-                        }), c.append(s), i.header || c.find(":eq(" + e(o + " li").index(e(o + " li." + i.active)) + ")").attr("selected", !0), c.change(function () { t.location.href = e(this).val() }), e(o).after(c), i.label && c.before(e("<label/>").attr("for", r).addClass(l + "_label " + r + "_label").append(i.label));
-                    }
-                })
-            }
-        }(jQuery, this, 0), jQuery(function () {
-            jQuery("#main-nav .root").tinyNav({ active: "current-menu-item" });
-
-        });
-    </script>
+        </div>
+    </header>
+    <div class="clear"></div>
+    <div class="content-website">
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="row footer">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 description-company">
+                <h1>Tân phú nông</h1>
+                <h3>Vững bước nhà nông</h3>
+                <p>&copy; 2017| ĐTG</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 contact">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <h5><b>Số điện thoại</b></h5>
+                        <h1>0633 828958 </h1>
+                        <h3>Số 01B Hồ Xuân Hương, phường 9, TP Đà Lạt, Tỉnh Lâm Đồng, Việt Nam</h3>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <h5><b>Mạng xã hội</b></h5>
+                        <ul>
+                            <li>
+                                <a href="#">Fb</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width: 100%; height:300px">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.2264620946535!2d108.47453814153675!3d11.95881670443595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317112f7c1820379%3A0xccfd4d5b51849183!2zMi8xIEjhu5MgWHXDom4gSMawxqFuZywgUGjGsOG7nW5nIDksIFRwLiDEkMOgIEzhuqF0LCBMw6JtIMSQ4buTbmcsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1510061656325" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </footer>
+    @Scripts.Render("~/Scripts/jquery-3.2.1.slim.min.js")
+    @Scripts.Render("~/Scripts/popper.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/owl.carousel.js")
     <script>
+
         $(document).ready(function () {
 
-            $(".back-to-top").hide();
-            $(function () {
-                $(window).scroll(function () {
-                    if ($(this).scrollTop() > 1e3) {
-                        $(".back-to-top").fadeIn();
-                    } else {
-                        $(".back-to-top").fadeOut();
-                    }
-                });
-                $(".back-to-top a").click(function () {
-                    $("body,html,header").animate({ scrollTop: 0 }, 1e3);
-                    return false;
-                });
+            $("#owl-example").owlCarousel({
+
+                loop: true,
+                items: 1,
+                singleItem: true,
+                pagination: true,
+                rewindSpeed: 500, slideSpeed: 300,
+                paginationSpeed: 500,
+                dots: false,
+                touchDrag: false,
+                mouseDrag: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoHeight: false,
+
             });
+            $('#owl-mini-slider').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 1000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    768: {
+                        items: 2,
+                        nav: true
+                    },
+                    900: {
+                        items: 3,
+                        nav: true
+                    }
+                }
+
+            })
+
+
+            var targetElementID = 'nav';
+            var classToAppend = 'locked';
+            checktarget();
+            var bodyRect = document.body.getBoundingClientRect(),
+                elemRect = document.getElementById(targetElementID).getBoundingClientRect(),
+                offset = elemRect.top - bodyRect.top;
+
+            window.onscroll = function () { checkScroll() };
+            window.onresize = function (event) {
+                checktarget();
+                bodyRect = document.body.getBoundingClientRect(),
+                elemRect = document.getElementById(targetElementID).getBoundingClientRect(),
+                offset = elemRect.top - bodyRect.top;
+            }
+            function checktarget() {
+                if ($(window).width() <= 768) {
+                    targetElementID = "tooget";
+                    $('#nav[class="activehover"').toggleClass("activehover")
+                            .next();
+                }
+            }
+            function checkScroll() {
+
+
+                if (elemRect) {
+                    if (document.body.scrollTop > offset || document.documentElement.scrollTop > offset) {
+                        if (!document.getElementById(targetElementID).className.includes(classToAppend)) {
+                            document.getElementById(targetElementID).className = document.getElementById(targetElementID).className + ' ' + classToAppend;
+                        }
+                    } else {
+                        document.getElementById(targetElementID).className = document.getElementById(targetElementID).className
+                        .replace(' ' + classToAppend, '');
+                    }
+                }
+            }
+
+            $('.header-top  .main-menu .nav-menu ul> li').hover(function () {
+                //    var submenu =  $(this);//.nextUntil('.submenu').parent();
+                //    submenu.addClass('activehover');
+                $(this).find('ul.submenu')
+                 .toggleClass("activehover")
+                 .next();
+            });
+
+            $('#tooget').click(function () {
+                $(this).next('ul#nav')
+                        .toggleClass("activehover")
+                        .next();
+            });
+
         });
+
+
     </script>
+
 </body>
 </html>

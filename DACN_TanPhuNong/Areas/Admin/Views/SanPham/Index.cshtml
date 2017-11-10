@@ -1,4 +1,5 @@
-﻿@model IEnumerable<DACN_TanPhuNong.Models.tb_SanPham>
+﻿@using DACN_TanPhuNong.Models
+@model IEnumerable<DACN_TanPhuNong.Models.tb_SanPham>
 
 @{
     ViewBag.Title = "Index";
@@ -7,12 +8,12 @@
 
 <section class="content-header">
     <h1>
-        Sản phẩm
-        <small>danh sách sản phẩm</small>
+        @GlobalRes.Products
+        <small>@GlobalRes.List_Products</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
-        <li><a class="active">Sản phẩm</a></li>
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i> @GlobalRes.Admin</a></li>
+        <li><a class="active">@GlobalRes.Products</a></li>
     </ol>
 </section>
 <section class="content">
@@ -20,68 +21,38 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Danh sách sản phẩm</h3>
-                    <a href="@Url.Action("Create")" class="btn btn-primary" style="float: right">Thêm mới</a>
+                    <h3 class="box-title">@GlobalRes.List_Products</h3>
+                    <a href="@Url.Action("Create")" class="btn btn-primary" style="float: right">@GlobalRes.Add_new</a>
                 </div>
                 <div class="box-body">
                     <table id="datatable" class="table">
                         <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.TenSanPham)
+                                @GlobalRes.Product_Name
+                            </th>
+                            
+                            
+                            
+                            <th>
+                                @GlobalRes.Category
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.UuDiem)
+                                @GlobalRes.Made_in
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ThanhPhanChinh)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.QuyCachDongGoi)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.XuatXu)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.GiaThanh)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.TrangThai)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.tb_LoaiSP.TenLoaiSP)
-                            </th>
+                            
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                tb_SanPhamTrans sp = item.tb_SanPhamTrans.FirstOrDefault();
+                                tb_LoaiSP lsp = item.tb_LoaiSP;
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TenSanPham)
-                                    </td>
-                                    <td>
-                                        @Html.Raw(item.UuDiem.Replace("\r\n","<br/>"))
-                                    </td>
-                                    <td>
-                                        @Html.Raw(item.ThanhPhanChinh)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.QuyCachDongGoi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.XuatXu)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.GiaThanh)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TrangThai)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.tb_LoaiSP.TenLoaiSP)
-                                    </td>
+                                    <td>@(sp==null?"":sp.TenSanPhamTrans)</td>
+                                    <td>@(lsp==null?"":lsp.tb_LoaiSPTrans.FirstOrDefault().TenLoaiSPTrans)</td>
+                                    <td>@item.XuatXu</td>
                                     <td>
                                         @Html.ActionLink("Sửa", "Edit", new { id = item.MaSP }) |
                                         @Html.ActionLink("Chi tiết", "Details", new { id = item.MaSP }) |

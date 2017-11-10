@@ -177,24 +177,35 @@
     </Compile>
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaiVietController.cs" />
-    <Compile Include="Areas\Admin\Controllers\DoiTacController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DanhSachQuanLyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LanguageController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\NguoiDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhatKyController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TuyenDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\UngDungController.cs" />
-    <Compile Include="Areas\Admin\Controllers\VanPhongController.cs" />
-    <Compile Include="Controllers\DaiLyHomeController.cs" />
-    <Compile Include="Controllers\DoiTacHomeController.cs" />
+    <Compile Include="Common\LanguageHelper.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamHomeController.cs" />
     <Compile Include="Controllers\TinTucHomeController.cs" />
     <Compile Include="Controllers\TuyenDungHomeController.cs" />
     <Compile Include="Controllers\UrlEncode.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
+    <Compile Include="Filter\LocalizationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Languages\GlobalRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Languages\GlobalRes.vi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GlobalRes.vi.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Model1.Context.cs">
@@ -215,10 +226,22 @@
     <Compile Include="Models\tb_BaiViet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tb_BaiVietTrans.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_DoiNguQL_Trans.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_DoiNguQuanLy.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tb_DoiTac.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_LoaiSP.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_LoaiSPTrans.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tb_NguoiDung.cs">
@@ -227,13 +250,16 @@
     <Compile Include="Models\tb_NhatKy.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tb_PhanHoi.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tb_SanPham.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tb_TuyChon.cs">
+    <Compile Include="Models\tb_SanPhamTrans.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tb_VanPhong.cs">
+    <Compile Include="Models\tb_TuyChon.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -248,10 +274,27 @@
     <Content Include="Content\admin\dataTables.bootstrap.min.css" />
     <Content Include="Content\admin\font-awesome.min.css" />
     <Content Include="Content\admin\skins\_all-skins.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\owl-custom.css" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\owl.theme.default.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="images\25-5-5-bag.jpg" />
+    <Content Include="images\en_tron.png" />
+    <Content Include="images\en_vuong.png" />
+    <Content Include="images\hinh-nen-lich-su.jpg" />
+    <Content Include="images\img01.jpg" />
+    <Content Include="images\img02.jpg" />
+    <Content Include="images\img03.jpg" />
+    <Content Include="images\img09.jpg" />
+    <Content Include="images\lua-mach.jpg" />
+    <Content Include="images\maxresdefault.jpg" />
+    <Content Include="images\vi_tron.png" />
+    <Content Include="images\vi_vuong.png" />
     <Content Include="Scripts\admin\adminlte.min.js" />
     <Content Include="Scripts\admin\bootstrap-toggle.min.js" />
     <Content Include="Scripts\admin\bootstrap.min.js" />
@@ -637,17 +680,8 @@
     <Content Include="Scripts\admin\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\admin\jquery.dataTables.min.js" />
     <Content Include="Scripts\admin\jquery.min.js" />
-    <Content Include="Content\arrows.png" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\default.css" />
-    <Content Include="Content\hovercard.css" />
-    <Content Include="Content\nivo-slider.css" />
-    <Content Include="Content\services.css" />
-    <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\images\arrow-right.png" />
     <Content Include="images\background.png" />
     <Content Include="images\bannertpn1-1050x311.jpg" />
@@ -656,15 +690,8 @@
     <Content Include="images\lua-980x290.jpg" />
     <Content Include="images\slider-3-976x366-976x289.jpg" />
     <Content Include="images\tanphunongx-1350x400.jpg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\DoiTac\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\DoiTac\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DoiTac\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\DoiTac\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\DoiTac\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSP\Create.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSP\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiSP\Details.cshtml" />
@@ -675,28 +702,6 @@
     <Content Include="Areas\Admin\Views\SanPham\Details.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\Index.cshtml" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\Admin\Views\VanPhong\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\VanPhong\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\VanPhong\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\VanPhong\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\VanPhong\Index.cshtml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -744,20 +749,35 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\_Menu.cshtml" />
     <Content Include="Areas\Admin\Views\UngDung\LienHe.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\Admin\Views\Admin\TriAn.cshtml" />
+    <Content Include="Areas\Admin\Views\UngDung\Abouts.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Index.cshtml" />
     <None Include="Properties\PublishProfiles\dacn_tanphunong.pubxml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.nivo.slider.pack.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -774,25 +794,28 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\SanPhamHome\Index.cshtml" />
     <Content Include="Views\SanPhamHome\AllByLoai.cshtml" />
-    <Content Include="Views\DaiLyHome\Index.cshtml" />
     <Content Include="Views\TinTucHome\Index.cshtml" />
     <Content Include="Views\TuyenDungHome\Index.cshtml" />
-    <Content Include="Views\DoiTacHome\Index.cshtml" />
     <Content Include="Views\SanPhamHome\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Home\LienHe.cshtml" />
     <Content Include="Views\TinTucHome\Details.cshtml" />
     <Content Include="Views\TuyenDungHome\Details.cshtml" />
-    <Content Include="Views\DaiLyHome\Details.cshtml" />
-    <Content Include="Views\DoiTacHome\Details.cshtml" />
+    <Content Include="Views\Home\TriAn.cshtml" />
+    <Content Include="Views\Home\_SlideShow.cshtml" />
+    <Content Include="Views\Home\SlideShow.cshtml" />
+    <Content Include="Views\Shared\_SlideShow.cshtml" />
+    <Content Include="Views\Home\Abouts.cshtml" />
+    <Content Include="Views\Shared\_MenuSP.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\Language\" />
     <Folder Include="files\" />
   </ItemGroup>
   <ItemGroup>
@@ -804,6 +827,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Languages\GlobalRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\GlobalRes.vi.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalRes.vi.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

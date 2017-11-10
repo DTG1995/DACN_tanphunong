@@ -8,6 +8,7 @@ namespace DACN_TanPhuNong
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new LocalizationAttribute("vi"), 0);
         }
     }
 }

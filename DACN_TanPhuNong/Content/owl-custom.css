@@ -1,0 +1,85 @@
+.owl-carousel {
+    position: relative;
+    height: 100%;
+  }
+  .owl-carousel div:not(.owl-controls) {
+    height: 100%;
+  }
+
+  .owl-carousel .owl-slide {
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .owl-carousel div.owl--text {
+        position: absolute;
+    bottom: 6em;
+    margin: 0 auto;
+    height: 17em;
+    padding: 1em;
+        width: 100%;
+  }
+  .owl-carousel .owl-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+  }
+  .owl-carousel .owl-controls .owl-buttons div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: inline-block;
+    zoom: 1;
+    margin: 0;
+    width: 50px;
+    height: 30px;
+    line-height: 25px;
+    text-align: center;
+    font-size: .9em;
+    border-radius: 3px;
+    color: #FFF;
+    background: #000;
+    opacity: .6;
+    text-transform: capitalize;
+  }
+  .owl-carousel .owl-controls .owl-buttons .owl-prev {
+    left: 5px;
+  }
+  .owl-carousel .owl-controls .owl-buttons .owl-next {
+    right: 5px;
+  }
+  
+  body,
+  html {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: futura, sans-serif;
+  }
+ .description-controller {
+    width: 500px;
+    padding: 20px;
+    margin: auto;
+    border: 8px solid #fff;
+    color: #fff;
+    background: #0000004f;
+  }
+ .description-controlle h1{
+     color:yellow;
+ }
+  .description-controller a{
+    width: 50%;
+    display: block;
+    text-align: center;
+    vertical-align: initial;
+    font-size: 30px;
+    color: white;
+    line-height: 105px;
+    font-weight: bold;
+        float: left;
+
+  }

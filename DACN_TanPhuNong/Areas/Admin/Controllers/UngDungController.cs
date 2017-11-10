@@ -32,6 +32,13 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 db.tb_TuyChon.Where(x => x.TenTuyChon == "SanPhamFooter").Select(x => x.NoiDungTuyChon).FirstOrDefault();
             ViewBag.SlideShow =
                 (db.tb_TuyChon.Where(x => x.TenTuyChon == "SlideShow").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "").Split(';');
+            var opTriAn = db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAnvi").FirstOrDefault();
+                    
+            var tri_an = opTriAn != null ? opTriAn.NoiDungTuyChon : "";
+            ViewBag.TriAnVi = tri_an;
+            opTriAn = db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAnen").FirstOrDefault();
+            tri_an = opTriAn != null ? opTriAn.NoiDungTuyChon : "";
+            ViewBag.TriAnEn = tri_an;
             return View();
         }
         [ValidateInput(false)]
@@ -145,10 +152,11 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         {
             ViewBag.ContentLienHe =
                 db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHe").Select(x => x.NoiDungTuyChon).FirstOrDefault();
-
+            
             return View();
         }
 
+        [AdminFilter(AllowPermit = "0")]
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult LienHe(string txtContact)
@@ -164,6 +172,75 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Trang liên hệ", MaDoiTuong = tuyChon.MaTuyChon, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa nội dung trang liên hệ" });
             }
             db.SaveChanges();
+            return View();
+        }
+
+
+        [AdminFilter(AllowPermit="0")]
+        public ActionResult Abouts()
+        {
+            string lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
+            var opTriAn = db.tb_TuyChon.Where(x => x.TenTuyChon == "LichSuvi").FirstOrDefault();
+
+            var tri_an = opTriAn != null ? opTriAn.NoiDungTuyChon : "";
+            ViewBag.LichSuVi = tri_an;
+            opTriAn = db.tb_TuyChon.Where(x => x.TenTuyChon == "LichSuen").FirstOrDefault();
+            tri_an = opTriAn != null ? opTriAn.NoiDungTuyChon : "";
+            ViewBag.LichSuEn = tri_an;
+            ViewBag.DSQL = db.tb_DoiNguQuanLy.ToList().Select(b => new tb_DoiNguQuanLy
+            {
+                MaQL = b.MaQL,
+                HinhAnh = b.HinhAnh,
+                ThuBac = b.ThuBac,
+                tb_DoiNguQL_Trans = b.tb_DoiNguQL_Trans.Where(x => x.NgonNgu == lang).FirstOrDefault() == null ? b.tb_DoiNguQL_Trans : b.tb_DoiNguQL_Trans.Where(x => x.NgonNgu == lang).ToList()
+
+            });
+            return View();
+        }
+        [AdminFilter(AllowPermit = "0")]
+        [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
+        public ActionResult Abouts(string lichSuVi, string lichSuEn)
+        {
+
+            tb_TuyChon lichSu = db.tb_TuyChon.Where(x => x.TenTuyChon == "LichSuvi").FirstOrDefault();
+
+            if (lichSu != null)
+            {
+                lichSu.NoiDungTuyChon = lichSuVi;
+                db.Entry(lichSu).State = System.Data.Entity.EntityState.Modified;
+
+                db.SaveChanges();
+
+            }
+            else
+            {
+                lichSu = new tb_TuyChon();
+                lichSu.TenTuyChon = "LichSuvi";
+                lichSu.NoiDungTuyChon = lichSuVi;
+                db.tb_TuyChon.Add(lichSu);
+                db.SaveChanges();
+            }
+
+            lichSu = db.tb_TuyChon.Where(x => x.TenTuyChon == "LichSuen").FirstOrDefault();
+
+            if (lichSu != null)
+            {
+                lichSu.NoiDungTuyChon = lichSuEn;
+                db.Entry(lichSu).State = System.Data.Entity.EntityState.Modified;
+
+                db.SaveChanges();
+
+            }
+            else
+            {
+                lichSu = new tb_TuyChon();
+                lichSu.TenTuyChon = "LichSuen";
+                lichSu.NoiDungTuyChon = lichSuEn;
+                db.tb_TuyChon.Add(lichSu);
+                db.SaveChanges();
+            }
             return View();
         }
     }

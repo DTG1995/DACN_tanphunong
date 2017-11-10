@@ -14,14 +14,15 @@
     {
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Ứng Dụng</span>
+                <i class="fa fa-dashboard"></i> <span>@GlobalRes.Application</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-circle-o"></i> Trang chủ</a></li>
-                <li><a href="@Url.Action("LienHe", "UngDung")"><i class="fa fa-circle-o"></i> Liên hệ</a></li>
+                <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-circle-o"></i> @GlobalRes.Home</a></li>
+                <li><a href="@Url.Action("Abouts", "UngDung")"><i class="fa fa-circle-o"></i> @GlobalRes.About</a></li>
+                <li><a href="@Url.Action("LienHe", "UngDung")"><i class="fa fa-circle-o"></i>@GlobalRes.Contact</a></li>
             </ul>
         </li>
     }
@@ -29,14 +30,14 @@
     {
         <li class=" treeview">
             <a href="#">
-                <i class="fa fa-object-group"></i> <span>Loại Sản Phẩm</span>
+                <i class="fa fa-object-group"></i> <span>@GlobalRes.Category</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="@Url.Action("Index", "LoaiSP")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                <li><a href="@Url.Action("Create", "LoaiSP")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                <li><a href="@Url.Action("Index", "LoaiSP")"><i class="fa fa-circle-o"></i> @GlobalRes.List</a></li>
+                <li><a href="@Url.Action("Create", "LoaiSP")"><i class="fa fa-circle-o"></i> @GlobalRes.Add_new</a></li>
             </ul>
         </li>
     }

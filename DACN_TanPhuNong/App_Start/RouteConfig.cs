@@ -20,13 +20,15 @@ namespace DACN_TanPhuNong
             );
             routes.MapRoute(
                 name: "LoaiSanPham",
-                url: "loai-san-pham/{title}-{id}",
-                defaults: new { controller = "SanPhamHome", action = "AllByLoai",id=UrlParameter.Optional, title=UrlParameter.Optional }
+                url: "{lang}/loai-san-pham/{title}-{id}",
+                defaults: new { controller = "SanPhamHome", action = "AllByLoai",id=UrlParameter.Optional, title=UrlParameter.Optional },
+                constraints: new { lang = @"vi|en" }
             );
             routes.MapRoute(
                 name: "SanPhamDetails",
-                url: "san-pham/{title}-{id}",
-                defaults: new { controller = "SanPhamHome", action = "Details", id = UrlParameter.Optional, title = UrlParameter.Optional }
+                url: "{lang}/san-pham/{title}-{id}",
+                defaults: new { controller = "SanPhamHome", action = "Details", id = UrlParameter.Optional, title = UrlParameter.Optional },
+                constraints: new { lang = @"vi|en" }
             );
 
             //Dai Ly
@@ -79,10 +81,24 @@ namespace DACN_TanPhuNong
                 url: "lien-he",
                 defaults: new { controller = "Home", action = "LienHe" }
             );
+            //Tri an khach hang
+
+            routes.MapRoute(
+                name:"triankh",
+                url:"{lang}/tri-an-khach-hang",
+                defaults: new {controller="Home", action="TriAn" },
+                constraints: new { lang = @"vi|en" }
+                );
+            routes.MapRoute(
+                name: "Language",
+                url: "{lang}/{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                constraints: new { lang = @"vi|en" }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, lang="vi" }
             );
         }
     }

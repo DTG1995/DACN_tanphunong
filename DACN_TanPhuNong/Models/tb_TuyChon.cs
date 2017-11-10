@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Web.Mvc;
-
 namespace DACN_TanPhuNong.Models
 {
     using System;
@@ -18,7 +16,7 @@ namespace DACN_TanPhuNong.Models
     {
         public int MaTuyChon { get; set; }
         public string TenTuyChon { get; set; }
-        [AllowHtml]
         public string NoiDungTuyChon { get; set; }
+        public string Nhom { get; set; }
     }
 }

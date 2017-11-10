@@ -62,7 +62,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             {
                 db.tb_BaiViet.Add(tb_baiviet);
                 db.SaveChanges();
-                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Bài viết", MaDoiTuong = tb_baiviet.MaBV, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm Bài viết \"" + tb_baiviet.TieuDe + "\"" });
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Bài viết", MaDoiTuong = tb_baiviet.MaBV, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm Bài viết \""  + "\"" });
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -99,7 +99,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(tb_baiviet).State = EntityState.Modified;
-                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Bài viết", MaDoiTuong = tb_baiviet.MaBV, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa Bài viết \""+tb_baiviet.TieuDe+"\"" });
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Bài viết", MaDoiTuong = tb_baiviet.MaBV, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa Bài viết \""+"\"" });
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -130,7 +130,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         {
             tb_BaiViet tb_baiviet = db.tb_BaiViet.Find(id);
             db.tb_BaiViet.Remove(tb_baiviet);
-            db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Bài viết", MaDoiTuong = tb_baiviet.MaBV, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Xóa Bài viết \""+tb_baiviet.TieuDe+"\"" });
+            db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Bài viết", MaDoiTuong = tb_baiviet.MaBV, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Xóa Bài viết \""+"\"" });
             db.SaveChanges();
             return RedirectToAction("Index");
         }
