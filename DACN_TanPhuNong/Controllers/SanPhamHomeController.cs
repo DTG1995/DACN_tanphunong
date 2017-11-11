@@ -38,7 +38,7 @@ namespace DACN_TanPhuNong.Controllers
                         MaLoai = x.MaLoai,
                         HinhAnh = x.HinhAnh,
                         XuatXu = x.XuatXu,
-                        tb_SanPhamTrans = x.tb_SanPhamTrans.Where(x=>x.NgonNgu == lang).ToList();
+                        tb_SanPhamTrans = x.tb_SanPhamTrans.Where(y=>y.NgonNgu == lang).ToList()
 
                     }).ToList();
 

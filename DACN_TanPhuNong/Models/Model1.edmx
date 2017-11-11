@@ -98,11 +98,12 @@
           <Key>
             <PropertyRef Name="MaPH" />
           </Key>
-          <Property Name="MaPH" Type="int" Nullable="false" />
+          <Property Name="MaPH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NoiDung" Type="nvarchar" MaxLength="100" />
           <Property Name="TrangThai" Type="int" />
           <Property Name="Email" Type="nvarchar" MaxLength="200" />
           <Property Name="SDT" Type="nvarchar" MaxLength="50" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tb_SanPham">
           <Key>
@@ -403,11 +404,12 @@
           <Key>
             <PropertyRef Name="MaPH" />
           </Key>
-          <Property Name="MaPH" Type="Int32" Nullable="false" />
+          <Property Name="MaPH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tb_SanPham">
           <Key>
@@ -712,6 +714,7 @@
           <EntitySetMapping Name="tb_PhanHoi">
             <EntityTypeMapping TypeName="db_tanphunongModel.tb_PhanHoi">
               <MappingFragment StoreEntitySet="tb_PhanHoi">
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="MaPH" ColumnName="MaPH" />
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />

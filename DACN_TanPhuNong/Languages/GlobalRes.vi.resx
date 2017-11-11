@@ -225,4 +225,37 @@
   <data name="Vission_low" xml:space="preserve">
     <value>tầm nhìn</value>
   </data>
+  <data name="ListPartners" xml:space="preserve">
+    <value>danh sách đối tác</value>
+  </data>
+  <data name="TanPhuNong" xml:space="preserve">
+    <value>Tân Phú Nông</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Địa chỉ email</value>
+  </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>Email không hợp lệ</value>
+  </data>
+  <data name="ErrorPhone" xml:space="preserve">
+    <value>Số điện thoại không hợp lệ</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Họ tên</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Số điện thoại</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Không được bỏ trống</value>
+  </data>
+  <data name="Statuts" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Gửi phản hồi</value>
+  </data>
 </root>

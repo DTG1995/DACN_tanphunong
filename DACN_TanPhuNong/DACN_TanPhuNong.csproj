@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -109,12 +118,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -182,12 +185,15 @@
     <Compile Include="Areas\Admin\Controllers\LoaiSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\NguoiDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhatKyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhanHoiController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TuyenDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\UngDungController.cs" />
     <Compile Include="Common\LanguageHelper.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DoiTacHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhanHoiHomeController.cs" />
     <Compile Include="Controllers\SanPhamHomeController.cs" />
     <Compile Include="Controllers\TinTucHomeController.cs" />
     <Compile Include="Controllers\TuyenDungHomeController.cs" />
@@ -284,15 +290,25 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\25-5-5-bag.jpg" />
+    <Content Include="images\bayer.png" />
+    <Content Include="images\bm.png" />
+    <Content Include="images\cico.png" />
+    <Content Include="images\concovang.png" />
     <Content Include="images\en_tron.png" />
     <Content Include="images\en_vuong.png" />
+    <Content Include="images\hai.png" />
     <Content Include="images\hinh-nen-lich-su.jpg" />
     <Content Include="images\img01.jpg" />
     <Content Include="images\img02.jpg" />
     <Content Include="images\img03.jpg" />
     <Content Include="images\img09.jpg" />
+    <Content Include="images\longthanh.png" />
     <Content Include="images\lua-mach.jpg" />
+    <Content Include="images\mappacific.png" />
     <Content Include="images\maxresdefault.jpg" />
+    <Content Include="images\realStrong.png" />
+    <Content Include="images\seasol.png" />
+    <Content Include="images\sundat.png" />
     <Content Include="images\vi_tron.png" />
     <Content Include="images\vi_vuong.png" />
     <Content Include="Scripts\admin\adminlte.min.js" />
@@ -773,6 +789,7 @@
     <Content Include="Areas\Admin\Views\DanhSachQuanLy\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DanhSachQuanLy\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhSachQuanLy\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PhanHoi\Index.cshtml" />
     <None Include="Properties\PublishProfiles\dacn_tanphunong.pubxml" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
@@ -810,6 +827,8 @@
     <Content Include="Views\Shared\_SlideShow.cshtml" />
     <Content Include="Views\Home\Abouts.cshtml" />
     <Content Include="Views\Shared\_MenuSP.cshtml" />
+    <Content Include="Views\DoiTacHome\DanhSachDoiTac.cshtml" />
+    <Content Include="Views\PhanHoiHome\GuiPhanHoi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

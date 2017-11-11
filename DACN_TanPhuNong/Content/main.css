@@ -169,7 +169,6 @@
     }
     .content-center{
         text-align: center;
-        padding: 100px;
         padding-bottom: 10px;
     }
     .content-center h1{
@@ -199,7 +198,6 @@
     }
     .footer{
         background-color: #141414;
-        padding: 100px;
         color: rgb(61, 61, 61);
     }
     .footer .description-company h1{

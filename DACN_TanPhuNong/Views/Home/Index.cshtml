@@ -2,7 +2,14 @@
     ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@{ 
+    if(TempData["ThongBao"]!=null)
+    {
+        <script>
+            alert("Cảm ơn ơn bạn đã phản hồi.");
+        </script>
+    }
+}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center tri-an">
         <img src="./imgs/logo.png" width="200" height="200">
