@@ -11,16 +11,23 @@ namespace DACN_TanPhuNong.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Web.Mvc;
     
     public partial class tb_SanPhamTrans
     {
         public int MaSP { get; set; }
         public string TenSanPhamTrans { get; set; }
+        [AllowHtml]
         public string UuDienTrans { get; set; }
+        [AllowHtml]
         public string DacDiemTrans { get; set; }
+        [AllowHtml]
         public string ThanhPhanChinhTrans { get; set; }
+        [AllowHtml]
         public string LuuYTrans { get; set; }
+        [AllowHtml]
         public string QuyCachDongGoiTrans { get; set; }
+        [AllowHtml]
         public string CachDungTrans { get; set; }
         public string NgonNgu { get; set; }
     

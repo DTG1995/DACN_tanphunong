@@ -1,4 +1,5 @@
-﻿@model DACN_TanPhuNong.Models.tb_SanPham
+﻿@using DACN_TanPhuNong.Models
+@model DACN_TanPhuNong.Models.tb_SanPham
 
 @{
     ViewBag.Title = "Edit";
@@ -31,7 +32,16 @@
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true)
                             @Html.HiddenFor(model => model.MaSP)
-
+                            <div class="form-group">
+                                <label class="control-label col-md-2">@GlobalRes.Images</label>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control", style = "font-weight: bold", id = "HinhAnh" })
+                                    @Html.ValidationMessageFor(model => model.HinhAnh)
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" onclick="chosseImage('HinhAnh')" class="btn btn-primary">Chọn hình</button>
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <ul class="tabs">
@@ -40,25 +50,28 @@
                                 </ul>
 
                                 <div id="tab-1" class="tab-content current">
+                                    @{
+                                        tb_SanPhamTrans spVi = ViewBag.SpVi;
+                                    }
                                     <div class="row">
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Tên sản phẩm</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" style="font-weight: bold" name="tenSPVn" />
+                                                <input class="form-control" value="@spVi.TenSanPhamTrans" style="font-weight: bold" name="tenSPVn" />
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Ưu điểm</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="uuDiemVn" id="uuDiemVn" style="font-weight: bold; word-wrap: break-word; resize: none;"></textarea>
+                                                <textarea class="form-control" name="uuDiemVn" id="uuDiemVn" style="font-weight: bold; word-wrap: break-word; resize: none;">@spVi.UuDienTrans</textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Đặc điểm</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="dacDiemVn" id="dacDiemVn"></textarea>
+                                                <textarea class="form-control" name="dacDiemVn" id="dacDiemVn">@spVi.DacDiemTrans</textarea>
 
                                             </div>
                                         </div>
@@ -66,45 +79,46 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Thành Phần chính</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="tpChinhVn" id="tpChinhVn"></textarea>
+                                                <textarea class="form-control" name="tpChinhVn" id="tpChinhVn">@spVi.ThanhPhanChinhTrans</textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Lưu ý</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="luuYVn" id="luuYVn"></textarea>
+                                                <textarea class="form-control" name="luuYVn" id="luuYVn">@spVi.LuuYTrans</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Cách dùng</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="cachDungVn" id="cachDungVn"></textarea>
+                                                <textarea class="form-control" name="cachDungVn" id="cachDungVn">@spVi.CachDungTrans</textarea>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
                                 <div id="tab-2" class="tab-content">
+                                    @{ tb_SanPhamTrans spEn = ViewBag.SpEn; }
                                     <div class="row">
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Product Name</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" style="font-weight: bold" name="tenSPEn" />
+                                                <input class="form-control" value="@spEn.TenSanPhamTrans" style="font-weight: bold" name="tenSPEn" />
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-md-2"> advantage</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="uuDiemEn" id="uuDiemEn" style="font-weight: bold; word-wrap: break-word; resize: none;"></textarea>
+                                                <textarea class="form-control" name="uuDiemEn" id="uuDiemEn" style="font-weight: bold; word-wrap: break-word; resize: none;">@spEn.UuDienTrans</textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Characteristics</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="dacDiemEn" id="dacDiemEn"></textarea>
+                                                <textarea class="form-control" name="dacDiemEn" id="dacDiemEn">@spEn.DacDiemTrans</textarea>
 
                                             </div>
                                         </div>
@@ -112,25 +126,26 @@
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Main ingredient</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="tpChinhEn" id="tpChinhEn"></textarea>
+                                                <textarea class="form-control" name="tpChinhEn" id="tpChinhEn">@spEn.ThanhPhanChinhTrans</textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-md-2"> Note</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="luuYEn" id="luuYEn"></textarea>
+                                                <textarea class="form-control" name="luuYEn" id="luuYEn">@spEn.LuuYTrans</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-2">Use</label>
                                             <div class="col-md-10">
-                                                <textarea class="form-control" name="cachDungEn" id="cachDungEn"></textarea>
+                                                <textarea class="form-control" name="cachDungEn" id="cachDungEn">@spEn.CachDungTrans</textarea>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
+
                             </div>
 
 
@@ -177,24 +192,24 @@
 
                                 <div class="form-group">
                                     <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Thêm" class="btn btn-default" />
+                                        <input type="submit" value="Sửa" class="btn btn-default" />
                                     </div>
                                 </div>
 
 
 
                             </div>
+
+
+                            <div>
+                                @Html.ActionLink("Quay lại danh sách", "Index")
+                            </div>
+                        </div>
+                  
                     }
-
-
-                    <div>
-                        @Html.ActionLink("Quay lại danh sách", "Index")
-                    </div>
                 </div>
-                    }
             </div>
         </div>
-    </div>
     </div>
 </section>
 
@@ -218,12 +233,17 @@
 
     config.removeButtons = 'Templates,Save,NewPage,Preview,Print,SelectAll,Redo,Undo,PasteText,PasteFromWord,Find,Scayt,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,ImageButton,HiddenField,Button,BidiRtl,BidiLtr,Language,Smiley,PageBreak,Anchor,ShowBlocks';
     config.resize_enabled = false
-    CKEDITOR.replace("DacDiem", config);
-    CKEDITOR.replace("ThanhPhanChinh", config);
-    CKEDITOR.replace("LuuY", config);
-    CKEDITOR.replace("CachDung", config);
+    CKEDITOR.replace("dacDiemVn", config);
+    CKEDITOR.replace("tpChinhVn", config);
+    CKEDITOR.replace("luuYVn", config);
+    CKEDITOR.replace("cachDungVn", config);
+    CKEDITOR.replace("dacDiemEn", config);
+    CKEDITOR.replace("tpChinhEn", config);
+    CKEDITOR.replace("luuYEn", config);
+    CKEDITOR.replace("cachDungEn", config);
 
 </script>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

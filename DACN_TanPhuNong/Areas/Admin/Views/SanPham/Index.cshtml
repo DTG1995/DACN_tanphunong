@@ -31,12 +31,13 @@
                             <th>
                                 @GlobalRes.Product_Name
                             </th>
-                            
+                            <th>@GlobalRes.Images</th>
                             
                             
                             <th>
                                 @GlobalRes.Category
                             </th>
+                            <th>Mo ta</th>
                             <th>
                                 @GlobalRes.Made_in
                             </th>
@@ -51,7 +52,9 @@
                                 tb_LoaiSP lsp = item.tb_LoaiSP;
                                 <tr>
                                     <td>@(sp==null?"":sp.TenSanPhamTrans)</td>
+                                    <td><img src="@Url.Content(item.HinhAnh)" height="150px" /> </td>
                                     <td>@(lsp==null?"":lsp.tb_LoaiSPTrans.FirstOrDefault().TenLoaiSPTrans)</td>
+                                    <td>@(lsp == null ? "" : lsp.tb_LoaiSPTrans.FirstOrDefault().MoTaTrans)</td>
                                     <td>@item.XuatXu</td>
                                     <td>
                                         @Html.ActionLink("Sửa", "Edit", new { id = item.MaSP }) |

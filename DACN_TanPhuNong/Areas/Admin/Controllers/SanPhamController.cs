@@ -65,6 +65,11 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            
+            var spTran = db.tb_SanPhamTrans.Where(x => x.NgonNgu == "vi" && x.MaSP == id).FirstOrDefault();
+            ViewBag.SpVi = spTran ?? new tb_SanPhamTrans();
+            spTran = db.tb_SanPhamTrans.Where(x => x.NgonNgu == "en" && x.MaSP == id).FirstOrDefault();
+            ViewBag.SpEn = spTran ?? new tb_SanPhamTrans();
             return View(tb_sanpham);
         }
 
@@ -80,38 +85,69 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // POST: /Admin/SanPham/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         [AdminFilter(AllowPermit = "0,1")]
-        public ActionResult Create([Bind(Include = "MaSP,HinhAnh,TenSanPham,UuDiem,DacDiem,ThanhPhanChinh,LuuY,QuyCachDongGoi,XuatXu,CachDung,GiaThanh,TrangThai,MaLoai")] tb_SanPham tb_sanpham)
+        [HttpPost]
+        [ValidateInput(false)]
+        
+        public ActionResult Create([Bind(Include = "MaSP,HinhAnh,QuyCachDongGoi,XuatXu,MaLoai")] tb_SanPham tb_sanpham)
         {
             if (ModelState.IsValid)
             {
+                tb_sanpham.TrangThai = true;
                 db.tb_SanPham.Add(tb_sanpham);
                 db.SaveChanges();
-                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Sản phẩm", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm sản phẩm\"" + tb_sanpham.tb_SanPhamTrans.FirstOrDefault().TenSanPhamTrans+ "\"", MaDoiTuong = tb_sanpham.MaSP});
-                db.SaveChanges();
-                return RedirectToAction("Index");
+              //  db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Sản phẩm", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm sản phẩm\"" + tb_sanpham.tb_SanPhamTrans.FirstOrDefault().TenSanPhamTrans+ "\"", MaDoiTuong = tb_sanpham.MaSP});
+                
+               
             }
 
+            tb_SanPhamTrans tb_spVi = new tb_SanPhamTrans();
+            tb_spVi.NgonNgu = "vi";
+            tb_spVi.MaSP = tb_sanpham.MaSP;
+            tb_spVi.TenSanPhamTrans = Request.Form["tenSPVn"];
+            tb_spVi.UuDienTrans = Request.Form["uuDiemVn"];
+            tb_spVi.DacDiemTrans = Request.Form["dacDiemVn"];
+            tb_spVi.ThanhPhanChinhTrans = Request.Form["tpChinhVn"];
+            tb_spVi.LuuYTrans = Request.Form["luuYVn"];
+            tb_spVi.CachDungTrans = Request.Form["cachDungVn"];
+            db.tb_SanPhamTrans.Add(tb_spVi);
+            db.SaveChanges();
+            tb_SanPhamTrans tb_SpEn = new tb_SanPhamTrans();
+            tb_SpEn.NgonNgu = "en";
+            tb_SpEn.MaSP = tb_sanpham.MaSP;
+            tb_SpEn.TenSanPhamTrans = Request.Form["tenSPEn"];
+            tb_SpEn.UuDienTrans = Request.Form["uuDiemEn"];
+            tb_SpEn.DacDiemTrans = Request.Form["dacDiemEn"];
+            tb_SpEn.ThanhPhanChinhTrans = Request.Form["tpChinhEn"];
+            tb_SpEn.LuuYTrans = Request.Form["luuYEn"];
+            tb_SpEn.CachDungTrans = Request.Form["cachDungEn"];
+            db.tb_SanPhamTrans.Add(tb_SpEn);
+            db.SaveChanges();
+
             ViewBag.MaLoai = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_sanpham.MaLoai);
-            return View(tb_sanpham);
+            return RedirectToAction("Index");
         }
 
         // GET: /Admin/SanPham/Edit/5
         [AdminFilter(AllowPermit = "0,1")]
         public ActionResult Edit(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             tb_SanPham tb_sanpham = db.tb_SanPham.Find(id);
+            string lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
+            ViewBag.MaLoai = new SelectList(db.tb_LoaiSPTrans.Where(x => x.NgonNgu == lang), "MaLoaiSP", "TenLoaiSPTrans",tb_sanpham.MaLoai);
             if (tb_sanpham == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaLoai = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_sanpham.MaLoai);
+            var spTran = db.tb_SanPhamTrans.Where(x => x.NgonNgu == "vi" && x.MaSP == id).FirstOrDefault();
+            ViewBag.SpVi = spTran ?? new tb_SanPhamTrans();
+            spTran = db.tb_SanPhamTrans.Where(x => x.NgonNgu == "en" && x.MaSP == id).FirstOrDefault();
+            ViewBag.SpEn = spTran ?? new tb_SanPhamTrans();
             return View(tb_sanpham);
         }
 
@@ -119,7 +155,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken,ValidateInput(false)]
         [AdminFilter(AllowPermit = "0,1")]
         public ActionResult Edit([Bind(Include="MaSP,HinhAnh,TenSanPham,UuDiem,DacDiem,ThanhPhanChinh,LuuY,QuyCachDongGoi,XuatXu,CachDung,GiaThanh,TrangThai,MaLoai")] tb_SanPham tb_sanpham)
         {
@@ -130,6 +166,29 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            tb_SanPhamTrans tb_spVi = new tb_SanPhamTrans();
+            tb_spVi.NgonNgu = "vi";
+            tb_spVi.MaSP = tb_sanpham.MaSP;
+            tb_spVi.TenSanPhamTrans = Request.Params["tenSPVn"];
+            tb_spVi.UuDienTrans = Request.Params["uuDiemVn"];
+            tb_spVi.DacDiemTrans = Request.Params["dacDiemVn"];
+            tb_spVi.ThanhPhanChinhTrans = Request.Params["tpChinhVn"];
+            tb_spVi.LuuYTrans = Request.Params["luuYVn"];
+            tb_spVi.CachDungTrans = Request.Params["cachDungVn"];
+            db.tb_SanPhamTrans.Add(tb_spVi);
+            tb_SanPhamTrans tb_SpEn = new tb_SanPhamTrans();
+            tb_SpEn.NgonNgu = "en";
+            tb_SpEn.MaSP = tb_sanpham.MaSP;
+            tb_SpEn.TenSanPhamTrans = Request.Params["tenSPEn"];
+            tb_SpEn.UuDienTrans = Request.Params["uuDiemEn"];
+            tb_SpEn.DacDiemTrans = Request.Params["dacDiemEn"];
+            tb_SpEn.ThanhPhanChinhTrans = Request.Params["tpChinhEn"];
+            tb_SpEn.LuuYTrans = Request.Params["luuYEn"];
+            tb_SpEn.CachDungTrans = Request.Params["cachDungEn"];
+            db.tb_SanPhamTrans.Add(tb_SpEn);
+            db.SaveChanges();
+
             ViewBag.MaLoai = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_sanpham.MaLoai);
             return View(tb_sanpham);
         }
@@ -157,6 +216,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             tb_SanPham tb_sanpham = db.tb_SanPham.Find(id);
+            tb_sanpham.TrangThai = false;
             db.Entry(tb_sanpham).State = EntityState.Modified;
             db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Sản phẩm", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Xóa sản phẩm\""  + "\"", MaDoiTuong = tb_sanpham.MaSP });
             db.SaveChanges();

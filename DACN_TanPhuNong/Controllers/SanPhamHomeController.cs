@@ -33,7 +33,14 @@ namespace DACN_TanPhuNong.Controllers
                 int page1 = page ?? 1;
                 var listID = listLSP.Select(x => x.MaLoaiSP).ToList();
                 ViewBag.ListLSP = db.tb_LoaiSPTrans.Where(x=>x.NgonNgu==lang && listID.Contains(x.MaLoaiSP)).ToList();
-                var listSP = db.tb_SanPham.Where(x => listID.Contains(x.MaLoai)).ToList().Skip((page1 - 1) * limit).Take(limit);
+                var listSP = db.tb_SanPham.Where(x => listID.Contains(x.MaLoai)).ToList().Skip((page1 - 1) * limit).Take(limit).
+                    Select( x=>new tb_SanPham{
+                        MaLoai = x.MaLoai,
+                        HinhAnh = x.HinhAnh,
+                        XuatXu = x.XuatXu,
+                        tb_SanPhamTrans = x.tb_SanPhamTrans.Where(x=>x.NgonNgu == lang).ToList();
+
+                    }).ToList();
 
 
                 return View(listSP);

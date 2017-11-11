@@ -24,125 +24,124 @@
                 </div>
                 <div class="box-body">
 
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("Create", "SanPham", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
-                        
-                        <div class="form-group">
-                                <label class="control-label col-md-2">@GlobalRes.Images</label>
-                                <div class="col-md-7">
-                                    @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control", style = "font-weight: bold", id = "HinhAnh" })
-                                    @Html.ValidationMessageFor(model => model.HinhAnh)
-                                </div>
-                                <div class="col-md-3">
-                                    <button type="button" onclick="chosseImage('HinhAnh')" class="btn btn-primary">Chọn hình</button>
-                                </div>
-                            </div>
-                        <div class="row">
-                                <ul class="tabs">
-                                    <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
-                                    <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
-                                </ul>
-
-                                <div id="tab-1" class="tab-content current">
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Tên sản phẩm</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" style="font-weight: bold" name="tenSPVn" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Ưu điểm</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="uuDiemVn" id="uuDiemVn" style="font-weight: bold; word-wrap: break-word; resize: none;"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Đặc điểm</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="dacDiemVn" id="dacDiemVn"></textarea>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Thành Phần chính</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="tpChinhVn" id="tpChinhVn"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Lưu ý</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="luuYVn" id="luuYVn"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Cách dùng</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="cachDungVn" id="cachDungVn"></textarea>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div id="tab-2" class="tab-content">
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Product Name</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" style="font-weight: bold" name="tenSPEn" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2"> advantage</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="uuDiemEn" id="uuDiemEn" style="font-weight: bold; word-wrap: break-word; resize: none;"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Characteristics</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="dacDiemEn" id="dacDiemEn"></textarea>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Main ingredient</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="tpChinhEn" id="tpChinhEn"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2"> Note</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="luuYEn" id="luuYEn"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-2">Use</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" name="cachDungEn" id="cachDungEn"></textarea>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        
-
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true)
-                            
-                            
+                        <div class="form-group">
+                            <label class="control-label col-md-2">@GlobalRes.Images</label>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control", style = "font-weight: bold", id = "HinhAnh" })
+                                @Html.ValidationMessageFor(model => model.HinhAnh)
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" onclick="chosseImage('HinhAnh')" class="btn btn-primary">Chọn hình</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <ul class="tabs">
+                                <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                            </ul>
+
+                            <div id="tab-1" class="tab-content current">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Tên sản phẩm</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" style="font-weight: bold" name="tenSPVn" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Ưu điểm</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="uuDiemVn" id="uuDiemVn" style="font-weight: bold; word-wrap: break-word; resize: none;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Đặc điểm</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="dacDiemVn" id="dacDiemVn"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Thành Phần chính</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="tpChinhVn" id="tpChinhVn"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Lưu ý</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="luuYVn" id="luuYVn"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Cách dùng</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="cachDungVn" id="cachDungVn"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-content">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Product Name</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" style="font-weight: bold" name="tenSPEn" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2"> Advantage</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="uuDiemEn" id="uuDiemEn" style="font-weight: bold; word-wrap: break-word; resize: none;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Characteristics</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="dacDiemEn" id="dacDiemEn"></textarea>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Main ingredient</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="tpChinhEn" id="tpChinhEn"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2"> Note</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="luuYEn" id="luuYEn"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Use</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="cachDungEn" id="cachDungEn"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+
+
 
                             <div class="form-group">
                                 <label class="control-label col-md-2">@GlobalRes.Packing</label>
@@ -160,17 +159,11 @@
                                 </div>
                             </div>
 
-                            
 
-                           
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.TrangThai, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.TrangThai)
-                                    @Html.ValidationMessageFor(model => model.TrangThai)
-                                </div>
-                            </div>
+
+
+
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.MaLoai, GlobalRes.Category, new { @class = "control-label col-md-2" })
@@ -228,5 +221,5 @@
 </script>
 
 @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+    @Scripts.Render("~/bundles/jqueryval")
+}
