@@ -18,63 +18,57 @@ namespace DACN_TanPhuNong
                 url: "san-pham",
                 defaults: new { controller = "SanPhamHome", action = "Index"}
             );
-            routes.MapRoute(
-                name: "LoaiSanPham",
-                url: "{lang}/loai-san-pham/{title}-{id}",
-                defaults: new { controller = "SanPhamHome", action = "AllByLoai",id=UrlParameter.Optional, title=UrlParameter.Optional },
-                constraints: new { lang = @"vi|en" }
-            );
+           
             routes.MapRoute(
                 name: "SanPhamDetails",
-                url: "{lang}/san-pham/{title}-{id}",
+                url: "{lang}/sp/{title}-{id}",
                 defaults: new { controller = "SanPhamHome", action = "Details", id = UrlParameter.Optional, title = UrlParameter.Optional },
                 constraints: new { lang = @"vi|en" }
             );
+            //Thong bao
+            routes.MapRoute(
+                name: "thong_bao",
+                url: "{lang}/notification",
+                defaults: new { controller = "BaiViet", action = "Index", loaibv = 0 },
+                constraints: new { lang = @"vi|en" }
+            );
+            //tuyen dung
+            routes.MapRoute(
+                name: "Careers",
+                url: "{lang}/tuyen-dung",
+                defaults: new { controller = "BaiViet", action = "Index", loaibv = 1 },
+                constraints: new { lang = @"vi|en" }
+            );
+            //Khuyen mai
+            routes.MapRoute(
+                name: "Promotions",
+                url: "{lang}/khuyen-mai",
+                defaults: new { controller = "BaiViet", action = "Index", loaibv = 2 },
+                constraints: new { lang = @"vi|en" }
+            );
+            //hoi nghi
+            routes.MapRoute(
+                name: "Conferences",
+                url: "{lang}/hoi-nghi-hoi-thao",
+                defaults: new { controller = "BaiViet", action = "Index", loaibv = 3 },
+                constraints: new { lang = @"vi|en" }
+            );
+            //Image Video
 
-            //Dai Ly
             routes.MapRoute(
-                name: "DaiLy",
-                url: "dai-ly",
-                defaults: new { controller = "DaiLyHome", action = "Index"}
+                name: "hinh-anh-video",
+                url: "{lang}/images-videos",
+                defaults: new { controller = "BaiViet", action = "Index", loaibv = 4 },
+                constraints: new { lang = @"vi|en" }
             );
+
+
             routes.MapRoute(
-                name: "DaiLyDetails",
-                url: "dai-ly/{title}-{id}",
-                defaults: new { controller = "DaiLyHome", action = "Details", id = UrlParameter.Optional, title = UrlParameter.Optional }
-            );
-            //Doi Tac
-            routes.MapRoute(
-                name: "DoiTac",
-                url: "doi-tac",
-                defaults: new { controller = "DoiTacHome", action = "Index" }
-            );
-            routes.MapRoute(
-                name: "DoiTacDetails",
-                url: "doi-tac/{title}-{id}",
-                defaults: new { controller = "DoiTacHome", action = "Details", id = UrlParameter.Optional, title = UrlParameter.Optional }
-            );
-            //Tin Tuc
-            routes.MapRoute(
-                name: "TinTuc",
-                url: "tin-tuc",
-                defaults: new { controller = "TinTucHome", action = "Index" }
-            );
-            routes.MapRoute(
-                name: "TinTucDetails",
-                url: "tin-tuc/{title}-{id}",
-                defaults: new { controller = "TinTucHome", action = "Details", id = UrlParameter.Optional, title = UrlParameter.Optional }
-            );
-            //Tuyen Dung
-            routes.MapRoute(
-                name: "TuyenDung",
-                url: "tuyen-dung",
-                defaults: new { controller = "TuyenDungHome", action = "Index" }
-            );
-            routes.MapRoute(
-                name: "TuyenDungDetails",
-                url: "tuyen-dung/{title}-{id}",
-                defaults: new { controller = "TuyenDungHome", action = "Details", id = UrlParameter.Optional, title = UrlParameter.Optional }
-            );
+                name: "chitietbaiviet",
+                url: "{lang}/p/{title}-{id}",
+                defaults: new { controller = "BaiViet", action = "Detail", id = UrlParameter.Optional, title = UrlParameter.Optional },
+                constraints: new { lang = @"vi|en" }
+                );
             //Lien He
             routes.MapRoute(
                 name: "LienHe",
@@ -89,6 +83,19 @@ namespace DACN_TanPhuNong
                 defaults: new {controller="Home", action="TriAn" },
                 constraints: new { lang = @"vi|en" }
                 );
+            //Thong bao noi bo
+            routes.MapRoute(
+                name: "thong_bao_noi_bo",
+                url: "{lang}/thong-bao-noi-bo",
+                defaults: new { controller = "BaiViet", action = "thongBaoNoiBo" },
+                constraints: new { lang = @"vi|en" });
+            //Phan bon
+            routes.MapRoute(
+               name: "LoaiSanPham",
+               url: "{lang}/{title}-{id}",
+               defaults: new { controller = "SanPhamHome", action = "AllByLoai", id = UrlParameter.Optional, title = UrlParameter.Optional },
+               constraints: new { lang = @"vi|en" }
+           );
             routes.MapRoute(
                 name: "Language",
                 url: "{lang}/{controller}/{action}/{id}",

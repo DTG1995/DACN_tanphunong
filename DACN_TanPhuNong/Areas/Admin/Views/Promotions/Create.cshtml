@@ -1,0 +1,125 @@
+﻿@model DACN_TanPhuNong.Models.tb_BaiViet
+
+@{
+    ViewBag.Title = @GlobalRes.Create;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @GlobalRes.Promotions
+        <small>@GlobalRes.List</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i>@GlobalRes.Admin</a></li>
+        <li><a class="active">@GlobalRes.Promotions</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@GlobalRes.Add_new</h3>
+                </div>
+                <div class="box-body">
+
+                    @using (Html.BeginForm(FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HinhAnh, new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.HinhAnh)
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" onclick="chosseImage('HinhAnh')" class="btn btn-primary">Chọn hình</button>
+                                </div>
+                            </div>
+
+                            <ul class="tabs">
+                                <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                            </ul>
+
+                            <div id="tab-1" class="tab-content current">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Tiêu đề</label> 
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="TieuDeVn" id="TieuDeVn" style="font-weight:bold;" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Tóm tắt</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="TomTatVn" id="TomTatVn" ></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Nội dung</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="NoiDungVn" id="NoiDungVn"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-content">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Title</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="TieuDeEn" id="TieuDeEn" style="font-weight:bold;" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Summary</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="TomTatEn" id="TomTatEn"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Content</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="NoiDungEn" id="NoiDungEn"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="@GlobalRes.Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink(@GlobalRes.back_to_list, "Index")
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+@Scripts.Render("~/Scripts/admin/ckeditor/ckeditor.js")
+<script>
+    CKEDITOR.replace("NoiDungEn", {
+        filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+        filebrowserWindowWidth: '750',
+        filebrowserWindowHeight: '600'
+    });
+    CKEDITOR.replace("NoiDungVn", {
+        filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+        filebrowserWindowWidth: '750',
+        filebrowserWindowHeight: '600'
+    });
+</script>

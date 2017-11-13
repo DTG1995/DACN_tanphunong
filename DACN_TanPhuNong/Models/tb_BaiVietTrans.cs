@@ -11,13 +11,20 @@ namespace DACN_TanPhuNong.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
     
     public partial class tb_BaiVietTrans
     {
         public int MaBV { get; set; }
+        [Display(Name = "Title", ResourceType = typeof(Languages.GlobalRes))]
         public string TieuDeTrans { get; set; }
+        [Display(Name = "summary", ResourceType = typeof(Languages.GlobalRes))]
         public string TomTatTrans { get; set; }
+        [Display(Name = "Content", ResourceType = typeof(Languages.GlobalRes))]
+        [AllowHtml]
         public string NoiDungTrans { get; set; }
+
         public string NgonNgu { get; set; }
     
         public virtual tb_BaiViet tb_BaiViet { get; set; }

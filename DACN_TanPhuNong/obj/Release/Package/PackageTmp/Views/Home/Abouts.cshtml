@@ -1,0 +1,40 @@
+﻿@using DACN_TanPhuNong.Models
+@{
+    ViewBag.Title = "Abouts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center lich-su">
+        <img src="/images/logo-tan-phu-nong.png" width="200" height="200">
+        <h1>Tân phú nông</h1>
+        <h2>vững bước cùng nhà nông</h2>
+        <div style="text-align:left;" class="container">
+            @Html.Raw(ViewBag.LichSu)
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center vinh-danh">
+        <h1>Tân phú nông</h1>
+        <h2>vững bước cùng nhà nông</h2>
+        <h4>@GlobalRes.Team_Manager</h4>
+        <div style="text-align:left;" class="container">
+            @foreach (tb_DoiNguQuanLy item in ViewBag.DSQL)
+            {
+                var trans = item.tb_DoiNguQL_Trans.ToList();
+                <div class="col-md-3 manager-item">
+                    <img width="100%" src="/images/img01.jpg"/>
+                    <h5>@(trans.Count>0?trans[0].TenNguoiQL:"")</h5>
+                    <h6>@(trans.Count > 0 ? trans[0].ChucVu : "")</h6>
+                    <p><span>@(trans.Count > 0 ? trans[0].CauNoi : "")</span></p>
+                    <p> @(trans.Count > 0 ? trans[0].MoTa : "")</p>
+                </div>
+                
+            }
+        </div>
+    </div>
+</div>

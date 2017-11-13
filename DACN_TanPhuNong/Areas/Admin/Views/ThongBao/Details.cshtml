@@ -1,0 +1,115 @@
+﻿@model DACN_TanPhuNong.Models.tb_BaiViet
+
+@{
+    ViewBag.Title = @GlobalRes.Detail;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var bvVn = Model.tb_BaiVietTrans.Where(t => t.NgonNgu == "vi").FirstOrDefault();
+    var bvEn = Model.tb_BaiVietTrans.Where(t => t.NgonNgu == "en").FirstOrDefault();
+}
+<section class="content-header">
+    <h1>
+        @GlobalRes.thong_bao
+        <small>@GlobalRes.Detail</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i>@GlobalRes.Admin</a></li>
+        <li><a class="active">@GlobalRes.thong_bao</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@GlobalRes.Detail</h3>
+                </div>
+                <div class="box-body">
+
+                    <img height="350px" style="margin:5px auto;" src="@Model.HinhAnh" />
+
+                    <ul class="tabs">
+                        <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                        <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                    </ul>
+
+                    <div id="tab-1" class="tab-content current">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Tiêu đề
+                            </dt>
+
+                            <dd>
+                                @bvVn.TieuDeTrans
+                            </dd>
+
+                            <dt>
+                                Tóm tắt
+                            </dt>
+
+                            <dd>
+                                @Html.Raw( bvVn.TomTatTrans.Replace("\r\n","<br/>"))
+                            </dd>
+
+                            <dt>
+                                Nội dung
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(bvVn.NoiDungTrans)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <div id="tab-2" class="tab-content">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Tiêu đề
+                            </dt>
+
+                            <dd>
+                                @bvEn.TieuDeTrans
+                            </dd>
+
+                            <dt>
+                                Tóm tắt
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(bvEn.TomTatTrans.Replace("\r\n", "<br/>"))
+                            </dd>
+
+                            <dt>
+                                Nội dung
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(bvEn.NoiDungTrans)
+                            </dd>
+
+                        </dl>
+                    </div>
+
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @GlobalRes.Internal
+                        </dt>
+
+                        <dd>
+                            @Model.NoiBo
+                        </dd>
+                    </dl>
+
+
+                        <div>
+                            @Html.ActionLink(GlobalRes.Edit, "Edit", new { id = Model.MaBV }) |
+                            @Html.ActionLink(@GlobalRes.back_to_list, "Index")
+                        </div>
+</div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

@@ -14,14 +14,15 @@
     {
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Ứng Dụng</span>
+                <i class="fa fa-dashboard"></i> <span>@GlobalRes.Application</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-circle-o"></i> Trang chủ</a></li>
-                <li><a href="@Url.Action("LienHe", "UngDung")"><i class="fa fa-circle-o"></i> Liên hệ</a></li>
+                <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-circle-o"></i> @GlobalRes.Home</a></li>
+                <li><a href="@Url.Action("Abouts", "UngDung")"><i class="fa fa-circle-o"></i> @GlobalRes.About</a></li>
+                <li><a href="@Url.Action("LienHe", "UngDung")"><i class="fa fa-circle-o"></i>@GlobalRes.Contact</a></li>
             </ul>
         </li>
     }
@@ -29,14 +30,14 @@
     {
         <li class=" treeview">
             <a href="#">
-                <i class="fa fa-object-group"></i> <span>Loại Sản Phẩm</span>
+                <i class="fa fa-object-group"></i> <span>@GlobalRes.Category</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="@Url.Action("Index", "LoaiSP")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                <li><a href="@Url.Action("Create", "LoaiSP")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                <li><a href="@Url.Action("Index", "LoaiSP")"><i class="fa fa-circle-o"></i> @GlobalRes.List</a></li>
+                <li><a href="@Url.Action("Create", "LoaiSP")"><i class="fa fa-circle-o"></i> @GlobalRes.Add_new</a></li>
             </ul>
         </li>
     }
@@ -44,18 +45,94 @@
     {
         <li class=" treeview ">
             <a href="#">
-                <i class="fa fa-product-hunt"></i> <span>Sản Phẩm</span>
+                <i class="fa fa-product-hunt"></i> <span>@GlobalRes.Products</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="@Url.Action("Index", "SanPham")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                <li><a href="@Url.Action("Create", "SanPham")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                <li><a href="@Url.Action("Index", "SanPham")"><i class="fa fa-circle-o"></i> @GlobalRes.List</a></li>
+                <li><a href="@Url.Action("Create", "SanPham")"><i class="fa fa-circle-o"></i> @GlobalRes.Add_new</a></li>
             </ul>
         </li>
         }
-    @if (arr[0] == 1)
+        
+    @if (arr[0] == 1 || arr[2] == 1)
+    {
+        <li class=" treeview ">
+            <a href="#">
+                <i class="fa fa-newspaper-o"></i> <span>@GlobalRes.thong_bao</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("Index", "ThongBao")"><i class="fa fa-circle-o"></i>@GlobalRes.List</a></li>
+                <li><a href="@Url.Action("Create", "ThongBao")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
+            </ul>
+        </li>
+    }
+    @if (arr[0] == 1 || arr[2] == 1)
+    {
+        <li class=" treeview ">
+            <a href="#">
+                <i class="fa fa-puzzle-piece"></i> <span>@GlobalRes.Careers</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("Index", "TuyenDung")"><i class="fa fa-circle-o"></i>@GlobalRes.List</a></li>
+                <li><a href="@Url.Action("Create", "TuyenDung")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
+            </ul>
+        </li>
+    }
+    @if (arr[0] == 1 || arr[2] == 1)
+    {
+        <li class=" treeview ">
+            <a href="#">
+                <i class="fa fa-comments"></i> <span>@GlobalRes.Conferences</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("Index", "Conferences")"><i class="fa fa-circle-o"></i>@GlobalRes.List</a></li>
+                <li><a href="@Url.Action("Create", "Conferences")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
+            </ul>
+        </li>
+    }
+    @if (arr[0] == 1 || arr[2] == 1)
+    {
+        <li class=" treeview ">
+            <a href="#">
+                <i class="fa fa-picture-o"></i> <span>@GlobalRes.Promotions</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("Index", "Promotions")"><i class="fa fa-circle-o"></i>@GlobalRes.List</a></li>
+                <li><a href="@Url.Action("Create", "Promotions")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
+            </ul>
+        </li>
+    }
+    @if (arr[0] == 1 || arr[2] == 1)
+    {
+        <li class=" treeview ">
+            <a href="#">
+                <i class="fa fa-product-hunt"></i> <span>@GlobalRes.Images, Video</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="@Url.Action("Index", "ImageVideo")"><i class="fa fa-circle-o"></i>@GlobalRes.List</a></li>
+                <li><a href="@Url.Action("Create", "ImageVideo")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
+            </ul>
+        </li>
+    }
+    @*@if (arr[0] == 1)
     {
         <li class=" treeview ">
             <a href="#">
@@ -69,7 +146,7 @@
                 <li><a href="@Url.Action("Create", "VanPhong")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
             </ul>
         </li>
-        }
+        }*@
     @if (arr[0] == 1)
     {
         <li class=" treeview ">
@@ -100,37 +177,23 @@
             </ul>
         </li>
         }
-    @if (arr[0] == 1 || arr[2] == 1)
-{
-        <li class=" treeview ">
+ 
+   
+    @if (arr[0] == 1)
+    {
+        <li class="treeview">
             <a href="#">
-                <i class="fa fa-newspaper-o"></i> <span>Tin tức</span>
+                <i class="fa fa-puzzle-piece"></i> <span>Phản hồi</span>
                 <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="@Url.Action("Index", "BaiViet")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                <li><a href="@Url.Action("Create", "BaiViet")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
-            </ul>
-        </li>
-        }
-    @if (arr[0] == 1 || arr[3] == 1)
-{
-        <li class=" treeview ">
-            <a href="#">
-                <i class="fa fa-puzzle-piece"></i> <span>Tuyển dụng</span>
-                <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="@Url.Action("Index", "TuyenDung")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                <li><a href="@Url.Action("Create", "TuyenDung")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                <li><a href="@Url.Action("Index", "PhanHoi")"><i class="fa fa-circle-o"></i> Danh sách</a></li>
             </ul>
         </li>
     }
-    
+
     <li>
         <a href="@Url.Action("Index","NhatKy")">
             <i class="fa fa-history"></i> <span>Lịch sử thao tác</span>

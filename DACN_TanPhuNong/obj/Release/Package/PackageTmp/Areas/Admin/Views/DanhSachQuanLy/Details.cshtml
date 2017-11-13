@@ -1,0 +1,35 @@
+﻿@model DACN_TanPhuNong.Models.tb_DoiNguQuanLy
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_DoiNguQuanLy</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThuBac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThuBac)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaQL }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

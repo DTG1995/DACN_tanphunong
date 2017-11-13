@@ -1,58 +1,32 @@
-﻿@using WebGrease
-@model IEnumerable<DACN_TanPhuNong.Models.tb_SanPham>
-
-@if (Model == null)
-{
+﻿@{
     ViewBag.Title = "Trang chủ";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";   
-    HtmlString str = new HtmlString(ViewBag.ContentHome);
-    <section class="page ">
-        <article style="padding: 15px;">
-            @Html.Raw(str);
-        </article>
-    </section>
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-else
-{
-    ViewBag.Title = "Kết quả tìm kiếm";
-    Layout = "~/Views/Shared/_Layout.cshtml";   
-    foreach (var item in Model)
+@{ 
+    if(TempData["ThongBao"]!=null)
     {
-        <section class=" post">
-		<article>
-			<header class="entry-header">
-    			<h2 class="entry-title">
-    				<a href="@Url.Action("Details","SanPhamHome",new{id = item.MaSP})" title="@item.TenSanPham">@item.TenSanPham</a>
-    			</h2><!-- .entry-title -->
-  		</header>
-
-  		
-  			
-  			<div class="entry-content clearfix">
-    			<p>Ưu điểm: @(item.UuDiem.Length>180?item.UuDiem.Substring(0,173)+"...":item.UuDiem)</p>
-  			</div>
-
-  			
-		</article>
-	</section>
+        <script>
+            alert("Cảm ơn ơn bạn đã phản hồi.");
+        </script>
     }
-    <section class=" post">
-		<article>
-			<header class="entry-header">
-    			<h2 class="entry-title">
-    				<a href="@Url.Action("Details","SanPhamHome",new{id = 1})" title="asdasds">asdasdsa</a>
-    			</h2><!-- .entry-title -->
-  		</header>
-
-  		
-  			
-  			<div class="entry-content clearfix">
-    			<p>Ưu điểm: sadasdasdsad</p>
-  			</div>
-
-  			
-		</article>
-	</section>
 }
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center tri-an">
+        <img src="./images/logo-tan-phu-nong.png" width="200" height="200">
+        <h1>Tân phú nông</h1>
+        <h2>vững bước cùng nhà nông</h2>
+        <h4>@Html.Raw(ViewBag.TriAn)</h4>
+        <a href="@Url.RouteUrl("triankh")" class="btn btn-custom">Đọc thêm</a>
+        <div class="container">
+            <div id="owl-mini-slider" class="owl-carousel owl-theme">
+                <img src="/images/img01.jpg">
+                <img src="/images/img02.jpg">
+                <img src="/images/img03.jpg">
+                <img src="/images/img09.jpg">
+            </div>
+        </div>
+    </div>
+</div>
+
 
 

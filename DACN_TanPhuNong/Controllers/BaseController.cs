@@ -31,11 +31,7 @@ namespace DACN_TanPhuNong.Controllers
                 }
             }
             base.Initialize(requestContext);
-        }//
-        // GET: /Base/
-        public ActionResult Index()
-        {
-            return View();
         }
+        
     }
 }

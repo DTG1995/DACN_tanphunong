@@ -13,6 +13,7 @@ namespace DACN_TanPhuNong.Controllers
         private db_tanphunongEntities db = new db_tanphunongEntities();
         public ActionResult Index(string s)
         {
+            ViewBag.CurrentMenu = "Home";
             string lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
            
             string tri_an = db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAn" + lang).Select(x => x.NoiDungTuyChon).FirstOrDefault()  ?? db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAn" + (lang == "vi" ? "en" : "vi")).Select(x => x.NoiDungTuyChon).FirstOrDefault();
@@ -23,18 +24,20 @@ namespace DACN_TanPhuNong.Controllers
 
         public ActionResult TriAn()
         {
+            ViewBag.CurrentMenu = "Home";
             string lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
             ViewBag.TriAn = db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAn" + lang).Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAn" + (lang == "vi" ? "en" : "vi")).Select(x => x.NoiDungTuyChon).FirstOrDefault();
             return View();
         }
 
-        public ActionResult LienHe()
-        {
-            ViewBag.CurrentMenu = "LienHe";
-            ViewBag.ContentLienHe =
-                db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHe").Select(x => x.NoiDungTuyChon).FirstOrDefault();
-            return View();
-        }
+        //public ActionResult LienHe()
+        //{
+        //    ViewBag.CurrentMenu = "LienHe";
+        //    ViewBag.CurrentMenu = "LienHe";
+        //    ViewBag.ContentLienHe =
+        //        db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHe").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+        //    return View();
+        //}
 
         public ActionResult SlideShow()
         {
@@ -54,6 +57,8 @@ namespace DACN_TanPhuNong.Controllers
 
         public ActionResult Abouts()
         {
+
+            ViewBag.CurrentMenu = "Abouts";
             string lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
             ViewBag.LichSu = db.tb_TuyChon.Where(x => x.TenTuyChon == "LichSu" + lang).Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? db.tb_TuyChon.Where(x => x.TenTuyChon == "LichSu" + (lang == "vi" ? "en" : "vi")).Select(x => x.NoiDungTuyChon).FirstOrDefault();
             ViewBag.DSQL = ViewBag.DSQL = db.tb_DoiNguQuanLy.ToList().Select(b => new tb_DoiNguQuanLy

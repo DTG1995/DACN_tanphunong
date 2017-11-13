@@ -1,4 +1,5 @@
-﻿@model DACN_TanPhuNong.Models.tb_SanPham
+﻿@using DACN_TanPhuNong.Models
+@model DACN_TanPhuNong.Models.tb_SanPham
 
 @{
     ViewBag.Title = "Details";
@@ -24,49 +25,149 @@
                 </div>
                 <div class="box-body">
                     <div>
-                        <dl class="dl-horizontal">
+                        <div class="row">
+                            <ul class="tabs">
+                                <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                            </ul>
+
+                            <div id="tab-1" class="tab-content current">
+                                @{
+                                    tb_SanPhamTrans spVi = ViewBag.SpVi;
+                                }
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                       Tên sản phẩm
+                                    </dt>
+
+                                    <dd>
+                                        @spVi.TenSanPhamTrans
+                                    </dd>
+
+                                    <dt>
+                                        Ưu điểm
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spVi.UuDienTrans)
+                                    </dd>
+
+                                    <dt>
+                                        Đặc điểm
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spVi.DacDiemTrans)
+                                    </dd>
+
+                                    <dt>
+                                        Thành phần chính
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spVi.ThanhPhanChinhTrans)
+                                    </dd>
+
+                                    <dt>
+                                        Lưu ý
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spVi.LuuYTrans)
+                                    </dd>
+
+
+
+                                    <dt>
+                                        Cách dùng
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spVi.CachDungTrans)
+                                    </dd>
+
+
+                                    <dt>
+                                        Thể loại
+                                    </dt>
+
+                                    <dd>
+                                        asdasdd
+                                    </dd>
+
+                                </dl>
+                            
+                            </div>
+                            <div id="tab-2" class="tab-content">
+                                @{
+                                    tb_SanPhamTrans spEn = ViewBag.SpEn;
+                                }
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        Name product
+                                    </dt>
+
+                                    <dd>
+                                        @spEn.TenSanPhamTrans
+                                    </dd>
+
+                                    <dt>
+                                        Advantage
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spEn.UuDienTrans)
+                                    </dd>
+
+                                    <dt>
+                                        Characteristics
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spEn.DacDiemTrans)
+                                    </dd>
+
+                                    <dt>
+                                        Main ingredient
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spEn.ThanhPhanChinhTrans)
+                                    </dd>
+
+                                    <dt>
+                                        Note
+                                    </dt>
+
+                                    <dd>
+                                       @Html.Raw(spEn.LuuYTrans)
+                                    </dd>
+
+                                    
+
+                                    <dt>
+                                        Use
+                                    </dt>
+
+                                    <dd>
+                                        @Html.Raw(spEn.CachDungTrans)
+                                    </dd>
+
+
+                                    <dt>
+                                        Category
+                                    </dt>
+
+                                    <dd>
+                                        asdasdd
+                                    </dd>
+
+                                </dl>
+                            </div>
+                            </div>
+                        <dl>
                             <dt>
-                                @Html.DisplayNameFor(model => model.TenSanPham)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.TenSanPham)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.UuDiem)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.UuDiem)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.DacDiem)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.DacDiem)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.ThanhPhanChinh)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.ThanhPhanChinh)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.LuuY)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.LuuY)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.QuyCachDongGoi)
+                                @GlobalRes.Packing
                             </dt>
 
                             <dd>
@@ -74,53 +175,19 @@
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.XuatXu)
+                                @GlobalRes.Made_in
                             </dt>
 
                             <dd>
                                 @Html.DisplayFor(model => model.XuatXu)
                             </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.CachDung)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.CachDung)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.GiaThanh)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.GiaThanh)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.TrangThai)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.TrangThai)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.tb_LoaiSP.TenLoaiSP)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.tb_LoaiSP.TenLoaiSP)
-                            </dd>
-
                         </dl>
+                            <p>
+                                @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSP }) |
+                                @Html.ActionLink("Quay lại danh sách", "Index")
+                            </p>
+                        </div>
                     </div>
-                    <p>
-                        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSP }) |
-                        @Html.ActionLink("Quay lại danh sách", "Index")
-                    </p>
-                </div>
-            </div>
         </div>
     </div>
 </section>

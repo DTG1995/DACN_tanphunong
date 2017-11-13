@@ -1,4 +1,5 @@
-﻿@model DACN_TanPhuNong.Models.tb_LoaiSP
+﻿@using DACN_TanPhuNong.Models
+@model DACN_TanPhuNong.Models.tb_LoaiSP
 
 @{
     ViewBag.Title = "Edit";
@@ -27,29 +28,55 @@
 
                     @using (Html.BeginForm())
                     {
+                        tb_LoaiSPTrans transVi = Model.tb_LoaiSPTrans.Where(x=>x.NgonNgu == "vi").FirstOrDefault();
+                        tb_LoaiSPTrans transEn = Model.tb_LoaiSPTrans.Where(x => x.NgonNgu == "en").FirstOrDefault();
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
 
                             @Html.ValidationSummary(true)
                             @Html.HiddenFor(model => model.MaLoaiSP)
+                            <div class="content">
+                                <ul class="tabs">
+                                    <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                    <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                                </ul>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.TenLoaiSP, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.TenLoaiSP, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.TenLoaiSP)
+                                <div id="tab-1" class="tab-content current">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Tên loại</label>
+                                        <div class="col-md-10">
+                                            <input name="tenVn" value="@transVi.TenLoaiSPTrans" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Mô tả</label>
+                                        <div class="col-md-10">
+                                            <input name="moTaVn" value="@transVi.MoTaTrans" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div id="tab-2" class="tab-content">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Category name</label>
+                                        <div class="col-md-10">
+                                            <input name="tenEn" value="@transEn.TenLoaiSPTrans" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Description</label>
+                                        <div class="col-md-10">
+                                            <input name="moTaEn" value="@transEn.MoTaTrans" type="text" class="form-control" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.MoTa, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.MoTa, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.MoTa)
-                                </div>
-                            </div>
-
+                           
                             <div class="form-group">
                                 @Html.LabelFor(model => model.LoaiCha, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">

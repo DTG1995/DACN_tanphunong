@@ -5,62 +5,138 @@
       <PropertyRef Name="MaBV" />
     </Key>
     <Property Name="MaBV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="LoaiBaiViet" Type="Int32" />
-    <Property Name="NgayViet" Type="DateTime" Precision="3" />
     <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="TieuDe" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="TomTat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="NguoiViet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tb_NguoiDung" Relationship="db_tanphunongModel.FK_tb_BaiViet_tb_NguoiDung" FromRole="tb_BaiViet" ToRole="tb_NguoiDung" />
+    <Property Name="NoiBo" Type="Boolean" />
+    <NavigationProperty Name="tb_NguoiDung" Relationship="Self.FK_tb_BaiViet_tb_NguoiDung" FromRole="tb_BaiViet" ToRole="tb_NguoiDung" />
+    <NavigationProperty Name="tb_BaiVietTrans" Relationship="Self.FK_tb_BaiVietTrans_tb_BaiViet" FromRole="tb_BaiViet" ToRole="tb_BaiVietTrans" />
+    <Property Name="NgayViet" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="tb_DoiTac">
+  <EntityType Name="tb_BaiVietTrans">
     <Key>
-      <PropertyRef Name="MaDT" />
+      <PropertyRef Name="MaBV" />
+      <PropertyRef Name="NgonNgu" />
     </Key>
-    <Property Name="MaDT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="WebsiteDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaBV" Type="Int32" Nullable="false" />
+    <Property Name="TieuDeTrans" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TomTatTrans" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungTrans" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgonNgu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tb_BaiViet" Relationship="Self.FK_tb_BaiVietTrans_tb_BaiViet" FromRole="tb_BaiVietTrans" ToRole="tb_BaiViet" />
+  </EntityType>
+  <EntityType Name="tb_DoiNguQL_Trans">
+    <Key>
+      <PropertyRef Name="MaQL" />
+      <PropertyRef Name="NgonNgu" />
+    </Key>
+    <Property Name="MaQL" Type="Int32" Nullable="false" />
+    <Property Name="NgonNgu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenNguoiQL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ChucVu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CauNoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_DoiNguQuanLy" Relationship="Self.FK_tb_DoiNguQL_Trans_tb_DoiNguQuanLy" FromRole="tb_DoiNguQL_Trans" ToRole="tb_DoiNguQuanLy" />
+  </EntityType>
+  <EntityType Name="tb_DoiNguQuanLy">
+    <Key>
+      <PropertyRef Name="MaQL" />
+    </Key>
+    <Property Name="MaQL" Type="Int32" Nullable="false" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThuBac" Type="Int32" />
+    <NavigationProperty Name="tb_DoiNguQL_Trans" Relationship="Self.FK_tb_DoiNguQL_Trans_tb_DoiNguQuanLy" FromRole="tb_DoiNguQuanLy" ToRole="tb_DoiNguQL_Trans" />
   </EntityType>
   <EntityType Name="tb_LoaiSP">
     <Key>
       <PropertyRef Name="MaLoaiSP" />
     </Key>
     <Property Name="MaLoaiSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenLoaiSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="LoaiCha" Type="Int32" />
     <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="NguoiThem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tb_LoaiSP1" Relationship="Self.FK_tb_LoaiSP_tb_LoaiSP" FromRole="tb_LoaiSP" ToRole="tb_LoaiSP1" />
     <NavigationProperty Name="tb_LoaiSP2" Relationship="Self.FK_tb_LoaiSP_tb_LoaiSP" FromRole="tb_LoaiSP1" ToRole="tb_LoaiSP" />
+    <NavigationProperty Name="tb_NguoiDung" Relationship="Self.FK_tb_LoaiSP_tb_NguoiDung" FromRole="tb_LoaiSP" ToRole="tb_NguoiDung" />
+    <NavigationProperty Name="tb_LoaiSPTrans" Relationship="Self.FK_tb_LoaiSPTrans_tb_LoaiSP" FromRole="tb_LoaiSP" ToRole="tb_LoaiSPTrans" />
     <NavigationProperty Name="tb_SanPham" Relationship="Self.FK_tb_SanPham_tb_LoaiSP" FromRole="tb_LoaiSP" ToRole="tb_SanPham" />
-    <Property Name="NguoiThem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tb_NguoiDung" Relationship="db_tanphunongModel.FK_tb_LoaiSP_tb_NguoiDung" FromRole="tb_LoaiSP" ToRole="tb_NguoiDung" />
+  </EntityType>
+  <EntityType Name="tb_LoaiSPTrans">
+    <Key>
+      <PropertyRef Name="MaLoaiSP" />
+      <PropertyRef Name="NgonNgu" />
+    </Key>
+    <Property Name="MaLoaiSP" Type="Int32" Nullable="false" />
+    <Property Name="TenLoaiSPTrans" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTaTrans" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NgonNgu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tb_LoaiSP" Relationship="Self.FK_tb_LoaiSPTrans_tb_LoaiSP" FromRole="tb_LoaiSPTrans" ToRole="tb_LoaiSP" />
+  </EntityType>
+  <EntityType Name="tb_NguoiDung">
+    <Key>
+      <PropertyRef Name="TenDangNhap" />
+    </Key>
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="LoaiND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ThoiGianDNCuoi" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_BaiViet" Relationship="Self.FK_tb_BaiViet_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_BaiViet" />
+    <NavigationProperty Name="tb_LoaiSP" Relationship="Self.FK_tb_LoaiSP_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_LoaiSP" />
+    <NavigationProperty Name="tb_SanPham" Relationship="Self.FK_tb_SanPham_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_SanPham" />
+  </EntityType>
+  <EntityType Name="tb_NhatKy">
+    <Key>
+      <PropertyRef Name="MaNK" />
+    </Key>
+    <Property Name="MaNK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NguoiDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DoiTuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ThaoTac" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MaDoiTuong" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tb_PhanHoi">
+    <Key>
+      <PropertyRef Name="MaPH" />
+    </Key>
+    <Property Name="MaPH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThai" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="tb_SanPham">
     <Key>
       <PropertyRef Name="MaSP" />
     </Key>
     <Property Name="MaSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenSanPham" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="UuDiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="DacDiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ThanhPhanChinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="LuuY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="QuyCachDongGoi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="XuatXu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="CachDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QuyCachDongGoi" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="XuatXu" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
     <Property Name="GiaThanh" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="TrangThai" Type="Boolean" />
     <Property Name="MaLoai" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tb_LoaiSP" Relationship="Self.FK_tb_SanPham_tb_LoaiSP" FromRole="tb_SanPham" ToRole="tb_LoaiSP" />
-    <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NguoiThem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tb_NguoiDung" Relationship="db_tanphunongModel.FK_tb_SanPham_tb_NguoiDung" FromRole="tb_SanPham" ToRole="tb_NguoiDung" />
+    <NavigationProperty Name="tb_LoaiSP" Relationship="Self.FK_tb_SanPham_tb_LoaiSP" FromRole="tb_SanPham" ToRole="tb_LoaiSP" />
+    <NavigationProperty Name="tb_NguoiDung" Relationship="Self.FK_tb_SanPham_tb_NguoiDung" FromRole="tb_SanPham" ToRole="tb_NguoiDung" />
+    <NavigationProperty Name="tb_SanPhamTrans" Relationship="Self.FK_tb_SanPhamTrans_tb_SanPham" FromRole="tb_SanPham" ToRole="tb_SanPhamTrans" />
+  </EntityType>
+  <EntityType Name="tb_SanPhamTrans">
+    <Key>
+      <PropertyRef Name="MaSP" />
+      <PropertyRef Name="NgonNgu" />
+    </Key>
+    <Property Name="MaSP" Type="Int32" Nullable="false" />
+    <Property Name="TenSanPhamTrans" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="UuDienTrans" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DacDiemTrans" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThanhPhanChinhTrans" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LuuYTrans" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QuyCachDongGoiTrans" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="CachDungTrans" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgonNgu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tb_SanPham" Relationship="Self.FK_tb_SanPhamTrans_tb_SanPham" FromRole="tb_SanPhamTrans" ToRole="tb_SanPham" />
   </EntityType>
   <EntityType Name="tb_TuyChon">
     <Key>
@@ -69,18 +145,44 @@
     <Property Name="MaTuyChon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenTuyChon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="NoiDungTuyChon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Nhom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="tb_VanPhong">
-    <Key>
-      <PropertyRef Name="MaVP" />
-    </Key>
-    <Property Name="MaVP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TenVP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="ChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
+  <Association Name="FK_tb_BaiViet_tb_NguoiDung">
+    <End Role="tb_NguoiDung" Type="Self.tb_NguoiDung" Multiplicity="0..1" />
+    <End Role="tb_BaiViet" Type="Self.tb_BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_NguoiDung">
+        <PropertyRef Name="TenDangNhap" />
+      </Principal>
+      <Dependent Role="tb_BaiViet">
+        <PropertyRef Name="NguoiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_BaiVietTrans_tb_BaiViet">
+    <End Role="tb_BaiViet" Type="Self.tb_BaiViet" Multiplicity="1" />
+    <End Role="tb_BaiVietTrans" Type="Self.tb_BaiVietTrans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_BaiViet">
+        <PropertyRef Name="MaBV" />
+      </Principal>
+      <Dependent Role="tb_BaiVietTrans">
+        <PropertyRef Name="MaBV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_DoiNguQL_Trans_tb_DoiNguQuanLy">
+    <End Role="tb_DoiNguQuanLy" Type="Self.tb_DoiNguQuanLy" Multiplicity="1" />
+    <End Role="tb_DoiNguQL_Trans" Type="Self.tb_DoiNguQL_Trans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DoiNguQuanLy">
+        <PropertyRef Name="MaQL" />
+      </Principal>
+      <Dependent Role="tb_DoiNguQL_Trans">
+        <PropertyRef Name="MaQL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tb_LoaiSP_tb_LoaiSP">
     <End Role="tb_LoaiSP" Type="Self.tb_LoaiSP" Multiplicity="0..1" />
     <End Role="tb_LoaiSP1" Type="Self.tb_LoaiSP" Multiplicity="*" />
@@ -90,6 +192,30 @@
       </Principal>
       <Dependent Role="tb_LoaiSP1">
         <PropertyRef Name="LoaiCha" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_LoaiSP_tb_NguoiDung">
+    <End Role="tb_NguoiDung" Type="Self.tb_NguoiDung" Multiplicity="0..1" />
+    <End Role="tb_LoaiSP" Type="Self.tb_LoaiSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_NguoiDung">
+        <PropertyRef Name="TenDangNhap" />
+      </Principal>
+      <Dependent Role="tb_LoaiSP">
+        <PropertyRef Name="NguoiThem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_LoaiSPTrans_tb_LoaiSP">
+    <End Role="tb_LoaiSP" Type="Self.tb_LoaiSP" Multiplicity="1" />
+    <End Role="tb_LoaiSPTrans" Type="Self.tb_LoaiSPTrans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_LoaiSP">
+        <PropertyRef Name="MaLoaiSP" />
+      </Principal>
+      <Dependent Role="tb_LoaiSPTrans">
+        <PropertyRef Name="MaLoaiSP" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -105,86 +231,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="db_tanphunongEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="tb_BaiViet" EntityType="Self.tb_BaiViet" />
-    <EntitySet Name="tb_DoiTac" EntityType="Self.tb_DoiTac" />
-    <EntitySet Name="tb_LoaiSP" EntityType="Self.tb_LoaiSP" />
-    <EntitySet Name="tb_SanPham" EntityType="Self.tb_SanPham" />
-    <EntitySet Name="tb_TuyChon" EntityType="Self.tb_TuyChon" />
-    <EntitySet Name="tb_VanPhong" EntityType="Self.tb_VanPhong" />
-    <AssociationSet Name="FK_tb_LoaiSP_tb_LoaiSP" Association="Self.FK_tb_LoaiSP_tb_LoaiSP">
-      <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
-      <End Role="tb_LoaiSP1" EntitySet="tb_LoaiSP" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tb_SanPham_tb_LoaiSP" Association="Self.FK_tb_SanPham_tb_LoaiSP">
-      <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
-      <End Role="tb_SanPham" EntitySet="tb_SanPham" />
-    </AssociationSet>
-    <EntitySet Name="tb_NhatKy" EntityType="db_tanphunongModel.tb_NhatKy" />
-    <EntitySet Name="tb_NguoiDung" EntityType="db_tanphunongModel.tb_NguoiDung" />
-    <AssociationSet Name="FK_tb_BaiViet_tb_NguoiDung" Association="db_tanphunongModel.FK_tb_BaiViet_tb_NguoiDung">
-      <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
-      <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tb_LoaiSP_tb_NguoiDung" Association="db_tanphunongModel.FK_tb_LoaiSP_tb_NguoiDung">
-      <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
-      <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tb_SanPham_tb_NguoiDung" Association="db_tanphunongModel.FK_tb_SanPham_tb_NguoiDung">
-      <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
-      <End Role="tb_SanPham" EntitySet="tb_SanPham" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="tb_NhatKy">
-    <Key>
-      <PropertyRef Name="MaNK" />
-    </Key>
-    <Property Name="MaNK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NguoiDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DoiTuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ThaoTac" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="MaDoiTuong" Type="Int32" />
-  </EntityType>
-  <EntityType Name="tb_NguoiDung">
-    <Key>
-      <PropertyRef Name="TenDangNhap" />
-    </Key>
-    <Property Name="TenDangNhap" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="TrangThai" Type="Boolean" />
-    <Property Name="LoaiND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ThoiGianDNCuoi" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="tb_BaiViet" Relationship="db_tanphunongModel.FK_tb_BaiViet_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_BaiViet" />
-    <NavigationProperty Name="tb_LoaiSP" Relationship="db_tanphunongModel.FK_tb_LoaiSP_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_LoaiSP" />
-    <NavigationProperty Name="tb_SanPham" Relationship="db_tanphunongModel.FK_tb_SanPham_tb_NguoiDung" FromRole="tb_NguoiDung" ToRole="tb_SanPham" />
-  </EntityType>
-  <Association Name="FK_tb_BaiViet_tb_NguoiDung">
-    <End Type="db_tanphunongModel.tb_NguoiDung" Role="tb_NguoiDung" Multiplicity="0..1" />
-    <End Type="db_tanphunongModel.tb_BaiViet" Role="tb_BaiViet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tb_NguoiDung">
-        <PropertyRef Name="TenDangNhap" />
-      </Principal>
-      <Dependent Role="tb_BaiViet">
-        <PropertyRef Name="NguoiViet" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tb_LoaiSP_tb_NguoiDung">
-    <End Type="db_tanphunongModel.tb_NguoiDung" Role="tb_NguoiDung" Multiplicity="0..1" />
-    <End Type="db_tanphunongModel.tb_LoaiSP" Role="tb_LoaiSP" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tb_NguoiDung">
-        <PropertyRef Name="TenDangNhap" />
-      </Principal>
-      <Dependent Role="tb_LoaiSP">
-        <PropertyRef Name="NguoiThem" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tb_SanPham_tb_NguoiDung">
-    <End Type="db_tanphunongModel.tb_NguoiDung" Role="tb_NguoiDung" Multiplicity="0..1" />
-    <End Type="db_tanphunongModel.tb_SanPham" Role="tb_SanPham" Multiplicity="*" />
+    <End Role="tb_NguoiDung" Type="Self.tb_NguoiDung" Multiplicity="0..1" />
+    <End Role="tb_SanPham" Type="Self.tb_SanPham" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tb_NguoiDung">
         <PropertyRef Name="TenDangNhap" />
@@ -194,4 +243,75 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tb_SanPhamTrans_tb_SanPham">
+    <End Role="tb_SanPham" Type="Self.tb_SanPham" Multiplicity="1" />
+    <End Role="tb_SanPhamTrans" Type="Self.tb_SanPhamTrans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="tb_SanPhamTrans">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_tanphunongEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_BaiViet" EntityType="Self.tb_BaiViet" />
+    <EntitySet Name="tb_BaiVietTrans" EntityType="Self.tb_BaiVietTrans" />
+    <EntitySet Name="tb_DoiNguQL_Trans" EntityType="Self.tb_DoiNguQL_Trans" />
+    <EntitySet Name="tb_DoiNguQuanLy" EntityType="Self.tb_DoiNguQuanLy" />
+    <EntitySet Name="tb_LoaiSP" EntityType="Self.tb_LoaiSP" />
+    <EntitySet Name="tb_LoaiSPTrans" EntityType="Self.tb_LoaiSPTrans" />
+    <EntitySet Name="tb_NguoiDung" EntityType="Self.tb_NguoiDung" />
+    <EntitySet Name="tb_NhatKy" EntityType="Self.tb_NhatKy" />
+    <EntitySet Name="tb_PhanHoi" EntityType="Self.tb_PhanHoi" />
+    <EntitySet Name="tb_SanPham" EntityType="Self.tb_SanPham" />
+    <EntitySet Name="tb_SanPhamTrans" EntityType="Self.tb_SanPhamTrans" />
+    <EntitySet Name="tb_TuyChon" EntityType="Self.tb_TuyChon" />
+    <AssociationSet Name="FK_tb_BaiViet_tb_NguoiDung" Association="Self.FK_tb_BaiViet_tb_NguoiDung">
+      <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+      <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_BaiVietTrans_tb_BaiViet" Association="Self.FK_tb_BaiVietTrans_tb_BaiViet">
+      <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
+      <End Role="tb_BaiVietTrans" EntitySet="tb_BaiVietTrans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_DoiNguQL_Trans_tb_DoiNguQuanLy" Association="Self.FK_tb_DoiNguQL_Trans_tb_DoiNguQuanLy">
+      <End Role="tb_DoiNguQuanLy" EntitySet="tb_DoiNguQuanLy" />
+      <End Role="tb_DoiNguQL_Trans" EntitySet="tb_DoiNguQL_Trans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_LoaiSP_tb_LoaiSP" Association="Self.FK_tb_LoaiSP_tb_LoaiSP">
+      <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
+      <End Role="tb_LoaiSP1" EntitySet="tb_LoaiSP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_LoaiSP_tb_NguoiDung" Association="Self.FK_tb_LoaiSP_tb_NguoiDung">
+      <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+      <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_LoaiSPTrans_tb_LoaiSP" Association="Self.FK_tb_LoaiSPTrans_tb_LoaiSP">
+      <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
+      <End Role="tb_LoaiSPTrans" EntitySet="tb_LoaiSPTrans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_SanPham_tb_LoaiSP" Association="Self.FK_tb_SanPham_tb_LoaiSP">
+      <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
+      <End Role="tb_SanPham" EntitySet="tb_SanPham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_SanPham_tb_NguoiDung" Association="Self.FK_tb_SanPham_tb_NguoiDung">
+      <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
+      <End Role="tb_SanPham" EntitySet="tb_SanPham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_SanPhamTrans_tb_SanPham" Association="Self.FK_tb_SanPhamTrans_tb_SanPham">
+      <End Role="tb_SanPham" EntitySet="tb_SanPham" />
+      <End Role="tb_SanPhamTrans" EntitySet="tb_SanPhamTrans" />
+    </AssociationSet>
+    <EntitySet Name="tb_DoiTac" EntityType="db_tanphunongModel.tb_DoiTac" />
+  </EntityContainer>
+  <EntityType Name="tb_DoiTac">
+    <Key>
+      <PropertyRef Name="MaDT" />
+    </Key>
+    <Property Name="MaDT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

@@ -1,0 +1,5 @@
+﻿@model string[]
+<div class="owl-slide">
+    <img src="@(!string.IsNullOrEmpty(Model[0])?Url.Content(Model[0]):"#")" />
+   
+</div>

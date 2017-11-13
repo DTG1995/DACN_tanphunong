@@ -13,12 +13,14 @@ namespace DACN_TanPhuNong.Controllers
         [HttpGet]
         public ActionResult GuiPhanHoi()
         {
+            ViewBag.CurrentMenu = "PhanHoi";
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult GuiPhanHoi(tb_PhanHoi phanhoi)
         {
+            ViewBag.CurrentMenu = "PhanHoi";
             if (ModelState.IsValid)
             {
                 phanhoi.TrangThai = 0;

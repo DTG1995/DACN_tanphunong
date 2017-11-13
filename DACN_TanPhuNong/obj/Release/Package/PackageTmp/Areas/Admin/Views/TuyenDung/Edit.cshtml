@@ -1,19 +1,20 @@
 ﻿@model DACN_TanPhuNong.Models.tb_BaiViet
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = @GlobalRes.Edit;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var bvVn = Model.tb_BaiVietTrans.Where(x => x.NgonNgu == "vi").FirstOrDefault();
+    var bvEn = Model.tb_BaiVietTrans.Where(x => x.NgonNgu == "en").FirstOrDefault();
 }
 
 <section class="content-header">
     <h1>
-        Tuyển dụng
-        <small>Sửa tuyển dụng</small>
+        @GlobalRes.Careers
+        <small>@GlobalRes.List</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
-        <li><a href="@Url.Action("Index")"> Tuyển dụng</a></li>
-        <li><a class="active">Sửa tuyển dụng</a></li>
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i>@GlobalRes.Admin</a></li>
+        <li><a class="active">@GlobalRes.Careers</a></li>
     </ol>
 </section>
 <section class="content">
@@ -21,76 +22,106 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Sửa tuyển dụng</h3>
+                    <h3 class="box-title">@GlobalRes.Edit</h3>
                 </div>
                 <div class="box-body">
-                    @using (Html.BeginForm())
+
+                    @using (Html.BeginForm(FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                            <h4>tb_BaiViet</h4>
-                            <hr/>
                             @Html.ValidationSummary(true)
-                            @Html.HiddenFor(model => model.MaBV)
-
+                            @Html.HiddenFor(model=>model.MaBV)
                             <div class="form-group">
-                                @Html.LabelFor(model => model.TieuDe, new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.TieuDe, new {@class = "form-control", style = "font-weight: bold"})
-                                    @Html.ValidationMessageFor(model => model.TieuDe)
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.HinhAnh, new {@class = "control-label col-md-2"})
+                                @Html.LabelFor(model => model.HinhAnh, new { @class = "control-label col-md-2" })
                                 <div class="col-md-8">
-                                    @Html.TextBoxFor(model => model.HinhAnh, new {@class = "form-control"})
+                                    @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.HinhAnh)
                                 </div>
                                 <div class="col-md-2">
-                                    <button type="button" onclick=" chosseImage('HinhAnh') " class="btn btn-primary">Chọn hình</button>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.TomTat, new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.TomTat, new {@class = "form-control", rows = 5, style = "resize: none; font-weight: bold"})
-                                    @Html.ValidationMessageFor(model => model.TomTat)
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.NoiDung, new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.NoiDung)
-                                    @Html.ValidationMessageFor(model => model.NoiDung)
+                                    <button type="button" onclick="chosseImage('HinhAnh')"  class="btn btn-primary">Chọn hình</button>
                                 </div>
                             </div>
 
+                            <ul class="tabs">
+                                <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                            </ul>
+
+                            <div id="tab-1" class="tab-content current">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Tiêu đề</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="TieuDeVn" id="TieuDeVn" value="@bvVn.TieuDeTrans" style="font-weight:bold;" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Tóm tắt</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="TomTatVn" id="TomTatVn">@bvVn.TomTatTrans</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Nội dung</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="NoiDungVn" id="NoiDungVn">@bvVn.NoiDungTrans</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-content">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Title</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="TieuDeEn" value="@bvEn.TieuDeTrans" id="TieuDeEn" style="font-weight:bold;" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Summary</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="TomTatEn" id="TomTatEn">@bvEn.TomTatTrans</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Content</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="NoiDungEn" id="NoiDungEn">@bvEn.NoiDungTrans</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Lưu" class="btn btn-default"/>
+                                    <input type="submit" value="@GlobalRes.Edit" class="btn btn-default" />
                                 </div>
                             </div>
                         </div>
                     }
 
-
                     <div>
-                        @Html.ActionLink("Quay lại danh sách", "Index")
+                        @Html.ActionLink(@GlobalRes.back_to_list, "Index")
                     </div>
                 </div>
+                <!-- /.box-body -->
             </div>
+            <!-- /.box -->
         </div>
+        <!-- /.col -->
     </div>
+    <!-- /.row -->
 </section>
 @Scripts.Render("~/Scripts/admin/ckeditor/ckeditor.js")
 <script>
-    CKEDITOR.replace("NoiDung", {
+    CKEDITOR.replace("NoiDungEn", {
+        filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+        filebrowserWindowWidth: '750',
+        filebrowserWindowHeight: '600'
+    });
+    CKEDITOR.replace("NoiDungVn", {
         filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
         filebrowserWindowWidth: '750',
         filebrowserWindowHeight: '600'
     });
 </script>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

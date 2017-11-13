@@ -1,0 +1,135 @@
+﻿@model DACN_TanPhuNong.Models.tb_DoiNguQuanLy
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @GlobalRes.Team_Manager
+        <small>@GlobalRes.Add_new</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i>@GlobalRes.Admin</a></li>
+        <li><a href="@Url.Action("Index")"> @GlobalRes.Team_Manager</a></li>
+        <li><a class="active">@GlobalRes.Add_new</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@GlobalRes.Add_new</h3>
+                </div>
+                <div class="box-body">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>tb_DoiNguQuanLy</h4>
+                            <hr />
+                            @Html.ValidationSummary(true)
+
+                            
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HinhAnh, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.HinhAnh)
+                                    @Html.ValidationMessageFor(model => model.HinhAnh)
+                                </div>
+                            </div>
+                            <div class="row" style="margin:5px;">
+
+                                <ul class="tabs">
+                                    <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                    <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                                </ul>
+
+                                <div id="tab-1" class="tab-content current">
+                                   <div>
+                                       <div class="form-group">
+                                           <label class="control-label col-md-2">Tên người quản lý</label> 
+                                           <div class="col-md-10">
+                                               <input type="text" name="TenNguoiQLVn" class="form-control" />
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           <label class="control-label col-md-2">Chức Vụ</label>
+                                           <div class="col-md-10">
+                                               <input type="text" name="ChucVuVn" class="form-control" />
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           <label class="control-label col-md-2">Câu nói hay</label>
+                                           <div class="col-md-10">
+                                               <input type="text" name="CauNoiVn" class="form-control" />
+                                           </div>
+                                       </div>
+                                       <div class="form-group">
+                                           <label class="control-label col-md-2">Mô tả</label>
+                                           <div class="col-md-10">
+                                               <input type="text" name="MoTaVn" class="form-control" />
+                                           </div>
+                                       </div>
+
+                                   </div>
+
+
+
+                                </div>
+                                <div id="tab-2" class="tab-content">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Manager Name</label>
+                                        <div class="col-md-10">
+                                            <input type="text" name="TenNguoiQLEn" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">regency</label>
+                                        <div class="col-md-10">
+                                            <input type="text" name="ChucVuEn" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Said</label>
+                                        <div class="col-md-10">
+                                            <input type="text" name="CauNoiEn" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Description</label>
+                                        <div class="col-md-10">
+                                            <input type="text" name="MoTaEn" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ThuBac, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ThuBac)
+                                    @Html.ValidationMessageFor(model => model.ThuBac)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>

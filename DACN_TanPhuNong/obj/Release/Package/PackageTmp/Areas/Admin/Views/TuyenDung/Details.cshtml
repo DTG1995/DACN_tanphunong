@@ -1,18 +1,19 @@
 ﻿@model DACN_TanPhuNong.Models.tb_BaiViet
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @GlobalRes.Detail;
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var bvVn = Model.tb_BaiVietTrans.Where(t => t.NgonNgu == "vi").FirstOrDefault();
+    var bvEn = Model.tb_BaiVietTrans.Where(t => t.NgonNgu == "en").FirstOrDefault();
 }
 <section class="content-header">
     <h1>
-        Tuyển dụng
-        <small>Chi tiết tuyển dụng</small>
+        @GlobalRes.Careers
+        <small>@GlobalRes.Detail</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
-        <li><a href="@Url.Action("Index")"> Tuyển dụng</a></li>
-        <li><a class="active">Chi tiết tuyển dụng</a></li>
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i>@GlobalRes.Admin</a></li>
+        <li><a class="active">@GlobalRes.Careers</a></li>
     </ol>
 </section>
 <section class="content">
@@ -20,43 +21,86 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Chi tiết tuyển dụng</h3>
+                    <h3 class="box-title">@GlobalRes.Detail</h3>
                 </div>
                 <div class="box-body">
-                    <div>
+
+                    <img height="350px" style="margin:5px auto;" src="@Model.HinhAnh" />
+
+                    <ul class="tabs">
+                        <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                        <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                    </ul>
+
+                    <div id="tab-1" class="tab-content current">
                         <dl class="dl-horizontal">
                             <dt>
-                                @Html.DisplayNameFor(model => model.NoiDung)
+                                Tiêu đề
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.NoiDung)
+                                @bvVn.TieuDeTrans
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.NgayViet)
+                                Tóm tắt
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.NgayViet)
+                                @Html.Raw( bvVn.TomTatTrans.Replace("\r\n","<br/>"))
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.HinhAnh)
+                                Nội dung
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.HinhAnh)
+                                @Html.Raw(bvVn.NoiDungTrans)
                             </dd>
 
                         </dl>
                     </div>
-                    <p>
-                        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaBV }) |
-                        @Html.ActionLink("Quay lại danh sách", "Index")
-                    </p>
-                </div>
+                    <div id="tab-2" class="tab-content">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Tiêu đề
+                            </dt>
+
+                            <dd>
+                                @bvEn.TieuDeTrans
+                            </dd>
+
+                            <dt>
+                                Tóm tắt
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(bvEn.TomTatTrans.Replace("\r\n", "<br/>"))
+                            </dd>
+
+                            <dt>
+                                Nội dung
+                            </dt>
+
+                            <dd>
+                                @Html.Raw(bvEn.NoiDungTrans)
+                            </dd>
+
+                        </dl>
+                    </div>
+
+
+
+                        <div>
+                            @Html.ActionLink(GlobalRes.Edit, "Edit", new { id = Model.MaBV }) |
+                            @Html.ActionLink(@GlobalRes.back_to_list, "Index")
+                        </div>
+</div>
+                <!-- /.box-body -->
             </div>
+            <!-- /.box -->
         </div>
+        <!-- /.col -->
     </div>
+    <!-- /.row -->
 </section>

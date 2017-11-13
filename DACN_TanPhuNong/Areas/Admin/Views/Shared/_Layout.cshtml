@@ -108,17 +108,28 @@
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
-                            @*<div class="row">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </div>*@
+                          <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <style>
+                                    .language{
+                                        list-style:none;
+                                    }
+                                    .language li{
+                                        display:inline;
+                                    }
+                                        .language li>a>img{
+                                            width:40px;
+                                            height:30px;
+                                        }
+                                </style>
+                                <ul class="language">
+                                    
+                                    @Url.LangSwithcher(ViewContext.RouteData, "vi")
+                                    @Url.LangSwithcher(ViewContext.RouteData, "en")
+                                </ul>
+                            </div>
+                            
+                        </div>
                             <!-- /.row -->
                         </li>
                         <!-- Menu Footer-->

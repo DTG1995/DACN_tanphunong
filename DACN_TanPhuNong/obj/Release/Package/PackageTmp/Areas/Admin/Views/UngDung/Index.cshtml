@@ -4,11 +4,11 @@
 }
 
 <section class="content-header">
-    <h1>Trang Chủ
+    <h1>@GlobalRes.Home
         <small>tùy chỉnh trang chủ</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Trang chủ</a></li>
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> @GlobalRes.Home</a></li>
         <li class="active">Quản trị</li>
     </ol>
 </section>
@@ -75,21 +75,43 @@
             <div class="box box-solid">
                 <div class="box-header with-border" data-id="2" style="cursor: pointer;">
                     <i class="fa fa-paper-plane-o"></i>
-                    <h3 class="box-title">Nội dung trang chủ</h3>
+                    <h3 class="box-title">@GlobalRes.Grateful_Post</h3>
                     <b class="pull-right"><i class="fa fa-angle-down "></i></b>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body" data-id="2">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <textarea name="txtContentHome" id="txtContentHome">@ViewBag.ContentHome</textarea>
+                    <form class="form-horizontal" action="@Url.Action("TriAn","Admin")" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="content">
+                            <ul class="tabs">
+                                <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                            </ul>
+
+                            <div id="tab-1" class="tab-content current">
+                                <div class="form-group">
+                                    <label class="col-sm-12 control-label" for="triAnVi">Bài viết tri ân </label>
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control" name="triAnVi" id="triAnVi">@ViewBag.TriAnVi</textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="tab-2" class="tab-content">
+                                <div class="form-group">
+                                    <label class="col-sm-12 control-label" for="triAnEn">Grateful Content </label>
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control" name="triAnEn" id="triAnEn">@ViewBag.TriAnEn</textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
+                        
+
                         <div class="form-group pull-right">
                             <div class="col-sm-12">
-                                <button onclick="SaveContent()" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
                             </div>
                         </div>
                     </form>
@@ -98,7 +120,7 @@
             </div>
         </section>
     </div>
-    <div class="row">
+    @*<div class="row">
         <section class="content" style="min-height: unset; padding-bottom: 0px;">
             <div class="box box-solid">
                 <div class="box-header with-border" data-id="3" style="cursor: pointer;">
@@ -142,7 +164,7 @@
                 <!-- /.box-body -->
             </div>
         </section>
-    </div>
+    </div>*@
     
 </section>
 <!-- CK Editor -->
@@ -150,75 +172,32 @@
 
 <script>
     $(function () {
-        CKEDITOR.replace("txtContentHome", {
+        CKEDITOR.replace("triAnVi", {
             filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
             filebrowserWindowWidth: '750',
             filebrowserWindowHeight: '600'
         });
-        var config = {};
-        config.toolbarGroups = [
-                { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
-                { name: 'forms', groups: ['forms'] },
-                { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
-                { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
-                { name: 'insert', groups: ['insert'] },
-                { name: 'links', groups: ['links'] },
-                { name: 'styles', groups: ['styles'] },
-                { name: 'colors', groups: ['colors'] },
-                { name: 'tools', groups: ['tools'] },
-                { name: 'others', groups: ['others'] },
-                { name: 'document', groups: ['document', 'mode', 'doctools'] }
-        ];
-
-        config.removeButtons = 'Cut,Copy,Paste,Templates,Save,NewPage,Preview,Print,SelectAll,Redo,Undo,PasteText,PasteFromWord,Find,Scayt,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,ImageButton,HiddenField,Button,BidiRtl,BidiLtr,Language,Smiley,PageBreak,Anchor,ShowBlocks';
-
-        CKEDITOR.replace("txtVeChungToi", config);
-        CKEDITOR.replace("txtLienHe", config);
-        CKEDITOR.replace("txtSanPham", config);
+        CKEDITOR.replace("triAnEn", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+        });
+      
+        
         jQuery(".box-header").click(function () {
             var btnId = $(this).data('id');
             jQuery('.box-body[data-id=' + btnId + ']').toggle();
             if ($('.box-body[data-id=' + btnId + ']').css('display') == 'none') {
                 $(this).children().next('b').html("<i class='fa fa-angle-left '></i>");
             }else $(this).children().next('b').html("<i class='fa fa-angle-down '></i>");
+        
         });
+
+        
     });
+   
+    
 
-
-
-    function SaveFooter() {
-        var txtVeChungToi = CKEDITOR.instances['txtVeChungToi'].getData();
-        var txtLienHe = CKEDITOR.instances['txtLienHe'].getData();
-        var txtSanPham = CKEDITOR.instances['txtSanPham'].getData();
-        $.ajax({
-            type: 'POST',
-            url: "@Url.Action("SaveFooter","UngDung")",
-            data: {
-                txtVeChungToi: txtVeChungToi,
-                txtLienHe: txtLienHe,
-                txtSanPham: txtSanPham
-            },
-            dataType: "text",
-            success: function(resultData) {
-                alert(resultData);
-            }
-        });
-    }
-
-    function SaveContent() {
-        var txtContentHome = CKEDITOR.instances['txtContentHome'].getData();
-        $.ajax({
-            type: 'POST',
-            url: "@Url.Action("SaveContentHome","UngDung")",
-            data: {
-                txtContentHome: txtContentHome
-            },
-            dataType: "text",
-            success: function(resultData) {
-                alert(resultData);
-            }
-        });
-    }
     function SaveHeader() {
         var NameEnterprise = $("#txtTenDN").val();
         var moTaDN = $("#txtMoTa").val();
@@ -244,9 +223,8 @@
     });
     }
     function ThemSlideShow(i) {
-        $("#inputSlideShow").append(`
-            <div class="col-md-10" >
-                <input type="text" value="" class="form-control" name="slideShow" id="HinhAnh`+i+`")"/>
+        $("#inputSlideShow").append(`<div class="col-md-10" >
+        <input type="text" value="" class="form-control" name="slideShow" id="HinhAnh`+i+`")"/>
             </div>
             <div class="col-md-2">
                 <button type="button" onclick="chosseImage('HinhAnh`+i+`')" class=" btn btn-primary">Chọn hình</button>

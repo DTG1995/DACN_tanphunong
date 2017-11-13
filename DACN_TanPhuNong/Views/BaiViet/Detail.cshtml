@@ -1,0 +1,71 @@
+﻿@model DACN_TanPhuNong.Models.tb_BaiViet
+@{
+    var trans = Model.tb_BaiVietTrans.Where(x=>x.NgonNgu == ViewBag.Lang).FirstOrDefault();
+    ViewBag.Title =trans.TieuDeTrans ;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DateTime ngayViet = Model.NgayViet ?? new DateTime(1995, 6, 1);
+}
+<style>
+    .content-post{
+        background-color:#fff;
+        color:#000;
+        text-align:center;
+        padding:30px;
+    }
+    .created {
+        font-weight: bold;
+    }
+    .title-post {
+        width: 100%;
+        text-align: center;
+        background: #fff;
+    }
+        .created::before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 64px;
+            height: 7px;
+            margin-top: -4px;
+            background: #fff;
+            margin-right: 20px;
+        }
+
+        .created::after {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 64px;
+            height: 7px;
+            margin-top: -4px;
+            background: #fff;
+            margin-left: 20px;
+        }
+    .main-content{
+        text-align:left;
+    }
+</style>
+<div class="row" style="margin:50px">
+    <div class="container">
+        <div class="row">
+            <div class="title-post">
+                <img src="@Model.HinhAnh" style="height: 350px;width: 100%;" />
+            </div>
+            <div class="content-post">
+                <h1 class="created">@ngayViet.ToString("dd-MM-yyyy")</h1>
+                <h3 class="title-text">@trans.TieuDeTrans</h3>
+                <div class="main-content">
+                    @Html.Raw(trans.NoiDungTrans)
+                </div>
+                <div class="property">
+                    
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="fb-comments" data-width="100%" data-numposts="5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -13,6 +13,7 @@ namespace DACN_TanPhuNong.Controllers
         // GET: Danh Sahc Doi Tac
         public ActionResult DanhSachDoiTac()
         {
+            ViewBag.CurrentMenu = "DoiTac";
             return View(db.tb_DoiTac.ToList());
         }
       

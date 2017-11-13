@@ -6,13 +6,13 @@
 }
 <section class="content-header">
     <h1>
-        Sản phẩm
-        <small>thêm sản phẩm</small>
+        @GlobalRes.Products
+        <small>@GlobalRes.Add_new</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i> Quản trị</a></li>
-        <li><a href="@Url.Action("Index")"> Sản phẩm</a></li>
-        <li><a class="active">Thêm mới</a></li>
+        <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-dashboard"></i>@GlobalRes.Admin</a></li>
+        <li><a href="@Url.Action("Index")"> @GlobalRes.Products</a></li>
+        <li><a class="active">@GlobalRes.Add_new</a></li>
     </ol>
 </section>
 <section class="content">
@@ -20,68 +20,131 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Thêm mới</h3>
+                    <h3 class="box-title">@GlobalRes.Add_new</h3>
                 </div>
                 <div class="box-body">
 
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("Create", "SanPham", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
-
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true)
-                            
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.TenSanPham, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.TenSanPham, new { @class = "form-control",style="font-weight: bold" })
-                                    @Html.ValidationMessageFor(model => model.TenSanPham)
+                        <div class="form-group">
+                            <label class="control-label col-md-2">@GlobalRes.Images</label>
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control", style = "font-weight: bold", id = "HinhAnh" })
+                                @Html.ValidationMessageFor(model => model.HinhAnh)
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" onclick="chosseImage('HinhAnh')" class="btn btn-primary">Chọn hình</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <ul class="tabs">
+                                <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                            </ul>
+
+                            <div id="tab-1" class="tab-content current">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Tên sản phẩm</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" style="font-weight: bold" name="tenSPVn" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Ưu điểm</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="uuDiemVn" id="uuDiemVn" style="font-weight: bold; word-wrap: break-word; resize: none;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Đặc điểm</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="dacDiemVn" id="dacDiemVn"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Thành Phần chính</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="tpChinhVn" id="tpChinhVn"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Lưu ý</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="luuYVn" id="luuYVn"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Cách dùng</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="cachDungVn" id="cachDungVn"></textarea>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.HinhAnh, new { @class = "control-label col-md-2" })
-                                <div class="col-md-7">
-                                    @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control", style = "font-weight: bold", id = "HinhAnh" })
-                                    @Html.ValidationMessageFor(model => model.HinhAnh)
-                                </div>
-                                <div class="col-md-3">
-                                    <button type="button" onclick="chosseImage('HinhAnh')" class="btn btn-primary">Chọn hình</button>
+                            <div id="tab-2" class="tab-content">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Product Name</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" style="font-weight: bold" name="tenSPEn" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2"> Advantage</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="uuDiemEn" id="uuDiemEn" style="font-weight: bold; word-wrap: break-word; resize: none;"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Characteristics</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="dacDiemEn" id="dacDiemEn"></textarea>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Main ingredient</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="tpChinhEn" id="tpChinhEn"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2"> Note</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="luuYEn" id="luuYEn"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Use</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control" name="cachDungEn" id="cachDungEn"></textarea>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.UuDiem,new{  @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.UuDiem, new { @class = "form-control",style="font-weight: bold; word-wrap: break-word; resize: none;" })
-                                    @Html.ValidationMessageFor(model => model.UuDiem)
-                                </div>
-                            </div>
+                        </div>
+
+
+                        
+
+
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.DacDiem, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.DacDiem, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.DacDiem)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.ThanhPhanChinh, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.ThanhPhanChinh, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.ThanhPhanChinh)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LuuY, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.LuuY, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.LuuY)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.QuyCachDongGoi, new { @class = "control-label col-md-2" })
+                                <label class="control-label col-md-2">@GlobalRes.Packing</label>
                                 <div class="col-md-10">
                                     @Html.TextBoxFor(model => model.QuyCachDongGoi, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.QuyCachDongGoi)
@@ -89,39 +152,21 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.XuatXu, new { @class = "control-label col-md-2" })
+                                <label class="control-label col-md-2">@GlobalRes.Made_in</label>
                                 <div class="col-md-10">
                                     @Html.TextBoxFor(model => model.XuatXu, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.XuatXu)
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.CachDung, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextAreaFor(model => model.CachDung, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.CachDung)
-                                </div>
-                            </div>
+
+
+
+
+
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.GiaThanh, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.GiaThanh, new { @class = "form-control" , type="number"})
-                                    @Html.ValidationMessageFor(model => model.GiaThanh)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.TrangThai, new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.TrangThai)
-                                    @Html.ValidationMessageFor(model => model.TrangThai)
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.MaLoai, "Thuộc Loại", new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.MaLoai, GlobalRes.Category, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.DropDownList("MaLoai", String.Empty)
                                     @Html.ValidationMessageFor(model => model.MaLoai)
@@ -164,13 +209,17 @@
 
     config.removeButtons = 'Templates,Save,NewPage,Preview,Print,SelectAll,Redo,Undo,PasteText,PasteFromWord,Find,Scayt,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,ImageButton,HiddenField,Button,BidiRtl,BidiLtr,Language,Smiley,PageBreak,Anchor,ShowBlocks';
     config.resize_enabled = false
-    CKEDITOR.replace("DacDiem", config);
-    CKEDITOR.replace("ThanhPhanChinh", config);
-    CKEDITOR.replace("LuuY", config);
-    CKEDITOR.replace("CachDung", config);
+    CKEDITOR.replace("dacDiemVn", config);
+    CKEDITOR.replace("tpChinhVn", config);
+    CKEDITOR.replace("luuYVn", config);
+    CKEDITOR.replace("cachDungVn", config);
+    CKEDITOR.replace("dacDiemEn", config);
+    CKEDITOR.replace("tpChinhEn", config);
+    CKEDITOR.replace("luuYEn", config);
+    CKEDITOR.replace("cachDungEn", config);
 
 </script>
 
 @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+    @Scripts.Render("~/bundles/jqueryval")
+}

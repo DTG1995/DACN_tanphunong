@@ -1,49 +1,85 @@
 ﻿@using DACN_TanPhuNong.Controllers
 @model DACN_TanPhuNong.Models.tb_SanPham
-
 @{
-    ViewBag.Title = "Details";
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var spTran = Model.tb_SanPhamTrans.FirstOrDefault();
+    ViewBag.Title = spTran.TenSanPhamTrans;
 }
+<style>
+    .content-post{
+        background-color:#fff;
+        color:#000;
+        text-align:center;
+        padding:30px;
+    }
+    .created {
+        font-weight: bold;
+    }
 
-<section class="post">
-    <article>
-        <header class="entry-header">
-            <h2 class="entry-title">
-                @Model.TenSanPham
-            </h2><!-- .entry-title -->
-        </header>
-        <div class="entry-meta-bar clearfix">
-            <div class="entry-meta">
-                <span class="byline">
-                    <span class="author "><a class="url fn n" href="http://tanphunong.vn/author/tuanitpro/">@(Model.tb_NguoiDung == null ? "Nặc danh" : Model.tb_NguoiDung.TenDangNhap)</a></span>
-                </span>
-           		<span class="category"><a href="@Url.RouteUrl("LoaiSanPham", new { id = Model.tb_LoaiSP.MaLoaiSP, title = UrlEncode.ToFriendlyUrl(Model.tb_LoaiSP.TenLoaiSP) })" rel="category tag">@Model.tb_LoaiSP.TenLoaiSP</a></span>
-            </div><!-- .entry-meta -->
+        .created::before {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 64px;
+            height: 7px;
+            margin-top: -4px;
+            background: #fff;
+            margin-right: 20px;
+        }
+
+        .created::after {
+            content: "";
+            display: inline-block;
+            vertical-align: middle;
+            width: 64px;
+            height: 7px;
+            margin-top: -4px;
+            background: #fff;
+            margin-left: 20px;
+        }
+    .main-content{
+        text-align:left;
+    }
+</style>
+<div class="row" style="margin:50px">
+    <div class="container">
+        <div class="row">
+            <div class="title-post">
+                <img src="@Model.HinhAnh" style="height: 350px;" />
+            </div>
+            <div class="content-post">
+                <h3 class="title-text">@spTran.TenSanPhamTrans</h3>
+                <div class="main-content">
+                    <h5><b>@GlobalRes.uu_diem</b></h5>
+                    @Html.Raw(spTran.UuDienTrans.Replace("\r\n","<br/>"))
+                    <br />
+                    <h5><b>@GlobalRes.dac_diem</b></h5>
+                    @Html.Raw(spTran.DacDiemTrans)
+                    <br />
+                    <h5><b>@GlobalRes.thanh_phan</b></h5>
+                    @Html.Raw(spTran.ThanhPhanChinhTrans)
+                    <br />
+                    <h5><b>@GlobalRes.luu_y</b></h5>
+                    @Html.Raw(spTran.LuuYTrans)
+                    <br />
+                    <h5><b>@GlobalRes.quy_cach_dong_goi:</b></h5>@Model.QuyCachDongGoi
+                    <br />
+                    <h5><b>@GlobalRes.xuat_xu:</b></h5>@Model.XuatXu
+                    <br/>
+                    <h5><b>@GlobalRes.cach_dung</b></h5>
+                    @Html.Raw(spTran.CachDungTrans)
+                </div>
+                <div class="property">
+                    
+                </div>
+               
+            </div>
+            <div class="row">
+                <div class="fb-comments" data-width="100%" data-numposts="5"></div>
+            </div>
         </div>
-        <div class="entry-content clearfix">
-            <p>&nbsp;</p>
-            <p><img class=" size-full  aligncenter" src="@Model.HinhAnh" alt="25-5-5-bag" width="500" height="801"></p>
-            <p><strong>Ưu điểm:</strong></p>
-               @Html.Raw(Model.UuDiem.Replace("\r\n","<br/>"))
-            <p><strong>Đặc điểm:</strong></p>
-               @Html.Raw(Model.DacDiem)
-            <p><strong>Thành phần chính:</strong></p>
-                @Html.Raw(Model.ThanhPhanChinh)
-            <p><strong>Lưu ý:</strong></p>
-            @Html.Raw(Model.LuuY)
-            <p><strong>Quy cách đóng gói:&nbsp;@Model.QuyCachDongGoi</strong></p>
-            <p><strong>Xuất xứ:&nbsp;@Model.XuatXu</strong></p>
-            <p><strong>Cách dùng:</strong></p>
-            <p>&nbsp;</p>
-            @Html.Raw(Model.CachDung)
-        </div>
-
-        
-
-        <div id="comments" class="comments-area">
-        </div><!-- #comments .comments-area -->
-    </article>
-</section>
+    </div>
+</div>
 
 

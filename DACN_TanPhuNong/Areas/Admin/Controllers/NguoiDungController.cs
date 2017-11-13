@@ -52,7 +52,8 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 }
                 tb_nguoidung.LoaiND = str.Remove(str.Length -1);
             }
-            
+            MD5 md5 =MD5.Create();
+            tb_nguoidung.MatKhau = GetMd5Hash(md5, tb_nguoidung.MatKhau);
             
             if (ModelState.IsValid)
             {
@@ -88,8 +89,18 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AdminFilter(AllowPermit = "0")]
-        public ActionResult Edit([Bind(Include="TenDangNhap,MatKhau,TrangThai,LoaiND,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
+        public ActionResult Edit([Bind(Include="TenDangNhap,TrangThai,LoaiND,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
         {
+            var loaiND = Request.Params.GetValues("LoaiND");
+            if (loaiND != null)
+            {
+                string str = "";
+                for (int i = 0; i < loaiND.Count(); i++)
+                {
+                    str += loaiND[i] + ";";
+                }
+                tb_nguoidung.LoaiND = str.Remove(str.Length - 1);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(tb_nguoidung).State = EntityState.Modified;
@@ -113,6 +124,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            tb_nguoidung.TrangThai = false;
             return View(tb_nguoidung);
         }
 

@@ -9,7 +9,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/admin/bootstrap.min.css")
     <!-- Font Awesome -->
     @Styles.Render("~/Content/admin/font-awesome.min.css")
     <!--   Ionicons
@@ -37,6 +37,36 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     @RenderSection("scripts", required: false)
+    <style>
+        ul.tabs {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+            ul.tabs li {
+                background: none;
+                color: #222;
+                display: inline-block;
+                padding: 10px 15px;
+                cursor: pointer;
+            }
+
+                ul.tabs li.current {
+                    background: #a7a5a5;
+                    color: #333;
+                }
+
+        .tab-content {
+            display: none;
+            background: #a7a5a5;
+            padding: 15px;
+        }
+
+            .tab-content.current {
+                display: inherit;
+            }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 @{
@@ -78,17 +108,28 @@
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
-                            @*<div class="row">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </div>*@
+                          <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <style>
+                                    .language{
+                                        list-style:none;
+                                    }
+                                    .language li{
+                                        display:inline;
+                                    }
+                                        .language li>a>img{
+                                            width:40px;
+                                            height:30px;
+                                        }
+                                </style>
+                                <ul class="language">
+                                    
+                                    @Url.LangSwithcher(ViewContext.RouteData, "vi")
+                                    @Url.LangSwithcher(ViewContext.RouteData, "en")
+                                </ul>
+                            </div>
+                            
+                        </div>
                             <!-- /.row -->
                         </li>
                         <!-- Menu Footer-->
@@ -171,6 +212,18 @@
             retVal.focus();
         }
     }
+    $(document).ready(function () {
+
+        $('ul.tabs li').click(function () {
+            var tab_id = $(this).attr('data-tab');
+
+            $('ul.tabs li').removeClass('current');
+            $('.tab-content').removeClass('current');
+
+            $(this).addClass('current');
+            $("#" + tab_id).addClass('current');
+        });
+    });
 </script>
 </body>
 </html>

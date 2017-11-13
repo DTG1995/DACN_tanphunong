@@ -32,24 +32,50 @@
                         <div class="form-horizontal">
                             @Html.ValidationSummary(true)
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.TenLoaiSP, new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.TenLoaiSP, new{@class="form-control"})
-                                    @Html.ValidationMessageFor(model => model.TenLoaiSP)
+                            <div class="content">
+                                <ul class="tabs">
+                                    <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                    <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                                </ul>
+
+                                <div id="tab-1" class="tab-content current">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Tên loại</label>
+                                        <div class="col-md-10">
+                                            <input name="tenVn" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Mô tả</label>
+                                        <div class="col-md-10">
+                                            <input name="moTaVn" type="text" class="form-control"/>
+                                        </div>
+                                    </div>
+
+                                   
+
+                                </div>
+                                <div id="tab-2" class="tab-content">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Category name</label>
+                                        <div class="col-md-10">
+                                            <input name="tenEn" type="text" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Description</label>
+                                        <div class="col-md-10">
+                                            <input name="moTaEn" type="text" class="form-control" />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.MoTa, new {@class = "control-label col-md-2"})
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(model => model.MoTa, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.MoTa)
-                                </div>
-                            </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.LoaiCha, new {@class = "control-label col-md-2"})
+                                @Html.LabelFor(model => model.LoaiCha, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.DropDownList("LoaiCha", String.Empty)
                                     @Html.ValidationMessageFor(model => model.LoaiCha)
@@ -57,12 +83,13 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.TrangThai, new {@class = "control-label col-md-2"})
+                                @Html.LabelFor(model => model.TrangThai, new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.TrangThai)
                                     @Html.ValidationMessageFor(model => model.TrangThai)
                                 </div>
                             </div>
+                            
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">

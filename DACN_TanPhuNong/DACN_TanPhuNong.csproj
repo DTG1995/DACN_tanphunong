@@ -49,6 +49,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -179,23 +185,27 @@
       <DependentUpon>ImageBrowserCkeditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaiVietController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ConferencesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhSachQuanLyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DoiTacController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ImageVideoController.cs" />
     <Compile Include="Areas\Admin\Controllers\LanguageController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\NguoiDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhatKyController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhanHoiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongBaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\TuyenDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\UngDungController.cs" />
     <Compile Include="Common\LanguageHelper.cs" />
+    <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DoiTacHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PhanHoiHomeController.cs" />
     <Compile Include="Controllers\SanPhamHomeController.cs" />
-    <Compile Include="Controllers\TinTucHomeController.cs" />
     <Compile Include="Controllers\TuyenDungHomeController.cs" />
     <Compile Include="Controllers\UrlEncode.cs" />
     <Compile Include="Filter\AdminFilter.cs" />
@@ -284,9 +294,11 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\nivo-slider.css" />
     <Content Include="Content\owl-custom.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\owl.theme.default.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\25-5-5-bag.jpg" />
@@ -742,16 +754,6 @@
     <Content Include="Scripts\admin\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="Areas\Admin\Views\UngDung\Index.cshtml" />
     <Content Include="Areas\Admin\uploader\uploader.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\BaiViet\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\TuyenDung\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\TuyenDung\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\TuyenDung\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\TuyenDung\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\TuyenDung\Index.cshtml" />
     <Content Include="Areas\Admin\Views\NguoiDung\Create.cshtml" />
     <Content Include="Areas\Admin\Views\NguoiDung\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\NguoiDung\Details.cshtml" />
@@ -790,9 +792,42 @@
     <Content Include="Areas\Admin\Views\DanhSachQuanLy\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhSachQuanLy\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhanHoi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongBao\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongBao\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongBao\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongBao\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongBao\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TuyenDung\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Conferences\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Conferences\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Conferences\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Conferences\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Conferences\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageVideo\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageVideo\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageVideo\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageVideo\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ImageVideo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Promotions\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Promotions\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Promotions\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Promotions\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Promotions\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTac\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTac\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTac\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTac\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTac\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongBao\SetCode.cshtml" />
     <None Include="Properties\PublishProfiles\dacn_tanphunong.pubxml" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery.nivo.slider.js" />
+    <Content Include="Scripts\jquery1.10.1.js" />
     <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Web.config">
@@ -829,6 +864,12 @@
     <Content Include="Views\Shared\_MenuSP.cshtml" />
     <Content Include="Views\DoiTacHome\DanhSachDoiTac.cshtml" />
     <Content Include="Views\PhanHoiHome\GuiPhanHoi.cshtml" />
+    <Content Include="Views\SanPhamHome\getListProductsByCategory.cshtml" />
+    <Content Include="Views\BaiViet\Index.cshtml" />
+    <Content Include="Views\BaiViet\Detail.cshtml" />
+    <None Include="Properties\PublishProfiles\tanphunong.pubxml" />
+    <Content Include="Views\BaiViet\InputCodeInternal.cshtml" />
+    <Content Include="Views\BaiViet\thongBaoNoiBo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

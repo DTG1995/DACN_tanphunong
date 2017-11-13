@@ -198,7 +198,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             return View();
         }
         [AdminFilter(AllowPermit = "0")]
-        [HttpPost]
+        [HttpPost, ActionName("Abouts")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Abouts(string lichSuVi, string lichSuEn)
@@ -241,7 +241,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 db.tb_TuyChon.Add(lichSu);
                 db.SaveChanges();
             }
-            return View();
+            return RedirectToAction("Abouts");
         }
     }
 }

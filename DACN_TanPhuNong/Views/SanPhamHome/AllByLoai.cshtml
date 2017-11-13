@@ -1,8 +1,9 @@
 ﻿@using DACN_TanPhuNong.Models
+@using DACN_TanPhuNong.Controllers
 @model IEnumerable<DACN_TanPhuNong.Models.tb_SanPham>
 
 @{
-    ViewBag.Title = "AllByLoai";
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,9 +22,10 @@
     }
     .content-prpduct{
         min-height:100%;
+        margin: 0 auto;
+        background:#ffffff;
     }
     #list-product {
-        border: 2px solid #000;
         margin-bottom: 1.75rem;
       
     }
@@ -36,6 +38,7 @@
     .image {
         height:100%;
         width:auto;
+        max-width:100%
     }
 
     .overlay {
@@ -43,7 +46,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: #008CBA;
+        background-color: #989898f5;
         overflow: hidden;
         width: 0;
         height: 100%;
@@ -62,51 +65,67 @@
         overflow: hidden;
         top: 50%;
         left: 50%;
+        width:100%;
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
+    }
+    .text-uudiem p {
+        width: 100%;
+        word-break: break-all;
+        /* width: 200px; */
+        padding: 10px;
+        white-space: normal;
+        text-align:left;
+    }
+    #list-product.loading {
+        background-image: url("https://i.imgur.com/T3Ht7S3.gif");
+        background-position: center;
+        background-repeat: no-repeat;
     }
 </style>
 
 
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-        <div class="row">
-            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                <ul class="ul-product">
-                    <li><a href="@Url.RouteUrl("LoaiSanPham",new {title=ViewBag.LoaiCurrent.TenLoaiSPTrans, id = ViewBag.LoaiCurrent.MaLoaiSP})">Tất cả</a></li>
-                    @foreach (tb_LoaiSPTrans item in ViewBag.ListLSP)
-                    {
-                        <li>
-                            <a href="javascript:;" data-id="@item.MaLoaiSP" data-text="@item.TenLoaiSPTrans">@item.TenLoaiSPTrans</a>
-                        </li>
-                    }
+    <div class="container">
+        <div class="row" style="margin:auto; margin-top:10px;">
+                <label for="sel1" class="col-md-3">@GlobalRes.Category:</label>
+                <div class="col-md-8">
+                    <select class="form-control" id="categoryID" onchange="chuyenTrang()">
+                        <option value="@ViewBag.LoaiCurrent.MaLoaiSP" @(ViewBag.LoaiCurrent.MaLoaiSP == ViewBag.IDCurrent?"selected":"")>Tất cả</option>
+                        @foreach (tb_LoaiSPTrans item in ViewBag.ListLSP)
+                        {
+                            <option value="@item.MaLoaiSP" @(item.MaLoaiSP == ViewBag.IDCurrent ? "selected" : "")>
+                                @item.TenLoaiSPTrans
+                            </option>
+                        }
+
+                    </select>
+                </div>
+        </div>
+        <div class="row content-product">
+                        @*<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+            <ul class="ul-product">
+                <li><a href="@Url.RouteUrl("LoaiSanPham",new {title=ViewBag.LoaiCurrent.TenLoaiSPTrans, id = ViewBag.LoaiCurrent.MaLoaiSP})">Tất cả</a></li>
+                @foreach (tb_LoaiSPTrans item in ViewBag.ListLSP)
+                {
+                    <li>
+                        <a href="javascript:;" data-id="@item.MaLoaiSP" data-text="@item.TenLoaiSPTrans">@item.TenLoaiSPTrans</a>
+                    </li>
+                }
+
+            SanPhamDetails
+            </ul>
+        </div>*@
+                <h3 class="title-category" id="title-category" style="text-align:center;">Tất cả</h3>
+                <div class="row" id="list-product" style="min-height: 350px">
+                   
+                </div>
+                <ul class="pagination" id="mypagination">
+                    
                 </ul>
             </div>
-            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10 content-product">
-                <h3 class="title-category" style="text-align:center;">Tất cả</h3>
-                <div class="row" id="list-product" style="min-height: @(ViewBag.ListLSP.Count*64)px">
-                    @foreach (var item in Model)
-                    {
-                        tb_SanPhamTrans trans = item.tb_SanPhamTrans.FirstOrDefault();
-                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 item-product">
-                        <img src="@Url.Content(item.HinhAnh)" alt="Avatar" class="image">
-                        <a href="#" style="top: 70%;font-weight: bold;color: white;background: #524f4fc7;width: 100%;position: absolute;left: 0;height: 20%;">@trans.TenSanPhamTrans
-                        </a>
-                        <div class="overlay">
-                        <div class="text-uudiem">
-                            <p>
-                                @trans.UuDienTrans
-                            </p>
-                            <a href="@Url.RouteUrl("SanPhamDetails", new{title=trans.TenSanPhamTrans, id=trans.MaSP})" class="btn btn-custom" ></a>
-                            </div>
-                        </div>
-                    </div>
-                     }
-                </div>
-                <ul class="pagination"></ul>
-            </div>
         </div>
-    </div>
+
 </div>
 <script>
     $(document).ready(function () {
@@ -118,6 +137,40 @@
              .toggleClass("activeuudiem")
              .next();
         });
-
+        chuyenTrang();
+        $("#title-category").html($("#categoryID option:selected").text());
     });
+    
+    function chuyenTrang(page){
+        var id = $("#categoryID").val();
+        $("#title-category").html($("#categoryID option:selected").text());
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("getListProductsByCategory")",
+            data: {
+            id: id,
+            page: page
+            },
+        dataType: 'JSON',
+        beforeSend: function () {
+            $("#list-product").html("");
+            $("#list-product").addClass("loading");
+            // setting a timeout
+                    
+        },
+        success: function (data) {
+           
+            $("#mypagination").html(data[0]["pagination"]);
+            
+
+
+            $("#list-product").removeClass("loading");
+            $("#list-product").html(data[1]["listproduct"]);
+        },
+        error: function (xhr) { // if error occured
+                    
+        }
+        });
+
+    }
 </script>

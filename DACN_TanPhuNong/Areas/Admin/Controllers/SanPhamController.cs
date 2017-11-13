@@ -215,9 +215,12 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         [AdminFilter(AllowPermit = "0,1")]
         public ActionResult DeleteConfirmed(int id)
         {
+            db.tb_SanPhamTrans.RemoveRange(db.tb_SanPhamTrans.Where(t => t.MaSP == id));
+            db.SaveChanges();
+
             tb_SanPham tb_sanpham = db.tb_SanPham.Find(id);
-            tb_sanpham.TrangThai = false;
-            db.Entry(tb_sanpham).State = EntityState.Modified;
+
+            db.tb_SanPham.Remove(tb_sanpham);
             db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Sản phẩm", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Xóa sản phẩm\""  + "\"", MaDoiTuong = tb_sanpham.MaSP });
             db.SaveChanges();
             return RedirectToAction("Index");

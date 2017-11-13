@@ -1,0 +1,19 @@
+﻿@model string
+@{
+    ViewBag.Title = "TriAn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center tri-an">
+        <img src="~/images/logo-tan-phu-nong.png" width="200" height="200">
+        <h1>Tân phú nông</h1>
+        <h2>vững bước cùng nhà nông</h2>
+        <div style="text-align:left;" class="container">
+            @Html.Raw(ViewBag.TriAn)
+        </div>
+        
+        
+    </div>
+</div>
+
