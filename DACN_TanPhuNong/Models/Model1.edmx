@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db_tanphunongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_Album">
+          <Key>
+            <PropertyRef Name="MaAlbum" />
+          </Key>
+          <Property Name="MaAlbum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenAlbum" Type="ntext" />
+          <Property Name="HinhAnh" Type="ntext" />
+          <Property Name="NgayTao" Type="datetime" />
+          <Property Name="MoTa" Type="ntext" />
+        </EntityType>
         <EntityType Name="tb_BaiViet">
           <Key>
             <PropertyRef Name="MaBV" />
@@ -104,6 +114,15 @@
           <Property Name="Email" Type="nvarchar" MaxLength="200" />
           <Property Name="SDT" Type="nvarchar" MaxLength="50" />
           <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_Photos">
+          <Key>
+            <PropertyRef Name="MaPhoTo" />
+          </Key>
+          <Property Name="MaPhoTo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="ntext" />
+          <Property Name="MaAlbum" Type="int" />
+          <Property Name="MoTa" Type="ntext" />
         </EntityType>
         <EntityType Name="tb_SanPham">
           <Key>
@@ -214,6 +233,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tb_Photos_tb_Album">
+          <End Role="tb_Album" Type="Self.tb_Album" Multiplicity="0..1" />
+          <End Role="tb_Photos" Type="Self.tb_Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Album">
+              <PropertyRef Name="MaAlbum" />
+            </Principal>
+            <Dependent Role="tb_Photos">
+              <PropertyRef Name="MaAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tb_SanPham_tb_LoaiSP">
           <End Role="tb_LoaiSP" Type="Self.tb_LoaiSP" Multiplicity="1" />
           <End Role="tb_SanPham" Type="Self.tb_SanPham" Multiplicity="*" />
@@ -251,6 +282,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="db_tanphunongModelStoreContainer">
+          <EntitySet Name="tb_Album" EntityType="Self.tb_Album" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_BaiViet" EntityType="Self.tb_BaiViet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_BaiVietTrans" EntityType="Self.tb_BaiVietTrans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_DoiNguQL_Trans" EntityType="Self.tb_DoiNguQL_Trans" Schema="dbo" store:Type="Tables" />
@@ -261,6 +293,7 @@
           <EntitySet Name="tb_NguoiDung" EntityType="Self.tb_NguoiDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_NhatKy" EntityType="Self.tb_NhatKy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_PhanHoi" EntityType="Self.tb_PhanHoi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Photos" EntityType="Self.tb_Photos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_SanPham" EntityType="Self.tb_SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_SanPhamTrans" EntityType="Self.tb_SanPhamTrans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_TuyChon" EntityType="Self.tb_TuyChon" Schema="dbo" store:Type="Tables" />
@@ -287,6 +320,10 @@
           <AssociationSet Name="FK_tb_LoaiSPTrans_tb_LoaiSP" Association="Self.FK_tb_LoaiSPTrans_tb_LoaiSP">
             <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
             <End Role="tb_LoaiSPTrans" EntitySet="tb_LoaiSPTrans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Photos_tb_Album" Association="Self.FK_tb_Photos_tb_Album">
+            <End Role="tb_Album" EntitySet="tb_Album" />
+            <End Role="tb_Photos" EntitySet="tb_Photos" />
           </AssociationSet>
           <AssociationSet Name="FK_tb_SanPham_tb_LoaiSP" Association="Self.FK_tb_SanPham_tb_LoaiSP">
             <End Role="tb_LoaiSP" EntitySet="tb_LoaiSP" />
@@ -610,6 +647,12 @@
             <End Role="tb_SanPhamTrans" EntitySet="tb_SanPhamTrans" />
           </AssociationSet>
           <EntitySet Name="tb_DoiTac" EntityType="db_tanphunongModel.tb_DoiTac" />
+          <EntitySet Name="tb_Album" EntityType="db_tanphunongModel.tb_Album" />
+          <EntitySet Name="tb_Photos" EntityType="db_tanphunongModel.tb_Photos" />
+          <AssociationSet Name="FK_tb_Photos_tb_Album" Association="db_tanphunongModel.FK_tb_Photos_tb_Album">
+            <End Role="tb_Album" EntitySet="tb_Album" />
+            <End Role="tb_Photos" EntitySet="tb_Photos" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tb_DoiTac">
           <Key>
@@ -619,6 +662,39 @@
           <Property Name="TenDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="tb_Album">
+          <Key>
+            <PropertyRef Name="MaAlbum" />
+          </Key>
+          <Property Name="MaAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenAlbum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Photos" Relationship="db_tanphunongModel.FK_tb_Photos_tb_Album" FromRole="tb_Album" ToRole="tb_Photos" />
+        </EntityType>
+        <EntityType Name="tb_Photos">
+          <Key>
+            <PropertyRef Name="MaPhoTo" />
+          </Key>
+          <Property Name="MaPhoTo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaAlbum" Type="Int32" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Album" Relationship="db_tanphunongModel.FK_tb_Photos_tb_Album" FromRole="tb_Photos" ToRole="tb_Album" />
+        </EntityType>
+        <Association Name="FK_tb_Photos_tb_Album">
+          <End Type="db_tanphunongModel.tb_Album" Role="tb_Album" Multiplicity="0..1" />
+          <End Type="db_tanphunongModel.tb_Photos" Role="tb_Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Album">
+              <PropertyRef Name="MaAlbum" />
+            </Principal>
+            <Dependent Role="tb_Photos">
+              <PropertyRef Name="MaAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -768,6 +844,27 @@
                 <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
                 <ScalarProperty Name="TenDT" ColumnName="TenDT" />
                 <ScalarProperty Name="MaDT" ColumnName="MaDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Album">
+            <EntityTypeMapping TypeName="db_tanphunongModel.tb_Album">
+              <MappingFragment StoreEntitySet="tb_Album">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="TenAlbum" ColumnName="TenAlbum" />
+                <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Photos">
+            <EntityTypeMapping TypeName="db_tanphunongModel.tb_Photos">
+              <MappingFragment StoreEntitySet="tb_Photos">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="MaPhoTo" ColumnName="MaPhoTo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

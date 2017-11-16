@@ -1,0 +1,118 @@
+﻿@model DACN_TanPhuNong.Models.tb_DoiNguQuanLy
+
+@{
+    ViewBag.Title = @GlobalRes.Delete;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var qlVn = Model.tb_DoiNguQL_Trans.Where(x => x.NgonNgu == "vi").FirstOrDefault();
+    var qlEn = Model.tb_DoiNguQL_Trans.Where(x => x.NgonNgu == "en").FirstOrDefault();
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@GlobalRes.Delete</h3>
+                </div>
+                <div class="box-body">
+                    <h3>Are you sure you want to delete this?</h3>
+                    <div>
+                        <div class="row">
+                            <img src="@Model.HinhAnh" height="200" />
+                        </div>
+
+
+                        <ul class="tabs">
+                            <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                            <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                        </ul>
+
+                        <div id="tab-1" class="tab-content current">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    Họ tên
+                                </dt>
+
+                                <dd>
+                                    @qlVn.TenNguoiQL
+                                </dd>
+                                <dt>
+                                    Chức vụ
+                                </dt>
+
+                                <dd>
+                                    @qlVn.ChucVu
+                                </dd>
+                                <dt>
+                                    Mô tả
+                                </dt>
+
+                                <dd>
+                                    @qlVn.MoTa
+                                </dd>
+                                <dt>
+                                    Câu nói tâm đắc
+                                </dt>
+
+                                <dd>
+                                   @qlVn.CauNoi
+                                </dd>
+                            </dl>
+                            
+                        </div>
+                        <div id="tab-2" class="tab-content">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    Fullname
+                                </dt>
+
+                                <dd>
+                                    @qlEn.TenNguoiQL
+                                </dd>
+                                <dt>
+                                    Role
+                                </dt>
+
+                                <dd>
+                                    @qlEn.ChucVu
+                                </dd>
+                                <dt>
+                                    Description
+                                </dt>
+
+                                <dd>
+                                    @qlEn.MoTa
+                                </dd>
+                                <dt>
+                                    Said is like
+                                </dt>
+
+                                <dd>
+                                    @qlEn.CauNoi
+                                </dd>
+                            </dl>
+                            
+
+
+                        </div>
+                        
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="@GlobalRes.Delete" class="btn btn-default" /> |
+                                @Html.ActionLink(GlobalRes.back_to_list, "Index")
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

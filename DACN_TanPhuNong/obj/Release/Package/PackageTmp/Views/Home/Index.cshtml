@@ -16,13 +16,15 @@
         <h1>Tân phú nông</h1>
         <h2>vững bước cùng nhà nông</h2>
         <h4>@Html.Raw(ViewBag.TriAn)</h4>
-        <a href="@Url.RouteUrl("triankh")" class="btn btn-custom">Đọc thêm</a>
+        <a href="@Url.RouteUrl("triankh")" class="btn btn-custom">@GlobalRes.ReadMore</a>
         <div class="container">
             <div id="owl-mini-slider" class="owl-carousel owl-theme">
-                <img src="/images/img01.jpg">
-                <img src="/images/img02.jpg">
-                <img src="/images/img03.jpg">
-                <img src="/images/img09.jpg">
+                @foreach (string item in ViewBag.SlideShow1)
+                {
+                    if(!string.IsNullOrEmpty(item)){
+                        <img src="@item">    
+                    }
+                }
             </div>
         </div>
     </div>

@@ -11,7 +11,6 @@ namespace DACN_TanPhuNong.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class tb_BaiViet
     {
@@ -22,15 +21,11 @@ namespace DACN_TanPhuNong.Models
     
         public int MaBV { get; set; }
         public Nullable<int> LoaiBaiViet { get; set; }
-        [Display(Name="Images", ResourceType= typeof(Languages.GlobalRes))]
         public string HinhAnh { get; set; }
-        [Display(Name = "Author", ResourceType = typeof(Languages.GlobalRes))]
         public string NguoiViet { get; set; }
-        [Display(Name = "Internal", ResourceType = typeof(Languages.GlobalRes))]
         public Nullable<bool> NoiBo { get; set; }
-        [Display(Name = "Created", ResourceType = typeof(Languages.GlobalRes))]
         public Nullable<System.DateTime> NgayViet { get; set; }
-        [Display(Name = "Author", ResourceType = typeof(Languages.GlobalRes))]
+    
         public virtual tb_NguoiDung tb_NguoiDung { get; set; }
         public virtual ICollection<tb_BaiVietTrans> tb_BaiVietTrans { get; set; }
     }

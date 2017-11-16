@@ -147,5 +147,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tb_Album">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_Album">
+        <MappingFragment StoreEntitySet="tb_Album">
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TenAlbum" ColumnName="TenAlbum" />
+          <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Photos">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_Photos">
+        <MappingFragment StoreEntitySet="tb_Photos">
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="MaPhoTo" ColumnName="MaPhoTo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

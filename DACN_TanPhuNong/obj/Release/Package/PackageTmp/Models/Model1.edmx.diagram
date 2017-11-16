@@ -27,6 +27,9 @@
         <AssociationConnector Association="db_tanphunongModel.FK_tb_SanPham_tb_NguoiDung" ManuallyRouted="false" />
         <AssociationConnector Association="db_tanphunongModel.FK_tb_SanPhamTrans_tb_SanPham" ManuallyRouted="false" />
         <EntityTypeShape EntityType="db_tanphunongModel.tb_DoiTac" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="db_tanphunongModel.tb_Album" Width="1.5" PointX="9.375" PointY="9.875" />
+        <EntityTypeShape EntityType="db_tanphunongModel.tb_Photos" Width="1.5" PointX="11.625" PointY="10" />
+        <AssociationConnector Association="db_tanphunongModel.FK_tb_Photos_tb_Album" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

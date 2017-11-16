@@ -18,23 +18,39 @@
 </div>
 
 <div class="row">
+    @if (ViewBag.DSQL.Count > 0) {
+        var capbac = ViewBag.DSQL[0].ThuBac;
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center vinh-danh">
         <h1>Tân phú nông</h1>
         <h2>vững bước cùng nhà nông</h2>
         <h4>@GlobalRes.Team_Manager</h4>
-        <div style="text-align:left;" class="container">
-            @foreach (tb_DoiNguQuanLy item in ViewBag.DSQL)
-            {
-                var trans = item.tb_DoiNguQL_Trans.ToList();
-                <div class="col-md-3 manager-item">
-                    <img width="100%" src="/images/img01.jpg"/>
-                    <h5>@(trans.Count>0?trans[0].TenNguoiQL:"")</h5>
-                    <h6>@(trans.Count > 0 ? trans[0].ChucVu : "")</h6>
-                    <p><span>@(trans.Count > 0 ? trans[0].CauNoi : "")</span></p>
-                    <p> @(trans.Count > 0 ? trans[0].MoTa : "")</p>
-                </div>
-                
-            }
+        <div  class="container">
+            <div class="row">
+                @foreach (tb_DoiNguQuanLy item in ViewBag.DSQL)
+                {
+                    @(item.ThuBac != capbac ? @Html.Raw(new HtmlString("</div><div class='row'>")) : null)
+             
+                    var trans = item.tb_DoiNguQL_Trans.ToList();
+                    <div class="col-md-3 manager-item">
+                        <img width="100%" src="@item.HinhAnh" />
+                        <h5>@(trans.Count > 0 ? trans[0].TenNguoiQL : "")</h5>
+                        <h6>@(trans.Count > 0 ? trans[0].ChucVu : "")</h6>
+                        @if(trans.Count>0 && !string.IsNullOrEmpty(trans[0].MoTa)){
+                            <p><span>@trans[0].CauNoi</span></p>    
+                        }
+                        @if (trans.Count > 0 && !string.IsNullOrEmpty(trans[0].MoTa))
+                        {
+                            <p><span>@trans[0].MoTa</span></p>
+                        }
+
+                        
+                       
+                    </div>
+
+                }
+
+            </div>
         </div>
     </div>
+    }
 </div>

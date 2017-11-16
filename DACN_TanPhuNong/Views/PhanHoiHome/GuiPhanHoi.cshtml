@@ -11,7 +11,14 @@
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-md-10">
+        <section class="page ">
+            <article style="padding: 15px;">
+                @Html.Raw(ViewBag.ContactLienHe);
+            </article>
+        </section>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-10" style="text-align:center;">
 
             <h2 style="text-align:center;">@GlobalRes.Feedback</h2>
             @using (Html.BeginForm())

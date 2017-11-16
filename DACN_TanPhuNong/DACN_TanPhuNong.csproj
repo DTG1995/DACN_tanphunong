@@ -185,8 +185,9 @@
       <DependentUpon>ImageBrowserCkeditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AlbumController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConferencesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\DanhSachQuanLyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DoiNguQuanLyController.cs" />
     <Compile Include="Areas\Admin\Controllers\DoiTacController.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageVideoController.cs" />
     <Compile Include="Areas\Admin\Controllers\LanguageController.cs" />
@@ -194,12 +195,14 @@
     <Compile Include="Areas\Admin\Controllers\NguoiDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhatKyController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhanHoiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PhotosController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThongBaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\TuyenDungController.cs" />
     <Compile Include="Areas\Admin\Controllers\UngDungController.cs" />
     <Compile Include="Common\LanguageHelper.cs" />
+    <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DoiTacHomeController.cs" />
@@ -239,6 +242,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\tb_Album.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tb_BaiViet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -269,6 +275,9 @@
     <Compile Include="Models\tb_PhanHoi.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tb_Photos.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tb_SanPham.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -291,8 +300,27 @@
     <Content Include="Content\admin\font-awesome.min.css" />
     <Content Include="Content\admin\skins\_all-skins.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\component.css" />
+    <Content Include="Content\default.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\Albums\maxresdefault.jpg" />
+    <Content Include="Content\images\DSQL\20659014.jpg" />
+    <Content Include="Content\images\PhanBon\realstrong11.11.11.jpg" />
+    <Content Include="Content\images\PhanBon\realstrong4.3.2.jpg" />
+    <Content Include="Content\images\Slide-Nen\1.jpg" />
+    <Content Include="Content\images\Slide-Nen\123123213.jpg" />
+    <Content Include="Content\images\Slide-Nen\16.jpg" />
+    <Content Include="Content\images\Slide-Nen\18.jpg" />
+    <Content Include="Content\images\Slide-Nen\2.jpg" />
+    <Content Include="Content\images\Slide-Nen\20.jpg" />
+    <Content Include="Content\images\Slide-Nen\21.jpg" />
+    <Content Include="Content\images\Slide-Nen\22.jpg" />
+    <Content Include="Content\images\Slide-Nen\3.jpg" />
+    <Content Include="Content\images\Slide-Nen\9.jpg" />
+    <Content Include="Content\images\Slide-Nen\dau-ca.jpg" />
+    <Content Include="Content\jquery.webui-popover.min.css" />
+    <Content Include="Content\lightgallery.min.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\nivo-slider.css" />
     <Content Include="Content\owl-custom.css" />
@@ -301,6 +329,7 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\lg.svg" />
     <Content Include="images\25-5-5-bag.jpg" />
     <Content Include="images\bayer.png" />
     <Content Include="images\bm.png" />
@@ -323,6 +352,10 @@
     <Content Include="images\sundat.png" />
     <Content Include="images\vi_tron.png" />
     <Content Include="images\vi_vuong.png" />
+    <Content Include="img\loading.gif" />
+    <Content Include="img\video-play.png" />
+    <Content Include="img\vimeo-play.png" />
+    <Content Include="img\youtube-play.png" />
     <Content Include="Scripts\admin\adminlte.min.js" />
     <Content Include="Scripts\admin\bootstrap-toggle.min.js" />
     <Content Include="Scripts\admin\bootstrap.min.js" />
@@ -786,11 +819,6 @@
     </Content>
     <Content Include="Areas\Admin\Views\Admin\TriAn.cshtml" />
     <Content Include="Areas\Admin\Views\UngDung\Abouts.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\DanhSachQuanLy\Index.cshtml" />
     <Content Include="Areas\Admin\Views\PhanHoi\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ThongBao\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ThongBao\Delete.cshtml" />
@@ -823,13 +851,39 @@
     <Content Include="Areas\Admin\Views\DoiTac\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DoiTac\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ThongBao\SetCode.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiNguQuanLy\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiNguQuanLy\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiNguQuanLy\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiNguQuanLy\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiNguQuanLy\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\UngDung\Footer.cshtml" />
+    <Content Include="Areas\Admin\Views\Album\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Album\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Album\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Album\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Album\Index.cshtml" />
+    <Content Include="Content\images\Albums\Thumbs.db" />
+    <Content Include="Content\images\DSQL\Thumbs.db" />
+    <Content Include="Content\images\PhanBon\Thumbs.db" />
+    <Content Include="Content\images\Slide-Nen\Thumbs.db" />
+    <Content Include="fonts\lg.eot" />
+    <Content Include="fonts\lg.ttf" />
+    <Content Include="fonts\lg.woff" />
+    <Content Include="img\Thumbs.db" />
     <None Include="Properties\PublishProfiles\dacn_tanphunong.pubxml" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery.mousewheel.min.js" />
     <Content Include="Scripts\jquery.nivo.slider.js" />
+    <Content Include="Scripts\jquery.webui-popover.min.js" />
     <Content Include="Scripts\jquery1.10.1.js" />
+    <Content Include="Scripts\jssor.slider.min.js" />
+    <Content Include="Scripts\lightgallery-all.min.js" />
+    <Content Include="Scripts\modernizr.custom.js" />
     <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\picturefill.min.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\toucheffects.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -870,13 +924,18 @@
     <None Include="Properties\PublishProfiles\tanphunong.pubxml" />
     <Content Include="Views\BaiViet\InputCodeInternal.cshtml" />
     <Content Include="Views\BaiViet\thongBaoNoiBo.cshtml" />
+    <Content Include="Views\Home\_Footer.cshtml" />
+    <Content Include="Views\Albums\Index.cshtml" />
+    <Content Include="Views\Albums\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Areas\Admin\Views\Language\" />
+    <Folder Include="Areas\Admin\Views\Photos\" />
     <Folder Include="files\" />
+    <Folder Include="images\PhanBon\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

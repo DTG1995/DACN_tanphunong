@@ -318,4 +318,25 @@
   <data name="xuat_xu" xml:space="preserve">
     <value>Made in</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Said" xml:space="preserve">
+    <value>Said</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="News_Events_Notification" xml:space="preserve">
+    <value>News, events, notification</value>
+  </data>
+  <data name="featered_photos" xml:space="preserve">
+    <value>Featured photos</value>
+  </data>
 </root>

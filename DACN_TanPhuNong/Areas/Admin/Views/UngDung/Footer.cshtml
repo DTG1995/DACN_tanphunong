@@ -1,0 +1,246 @@
+﻿@using DACN_TanPhuNong.Models
+@{
+    ViewBag.Title = "Footer";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @GlobalRes.Home
+    <small>tùy chỉnh footer</small>
+</h1>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> @GlobalRes.Home</a></li>
+    <li class="active">Quản trị</li>
+</ol>
+</section>
+<section class="content">
+    <div class="row">
+        <section class="content" style="min-height: unset; padding-bottom: 0px;">
+            <div class="box box-solid">
+                <div class="box-header with-footer" data-id="1" style="cursor: pointer;">
+                    <i class="fa fa-header"></i>
+                    <h3 class="box-title">Footer</h3>
+                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" data-id="1">
+                    <form action="@Url.Action("ChangeSocial")" method="post">
+                    <div class="form-horizantol">
+                        <div class="content">
+                            <div class="box-header with-border" data-id="1" style="cursor: pointer;">
+                                <i class="fa fa-footer"></i>
+                                <h3 class="box-title">Footer</h3>
+                                <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                            </div>
+                            <div class="row">
+                                <ul class="tabs">
+                                    <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                    <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                                </ul>
+
+                                <div id="tab-1" class="tab-content current">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="footerVn">Footer </label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" name="footerVn" id="footerVn">@ViewBag.ContentFooeterVn</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-2" class="tab-content">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-sm-2 control-label" for="footerRn">Footer </label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" name="footerEn" id="footerEn">@ViewBag.ContentFooeterEn</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="box-header with-border" data-id="1" style="cursor: pointer;">
+                                    <i class="fa fa-footer"></i>
+                                    <h3 class="box-title">@GlobalRes.Contact Footer</h3>
+                                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                                </div>
+                                <ul class="tabs">
+                                    <li class="tab-link current" data-tab="tab-3"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                    <li class="tab-link" data-tab="tab-4"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                                </ul>
+
+                                <div id="tab-3" class="tab-content current">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-12 control-label" for="lienHeVn">Liên hệ footer </label>
+                                            <div class="col-sm-12">
+                                                <textarea class="form-control" name="lienHeVn" id="lienHeVn">@ViewBag.LienHeFooeterVn</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-4" class="tab-content">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label class="col-sm-12 control-label" for="lienHeEn">Footer Contact </label>
+                                            <div class="col-sm-12">
+                                                <textarea class="form-control" name="lienHeEn" id="lienHeEn">@ViewBag.LienHeFooeterEn</textarea>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="content">
+                            <div class="box-header with-border" data-id="1" style="cursor: pointer;">
+                                <i class="fa fa-footer"></i>
+                                <h3 class="box-title">MXH Footer</h3>
+                                <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                            </div>
+                            <div class="row">
+                                <table class="table table-bordered" style="table-layout: fixed;" border="0" id="tableSocical">
+                                    <tr>
+                                        <th style="width: 130px;">MXH</th>
+                                        <th>Đường dẫn</th>
+                                        <th style="width: 40px;"></th>
+                                    </tr>
+                                    @{
+                                            var selectList = new List<SelectListItem>();
+                                            selectList.Add(new SelectListItem { Text = "Facebook", Value = "facebook" });
+                                            selectList.Add(new SelectListItem { Text = "Twitter", Value = "twitter" });
+                                            selectList.Add(new SelectListItem { Text = "Google+", Value = "google" });
+                                            selectList.Add(new SelectListItem { Text = "Pinterest", Value = "pinterest" });
+                                            selectList.Add(new SelectListItem { Text = "Github", Value = "github" });
+                                            selectList.Add(new SelectListItem { Text = "Dribbble", Value = "dribbble" });
+                                            selectList.Add(new SelectListItem { Text = "Dribbble", Value = "dribbble" });
+                                            selectList.Add(new SelectListItem { Text = "VK", Value = "vk" });
+
+
+                                            var listSocical = ViewBag.Socials;
+
+                                            foreach (tb_TuyChon itemSocial in listSocical)
+                                            {
+                                                <tr class="social">
+                                                    @{
+                                                foreach (SelectListItem item in selectList)
+                                                {
+                                                    if (item.Value == itemSocial.TenTuyChon)
+                                                    {
+                                                        item.Selected = true;
+                                                        break;
+                                                    }
+
+                                                }
+                                                    }
+                                                    <td>@Html.DropDownList("MXH", selectList, new { @class = "form-control" })</td>
+                                                    <td><input type="url" placeholder="Đường dẫn" name="socialUrl" class="form-control" value="@itemSocial.NoiDungTuyChon" /></td>
+                                                    <td style="vertical-align: middle;"><a href="#" class="removeSocial"><span><i class="fa fa-times" aria-hidden="true"></i></span></a></td>
+                                                </tr>
+                                            }
+                                            
+                                    }
+
+
+                                </table>
+
+                                
+                            </div>
+                        </div>
+                        <div class="pull-left">
+                            <button class="btn btn-default" type="button" onclick=" AddSocial() ">@GlobalRes.Add_new MXH</button>
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-default" type="submit" id="btnSaveSocial">@GlobalRes.Save_Change</button>
+                        </div>
+                    </div>
+                        </form>
+                </div>
+                     </div>
+            </section>
+        </div>
+    </section>
+                <script>
+                    <script>
+    $(function () {
+        CKEDITOR.replace("lienHeVn", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+        });
+        CKEDITOR.replace("lienHeEn", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+        });
+        CKEDITOR.replace("footerEn", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+        });
+        CKEDITOR.replace("footerVn", {
+            filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+            filebrowserWindowWidth: '750',
+            filebrowserWindowHeight: '600'
+        });
+      
+    });
+
+                    function AddSocial() {
+                        var tr = `<tr class="social">
+                    <td>@Html.DropDownList("MXH", selectList, new { @class = "form-control" })</td>
+                    <td><input type="url" name="socialUrl" placeholder="Đường dẫn" class="form-control" /></td>
+                    <td style="vertical-align: middle;"><a href="#"  class="removeSocial"><span><i class="fa fa-times" aria-hidden="true"></i></span></a></td>
+                </tr>`;
+                        $("#tableSocical").append(tr);
+                        $(".removeSocial").click(function(event) {
+                            event.preventDefault();
+                            $(this).closest('.social').remove();
+                        });
+                    }
+                    $(function() {
+                        $(".removeMenuTopNav").click(function(event) {
+                            event.preventDefault();
+                            $(this).closest('.row').remove();
+                        });
+
+                        $(".removeSocial").click(function(event) {
+                            event.preventDefault();
+                            $(this).closest('.social').remove();
+                        });
+                    });
+                    @*function SaveSocial(){
+                        var listSocialName = [];
+                        $("select[name=MXH]").each(function() {
+                            listSocialName.push($(this).val());
+                        });
+                        var listUrlSocial = [];
+                        $("input[name=socialUrl]").each(function() {
+                            listUrlSocial.push($(this).val());
+                        });
+                        $.ajax({
+                            type: "GET",
+                            dataType: "JSON",
+                            url: "@Url.Action("ChangeSocial")",
+                            data: {
+                                'listSocialName':listSocialName,
+                                'listSocialUrl':listUrlSocial
+                            },
+                            beforeSend: function () {
+                                $("#btnSaveSocial").prop('disabled', true);
+                                $("#btnSaveSocial").html(" Lưu thay đổi <i class=\"fa fa-refresh fa-spin fa-fw\" aria-hidden=\"true\"></i>");
+
+                            },
+                            success: function (data) {
+
+
+                            },
+                            error:function(data) {
+
+                            }
+
+                        });
+                    }*@
+                </script>

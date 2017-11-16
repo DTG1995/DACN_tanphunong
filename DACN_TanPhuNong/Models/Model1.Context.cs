@@ -38,5 +38,7 @@ namespace DACN_TanPhuNong.Models
         public virtual DbSet<tb_SanPhamTrans> tb_SanPhamTrans { get; set; }
         public virtual DbSet<tb_TuyChon> tb_TuyChon { get; set; }
         public virtual DbSet<tb_DoiTac> tb_DoiTac { get; set; }
+        public virtual DbSet<tb_Album> tb_Album { get; set; }
+        public virtual DbSet<tb_Photos> tb_Photos { get; set; }
     }
 }

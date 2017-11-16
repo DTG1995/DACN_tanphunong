@@ -1,0 +1,59 @@
+﻿@model DACN_TanPhuNong.Models.tb_DoiNguQL_Trans
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_DoiNguQL_Trans</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNguoiQL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiQL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChucVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChucVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CauNoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CauNoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_DoiNguQuanLy.HinhAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_DoiNguQuanLy.HinhAnh)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

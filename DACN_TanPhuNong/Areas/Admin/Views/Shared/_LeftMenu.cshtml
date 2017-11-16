@@ -23,9 +23,25 @@
                 <li><a href="@Url.Action("Index", "UngDung")"><i class="fa fa-circle-o"></i> @GlobalRes.Home</a></li>
                 <li><a href="@Url.Action("Abouts", "UngDung")"><i class="fa fa-circle-o"></i> @GlobalRes.About</a></li>
                 <li><a href="@Url.Action("LienHe", "UngDung")"><i class="fa fa-circle-o"></i>@GlobalRes.Contact</a></li>
+                <li><a href="@Url.Action("Footer", "UngDung")"><i class="fa fa-circle-o"></i>Footer</a></li>
             </ul>
         </li>
     }
+    @if (arr[0] == 1)
+{
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>@GlobalRes.Team_Manager</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="@Url.Action("Index", "DoiNguQuanLy")"><i class="fa fa-circle-o"></i> @GlobalRes.List</a></li>
+            <li><a href="@Url.Action("Create", "DoiNguQuanLy")"><i class="fa fa-circle-o"></i> @GlobalRes.Add_new</a></li>
+        </ul>
+    </li>
+}
     @if (arr[0] == 1 || arr[1] == 1)
     {
         <li class=" treeview">
@@ -72,7 +88,7 @@
             </ul>
         </li>
     }
-    @if (arr[0] == 1 || arr[2] == 1)
+    @*@if (arr[0] == 1 || arr[2] == 1)
     {
         <li class=" treeview ">
             <a href="#">
@@ -86,7 +102,7 @@
                 <li><a href="@Url.Action("Create", "TuyenDung")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
             </ul>
         </li>
-    }
+    }*@
     @if (arr[0] == 1 || arr[2] == 1)
     {
         <li class=" treeview ">
@@ -106,7 +122,7 @@
     {
         <li class=" treeview ">
             <a href="#">
-                <i class="fa fa-picture-o"></i> <span>@GlobalRes.Promotions</span>
+                <i class="fa fa-picture-o"></i> <span>@GlobalRes.News</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -121,14 +137,38 @@
     {
         <li class=" treeview ">
             <a href="#">
-                <i class="fa fa-product-hunt"></i> <span>@GlobalRes.Images, Video</span>
+                <i class="fa fa-camera-retro"></i> <span>@GlobalRes.Images, Video</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="@Url.Action("Index", "ImageVideo")"><i class="fa fa-circle-o"></i>@GlobalRes.List</a></li>
-                <li><a href="@Url.Action("Create", "ImageVideo")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-picture-o"></i><span>Albums</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li><a href="@Url.Action("Index", "Album")"><i class="fa fa-circle-o"></i>@GlobalRes.List</a></li>
+                        <li><a href="@Url.Action("Create", "Album")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-images"></i><span>Video</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+
+                        <li><a href="@Url.Action("Index", "ImageVideo")"><i class="fa fa-circle-o"></i>@GlobalRes.List</a></li>
+                        <li><a href="@Url.Action("Create", "ImageVideo")"><i class="fa fa-circle-o"></i>@GlobalRes.Add_new</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
     }

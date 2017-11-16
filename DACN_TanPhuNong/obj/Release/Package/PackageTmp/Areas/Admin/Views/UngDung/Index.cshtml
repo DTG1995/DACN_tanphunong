@@ -120,6 +120,57 @@
             </div>
         </section>
     </div>
+    <div class="row">
+        <section class="content" style="min-height: unset; padding-bottom: 0px;">
+            <div class="box box-solid">
+                <div class="box-header with-border" data-id="1" style="cursor: pointer;">
+                    <i class="fa fa-header"></i>
+                    <h3 class="box-title">Header</h3>
+                    <b class="pull-right"><i class="fa fa-angle-down "></i></b>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body" data-id="1">
+                    
+                    <div class="form-horizontal">
+                        
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="file-upload">SlideShow: </label>
+                                <div class="col-sm-10">
+                                    <div id="inputSlideShow1">
+                                        @{
+                                            string[] arrSlideShow1 = ViewBag.SlideShow1;
+                                        }
+                                        @for (int i = 0; i < arrSlideShow1.Length; i++)
+                                        {
+                                            <div class="col-md-10">
+                                                <input type="text" value="@arrSlideShow1[i]" class="form-control" name="slideShow1" id="@("HinhAnh1" + i)" />
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" onclick="chosseImage('@("HinhAnh1" + i)')" class=" btn btn-primary">Chọn hình</button>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="pull-left" style="margin-top: 15px;">
+                                        <button class="btn btn-default" id="btnThemAnh1" onclick="ThemSlideShow1(@arrSlideShow1.Length)">Thêm ảnh</button>
+                                    </div>
+                                </div>
+                                <div class="form-group pull-right">
+                                    <div class="col-sm-12">
+                                        <button onclick="SaveFeateredPhotos()" class="btn btn-primary"><i class="fa fa-save"></i> Lưu thay đổi </button>
+                                    </div>
+                                </div>
+                            </div>      
+                        
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+    </div>
+
+
+
+
     @*<div class="row">
         <section class="content" style="min-height: unset; padding-bottom: 0px;">
             <div class="box box-solid">
@@ -222,6 +273,27 @@
         }
     });
     }
+    function SaveFeateredPhotos(){
+       
+        var slideShow = $("input[type='text'][name='slideShow1']");
+        var strslideShow = "";
+        for (var i = 0; i < slideShow.length; i++) {
+            if(slideShow[i].value.trim()!="")
+                strslideShow += slideShow[i].value + ";";
+        }
+        strslideShow = strslideShow.substr(0, strslideShow.length - 1);
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("SaveFeateredPhotos", "UngDung")",
+            data: {
+            slideShow1:strslideShow
+            },
+        dataType: "text",
+        success: function(resultData) {
+            alert("Luu Thanh Cong");
+        }
+    });
+    }
     function ThemSlideShow(i) {
         $("#inputSlideShow").append(`<div class="col-md-10" >
         <input type="text" value="" class="form-control" name="slideShow" id="HinhAnh`+i+`")"/>
@@ -231,6 +303,17 @@
             </div>
             `);
     $("#btnThemAnh").attr("onclick", "ThemSlideShow(" + i + 1 + ")");
+
+    }
+    function ThemSlideShow1(i) {
+        $("#inputSlideShow1").append(`<div class="col-md-10" >
+        <input type="text" value="" class="form-control" name="slideShow1" id="HinhAnh1`+i+`")"/>
+            </div>
+            <div class="col-md-2">
+                <button type="button" onclick="chosseImage('HinhAnh1`+i+`')" class=" btn btn-primary">Chọn hình</button>
+            </div>
+           `);
+        $("#btnThemAnh1").attr("onclick", "ThemSlideShow1(" + i + 1 + ")");
 
     }
 

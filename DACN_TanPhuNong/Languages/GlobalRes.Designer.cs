@@ -214,6 +214,15 @@ namespace DACN_TanPhuNong.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detail.
         /// </summary>
         public static string Detail {
@@ -264,6 +273,15 @@ namespace DACN_TanPhuNong.Languages {
         public static string ErrorPhone {
             get {
                 return ResourceManager.GetString("ErrorPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Featured photos.
+        /// </summary>
+        public static string featered_photos {
+            get {
+                return ResourceManager.GetString("featered_photos", resourceCulture);
             }
         }
         
@@ -349,6 +367,15 @@ namespace DACN_TanPhuNong.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Level.
+        /// </summary>
+        public static string Level {
+            get {
+                return ResourceManager.GetString("Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lists.
         /// </summary>
         public static string List {
@@ -430,11 +457,29 @@ namespace DACN_TanPhuNong.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to News.
+        /// </summary>
+        public static string News {
+            get {
+                return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to News, event.
         /// </summary>
         public static string News_event {
             get {
                 return ResourceManager.GetString("News_event", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News, events, notification.
+        /// </summary>
+        public static string News_Events_Notification {
+            get {
+                return ResourceManager.GetString("News_Events_Notification", resourceCulture);
             }
         }
         
@@ -525,6 +570,24 @@ namespace DACN_TanPhuNong.Languages {
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        public static string Role {
+            get {
+                return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Said.
+        /// </summary>
+        public static string Said {
+            get {
+                return ResourceManager.GetString("Said", resourceCulture);
             }
         }
         

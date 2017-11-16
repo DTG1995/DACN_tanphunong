@@ -1,0 +1,130 @@
+﻿@model DACN_TanPhuNong.Models.tb_DoiNguQL_Trans
+
+@{
+    ViewBag.Title = GlobalRes.Create;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        @GlobalRes.Team_Manager
+        <small>@GlobalRes.List</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i>@GlobalRes.Admin</a></li>
+        <li><a class="active">@GlobalRes.Team_Manager</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@GlobalRes.Add_new</h3>
+                </div>
+                <div class="box-body">
+
+                    @using (Html.BeginForm(FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HinhAnh, new { @class = "control-label col-md-2" })
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.HinhAnh)
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" onclick="chosseImage('HinhAnh')" class="btn btn-primary">Chọn hình</button>
+                                </div>
+                            </div>
+
+
+                            <ul class="tabs">
+                                <li class="tab-link current" data-tab="tab-1"><img width="40" height="30" src="/images/vi_vuong.png" />@GlobalRes.VietNam </li>
+                                <li class="tab-link" data-tab="tab-2"><img width="40" height="30" src="/images/en_vuong.png" />@GlobalRes.English </li>
+                            </ul>
+
+                            <div id="tab-1" class="tab-content current">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Họ tên</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="HoTenVn" id="HoTenVn" style="font-weight:bold;" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Chức vụ</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="ChucVuVn" id="ChucVuVn" style="font-weight:bold;" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Mô tả</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="MoTaVn" id="MoTaVn"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Câu nói tâm đắc</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="CauNoiVn" id="CauNoiVn" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="tab-2" class="tab-content">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Fullname</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="HoTenEn" id="HoTenEn" style="font-weight:bold;" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Role</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" name="ChucVuEn" id="ChucVuEn" style="font-weight:bold;" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Description</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="MoTaEn" id="MoTaEn"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">Said is like</label>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" name="CauNoiEn" id="CauNoiEn"></textarea>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">@GlobalRes.Level <span>for sort</span></label>
+                                <div class="col-md-8">
+                                    <input class="form-control" name="ThuBac" id="ThuBac" style="font-weight:bold;" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="@GlobalRes.Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div>
+                        @Html.ActionLink(@GlobalRes.back_to_list, "Index")
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>

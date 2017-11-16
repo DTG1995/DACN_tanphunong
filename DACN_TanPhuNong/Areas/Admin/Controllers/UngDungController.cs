@@ -39,6 +39,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             opTriAn = db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAnen").FirstOrDefault();
             tri_an = opTriAn != null ? opTriAn.NoiDungTuyChon : "";
             ViewBag.TriAnEn = tri_an;
+            ViewBag.SlideShow1 = (db.tb_TuyChon.Where(x => x.TenTuyChon == "SlideShow1").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "").Split(';');
             return View();
         }
         [ValidateInput(false)]
@@ -108,6 +109,23 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 return "true";
             return "false";
         }
+        [HttpPost]
+        [AdminFilter(AllowPermit = "0")]
+        public ActionResult SaveFeateredPhotos(string slideShow1)
+        {
+            tb_TuyChon tuyChon = db.tb_TuyChon.FirstOrDefault(x => x.TenTuyChon == "SlideShow1");
+            if (tuyChon == null)
+                db.tb_TuyChon.Add(new tb_TuyChon { TenTuyChon = "SlideShow1", NoiDungTuyChon = slideShow1 });
+            else
+            {
+                tuyChon.NoiDungTuyChon = slideShow1;
+                db.tb_TuyChon.Attach(tuyChon);
+                db.Entry(tuyChon).State = EntityState.Modified;
+            }
+            db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Trang chủ", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa nội dung ảnh nổi bật" });
+            int rows = db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         [ValidateInput(false)]
         [HttpPost]
         [AdminFilter(AllowPermit = "0")]
@@ -150,9 +168,11 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         [AdminFilter(AllowPermit = "0")]
         public ActionResult LienHe()
         {
-            ViewBag.ContentLienHe =
-                db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHe").Select(x => x.NoiDungTuyChon).FirstOrDefault();
-            
+            ViewBag.ContentLienHeVn =
+                db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHevn").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.ContentLienHeEn =
+                db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHeen").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.DSSocial = db.tb_TuyChon.Where(x => x.TenTuyChon == "Social").Select(x => x.NoiDungTuyChon).FirstOrDefault();
             return View();
         }
 
@@ -197,51 +217,75 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             });
             return View();
         }
-        [AdminFilter(AllowPermit = "0")]
-        [HttpPost, ActionName("Abouts")]
-        [ValidateInput(false)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Abouts(string lichSuVi, string lichSuEn)
-        {
-
-            tb_TuyChon lichSu = db.tb_TuyChon.Where(x => x.TenTuyChon == "LichSuvi").FirstOrDefault();
-
-            if (lichSu != null)
-            {
-                lichSu.NoiDungTuyChon = lichSuVi;
-                db.Entry(lichSu).State = System.Data.Entity.EntityState.Modified;
-
-                db.SaveChanges();
-
-            }
-            else
-            {
-                lichSu = new tb_TuyChon();
-                lichSu.TenTuyChon = "LichSuvi";
-                lichSu.NoiDungTuyChon = lichSuVi;
-                db.tb_TuyChon.Add(lichSu);
-                db.SaveChanges();
-            }
-
-            lichSu = db.tb_TuyChon.Where(x => x.TenTuyChon == "LichSuen").FirstOrDefault();
-
-            if (lichSu != null)
-            {
-                lichSu.NoiDungTuyChon = lichSuEn;
-                db.Entry(lichSu).State = System.Data.Entity.EntityState.Modified;
-
-                db.SaveChanges();
-
-            }
-            else
-            {
-                lichSu = new tb_TuyChon();
-                lichSu.TenTuyChon = "LichSuen";
-                lichSu.NoiDungTuyChon = lichSuEn;
-                db.tb_TuyChon.Add(lichSu);
-                db.SaveChanges();
-            }
-            return RedirectToAction("Abouts");
+       
+        
+        [AdminFilter(AllowPermit="0")]
+        public ActionResult Footer(){
+            ViewBag.ContentFooeterVn = db.tb_TuyChon.Where(x => x.TenTuyChon == "noiDungfootervn").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.ContentFooeterEn = db.tb_TuyChon.Where(x => x.TenTuyChon == "noiDungfooteren").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.LienHeFooeterVn = db.tb_TuyChon.Where(x => x.TenTuyChon == "lienHeFootervn").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.LienHEFooeterEn = db.tb_TuyChon.Where(x => x.TenTuyChon == "lienHeFooteren").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.Socials = db.tb_TuyChon.Where(x=>x.Nhom == "Social").ToList();
+            return View();
         }
+        [AdminFilter (AllowPermit="0")]
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ChangeSocial(List<string> listSocialName, List<string> listSocialUrl, string lienHeVn, string footerVn, string lienHeEn, string footerEn)
+        {
+            listSocialName = Request.Form.GetValues("MXH").ToList();
+            listSocialUrl = Request.Form.GetValues("socialUrl").ToList();
+
+            var listOption = db.tb_TuyChon.Where(x => x.Nhom == "Social" || x.Nhom=="footer").ToList();
+            db.tb_TuyChon.RemoveRange(listOption);
+            db.SaveChanges();
+            listOption = new List<tb_TuyChon>();
+            listOption.Add(new tb_TuyChon
+            {
+                Nhom = "footer",
+                TenTuyChon = "lienHeFootervi",
+                NoiDungTuyChon = lienHeVn
+            });
+
+            listOption.Add(new tb_TuyChon
+            {
+                Nhom = "footer",
+                TenTuyChon = "lienHeFooteren",
+                NoiDungTuyChon = string.IsNullOrEmpty(lienHeEn) ? lienHeVn : lienHeEn
+            });
+            listOption.Add(new tb_TuyChon
+            {
+                Nhom = "footer",
+                TenTuyChon = "noiDungfootervi",
+                NoiDungTuyChon = footerVn
+            });
+
+            listOption.Add(new tb_TuyChon
+            {
+                Nhom = "footer",
+                TenTuyChon = "noiDungfooteren",
+                NoiDungTuyChon = string.IsNullOrEmpty(footerEn) ? footerVn : footerEn
+            });
+            if (listSocialName != null)
+            {
+                for (int i = 0; i < listSocialName.Count; i++)
+                {
+                    string link = listSocialUrl[i] ?? "#";
+                    if (link.Length > 4 && !link.Substring(0, 4).Equals("http") && link != "#")
+                        link = "http://" + link;
+                    listOption.Add(new tb_TuyChon
+                    {
+                        Nhom= "Social",
+                        TenTuyChon = listSocialName[i],
+                        NoiDungTuyChon = link
+                    });
+                }
+            }
+            db.tb_TuyChon.AddRange(listOption);
+            db.SaveChanges();
+            return RedirectToAction("Footer");
+        }
+
+    
     }
 }

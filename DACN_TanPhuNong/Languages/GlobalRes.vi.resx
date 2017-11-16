@@ -321,4 +321,25 @@
   <data name="xuat_xu" xml:space="preserve">
     <value>Xuất xứ</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Mô tả</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Chức Vụ</value>
+  </data>
+  <data name="Said" xml:space="preserve">
+    <value>Câu nói</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Cấp</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Tin tức</value>
+  </data>
+  <data name="News_Events_Notification" xml:space="preserve">
+    <value>Tin tức, sự kiện, thông báo</value>
+  </data>
+  <data name="featered_photos" xml:space="preserve">
+    <value>Hình ảnh nổi bật</value>
+  </data>
 </root>

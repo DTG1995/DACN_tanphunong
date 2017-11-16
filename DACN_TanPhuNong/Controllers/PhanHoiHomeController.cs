@@ -20,6 +20,8 @@ namespace DACN_TanPhuNong.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult GuiPhanHoi(tb_PhanHoi phanhoi)
         {
+            var lang = RouteData.Values["lang"] as string ?? "vi";
+            ViewBag.ContactLienHe = db.tb_TuyChon.Where(x => x.TenTuyChon == ("ContentLienHe"+lang)).Select(x => x.NoiDungTuyChon).FirstOrDefault();
             ViewBag.CurrentMenu = "PhanHoi";
             if (ModelState.IsValid)
             {

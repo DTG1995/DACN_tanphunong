@@ -20,19 +20,20 @@
         color:#fff;
         background-color:yellow;
     }
-    .content-prpduct{
+    .content-product{
         min-height:100%;
         margin: 0 auto;
         background:#ffffff;
     }
     #list-product {
         margin-bottom: 1.75rem;
-      
+        
     }
     .item-product {
         position: relative;
         height:300px;
         text-align:center;
+        margin: 10px;
     }
 
     .image {
@@ -40,48 +41,30 @@
         width:auto;
         max-width:100%
     }
-
-    .overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: #989898f5;
-        overflow: hidden;
-        width: 0;
-        height: 100%;
-        transition: .5s ease;
-    }
-
-    .item-product:hover .overlay {
+    .pagination {
         width: 100%;
-    }
-
-    .text-uudiem {
-        white-space: nowrap;
-        color: white;
-        font-size: 20px;
-        position: absolute;
-        overflow: hidden;
-        top: 50%;
-        left: 50%;
-        width:100%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-    }
-    .text-uudiem p {
-        width: 100%;
-        word-break: break-all;
-        /* width: 200px; */
-        padding: 10px;
-        white-space: normal;
-        text-align:left;
-    }
-    #list-product.loading {
-        background-image: url("https://i.imgur.com/T3Ht7S3.gif");
+        text-align: center;
+    } .pagination > li {
+        display: inline-block;
+    } #list-product.loading {
+        background-image: url("/images/loading.gif");
         background-position: center;
         background-repeat: no-repeat;
     }
+    .product-uudiem{
+        display:none;
+    }
+    .uu-diem{
+        width:100%;
+        text-align:center;
+    }
+    .uu-diem .noi-dung{
+        text-align:left;
+    }
+    .uu-diem .doc-them {
+        text-align: center;
+    }
+
 </style>
 
 
@@ -127,20 +110,25 @@
         </div>
 
 </div>
+@Styles.Render("~/Content/jquery.webui-popover.min.css")
+@Scripts.Render("~/Scripts/jquery.webui-popover.min.js")
 <script>
     $(document).ready(function () {
 
-        $('.item-product  .img-name ').hover(function () {
-            //    var submenu =  $(this);//.nextUntil('.submenu').parent();
-            //    submenu.addClass('activehover');
-            $(this).next('div.uu-diem')
-             .toggleClass("activeuudiem")
-             .next();
-        });
+        
+
+
+        //$('.item-product  .img-name ').hover(function () {
+        //    //    var submenu =  $(this);//.nextUntil('.submenu').parent();
+        //    //    submenu.addClass('activehover');
+        //    $(this).next('div.uu-diem')
+        //     .toggleClass("activeuudiem")
+        //     .next();
+        //});
         chuyenTrang();
         $("#title-category").html($("#categoryID option:selected").text());
     });
-    
+
     function chuyenTrang(page){
         var id = $("#categoryID").val();
         $("#title-category").html($("#categoryID option:selected").text());
@@ -148,24 +136,38 @@
             type: 'POST',
             url: "@Url.Action("getListProductsByCategory")",
             data: {
-            id: id,
-            page: page
+                id: id,
+                page: page
             },
-        dataType: 'JSON',
-        beforeSend: function () {
-            $("#list-product").html("");
-            $("#list-product").addClass("loading");
-            // setting a timeout
-                    
-        },
-        success: function (data) {
-           
-            $("#mypagination").html(data[0]["pagination"]);
-            
+            dataType: 'JSON',
+            beforeSend: function () {
+                $("#list-product").html("");
+                $("#list-product").addClass("loading");
+                // setting a timeout
+
+            },
+            success: function (data) {
+
+                $("#mypagination").html(data[0]["pagination"]);
+
+                
 
 
             $("#list-product").removeClass("loading");
             $("#list-product").html(data[1]["listproduct"]);
+
+            $('.item-product').webuiPopover('destroy').webuiPopover({
+                
+                trigger: "hover",
+                viewport: ".container",
+                content: function () {
+                    var x = $(this);
+                    return $("#" + x.data("id")).html();
+                    debugger;
+
+                },
+                width: 300
+            });
         },
         error: function (xhr) { // if error occured
                     
@@ -173,4 +175,7 @@
         });
 
     }
+
+
+
 </script>

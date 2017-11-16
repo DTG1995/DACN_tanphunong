@@ -18,7 +18,7 @@ namespace DACN_TanPhuNong.Controllers
            
             string tri_an = db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAn" + lang).Select(x => x.NoiDungTuyChon).FirstOrDefault()  ?? db.tb_TuyChon.Where(x => x.TenTuyChon == "TriAn" + (lang == "vi" ? "en" : "vi")).Select(x => x.NoiDungTuyChon).FirstOrDefault();
             ViewBag.TriAn = !string.IsNullOrEmpty(tri_an) ? tri_an.Substring(0, tri_an.IndexOf("</p>") == -1 ? 0 : tri_an.IndexOf("</p>")) + "</p>" : "";
-
+            ViewBag.SlideShow1 = (db.tb_TuyChon.Where(x => x.TenTuyChon == "SlideShow1").Select(x => x.NoiDungTuyChon).FirstOrDefault() ?? "").Split(';');
             return View();
         }
 
@@ -68,7 +68,7 @@ namespace DACN_TanPhuNong.Controllers
                 ThuBac = b.ThuBac,
                 tb_DoiNguQL_Trans = b.tb_DoiNguQL_Trans.Where(x => x.NgonNgu == lang).FirstOrDefault() == null ? b.tb_DoiNguQL_Trans : b.tb_DoiNguQL_Trans.Where(x => x.NgonNgu == lang).ToList()
 
-            }).OrderBy(x => x.ThuBac); ;
+            }).OrderBy(x => x.ThuBac).ToList() ;
 
             ViewBag.CurrentPage = "asdasd"+ GlobalRes.About;
             return View();
@@ -79,6 +79,14 @@ namespace DACN_TanPhuNong.Controllers
             var lsp = db.tb_LoaiSP.Where(x => x.LoaiCha == null).Select(x=>x.MaLoaiSP);
             var dslsp = db.tb_LoaiSPTrans.Where(x => x.NgonNgu == lang && lsp.Contains(x.MaLoaiSP)).ToList();
             return PartialView("_MenuSP",dslsp);
+        }
+        public ActionResult Footer()
+        {
+            var lang = RouteData.Values["lang"] as string ?? "vi";
+            ViewBag.contentFooter = db.tb_TuyChon.Where(t => t.TenTuyChon == "noiDungfooter" + lang).Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.lienheFooter = db.tb_TuyChon.Where(t => t.TenTuyChon == "lienHeFooter" + lang).Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.Socials = db.tb_TuyChon.Where(t => t.Nhom == "social").ToList();
+            return PartialView("_Footer");
         }
     }
 }

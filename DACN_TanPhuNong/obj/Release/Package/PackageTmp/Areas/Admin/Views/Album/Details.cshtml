@@ -1,0 +1,185 @@
+﻿@model DACN_TanPhuNong.Models.tb_Album
+
+@{
+    ViewBag.Title = GlobalRes.Detail;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Albums
+        <small>@GlobalRes.List</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","UngDung")"><i class="fa fa-dashboard"></i>@GlobalRes.Admin</a></li>
+        <li><a class="active">Albums</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">@GlobalRes.Detail</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="container">
+                            <h4>@Model.TenAlbum   <small>@Model.NgayTao</small></h4>
+                            <div style="width:100%; text-align:center">
+                                <img src="@Model.HinhAnh" height="200" style="margin:0 auto;" />
+                            </div>
+                            <p>@Model.MoTa</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="box-header">
+                            <h3 class="box-title">@GlobalRes.List</h3>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#addModal" style="float: right">@GlobalRes.Add_new</button>
+                        </div>
+                        <div class="box-body">
+                            <table id="datatable" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @GlobalRes.Images
+                                        </th>
+                                        <th class="no-sort"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.tb_Photos)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="@item.Link" height="200px" />
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" onclick="showModalDelete(@item.MaPhoTo,'@item.Link')">@GlobalRes.Delete</button> 
+                                                
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        @Html.ActionLink(@GlobalRes.back_to_list, "Index")
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+
+<div id="addModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">@GlobalRes.Add_new</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form action="@Url.Action("Add","Photos")" method="post" id="addForm">
+                        @Html.HiddenFor(model => model.MaAlbum)
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="file-upload">@GlobalRes.Images: </label>
+                                <div class="col-sm-10">
+                                    <div class="col-md-10">
+                                        <input type="text" value="" class="form-control" name="Image" id="HinhAnh" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" id="file-upload" onclick="chosseImage('HinhAnh')" class=" btn btn-primary">Chọn hình</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="mota">
+                                    @GlobalRes.Description
+                            </label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="text" name="MoTa" />
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" form="addForm" class="btn btn-success">@GlobalRes.Add_new</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">@GlobalRes.Delete</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form action="@Url.Action("Delete", "Photos")" method="post" id="deleteForm">
+                        @Html.HiddenFor(model => model.MaAlbum)
+                        <input type="hidden" name="id" value="" id="idPhoto" />
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="file-upload">@GlobalRes.Images: </label>
+                                <div class="col-sm-10">
+                                    <img width="100%" src="#" id="imgDelete" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="mota" style="text-align:center">
+                                    Are you sure?
+                                </label>
+                                
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" form="deleteForm" class="btn btn-danger">@GlobalRes.Delete</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+</div>
+</div>
+<script>
+    function showModalDelete(id, src) {
+        $("#idPhoto").val(id);
+        $("#imgDelete").attr("src", src);
+        $("#deleteModal").modal();
+    }
+    </script>
+
+@Styles.Render("~/Content/admin/dataTables.bootstrap.min.css")
+@Scripts.Render("~/Scripts/admin/jquery.dataTables.min.js")
+@Scripts.Render("~/Scripts/admin/dataTables.bootstrap.min.js")
+<script>
+    $("#datatable").DataTable({
+        columnDefs: [
+        { targets: 'no-sort', orderable: false }
+        ]
+    });
+</script>

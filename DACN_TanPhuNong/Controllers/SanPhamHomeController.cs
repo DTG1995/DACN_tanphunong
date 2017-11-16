@@ -75,24 +75,33 @@ namespace DACN_TanPhuNong.Controllers
                 for (int i = 0; i < listSP.Count(); i++)
                 {
                     tb_SanPhamTrans spTran = listSP[i].tb_SanPhamTrans.Where(y=>y.NgonNgu == lang).FirstOrDefault();
-
+                    if (spTran != null && spTran.TenSanPhamTrans == null)
+                        continue;
 
                     //RegexOptions options = RegexOptions.None;
                     //Regex regex = new Regex("[ ]{2,}", options);
                     //spTran.UuDienTrans = regex.Replace(spTran.UuDienTrans, "<br/>");
-                    string uudiem =spTran.UuDienTrans;
-                    uudiem= uudiem.Length<300?uudiem: uudiem.Substring(0,280)+"...";
-                    strlistsp +="<div class=\"col-lg-3 col-md-3 col-sm-4 col-xs-12 item-product\">"+
+                    
+                    strlistsp +="<div class=\"col-lg-3 col-md-3 col-sm-4 col-xs-12 item-product\" data-id='product"+listSP[i].MaSP+"'>"+
                         "<img src=\""+listSP[i].HinhAnh+"\" alt=\"Avatar\" class=\"image\">"+
-                                     "<a href=\""+Url.RouteUrl("SanPhamDetails", new{id=spTran.MaSP, title=UrlEncode.ToFriendlyUrl(spTran.TenSanPhamTrans)})+"\" style=\"top: 70%;font-weight: bold;color: white;background: #524f4fc7;width: 100%;position: absolute;left: 0;height: 20%;\">"+
-                                        spTran.TenSanPhamTrans+
-                                      "</a>"+
-                                     "<div class=\"overlay\">"+
-                                         "<div class=\"text-uudiem\">"+
-                                             "<p>"
-                                             +uudiem.Replace("\r\n","<br/>")+
-                                             "</p>"+
-                                             "<a href=\"" + Url.RouteUrl("SanPhamDetails", new { id = spTran.MaSP, title = UrlEncode.ToFriendlyUrl(spTran.TenSanPhamTrans) }) + "\" class=\"btn btn-custom\">"+GlobalRes.ReadMore+"</a></div></div></div>";
+                        "<a href=\"" + Url.RouteUrl("SanPhamDetails", new { id = listSP[i].MaSP, title = UrlEncode.ToFriendlyUrl(spTran.TenSanPhamTrans) }) + "\" style=\"top: 70%;font-weight: bold;color: white;background: #524f4fc7;width: 100%;position: absolute;left: 0;height: 20%;\">" +
+                       spTran.TenSanPhamTrans+
+                                      "</a></div>";
+                    strlistsp += "<div class='product-uudiem' id='product" +  listSP[i].MaSP + "'>" +
+                                    "<div class='uu-diem'>"+
+                                        "<div class='tieu-de'>"+
+                                            "<h4><b>"+spTran.TenSanPhamTrans+"</b></h4>"+
+                                        "</div>"+
+                                        "<div class='noi-dung'>"+
+                                            "<p>"+spTran.UuDienTrans.Replace("\r\n","<br/>")+"</p>"+
+                                        "</div>"+
+                                        "<div class='doc-them'>"+
+                                            "<a class='btn btn-custom' href='" + Url.RouteUrl("SanPhamDetails", new { id = listSP[i].MaSP, title = UrlEncode.ToFriendlyUrl(spTran.TenSanPhamTrans) }) +"'>"+GlobalRes.ReadMore+"</a>"+
+                                        "</div>"+
+                                    "</div>"+                        
+                                "</div>";
+
+
                 }
                   
 

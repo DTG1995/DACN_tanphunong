@@ -1,0 +1,33 @@
+﻿@model List<DACN_TanPhuNong.Models.tb_Album>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/default.css")
+@Styles.Render("~/Content/component.css")
+@Scripts.Render("~/Scripts/modernizr.custom.js")
+<div class="content-posts" style="background: url('/images/Slide-Nen/20.jpg'); background-repeat:no-repeat; background-position:center; background-size:cover;">
+    <div class="container">
+        <div class="title-page" style="margin-top:50px; margin-bottom:50px; text-align:center;">
+            <h1>Albums</h1>
+        </div>
+        <div class="conten-page">
+            <ul class="grid cs-style-3">
+                @foreach (tb_Album item in Model)
+                {
+                    <li>
+                        <figure>
+                            <img src="@item.HinhAnh" alt="@item.TenAlbum">
+                            <figcaption>
+                                <h3>@item.TenAlbum</h3>
+                                <span>@item.MoTa</span>
+                                <a href="@Url.RouteUrl("hinh-anh-chi-tiet", new{title=DACN_TanPhuNong.Controllers.UrlEncode.ToFriendlyUrl(item.TenAlbum), id=item.MaAlbum})">@GlobalRes.ReadMore</a>
+                        </figcaption>
+                    </figure>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Scripts/toucheffects.js")

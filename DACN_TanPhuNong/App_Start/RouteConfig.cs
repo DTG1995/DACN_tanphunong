@@ -41,8 +41,8 @@ namespace DACN_TanPhuNong
             );
             //Khuyen mai
             routes.MapRoute(
-                name: "Promotions",
-                url: "{lang}/khuyen-mai",
+                name: "news",
+                url: "{lang}/tin-tuc",
                 defaults: new { controller = "BaiViet", action = "Index", loaibv = 2 },
                 constraints: new { lang = @"vi|en" }
             );
@@ -56,8 +56,20 @@ namespace DACN_TanPhuNong
             //Image Video
 
             routes.MapRoute(
-                name: "hinh-anh-video",
-                url: "{lang}/images-videos",
+                name: "hinh-anh",
+                url: "{lang}/albums",
+                defaults: new { controller = "Albums", action = "Index"},
+                constraints: new { lang = @"vi|en" }
+            );
+            routes.MapRoute(
+                name: "hinh-anh-chi-tiet",
+                url: "{lang}/albums/{title}-{id}",
+                defaults: new { controller = "Albums", action = "Details", title=UrlParameter.Optional, id=UrlParameter.Optional },
+                constraints: new { lang = @"vi|en" }
+            );
+            routes.MapRoute(
+                name: "video",
+                url: "{lang}/albums",
                 defaults: new { controller = "BaiViet", action = "Index", loaibv = 4 },
                 constraints: new { lang = @"vi|en" }
             );

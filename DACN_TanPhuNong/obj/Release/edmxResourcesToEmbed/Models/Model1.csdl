@@ -305,6 +305,12 @@
       <End Role="tb_SanPhamTrans" EntitySet="tb_SanPhamTrans" />
     </AssociationSet>
     <EntitySet Name="tb_DoiTac" EntityType="db_tanphunongModel.tb_DoiTac" />
+    <EntitySet Name="tb_Album" EntityType="db_tanphunongModel.tb_Album" />
+    <EntitySet Name="tb_Photos" EntityType="db_tanphunongModel.tb_Photos" />
+    <AssociationSet Name="FK_tb_Photos_tb_Album" Association="db_tanphunongModel.FK_tb_Photos_tb_Album">
+      <End Role="tb_Album" EntitySet="tb_Album" />
+      <End Role="tb_Photos" EntitySet="tb_Photos" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="tb_DoiTac">
     <Key>
@@ -314,4 +320,37 @@
     <Property Name="TenDT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="tb_Album">
+    <Key>
+      <PropertyRef Name="MaAlbum" />
+    </Key>
+    <Property Name="MaAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenAlbum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_Photos" Relationship="db_tanphunongModel.FK_tb_Photos_tb_Album" FromRole="tb_Album" ToRole="tb_Photos" />
+  </EntityType>
+  <EntityType Name="tb_Photos">
+    <Key>
+      <PropertyRef Name="MaPhoTo" />
+    </Key>
+    <Property Name="MaPhoTo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaAlbum" Type="Int32" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_Album" Relationship="db_tanphunongModel.FK_tb_Photos_tb_Album" FromRole="tb_Photos" ToRole="tb_Album" />
+  </EntityType>
+  <Association Name="FK_tb_Photos_tb_Album">
+    <End Type="db_tanphunongModel.tb_Album" Role="tb_Album" Multiplicity="0..1" />
+    <End Type="db_tanphunongModel.tb_Photos" Role="tb_Photos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Album">
+        <PropertyRef Name="MaAlbum" />
+      </Principal>
+      <Dependent Role="tb_Photos">
+        <PropertyRef Name="MaAlbum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

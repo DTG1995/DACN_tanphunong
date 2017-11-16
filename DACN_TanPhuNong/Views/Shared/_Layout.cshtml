@@ -17,7 +17,7 @@
     @Styles.Render("~/Content/main.css")
     @Styles.Render("~/Content/admin/font-awesome.min.css")
 <style>
-.fa {
+.social {
   padding: 20px;
   width: 200px;
   text-align: center;
@@ -26,9 +26,9 @@
 }
 
 
-.fa:hover {
-    opacity: 0.7;
-}
+    .social:hover {
+        opacity: 0.7;
+    }
 
 .fa-facebook {
   background: #3B5998;
@@ -67,6 +67,48 @@
             max-width: none;
             height: 100% !important;
         }
+    .logo-company{
+        position:absolute;
+        margin:30px;
+    }
+    #logo-home{
+        display:none;
+        height:60px;
+    }
+    #logo-home img{
+        height:100%;
+    }
+    .owl-prev {
+        width: 30px;
+        height: 100px;
+        position: absolute;
+        top: 35%;
+        margin-left: -35px !IMPORTANT;
+        display: block !IMPORTANT;
+        border: 0px solid black;
+        vertical-align: middle;
+        background-color: #46454554 !IMPORTANT;
+    }
+
+    .owl-next {
+        width: 30px;
+        height: 100px;
+        position: absolute;
+        top: 35%;
+        right: -35px !IMPORTANT;
+        display: block !IMPORTANT;
+        border: 0px solid black;
+        background-color: #46454554 !IMPORTANT;
+    }
+        .owl-prev:hover, .owl-next:hover{
+            color:black;
+        }
+        .owl-prev i, .owl-next i {
+            transform: scale(1,6);
+            color: #ccc;
+            margin-top: 40px;
+            font-weight: bold;
+        }
 </style>
 
     @Scripts.Render("~/Scripts/jquery-3.2.1.slim.min.js")
@@ -81,6 +123,9 @@
     
 </head>
 <body>
+    <div class="logo-company" >
+        <img width="100" height="100"  src="/images/logo-tan-phu-nong.png" />
+    </div>
     <ul class="langDesktop">
         @Url.LangSwithcher(ViewContext.RouteData, "vi")
         @Url.LangSwithcher(ViewContext.RouteData, "en")
@@ -105,7 +150,8 @@
                                 show
                             </label>
                             <ul id="nav">
-                                <li class="@(ViewBag.CurrentMenu =="Home"?"active":"")"><a href="@Url.Action("Index","Home")">@GlobalRes.Home</a></li>
+                                <li id="text-home" class="@(ViewBag.CurrentMenu =="Home"?"active":"")" ><a href="@Url.Action("Index","Home")">@GlobalRes.Home</a></li>
+                                <li id="logo-home" class="@(ViewBag.CurrentMenu =="Home"?"active":"")"><a href="@Url.Action("Index","Home")"><img width="auto" height="100%" src="/images/logo-tan-phu-nong.png" /></a></li>
                                 <li class="@(ViewBag.CurrentMenu == "Abouts" ? "active" : "")">
                                     <a href="@Url.Action("Abouts","Home")">@GlobalRes.About</a>
                                     @*<ul class="submenu">
@@ -122,13 +168,12 @@
                                     </ul>
                                 </li>
                                 <li class="@(ViewBag.CurrentMenu =="BaiViet"?"active":"")">
-                                    <a href="#">@GlobalRes.News_event, @GlobalRes.thong_bao</a>
+                                    <a href="#">@GlobalRes.News_Events_Notification</a>
                                     <ul class="submenu">
-                                        <li><a href="@Url.RouteUrl("hinh-anh-video")">@GlobalRes.Images, Video</a></li>
-
-                                        <li><a href="@Url.RouteUrl("Promotions")">@GlobalRes.Promotions</a></li>
+                                        <li><a href="@Url.RouteUrl("hinh-anh")">@GlobalRes.Images</a></li>
+                                        <li><a href="@Url.RouteUrl("video")">Videos</a></li>
+                                        <li><a href="@Url.RouteUrl("news")">@GlobalRes.News</a></li>
                                         <li><a href="@Url.RouteUrl("Conferences")">@GlobalRes.Conferences</a></li>
-                                        <li><a href="@Url.RouteUrl("Careers")">@GlobalRes.Careers</a></li>
                                         <li><a href="@Url.RouteUrl("thong_bao")">@GlobalRes.thong_bao</a></li>
                                         <li><a href="@Url.RouteUrl("thong_bao_noi_bo")">@GlobalRes.Internal</a></li>
                                     </ul>
@@ -159,41 +204,7 @@
     <div class="content-website">
         @RenderBody()
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 footer">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 description-company">
-                <h1>Tân phú nông</h1>
-                <h3>Vững bước nhà nông</h3>
-                <p>
-                    Công ty TNHH Sản xuất-Dịch vụ-Thương mại Tân Phú Nông là 1 doanh nghiệp chuyên kinh doanh trong lĩnh vực vật tư nông nghiệp, có trụ sở đặt tại số 1 đường Hồ Xuân Hương, phường 9, thành phố Đà Lạt, tỉnh Lâm Đồng. – Công ty TNHH SX-DV-TM Tân Phú Nông được thành lập ngày 26/04/2005, sau 10 năm hoạt động Công ty đã từng bước trưởng thành và lớn mạnh (mở rộng), mang tính chuyên nghiệp cao.
-
-                </p>
-                <p>&copy; 2017| ĐTG</p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 contact">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <h5><b>LIÊN HỆ </b></h5>
-                        <p>Số điện thoại : 0633 828958 </p>
-                        <p>Số 01B Hồ Xuân Hương, phường 9, TP Đà Lạt, Tỉnh Lâm Đồng, Việt Nam</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <h5 style="text-align:center;width:100%;"><b>Mạng xã hội</b></h5>
-                        <ul style="list-style-type:none;text-align:center;width:100%;">
-                            <li>
-                                <a href="#" class="fa fa-facebook">@GlobalRes.TanPhuNong</a>
-                            </li>
-                            <li>
-                                <a href="#" class="fa fa-twitter">@GlobalRes.TanPhuNong</a>
-                            </li>
-                            <li>
-                                <a href="#" class="fa fa-google">@GlobalRes.TanPhuNong</a>
-                            </li>
-                            <li>
-                                <a href="#" class="fa fa-youtube">@GlobalRes.TanPhuNong</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+           @{Html.RenderAction("Footer","Home");}
         </div>
     </div>
     
@@ -259,9 +270,10 @@
                         items: 3,
                         nav: true
                     }
-                }
+                },
+                navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>']
 
-            })
+            });
 
 
             var targetElementID = 'nav';
@@ -292,10 +304,14 @@
                     if (document.body.scrollTop > offset || document.documentElement.scrollTop > offset) {
                         if (!document.getElementById(targetElementID).className.includes(classToAppend)) {
                             document.getElementById(targetElementID).className = document.getElementById(targetElementID).className + ' ' + classToAppend;
+                            $("#text-home").hide();
+                            $("#logo-home").show();
                         }
                     } else {
                         document.getElementById(targetElementID).className = document.getElementById(targetElementID).className
                         .replace(' ' + classToAppend, '');
+                        $("#text-home").show();
+                        $("#logo-home").hide();
                     }
                 }
             }

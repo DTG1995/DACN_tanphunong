@@ -24,6 +24,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Admin/Views/Admin/_Menu.cshtml">
       <publishTime>11/09/2017 11:00:10</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/Album/Create.cshtml">
+      <publishTime>11/16/2017 08:49:29</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Album/Delete.cshtml">
+      <publishTime>11/15/2017 22:59:06</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Album/Details.cshtml">
+      <publishTime>11/16/2017 09:32:23</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Album/Edit.cshtml">
+      <publishTime>11/16/2017 08:16:48</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Album/Index.cshtml">
+      <publishTime>11/15/2017 22:53:46</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/Conferences/Create.cshtml">
       <publishTime>11/12/2017 16:29:05</publishTime>
     </File>
@@ -54,6 +69,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Admin/Views/DanhSachQuanLy/Index.cshtml">
       <publishTime>11/10/2017 09:56:27</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/DoiNguQuanLy/Create.cshtml">
+      <publishTime>11/15/2017 00:06:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DoiNguQuanLy/Delete.cshtml">
+      <publishTime>11/14/2017 23:49:49</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DoiNguQuanLy/Details.cshtml">
+      <publishTime>11/14/2017 23:49:43</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DoiNguQuanLy/Edit.cshtml">
+      <publishTime>11/15/2017 00:06:32</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DoiNguQuanLy/Index.cshtml">
+      <publishTime>11/15/2017 00:06:43</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/DoiTac/Create.cshtml">
       <publishTime>11/12/2017 17:25:52</publishTime>
     </File>
@@ -70,7 +100,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/12/2017 17:29:34</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Create.cshtml">
-      <publishTime>11/12/2017 16:33:34</publishTime>
+      <publishTime>11/14/2017 22:56:03</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Delete.cshtml">
       <publishTime>11/12/2017 16:33:44</publishTime>
@@ -130,19 +160,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/12/2017 17:32:59</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Create.cshtml">
-      <publishTime>11/12/2017 16:40:53</publishTime>
+      <publishTime>11/15/2017 00:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Delete.cshtml">
-      <publishTime>11/12/2017 16:40:58</publishTime>
+      <publishTime>11/15/2017 00:05:32</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Details.cshtml">
-      <publishTime>11/12/2017 16:41:03</publishTime>
+      <publishTime>11/15/2017 00:05:37</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Edit.cshtml">
-      <publishTime>11/12/2017 16:41:09</publishTime>
+      <publishTime>11/15/2017 00:05:49</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Index.cshtml">
-      <publishTime>11/12/2017 16:41:16</publishTime>
+      <publishTime>11/15/2017 00:05:56</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Create.cshtml">
       <publishTime>11/11/2017 00:55:06</publishTime>
@@ -163,7 +193,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/12/2017 22:35:55</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_LeftMenu.cshtml">
-      <publishTime>11/12/2017 16:42:39</publishTime>
+      <publishTime>11/16/2017 08:13:12</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Create.cshtml">
       <publishTime>11/13/2017 01:20:26</publishTime>
@@ -201,11 +231,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/Admin/Views/UngDung/Abouts.cshtml">
       <publishTime>11/10/2017 10:56:44</publishTime>
     </File>
+    <File Include="Areas/Admin/Views/UngDung/Footer.cshtml">
+      <publishTime>11/15/2017 11:28:41</publishTime>
+    </File>
     <File Include="Areas/Admin/Views/UngDung/Index.cshtml">
-      <publishTime>11/10/2017 01:27:56</publishTime>
+      <publishTime>11/15/2017 00:45:12</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/LienHe.cshtml">
-      <publishTime>11/09/2017 11:00:10</publishTime>
+      <publishTime>11/15/2017 00:59:11</publishTime>
     </File>
     <File Include="Areas/Admin/Views/web.config">
       <publishTime>11/09/2017 22:02:42</publishTime>
@@ -217,7 +250,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/09/2017 11:00:16</publishTime>
     </File>
     <File Include="bin/DACN_TanPhuNong.dll">
-      <publishTime>11/13/2017 11:01:49</publishTime>
+      <publishTime>11/16/2017 12:27:05</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/11/2017 07:24:19</publishTime>
@@ -298,7 +331,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/09/2017 11:00:17</publishTime>
     </File>
     <File Include="bin/vi/DACN_TanPhuNong.resources.dll">
-      <publishTime>11/13/2017 11:01:49</publishTime>
+      <publishTime>11/16/2017 12:27:05</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>11/09/2017 11:00:18</publishTime>
@@ -323,6 +356,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>11/11/2017 17:30:54</publishTime>
+    </File>
+    <File Include="Content/component.css">
+      <publishTime>11/16/2017 09:58:42</publishTime>
+    </File>
+    <File Include="Content/default.css">
+      <publishTime>11/16/2017 09:51:21</publishTime>
     </File>
     <File Include="Content/fonts/fontawesome-webfont.eot">
       <publishTime>11/09/2017 11:00:10</publishTime>
@@ -354,11 +393,74 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/fonts/glyphicons-halflings-regular.woff">
       <publishTime>11/09/2017 11:00:10</publishTime>
     </File>
+    <File Include="Content/images/Albums/maxresdefault.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Albums/Thumbs.db">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
     <File Include="Content/images/arrow-right.png">
       <publishTime>11/09/2017 11:00:10</publishTime>
     </File>
+    <File Include="Content/images/DSQL/20659014.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/DSQL/Thumbs.db">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/PhanBon/realstrong11.11.11.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/PhanBon/realstrong4.3.2.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/PhanBon/Thumbs.db">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/1.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/123123213.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/16.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/18.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/2.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/20.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/21.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/22.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/3.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/9.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/dau-ca.jpg">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/images/Slide-Nen/Thumbs.db">
+      <publishTime>11/16/2017 12:16:58</publishTime>
+    </File>
+    <File Include="Content/jquery.webui-popover.min.css">
+      <publishTime>11/14/2017 21:02:28</publishTime>
+    </File>
+    <File Include="Content/lightgallery.min.css">
+      <publishTime>11/16/2017 11:44:35</publishTime>
+    </File>
     <File Include="Content/main.css">
-      <publishTime>11/13/2017 10:32:48</publishTime>
+      <publishTime>11/14/2017 23:54:35</publishTime>
     </File>
     <File Include="Content/nivo-slider.css">
       <publishTime>11/13/2017 10:36:20</publishTime>
@@ -407,6 +509,18 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff">
       <publishTime>11/11/2017 17:30:54</publishTime>
+    </File>
+    <File Include="fonts/lg.eot">
+      <publishTime>11/16/2017 12:17:29</publishTime>
+    </File>
+    <File Include="fonts/lg.svg">
+      <publishTime>11/16/2017 12:17:29</publishTime>
+    </File>
+    <File Include="fonts/lg.ttf">
+      <publishTime>11/16/2017 12:17:29</publishTime>
+    </File>
+    <File Include="fonts/lg.woff">
+      <publishTime>11/16/2017 12:17:29</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>11/09/2017 11:00:10</publishTime>
@@ -498,8 +612,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/vi_vuong.png">
       <publishTime>11/09/2017 11:25:04</publishTime>
     </File>
+    <File Include="img/loading.gif">
+      <publishTime>11/16/2017 12:17:44</publishTime>
+    </File>
+    <File Include="img/Thumbs.db">
+      <publishTime>11/16/2017 12:17:44</publishTime>
+    </File>
+    <File Include="img/video-play.png">
+      <publishTime>11/16/2017 12:17:44</publishTime>
+    </File>
+    <File Include="img/vimeo-play.png">
+      <publishTime>11/16/2017 12:17:44</publishTime>
+    </File>
+    <File Include="img/youtube-play.png">
+      <publishTime>11/16/2017 12:17:44</publishTime>
+    </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>11/09/2017 21:35:49</publishTime>
+      <publishTime>11/15/2017 22:15:02</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>11/12/2017 20:48:13</publishTime>
@@ -1692,17 +1821,44 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-3.2.1.slim.min.js">
       <publishTime>11/09/2017 11:25:21</publishTime>
     </File>
+    <File Include="Scripts/jquery.mousewheel.min.js">
+      <publishTime>11/16/2017 11:43:00</publishTime>
+    </File>
     <File Include="Scripts/jquery.nivo.slider.js">
       <publishTime>11/13/2017 10:35:31</publishTime>
+    </File>
+    <File Include="Scripts/jquery.webui-popover.min.js">
+      <publishTime>11/14/2017 20:50:50</publishTime>
     </File>
     <File Include="Scripts/jquery1.10.1.js">
       <publishTime>11/13/2017 10:46:43</publishTime>
     </File>
+    <File Include="Scripts/jssor.slider.min.js">
+      <publishTime>11/16/2017 10:19:08</publishTime>
+    </File>
+    <File Include="Scripts/lightgallery-all.min.js">
+      <publishTime>11/16/2017 11:42:46</publishTime>
+    </File>
+    <File Include="Scripts/modernizr.custom.js">
+      <publishTime>11/16/2017 09:50:44</publishTime>
+    </File>
     <File Include="Scripts/owl.carousel.js">
       <publishTime>11/09/2017 11:25:21</publishTime>
     </File>
+    <File Include="Scripts/picturefill.min.js">
+      <publishTime>11/16/2017 11:42:10</publishTime>
+    </File>
     <File Include="Scripts/popper.min.js">
       <publishTime>11/09/2017 11:25:21</publishTime>
+    </File>
+    <File Include="Scripts/toucheffects.js">
+      <publishTime>11/16/2017 09:50:44</publishTime>
+    </File>
+    <File Include="Views/Albums/Details.cshtml">
+      <publishTime>11/16/2017 12:20:02</publishTime>
+    </File>
+    <File Include="Views/Albums/Index.cshtml">
+      <publishTime>11/16/2017 12:26:17</publishTime>
     </File>
     <File Include="Views/BaiViet/Detail.cshtml">
       <publishTime>11/13/2017 10:58:56</publishTime>
@@ -1723,13 +1879,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/09/2017 11:00:12</publishTime>
     </File>
     <File Include="Views/Home/Abouts.cshtml">
-      <publishTime>11/10/2017 12:26:23</publishTime>
+      <publishTime>11/14/2017 23:55:36</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>11/09/2017 11:00:12</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/13/2017 00:30:49</publishTime>
+      <publishTime>11/15/2017 00:35:40</publishTime>
     </File>
     <File Include="Views/Home/LienHe.cshtml">
       <publishTime>11/09/2017 11:00:12</publishTime>
@@ -1740,14 +1896,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/TriAn.cshtml">
       <publishTime>11/11/2017 07:24:18</publishTime>
     </File>
+    <File Include="Views/Home/_Footer.cshtml">
+      <publishTime>11/15/2017 12:23:12</publishTime>
+    </File>
     <File Include="Views/Home/_SlideShow.cshtml">
       <publishTime>11/11/2017 16:50:40</publishTime>
     </File>
     <File Include="Views/PhanHoiHome/GuiPhanHoi.cshtml">
-      <publishTime>11/11/2017 07:24:18</publishTime>
+      <publishTime>11/15/2017 00:52:31</publishTime>
     </File>
     <File Include="Views/SanPhamHome/AllByLoai.cshtml">
-      <publishTime>11/13/2017 10:50:33</publishTime>
+      <publishTime>11/15/2017 01:51:12</publishTime>
     </File>
     <File Include="Views/SanPhamHome/Details.cshtml">
       <publishTime>11/13/2017 10:51:21</publishTime>
@@ -1762,7 +1921,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/09/2017 11:00:12</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/13/2017 10:47:11</publishTime>
+      <publishTime>11/16/2017 12:21:15</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutHome.cshtml">
       <publishTime>11/13/2017 10:37:07</publishTime>
