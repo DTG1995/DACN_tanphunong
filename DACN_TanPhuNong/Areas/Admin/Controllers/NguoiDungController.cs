@@ -217,12 +217,42 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             return View();
         }
 
-        [AdminFilter(AllowPermit = "0")]
+        
         public ActionResult Logout()
         {
             Session.RemoveAll();
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
+        }
+        [AdminFilter(AllowPermit = "0")]
+        public ActionResult ResetPassword(string id)
+        {
+            var user = db.tb_NguoiDung.Find(id);
+            if (user == null)
+                return HttpNotFound();
+            MD5 md5 = MD5.Create();
+            user.MatKhau = GetMd5Hash(md5, "admin");
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        [AdminFilter(AllowPermit="0,1,2,3")]
+
+        public JsonResult ChangePass(string pageold, string passnew)
+        {
+            var tendangnhap = Session["username"];
+            if (tendangnhap == null)
+                return Json(new { err = true });
+            MD5 md5 = MD5.Create();
+            var passmd5 = GetMd5Hash(md5, pageold);
+            var user = db.tb_NguoiDung.Where(t => t.TenDangNhap == tendangnhap && t.MatKhau == passmd5).FirstOrDefault();
+            if (user == null)
+                return Json(new { err = true });
+            user.MatKhau = GetMd5Hash(md5, passnew);
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(new { err = false });
         }
         protected override void Dispose(bool disposing)
         {

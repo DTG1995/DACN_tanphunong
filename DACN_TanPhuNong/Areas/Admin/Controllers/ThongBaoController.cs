@@ -163,8 +163,8 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
 
         public ActionResult SetCode()
         {
-            var code = db.tb_TuyChon.Where(x => x.TenTuyChon == "CodeInternal").Select(x => x.NoiDungTuyChon).FirstOrDefault();
-            return View(code);
+            ViewBag.Code = db.tb_TuyChon.Where(x => x.TenTuyChon == "CodeInternal").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            return View();
         }
         [HttpPost]
         public ActionResult SetCode(string codeInternal)

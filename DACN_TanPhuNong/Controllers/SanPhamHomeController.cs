@@ -58,7 +58,7 @@ namespace DACN_TanPhuNong.Controllers
             {
                 var listLSP = current.tb_LoaiSP1;
 
-                int limit = 12;
+                int limit = 8;
                 int page1 = page ?? 1;
                 var listID = new List<int>();
                 listID.Add(current.MaLoaiSP);
@@ -70,7 +70,7 @@ namespace DACN_TanPhuNong.Controllers
                 
                 var listSPFull = db.tb_SanPham.Where(x => listID.Contains(x.MaLoai)).ToList();
                 var listSP = listSPFull.OrderByDescending(x=>x.MaSP).Skip((page1 - 1) * limit).Take(limit).ToList();
-                var numberPage = listSPFull.Count / limit + 1;
+                var numberPage = listSPFull.Count % limit > 0 ? listSPFull.Count / limit + 1 : listSPFull.Count / limit;
                 string strlistsp = "";
                 for (int i = 0; i < listSP.Count(); i++)
                 {
@@ -84,7 +84,7 @@ namespace DACN_TanPhuNong.Controllers
                     
                     strlistsp +="<div class=\"col-lg-3 col-md-3 col-sm-4 col-xs-12 item-product\" data-id='product"+listSP[i].MaSP+"'>"+
                         "<img src=\""+listSP[i].HinhAnh+"\" alt=\"Avatar\" class=\"image\">"+
-                        "<a href=\"" + Url.RouteUrl("SanPhamDetails", new { id = listSP[i].MaSP, title = UrlEncode.ToFriendlyUrl(spTran.TenSanPhamTrans) }) + "\" style=\"top: 70%;font-weight: bold;color: white;background: #524f4fc7;width: 100%;position: absolute;left: 0;height: 20%;\">" +
+                        "<a href=\"" + Url.RouteUrl("SanPhamDetails", new { id = listSP[i].MaSP, title = UrlEncode.ToFriendlyUrl(spTran.TenSanPhamTrans) }) + "\" style=\"top: 70%;font-weight: bold;color: white;background: #524f4fc7;width: 95%;position: absolute;left:2.5%;height: 20%;\">" +
                        spTran.TenSanPhamTrans+
                                       "</a></div>";
                     strlistsp += "<div class='product-uudiem' id='product" +  listSP[i].MaSP + "'>" +
@@ -111,8 +111,8 @@ namespace DACN_TanPhuNong.Controllers
                       pagination += "<li ";
                       if (i == page1)
                           pagination += "class='active'>";
-                      else pagination += "onclick='chuyenTrang(" + i + ")>";
-                      pagination += "<a href='javascript;'>" + i + "</a></li>";
+                      else pagination += "onclick='chuyenTrang(" + i + ")'>";
+                      pagination += "<a href='javascript:;'>" + i + "</a></li>";
 
                   }
                   list.Add(new { pagination = pagination });

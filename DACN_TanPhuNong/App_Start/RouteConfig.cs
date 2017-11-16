@@ -69,8 +69,8 @@ namespace DACN_TanPhuNong
             );
             routes.MapRoute(
                 name: "video",
-                url: "{lang}/albums",
-                defaults: new { controller = "BaiViet", action = "Index", loaibv = 4 },
+                url: "{lang}/video",
+                defaults: new { controller = "Video", action = "Index"},
                 constraints: new { lang = @"vi|en" }
             );
 
@@ -106,6 +106,28 @@ namespace DACN_TanPhuNong
                name: "LoaiSanPham",
                url: "{lang}/{title}-{id}",
                defaults: new { controller = "SanPhamHome", action = "AllByLoai", id = UrlParameter.Optional, title = UrlParameter.Optional },
+               constraints: new { lang = @"vi|en" }
+           );
+
+            //About
+            routes.MapRoute(
+               name: "Abouts",
+               url: "{lang}/abouts",
+               defaults: new { controller = "Home", action = "Abouts"},
+               constraints: new { lang = @"vi|en" }
+           );
+            //Parter
+            routes.MapRoute(
+               name: "parter",
+               url: "{lang}/parters",
+               defaults: new { controller = "DoiTacHome", action = "DanhSachDoiTac"},
+               constraints: new { lang = @"vi|en" }
+           );
+            //Phan hoi
+            routes.MapRoute(
+               name: "phanhoi",
+               url: "{lang}/feelback",
+               defaults: new { controller = "PhanHoiHome", action = "GuiPhanHoi" },
                constraints: new { lang = @"vi|en" }
            );
             routes.MapRoute(

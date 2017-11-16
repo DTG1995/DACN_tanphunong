@@ -19,7 +19,6 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         {
             return View(db.tb_Album.ToList());
         }
-
         // GET: /Admin/Album/Details/5
         public ActionResult Details(int? id)
         {

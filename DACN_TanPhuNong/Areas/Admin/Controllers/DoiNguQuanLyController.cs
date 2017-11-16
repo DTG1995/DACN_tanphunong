@@ -41,7 +41,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.MaQL = new SelectList(db.tb_DoiNguQuanLy, "MaQL", "HinhAnh");
-            return View();
+            return View(new tb_DoiNguQuanLy());
         }
 
         // POST: /Admin/DoiNguQuanLy/Create

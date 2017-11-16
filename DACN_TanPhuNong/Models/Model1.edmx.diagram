@@ -30,6 +30,7 @@
         <EntityTypeShape EntityType="db_tanphunongModel.tb_Album" Width="1.5" PointX="9.375" PointY="9.875" />
         <EntityTypeShape EntityType="db_tanphunongModel.tb_Photos" Width="1.5" PointX="11.625" PointY="10" />
         <AssociationConnector Association="db_tanphunongModel.FK_tb_Photos_tb_Album" />
+        <EntityTypeShape EntityType="db_tanphunongModel.tb_Videos" Width="1.5" PointX="12.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

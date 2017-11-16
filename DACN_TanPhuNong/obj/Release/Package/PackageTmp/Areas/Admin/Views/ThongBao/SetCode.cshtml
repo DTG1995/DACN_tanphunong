@@ -1,4 +1,4 @@
-﻿@model string
+﻿
 @{
     ViewBag.Title = "SetCode";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -33,7 +33,7 @@
     <div class="form-group">
         <label class="control-label col-md-4">Set Code @GlobalRes.Internal</label>  
         <div class="col-md-6">
-            <input type="text" class="form-control" value="@Model" name="codeInternal" />
+            <input type="text" class="form-control" value="@ViewBag.Code" name="codeInternal" />
         </div>
         <div class="col-md-2">
             <button type="submit" class="btn btn-primary">Set Code</button>

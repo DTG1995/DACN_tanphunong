@@ -78,8 +78,9 @@
                                         @Html.DisplayFor(modelItem => item.ThoiGianDNCuoi)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.TenDangNhap }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.TenDangNhap })
+                                        @Html.ActionLink("Reset Pass", "ResetPassword", new { id = item.TenDangNhap }) |
+                                        @Html.ActionLink(GlobalRes.Edit, "Edit", new { id = item.TenDangNhap }) |
+                                        @Html.ActionLink(GlobalRes.Delete, "Delete", new { id = item.TenDangNhap })
                                     </td>
                                 </tr>
                             }

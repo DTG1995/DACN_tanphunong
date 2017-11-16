@@ -71,13 +71,7 @@
         position:absolute;
         margin:30px;
     }
-    #logo-home{
-        display:none;
-        height:60px;
-    }
-    #logo-home img{
-        height:100%;
-    }
+    
     .owl-prev {
         width: 30px;
         height: 100px;
@@ -162,13 +156,13 @@
             </ul>*@
                                 </li>
                                 <li class="@(ViewBag.CurrentMenu =="SanPham"?"active":"")">
-                                    <a href="#">@GlobalRes.Products</a>
+                                    <a href="javascript:;">@GlobalRes.Products</a>
                                     <ul class="submenu">
                                         @{Html.RenderAction("getMenuPhan", "Home");}
                                     </ul>
                                 </li>
                                 <li class="@(ViewBag.CurrentMenu =="BaiViet"?"active":"")">
-                                    <a href="#">@GlobalRes.News_Events_Notification</a>
+                                    <a href="javascript:;">@GlobalRes.News_Events_Notification</a>
                                     <ul class="submenu">
                                         <li><a href="@Url.RouteUrl("hinh-anh")">@GlobalRes.Images</a></li>
                                         <li><a href="@Url.RouteUrl("video")">Videos</a></li>

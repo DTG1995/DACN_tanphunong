@@ -128,6 +128,9 @@
                                     @Url.LangSwithcher(ViewContext.RouteData, "en")
                                 </ul>
                             </div>
+                              <div class="col-xs-12 text-center">
+                                  <button class="btn btn-default" data-toggle="modal" data-target="#changePass">Đổi mật khẩu</button> 
+                              </div>
                             
                         </div>
                             <!-- /.row -->
@@ -225,6 +228,90 @@
         });
     });
 </script>
+
+    <div id="changePass" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">@GlobalRes.Delete</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="file-upload">Mật khẩu cũ </label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="oldpass" id="oldpass" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="file-upload">Mật khẩu mới</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="newpass1" id="newpass1" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="file-upload">Nhập lại mật khẩu</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" name="newpass2" id="newpass2" class="form-control" />
+                                    </div>
+                                </div>
+
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="changePass()" id="btnchangepass" class="btn btn-danger">Đổi mật khẩu</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    <script>
+        $(document).ready(function () {
+            $("#newpass1").keyup(function () {
+                if ($(this).val() != $("#newpass2").val())
+                    $("#btnchangepass").prop('disabled', true);
+                else $("#btnchangepass").prop('disabled', false);
+            });
+            $("#newpass2").keyup(function () {
+                if ($(this).val() != $("#newpass1").val())
+                    $("#btnchangepass").prop('disabled', true);
+                else $("#btnchangepass").prop('disabled', false);
+            });
+        });
+        function changePass() {
+            var oldpass = $("#oldpass").val();
+            var newpass = $("#newpass1").val();
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("ChangePass", "NguoiDung")",
+                data: {
+                    pageold: oldpass,
+                    passnew: newpass
+            },
+            dataType: 'JSON',
+            beforeSend: function () {
+                $("#btnchangepass").prop('disabled', true);
+            },
+            success: function (data) {
+                if (data['err']) {
+                    alert("loi");
+                    $("#btnchangepass").prop('disabled', false);
+                }
+                else alert('Thay doi thanh cong');
+            },
+            error: function (xhr) { // if error occured
+                    
+            }
+        });
+        }
+    </script>
 </body>
 </html>
 

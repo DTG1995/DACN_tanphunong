@@ -52,7 +52,10 @@
                                 tb_LoaiSP lsp = item.tb_LoaiSP;
                                 <tr>
                                     <td>@(sp==null?"":sp.TenSanPhamTrans)</td>
-                                    <td><img src="@Url.Content(item.HinhAnh)" height="150px" /> </td>
+                                    @{
+                                var hinhAnh = string.IsNullOrEmpty(item.HinhAnh) ? "#" : item.HinhAnh;
+                                    }
+                                    <td><img src="@Url.Content(hinhAnh)" height="150px" /> </td>
                                     <td>@(lsp==null?"":lsp.tb_LoaiSPTrans.FirstOrDefault().TenLoaiSPTrans)</td>
                                     <td>@(lsp == null ? "" : lsp.tb_LoaiSPTrans.FirstOrDefault().MoTaTrans)</td>
                                     <td>@item.XuatXu</td>

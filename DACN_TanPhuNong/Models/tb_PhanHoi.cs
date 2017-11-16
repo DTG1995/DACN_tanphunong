@@ -6,19 +6,38 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 namespace DACN_TanPhuNong.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tb_PhanHoi
     {
         public int MaPH { get; set; }
+
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Languages.GlobalRes), ErrorMessage = null)]
+        [Display(Name = "Content", ResourceType = typeof(Languages.GlobalRes))]
         public string NoiDung { get; set; }
+
         public Nullable<int> TrangThai { get; set; }
+
+        [Display(Name = "Email", ResourceType = typeof(Languages.GlobalRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Languages.GlobalRes), ErrorMessage = null)]
+        [EmailAddress(ErrorMessageResourceName = "ErrorEmail", ErrorMessageResourceType = typeof(Languages.GlobalRes), ErrorMessage = null)]
         public string Email { get; set; }
+
+        [Display(Name = "PhoneNumber", ResourceType = typeof(Languages.GlobalRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Languages.GlobalRes), ErrorMessage = null)]
+        [RegularExpression("^[0-9]*$", ErrorMessageResourceName = "ErrorPhone", ErrorMessageResourceType = typeof(Languages.GlobalRes), ErrorMessage = null)]
+        [StringLength(11, ErrorMessageResourceName = "ErrorPhone", ErrorMessageResourceType = typeof(Languages.GlobalRes), MinimumLength = 10, ErrorMessage = null)]
         public string SDT { get; set; }
+
+        [Display(Name = "FullName", ResourceType = typeof(Languages.GlobalRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(Languages.GlobalRes), ErrorMessage = null)]
         public string HoTen { get; set; }
     }
 }

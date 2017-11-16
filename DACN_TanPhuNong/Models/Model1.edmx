@@ -161,6 +161,16 @@
           <Property Name="NoiDungTuyChon" Type="ntext" />
           <Property Name="Nhom" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="tb_Videos">
+          <Key>
+            <PropertyRef Name="MaVideo" />
+          </Key>
+          <Property Name="MaVideo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenVideo" Type="ntext" />
+          <Property Name="Link" Type="ntext" />
+          <Property Name="NgayTao" Type="datetime" />
+          <Property Name="NguoiDang" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_tb_BaiViet_tb_NguoiDung">
           <End Role="tb_NguoiDung" Type="Self.tb_NguoiDung" Multiplicity="0..1" />
           <End Role="tb_BaiViet" Type="Self.tb_BaiViet" Multiplicity="*" />
@@ -297,6 +307,7 @@
           <EntitySet Name="tb_SanPham" EntityType="Self.tb_SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_SanPhamTrans" EntityType="Self.tb_SanPhamTrans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tb_TuyChon" EntityType="Self.tb_TuyChon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Videos" EntityType="Self.tb_Videos" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_tb_BaiViet_tb_NguoiDung" Association="Self.FK_tb_BaiViet_tb_NguoiDung">
             <End Role="tb_NguoiDung" EntitySet="tb_NguoiDung" />
             <End Role="tb_BaiViet" EntitySet="tb_BaiViet" />
@@ -653,6 +664,7 @@
             <End Role="tb_Album" EntitySet="tb_Album" />
             <End Role="tb_Photos" EntitySet="tb_Photos" />
           </AssociationSet>
+          <EntitySet Name="tb_Videos" EntityType="db_tanphunongModel.tb_Videos" />
         </EntityContainer>
         <EntityType Name="tb_DoiTac">
           <Key>
@@ -695,6 +707,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tb_Videos">
+          <Key>
+            <PropertyRef Name="MaVideo" />
+          </Key>
+          <Property Name="MaVideo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenVideo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiDang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -865,6 +887,17 @@
                 <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
                 <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="MaPhoTo" ColumnName="MaPhoTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Videos">
+            <EntityTypeMapping TypeName="db_tanphunongModel.tb_Videos">
+              <MappingFragment StoreEntitySet="tb_Videos">
+                <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="TenVideo" ColumnName="TenVideo" />
+                <ScalarProperty Name="MaVideo" ColumnName="MaVideo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

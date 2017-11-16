@@ -265,8 +265,34 @@ body{
     .manager-item p>span::after{
         content:close-quote;
     }
+    .logo-company{
+        position:absolute;
+        margin:30px;
+    }
+    #logo-home{
+        display:none;
+        height:60px;
+    }
+    #logo-home img{
+        height:60px;
+    }
 }
+
+
+
+
 @media only screen and (min-width:769px){
+    .logo-company{
+        position:absolute;
+        margin:30px;
+    }
+    #logo-home{
+        display:none;
+        height:60px;
+    }
+    #logo-home img{
+        height:60px;
+    }
 #header{
     height: 1646px;
     max-height: 600px;

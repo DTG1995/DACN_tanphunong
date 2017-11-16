@@ -1,0 +1,33 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<DACN_TanPhuNong.Models.tb_Videos>
+@{
+    ViewBag.Title = "Videos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-posts" style="background: url('/images/Slide-Nen/20.jpg'); background-repeat:no-repeat; background-position:center; background-size:cover;">
+    <div class="container">
+        <div class="title-page" style="margin-top:50px; margin-bottom:50px; text-align:center;">
+            <h1>Albums</h1>
+        </div>
+        <div class="conten-page">
+            @foreach (tb_Videos item in Model)
+            {
+            <div class="col-md-4 col-sm-6 col-xs-12" style="height:400px;" >
+                @if (item.Link.Contains("www.youtube.com/"))
+                {
+                    <iframe width="100%" height="100%" src="@item.Link.Replace("watch?v=", "embed/")"></iframe>
+                }
+                else
+                {
+                    <iframe width="100%" height="100%" src="@item.Link.Replace("/view", "/preview")"></iframe>
+                }
+            </div>
+         }</div>
+        <div class="" style="text-align:center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
