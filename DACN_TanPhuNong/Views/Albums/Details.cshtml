@@ -1,7 +1,7 @@
 ﻿@model DACN_TanPhuNong.Models.tb_Album
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.TenAlbum;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Styles.Render("~/Content/lightgallery.min.css")
@@ -139,17 +139,23 @@
     .home .demo-gallery {
         padding-bottom: 80px;
     }
+    .grid figure img {
+        max-width: 100%;
+        display: block;
+        position: relative;
+        height: 300px !IMPORTANT;
+    }
 </style>
 <div class="content-post" style="padding:50px;">
     <div class="container">
         <div class="title-page" style="margin-top:50px; margin-bottom:50px; text-align:center;">
-            <h1>Albums</h1>
+            <h1>@Model.TenAlbum</h1>
         </div>
         <div class="conten-page">
             <div class="demo-gallery">
                 <ul id="lightgallery" class="list-unstyled row">
                     @foreach (var item in Model.tb_Photos) { 
-                    <li class="col-xs-6 col-sm-4 col-md-3" data-src="img/1-1600.jpg" data-sub-html="@item.MoTa">
+                    <li class="col-xs-6 col-sm-4 col-md-3" data-src="@item.Link" data-sub-html="@item.MoTa">
                         <a href="">
                             <img class="img-responsive" src="@item.Link">
                         </a>
