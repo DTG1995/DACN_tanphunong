@@ -34,7 +34,7 @@
                             @Html.ValidationSummary(true)
                             @Html.HiddenFor(model=>model.MaBV)
                             <div class="form-group">
-                                @Html.LabelFor(model => model.HinhAnh, new { @class = "control-label col-md-2" })
+                                <label class="control-label col-md-2">Hình ảnh</label>
                                 <div class="col-md-8">
                                     @Html.TextBoxFor(model => model.HinhAnh, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.HinhAnh)
@@ -100,7 +100,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="@GlobalRes.Edit" class="btn btn-default" />
+                                    <input type="submit" value="@GlobalRes.Save_Change" class="btn btn-default" />
                                 </div>
                             </div>
                         </div>

@@ -31,7 +31,7 @@
                             @Html.ValidationSummary(true)
                             @Html.HiddenFor(mode=>mode.MaVideo)
                             <div class="form-group">
-                                @Html.Label(GlobalRes.Name, new { @class = "control-label col-md-2" })
+                                <label class="control-label col-md-2">Tên video</label>
                                 <div class="col-md-10">
                                     @Html.TextBoxFor(model => model.TenVideo, new {@class="form-control" })
                                     @Html.ValidationMessageFor(model => model.TenVideo)
@@ -49,7 +49,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="@GlobalRes.Edit" class="btn btn-default" />
+                                    <input type="submit" value="@GlobalRes.Save_Change" class="btn btn-default" />
                                 </div>
                             </div>
                         </div>
