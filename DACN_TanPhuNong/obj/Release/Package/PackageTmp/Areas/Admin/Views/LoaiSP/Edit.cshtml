@@ -78,7 +78,7 @@
                             </div>
                            
                             <div class="form-group">
-                                @Html.LabelFor(model => model.LoaiCha, new { @class = "control-label col-md-2" })
+                                <label class="control-label col-md-2">Loại cha (parent)</label>
                                 <div class="col-md-10">
                                     @Html.DropDownList("LoaiCha", String.Empty)
                                     @Html.ValidationMessageFor(model => model.LoaiCha)
@@ -86,7 +86,7 @@
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.TrangThai, new { @class = "control-label col-md-2" })
+                                <label class="control-label col-md-2">Trạng thái (status)</label>
                                 <div class="col-md-10">
                                     @Html.EditorFor(model => model.TrangThai)
                                     @Html.ValidationMessageFor(model => model.TrangThai)
@@ -95,7 +95,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Lưu" class="btn btn-default" />
+                                    <input type="submit" value="@GlobalRes.Save_Change" class="btn btn-default" />
                                 </div>
                             </div>
                         </div>

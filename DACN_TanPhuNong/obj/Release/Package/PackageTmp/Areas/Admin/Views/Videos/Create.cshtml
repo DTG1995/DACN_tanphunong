@@ -31,7 +31,7 @@
                             @Html.ValidationSummary(true)
 
                             <div class="form-group">
-                                @Html.Label(GlobalRes.Name, new { @class = "control-label col-md-2" })
+                                <label class="control-label col-md-2">Tên video</label>
                                 <div class="col-md-10">
                                     @Html.TextBoxFor(model => model.TenVideo, new {@class="form-control" })
                                     @Html.ValidationMessageFor(model => model.TenVideo)

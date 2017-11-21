@@ -25,22 +25,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Details.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Delete.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -49,43 +49,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Delete.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Delete.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -94,58 +94,58 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Details.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Delete.cshtml">
-      <publishTime>11/20/2017 12:42:24</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Details.cshtml">
-      <publishTime>11/20/2017 12:42:24</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Login.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/PhanQuyen.cshtml">
-      <publishTime>11/20/2017 12:42:24</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/SavePhanQuyen.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NhatKy/Index.cshtml">
-      <publishTime>11/20/2017 12:42:24</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/PhanHoi/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Delete.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -154,7 +154,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -163,16 +163,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Details.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -181,7 +181,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Create.cshtml">
-      <publishTime>11/20/2017 19:40:44</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Delete.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -190,7 +190,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Edit.cshtml">
-      <publishTime>11/20/2017 19:39:33</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -199,7 +199,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Delete.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -208,34 +208,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/Abouts.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/Footer.cshtml">
       <publishTime>11/20/2017 16:47:10</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/Index.cshtml">
-      <publishTime>11/20/2017 19:34:23</publishTime>
+      <publishTime>11/21/2017 09:32:12</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/LienHe.cshtml">
       <publishTime>11/20/2017 17:29:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Edit.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -250,7 +250,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="bin/DACN_TanPhuNong.dll">
-      <publishTime>11/20/2017 22:00:40</publishTime>
+      <publishTime>11/21/2017 09:56:02</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -331,7 +331,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="bin/vi/DACN_TanPhuNong.resources.dll">
-      <publishTime>11/20/2017 22:00:40</publishTime>
+      <publishTime>11/21/2017 09:56:02</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -498,6 +498,36 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/concovang.png">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
+    <File Include="images/DSDoiTac/bayer.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/bm.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/cico.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/concovang.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/hai.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/longthanh.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/mappacific.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/realStrong.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/seasol.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/DSDoiTac/sundat.png">
+      <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
     <File Include="images/DSQL/20659014.jpg">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
@@ -512,6 +542,39 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="images/hinh-nen-lich-su.jpg">
       <publishTime>11/20/2017 12:43:52</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_1892.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_1897.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_1921.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_1979.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_2021.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_2039.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_2044.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_2046.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_2050.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_2058.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
+    </File>
+    <File Include="images/HoiNghiKH2015/SAM_2059.JPG">
+      <publishTime>11/21/2017 09:51:07</publishTime>
     </File>
     <File Include="images/img01.jpg">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -1855,7 +1918,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Views/Albums/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/21/2017 09:55:28</publishTime>
     </File>
     <File Include="Views/Albums/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -1921,7 +1984,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/20/2017 21:37:40</publishTime>
+      <publishTime>11/21/2017 09:29:48</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutHome.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -1957,7 +2020,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/20/2017 18:18:35</publishTime>
+      <publishTime>11/21/2017 09:56:02</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_tanphunongModelStoreContainer" CdmEntityContainer="db_tanphunongEntities">
+    <EntitySetMapping Name="tb_BaiViet">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_BaiViet">
+        <MappingFragment StoreEntitySet="tb_BaiViet">
+          <ScalarProperty Name="NgayViet" ColumnName="NgayViet" />
+          <ScalarProperty Name="MaBV" ColumnName="MaBV" />
+          <ScalarProperty Name="LoaiBaiViet" ColumnName="LoaiBaiViet" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="NguoiViet" ColumnName="NguoiViet" />
+          <ScalarProperty Name="NoiBo" ColumnName="NoiBo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_BaiVietTrans">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_BaiVietTrans">
+        <MappingFragment StoreEntitySet="tb_BaiVietTrans">
+          <ScalarProperty Name="MaBV" ColumnName="MaBV" />
+          <ScalarProperty Name="TieuDeTrans" ColumnName="TieuDeTrans" />
+          <ScalarProperty Name="TomTatTrans" ColumnName="TomTatTrans" />
+          <ScalarProperty Name="NoiDungTrans" ColumnName="NoiDungTrans" />
+          <ScalarProperty Name="NgonNgu" ColumnName="NgonNgu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_DoiNguQL_Trans">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_DoiNguQL_Trans">
+        <MappingFragment StoreEntitySet="tb_DoiNguQL_Trans">
+          <ScalarProperty Name="MaQL" ColumnName="MaQL" />
+          <ScalarProperty Name="NgonNgu" ColumnName="NgonNgu" />
+          <ScalarProperty Name="TenNguoiQL" ColumnName="TenNguoiQL" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="CauNoi" ColumnName="CauNoi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_DoiNguQuanLy">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_DoiNguQuanLy">
+        <MappingFragment StoreEntitySet="tb_DoiNguQuanLy">
+          <ScalarProperty Name="MaQL" ColumnName="MaQL" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="ThuBac" ColumnName="ThuBac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_LoaiSP">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_LoaiSP">
+        <MappingFragment StoreEntitySet="tb_LoaiSP">
+          <ScalarProperty Name="MaLoaiSP" ColumnName="MaLoaiSP" />
+          <ScalarProperty Name="LoaiCha" ColumnName="LoaiCha" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="NguoiThem" ColumnName="NguoiThem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_LoaiSPTrans">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_LoaiSPTrans">
+        <MappingFragment StoreEntitySet="tb_LoaiSPTrans">
+          <ScalarProperty Name="MaLoaiSP" ColumnName="MaLoaiSP" />
+          <ScalarProperty Name="TenLoaiSPTrans" ColumnName="TenLoaiSPTrans" />
+          <ScalarProperty Name="MoTaTrans" ColumnName="MoTaTrans" />
+          <ScalarProperty Name="NgonNgu" ColumnName="NgonNgu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_NguoiDung">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_NguoiDung">
+        <MappingFragment StoreEntitySet="tb_NguoiDung">
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="LoaiND" ColumnName="LoaiND" />
+          <ScalarProperty Name="ThoiGianDNCuoi" ColumnName="ThoiGianDNCuoi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_NhatKy">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_NhatKy">
+        <MappingFragment StoreEntitySet="tb_NhatKy">
+          <ScalarProperty Name="MaNK" ColumnName="MaNK" />
+          <ScalarProperty Name="NguoiDung" ColumnName="NguoiDung" />
+          <ScalarProperty Name="DoiTuong" ColumnName="DoiTuong" />
+          <ScalarProperty Name="ThaoTac" ColumnName="ThaoTac" />
+          <ScalarProperty Name="MaDoiTuong" ColumnName="MaDoiTuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PhanHoi">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_PhanHoi">
+        <MappingFragment StoreEntitySet="tb_PhanHoi">
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="MaPH" ColumnName="MaPH" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_SanPham">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_SanPham">
+        <MappingFragment StoreEntitySet="tb_SanPham">
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="QuyCachDongGoi" ColumnName="QuyCachDongGoi" />
+          <ScalarProperty Name="XuatXu" ColumnName="XuatXu" />
+          <ScalarProperty Name="GiaThanh" ColumnName="GiaThanh" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="NguoiThem" ColumnName="NguoiThem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_SanPhamTrans">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_SanPhamTrans">
+        <MappingFragment StoreEntitySet="tb_SanPhamTrans">
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="TenSanPhamTrans" ColumnName="TenSanPhamTrans" />
+          <ScalarProperty Name="UuDienTrans" ColumnName="UuDienTrans" />
+          <ScalarProperty Name="DacDiemTrans" ColumnName="DacDiemTrans" />
+          <ScalarProperty Name="ThanhPhanChinhTrans" ColumnName="ThanhPhanChinhTrans" />
+          <ScalarProperty Name="LuuYTrans" ColumnName="LuuYTrans" />
+          <ScalarProperty Name="QuyCachDongGoiTrans" ColumnName="QuyCachDongGoiTrans" />
+          <ScalarProperty Name="CachDungTrans" ColumnName="CachDungTrans" />
+          <ScalarProperty Name="NgonNgu" ColumnName="NgonNgu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TuyChon">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_TuyChon">
+        <MappingFragment StoreEntitySet="tb_TuyChon">
+          <ScalarProperty Name="MaTuyChon" ColumnName="MaTuyChon" />
+          <ScalarProperty Name="TenTuyChon" ColumnName="TenTuyChon" />
+          <ScalarProperty Name="NoiDungTuyChon" ColumnName="NoiDungTuyChon" />
+          <ScalarProperty Name="Nhom" ColumnName="Nhom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_DoiTac">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_DoiTac">
+        <MappingFragment StoreEntitySet="tb_DoiTac">
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TenDT" ColumnName="TenDT" />
+          <ScalarProperty Name="MaDT" ColumnName="MaDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Album">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_Album">
+        <MappingFragment StoreEntitySet="tb_Album">
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TenAlbum" ColumnName="TenAlbum" />
+          <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Photos">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_Photos">
+        <MappingFragment StoreEntitySet="tb_Photos">
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="MaAlbum" ColumnName="MaAlbum" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="MaPhoTo" ColumnName="MaPhoTo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Videos">
+      <EntityTypeMapping TypeName="db_tanphunongModel.tb_Videos">
+        <MappingFragment StoreEntitySet="tb_Videos">
+          <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="TenVideo" ColumnName="TenVideo" />
+          <ScalarProperty Name="MaVideo" ColumnName="MaVideo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
