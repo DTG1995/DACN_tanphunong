@@ -342,4 +342,10 @@
   <data name="featered_photos" xml:space="preserve">
     <value>Hình ảnh nổi bật</value>
   </data>
+  <data name="cong_ty" xml:space="preserve">
+    <value>Công ty TNHH SX - TM - DV</value>
+  </data>
+  <data name="slogan" xml:space="preserve">
+    <value>Vững bước cùng nhà nông</value>
+  </data>
 </root>

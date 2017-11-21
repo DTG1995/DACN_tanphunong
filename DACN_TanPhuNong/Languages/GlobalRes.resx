@@ -339,4 +339,10 @@
   <data name="featered_photos" xml:space="preserve">
     <value>Featured photos</value>
   </data>
+  <data name="cong_ty" xml:space="preserve">
+    <value>PRODUCTION- SERVICE- TRADING CO. LTD</value>
+  </data>
+  <data name="slogan" xml:space="preserve">
+    <value>DEVELOPING FARMERS</value>
+  </data>
 </root>

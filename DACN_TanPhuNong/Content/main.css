@@ -11,7 +11,11 @@ body{
     background-repeat: repeat;
     background-attachment: scroll;
 }
-@media only screen and (max-width:769px){
+@media only screen and (max-width:767px){
+
+    .nav-custom {
+            margin-bottom: 80px !important;
+    }
     .langDesktop {
     position: absolute;
     list-style: none;
@@ -58,11 +62,7 @@ body{
         width: auto;
     }
     #tooget.locked{
-        position: fixed;
-        top: 0;
-        background: #d5d5d5;
-        z-index: 100;
-        right: 0;
+       
     }
     .header-top .slider-show{
         height: 1646px;
@@ -78,12 +78,7 @@ body{
        
         height: 100%;
     }
-    #nav{
-        display: none;
-    }
-    #nav.activehover{
-        display: block;
-    }
+    
     .header-top  .main-menu .toogget-menu,.header-top  .main-menu .closemenu {
         display: block;
         vertical-align: middle;
@@ -157,23 +152,24 @@ body{
     .header-top  .main-menu .nav-menu ul> li.active>a{
         border: 8px solid #fff;
     }
-    .header-top .header-logo .site-branding{
-        margin: 50px 0;
+    
+    .header-logo {
+        margin-bottom: 50px;
     }
     .header-top .header-logo .site-branding .site-description{
-        font-size: 25px;
-        font-weight: 400;
-        letter-spacing: 35px;
-        padding-left: 35px;
-        color: white;
-        margin-bottom: 30px;
+            letter-spacing: 17px;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: 700;
     }
     .header-top .header-logo .site-branding a{
-        text-decoration: none;
-        letter-spacing: 15px;
-        font-size: 50pt;
-        color: yellow;
-        font-weight: bold;
+            text-decoration: none;
+    letter-spacing: 15px;
+    font-size: 35pt;
+    color: yellow;
+    font-weight: bold;
+    width: 100%;
     }
     .clear{
         clear: both;
@@ -276,12 +272,21 @@ body{
     #logo-home img{
         height:60px;
     }
+    .navbar-collapse {
+        position: absolute;
+        width: 100%;
+        background: #333333;
+        z-index: 999;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+        color: #777 !important;
+    }
 }
 
 
 
 
-@media only screen and (min-width:769px){
+@media only screen and (min-width:768px){
     .logo-company{
         position:absolute;
         margin:30px;
@@ -388,16 +393,16 @@ body{
 .header-top  .main-menu .nav-menu ul> li.active>a{
     border: 8px solid #fff;
 }
-.header-top .header-logo .site-branding{
-    margin: 50px 0;
-}
+
+.header-logo {
+        margin-bottom: 50px;
+    }
 .header-top .header-logo .site-branding .site-description{
-    font-size: 25px;
-    font-weight: 400;
-    letter-spacing: 35px;
-    padding-left: 35px;
+        letter-spacing: 25px;
     color: white;
     margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 700;
 }
 .header-top .header-logo .site-branding a{
     text-decoration: none;

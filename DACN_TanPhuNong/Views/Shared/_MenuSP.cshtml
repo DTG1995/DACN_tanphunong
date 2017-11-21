@@ -1,8 +1,36 @@
 ﻿@model List<DACN_TanPhuNong.Models.tb_LoaiSPTrans>
 
+
+@helper RenderCate(tb_LoaiSPTrans tbLoai)
+{
+
+    if (tbLoai.tb_LoaiSP.tb_LoaiSP1.Count > 0)
+    {
+        <li class="dropdown-submenu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@tbLoai.TenLoaiSPTrans</a>
+            <ul class="dropdown-menu">
+                @foreach (tb_LoaiSP item in tbLoai.tb_LoaiSP.tb_LoaiSP1)
+                {
+                    tb_LoaiSPTrans lspTran = item.tb_LoaiSPTrans.Where(x => x.NgonNgu == tbLoai.NgonNgu).FirstOrDefault();
+                    @RenderCate(lspTran);
+                }
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li>
+            <a href="@Url.RouteUrl("LoaiSanPham", new {title = DACN_TanPhuNong.Controllers.UrlEncode.ToFriendlyUrl(tbLoai.TenLoaiSPTrans), id = tbLoai.MaLoaiSP})">@tbLoai.TenLoaiSPTrans</a>
+
+        </li>
+    }
+}
+
+
 @foreach (var item in Model)
 {
-    <li><a href="@Url.RouteUrl("LoaiSanPham", new { title = DACN_TanPhuNong.Controllers.UrlEncode.ToFriendlyUrl(item.TenLoaiSPTrans), id = item.MaLoaiSP })">@item.TenLoaiSPTrans</a></li>    
+
+    @RenderCate(item);
 }
 
 

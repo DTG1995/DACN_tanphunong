@@ -309,7 +309,6 @@
     <Content Include="Content\default.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    
     <Content Include="Content\jquery.webui-popover.min.css" />
     <Content Include="Content\lightgallery.min.css" />
     <Content Include="Content\main.css" />
@@ -323,6 +322,7 @@
     <Content Include="fonts\lg.svg" />
     <Content Include="images\25-5-5-bag.jpg" />
     <Content Include="images\Albums\maxresdefault.jpg" />
+    <Content Include="images\Application\loading.gif" />
     <Content Include="images\bayer.png" />
     <Content Include="images\bm.png" />
     <Content Include="images\cico.png" />
@@ -354,7 +354,10 @@
     <Content Include="images\Slide-Nen\22.jpg" />
     <Content Include="images\Slide-Nen\3.jpg" />
     <Content Include="images\Slide-Nen\9.jpg" />
+    <Content Include="images\Slide-Nen\cachua.png" />
+    <Content Include="images\Slide-Nen\carot.jpg" />
     <Content Include="images\Slide-Nen\dau-ca.jpg" />
+    <Content Include="images\Slide-Nen\dautay.jpg" />
     <Content Include="images\sundat.png" />
     <Content Include="images\vi_tron.png" />
     <Content Include="images\vi_vuong.png" />

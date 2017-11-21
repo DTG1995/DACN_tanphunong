@@ -16,6 +16,9 @@ namespace DACN_TanPhuNong.Controllers
         public  ActionResult GuiPhanHoi()
         {
             ViewBag.CurrentMenu = "PhanHoi";
+
+            var lang = RouteData.Values["lang"] as string ?? "vi";
+            ViewBag.ContactLienHe = db.tb_TuyChon.Where(x => x.TenTuyChon == ("ContentLienHe" + lang)).Select(x => x.NoiDungTuyChon).FirstOrDefault();
             return View();
         }
         [HttpPost]
@@ -58,8 +61,10 @@ namespace DACN_TanPhuNong.Controllers
                     smtp.Send(message);
                     
                 }
+
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            return View();
         }
     }
 }

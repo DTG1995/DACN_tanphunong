@@ -88,18 +88,22 @@
 
 
 
-<div class="content-posts">
+<div class="content-posts" style="    background: url(/images/Slide-Nen/1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 50px;">
     <div class="container">
         <div class="title-page">
             <h1>@ViewBag.Title</h1>
         </div>
         @foreach (var item in Model)
         {
-            tb_BaiVietTrans trans = item.tb_BaiVietTrans.FirstOrDefault(); 
-            DateTime ngayViet = item.NgayViet??new DateTime(1995,6,1);
+            tb_BaiVietTrans trans = item.tb_BaiVietTrans.FirstOrDefault();
+            DateTime ngayViet = item.NgayViet ?? new DateTime(1995, 6, 1);
             <div class="post">
                 <figure>
-                    <a href="@Url.RouteUrl("chitietbaiviet",new{id=item.MaBV, title=UrlEncode.ToFriendlyUrl(trans.TieuDeTrans)})" title="@trans.TieuDeTrans" >
+                    <a href="@Url.RouteUrl("chitietbaiviet",new{id=item.MaBV, title=UrlEncode.ToFriendlyUrl(trans.TieuDeTrans)})" title="@trans.TieuDeTrans">
                         <img src="@item.HinhAnh" alt="@trans.TieuDeTrans" />
                     </a>
                 </figure>
@@ -111,7 +115,7 @@
                         <a href="@Url.RouteUrl("chitietbaiviet",new{id=item.MaBV, title=UrlEncode.ToFriendlyUrl(trans.TieuDeTrans)})" class="btn btn-custom">@GlobalRes.ReadMore</a>
                     </div>
                 </div>
-            </div>    
+            </div>
         }
         <div class="phantrang">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page, loaibv = ViewBag.LoaiBV }))

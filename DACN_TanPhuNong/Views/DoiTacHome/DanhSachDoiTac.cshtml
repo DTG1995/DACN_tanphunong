@@ -5,15 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-center" style="text-transform:uppercase;">@GlobalRes.ListPartners</h2>
-<div class="row">
+
+<div class="row " style="background: #fff;">
+    <h2 class="text-center" style="text-transform:uppercase;">@GlobalRes.ListPartners</h2>
     <div class="col-sm-12">
 
         @{
             foreach (var item in Model)
             {
-                <div style="float:right;padding:20px 20px 20px 20px;">
-                    <img src="@item.HinhAnh" />
+                <div style="float:left;padding:20px 20px 20px 20px; height: 250px;vertical-align:middle; text-align:center">
+                    <img style="width: 100%;  height: -webkit-fill-available;margin: auto;" src="@item.HinhAnh" />
                 </div>
             }
         }

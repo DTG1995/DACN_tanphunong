@@ -1,6 +1,6 @@
 ﻿@using DACN_TanPhuNong.Models
 @{
-    ViewBag.Title = "Abouts";
+    ViewBag.Title = GlobalRes.About;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,8 +9,8 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center lich-su">
         <img src="/images/logo-tan-phu-nong.png" width="200" height="200">
-        <h1>Tân phú nông</h1>
-        <h2>vững bước cùng nhà nông</h2>
+        <h1>@GlobalRes.TanPhuNong</h1>
+        <h2>@GlobalRes.slogan</h2>
         <div style="text-align:left;" class="container">
             @Html.Raw(ViewBag.LichSu)
         </div>

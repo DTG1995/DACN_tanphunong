@@ -161,6 +161,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             db.tb_DoiNguQL_Trans.RemoveRange(tb_doinguql_trans);
             db.SaveChanges();
             db.tb_DoiNguQuanLy.Remove(db.tb_DoiNguQuanLy.Find(id));
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

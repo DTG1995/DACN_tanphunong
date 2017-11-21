@@ -179,16 +179,26 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         [AdminFilter(AllowPermit = "0")]
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult LienHe(string txtContact)
+        public ActionResult LienHe(string txtContactVn, string txtContactEn)
         {
-            tb_TuyChon tuyChon = db.tb_TuyChon.FirstOrDefault(x => x.TenTuyChon == "ContentLienHe");
+            tb_TuyChon tuyChon = db.tb_TuyChon.FirstOrDefault(x => x.TenTuyChon == "ContentLienHevi");
             if (tuyChon == null)
-                db.tb_TuyChon.Add(new tb_TuyChon { TenTuyChon = "ContentLienHe", NoiDungTuyChon = txtContact });
+                db.tb_TuyChon.Add(new tb_TuyChon { TenTuyChon = "ContentLienHevi", NoiDungTuyChon = txtContactVn });
             else
             {
-                tuyChon.NoiDungTuyChon = txtContact;
+                tuyChon.NoiDungTuyChon = txtContactVn;
                 db.tb_TuyChon.Attach(tuyChon);
                 db.Entry(tuyChon).State = EntityState.Modified;
+                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Trang liên hệ", MaDoiTuong = tuyChon.MaTuyChon, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa nội dung trang liên hệ" });
+            }
+            tb_TuyChon tuyChon1 = db.tb_TuyChon.FirstOrDefault(x => x.TenTuyChon == "ContentLienHeen");
+            if (tuyChon1 == null)
+                db.tb_TuyChon.Add(new tb_TuyChon { TenTuyChon = "ContentLienHeen", NoiDungTuyChon = txtContactEn??txtContactVn });
+            else
+            {
+                tuyChon1.NoiDungTuyChon = txtContactEn??txtContactVn;
+                db.tb_TuyChon.Attach(tuyChon1);
+                db.Entry(tuyChon1).State = EntityState.Modified;
                 db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Trang liên hệ", MaDoiTuong = tuyChon.MaTuyChon, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa nội dung trang liên hệ" });
             }
             db.SaveChanges();
@@ -221,9 +231,9 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         
         [AdminFilter(AllowPermit="0")]
         public ActionResult Footer(){
-            ViewBag.ContentFooeterVn = db.tb_TuyChon.Where(x => x.TenTuyChon == "noiDungfootervn").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.ContentFooeterVn = db.tb_TuyChon.Where(x => x.TenTuyChon == "noiDungfootervi").Select(x => x.NoiDungTuyChon).FirstOrDefault();
             ViewBag.ContentFooeterEn = db.tb_TuyChon.Where(x => x.TenTuyChon == "noiDungfooteren").Select(x => x.NoiDungTuyChon).FirstOrDefault();
-            ViewBag.LienHeFooeterVn = db.tb_TuyChon.Where(x => x.TenTuyChon == "lienHeFootervn").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+            ViewBag.LienHeFooeterVn = db.tb_TuyChon.Where(x => x.TenTuyChon == "lienHeFootervi").Select(x => x.NoiDungTuyChon).FirstOrDefault();
             ViewBag.LienHEFooeterEn = db.tb_TuyChon.Where(x => x.TenTuyChon == "lienHeFooteren").Select(x => x.NoiDungTuyChon).FirstOrDefault();
             ViewBag.Socials = db.tb_TuyChon.Where(x=>x.Nhom == "Social").ToList();
             return View();

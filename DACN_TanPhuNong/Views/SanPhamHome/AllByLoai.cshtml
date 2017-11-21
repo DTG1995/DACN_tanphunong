@@ -23,7 +23,6 @@
     .content-product{
         min-height:100%;
         margin: 0 auto;
-        background:#ffffff;
     }
     #list-product {
         margin-bottom: 1.75rem;
@@ -33,6 +32,7 @@
         position: relative;
         height:300px;
         text-align:center;
+        margin-bottom: 10px;
     }
 
     .image {
@@ -45,8 +45,9 @@
         text-align: center;
     } .pagination > li {
         display: inline-block;
-    } #list-product.loading {
-        background-image: url("/images/loading.gif");
+    }
+       #list-product.loading {
+        background-image: url("/images/Application/loading.gif");
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -67,7 +68,10 @@
 </style>
 
 
-<div class="row">
+<div class="row" style="background-image: url(/images/Slide-Nen/22.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;">
     <div class="container">
         <div class="row" style="margin:auto; margin-top:10px;">
                 <label for="sel1" class="col-md-3">@GlobalRes.Category:</label>
@@ -85,19 +89,7 @@
                 </div>
         </div>
         <div class="row content-product">
-                        @*<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-            <ul class="ul-product">
-                <li><a href="@Url.RouteUrl("LoaiSanPham",new {title=ViewBag.LoaiCurrent.TenLoaiSPTrans, id = ViewBag.LoaiCurrent.MaLoaiSP})">Tất cả</a></li>
-                @foreach (tb_LoaiSPTrans item in ViewBag.ListLSP)
-                {
-                    <li>
-                        <a href="javascript:;" data-id="@item.MaLoaiSP" data-text="@item.TenLoaiSPTrans">@item.TenLoaiSPTrans</a>
-                    </li>
-                }
-
-            SanPhamDetails
-            </ul>
-        </div>*@
+                        
                 <h3 class="title-category" id="title-category" style="text-align:center;">Tất cả</h3>
                 <div class="row" id="list-product" style="min-height: 350px">
                    
@@ -117,13 +109,6 @@
         
 
 
-        //$('.item-product  .img-name ').hover(function () {
-        //    //    var submenu =  $(this);//.nextUntil('.submenu').parent();
-        //    //    submenu.addClass('activehover');
-        //    $(this).next('div.uu-diem')
-        //     .toggleClass("activeuudiem")
-        //     .next();
-        //});
         chuyenTrang();
         $("#title-category").html($("#categoryID option:selected").text());
     });

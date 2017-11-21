@@ -116,3 +116,13 @@ C:\Users\Tiên\Desktop\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\DACN_Tan
 C:\Users\Tiên\Desktop\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\vi\DACN_TanPhuNong.resources.dll
 C:\Users\Tiên\Desktop\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\DACN_TanPhuNong.dll
 C:\Users\Tiên\Desktop\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\DACN_TanPhuNong.pdb
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\bin\vi\DACN_TanPhuNong.resources.dll
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\bin\PagedList.dll
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\bin\PagedList.Mvc.dll
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\bin\PagedList.xml
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\bin\PagedList.Mvc.xml
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\DACN_TanPhuNong.csprojResolveAssemblyReference.cache
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\DACN_TanPhuNong.Languages.GlobalRes.resources
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\DACN_TanPhuNong.Languages.GlobalRes.vi.resources
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\DACN_TanPhuNong.csproj.GenerateResource.Cache
+D:\DACN\DACN_tanphunong\DACN_TanPhuNong\obj\Release\vi\DACN_TanPhuNong.resources.dll

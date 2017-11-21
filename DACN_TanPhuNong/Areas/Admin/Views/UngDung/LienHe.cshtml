@@ -35,7 +35,7 @@
                         <div id="tab-1" class="tab-content current">
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <textarea name="txtContactVn" id="txtContact">@ViewBag.ContentLienHeVn</textarea>
+                                    <textarea name="txtContactVn" id="txtContactVn">@ViewBag.ContentLienHeVn</textarea>
                                 </div>
                             </div>
 
@@ -44,7 +44,7 @@
                         <div id="tab-2" class="tab-content">
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <textarea name="txtContactEn" id="txtContact">@ViewBag.ContentLienHeEn</textarea>
+                                    <textarea name="txtContactEn" id="txtContactEn">@ViewBag.ContentLienHeEn</textarea>
                                 </div>
                             </div>
                         </div>
@@ -67,9 +67,14 @@
 <!-- CK Editor -->
 @Scripts.Render("~/Scripts/admin/ckeditor/ckeditor.js")
 <script>
-CKEDITOR.replace("txtContact", {
+CKEDITOR.replace("txtContactVn", {
             filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
             filebrowserWindowWidth: '750',
             filebrowserWindowHeight: '600'
 });
+    CKEDITOR.replace("txtContactEn", {
+        filebrowserBrowseUrl: '@Url.Content("~/Areas/Admin/browser/ImageBrowserCkeditor.aspx")',
+        filebrowserWindowWidth: '750',
+        filebrowserWindowHeight: '600'
+    });
     </script>

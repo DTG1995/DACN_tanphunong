@@ -1,20 +1,22 @@
 ﻿@{
-    ViewBag.Title = "Trang chủ";
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{ 
     if(TempData["ThongBao"]!=null)
     {
+        TempData["ThongBao"] = null;
         <script>
             alert("Cảm ơn ơn bạn đã phản hồi.");
         </script>
+            
     }
 }
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-center tri-an">
         <img src="./images/logo-tan-phu-nong.png" width="200" height="200">
-        <h1>Tân phú nông</h1>
-        <h2>vững bước cùng nhà nông</h2>
+        <h1>@GlobalRes.TanPhuNong</h1>
+        <h2>@GlobalRes.slogan</h2>
         <h4>@Html.Raw(ViewBag.TriAn)</h4>
         <a href="@Url.RouteUrl("triankh")" class="btn btn-custom">@GlobalRes.ReadMore</a>
         <div class="container">

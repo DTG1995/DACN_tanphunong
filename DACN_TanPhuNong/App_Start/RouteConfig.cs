@@ -43,14 +43,14 @@ namespace DACN_TanPhuNong
             routes.MapRoute(
                 name: "news",
                 url: "{lang}/tin-tuc",
-                defaults: new { controller = "BaiViet", action = "Index", loaibv = 2 },
+                defaults: new { controller = "BaiViet", action = "Index", loaibv = 3 },
                 constraints: new { lang = @"vi|en" }
             );
             //hoi nghi
             routes.MapRoute(
                 name: "Conferences",
                 url: "{lang}/hoi-nghi-hoi-thao",
-                defaults: new { controller = "BaiViet", action = "Index", loaibv = 3 },
+                defaults: new { controller = "BaiViet", action = "Index", loaibv = 2 },
                 constraints: new { lang = @"vi|en" }
             );
             //Image Video

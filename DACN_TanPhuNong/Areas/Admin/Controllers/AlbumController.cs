@@ -17,7 +17,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         // GET: /Admin/Album/
         public ActionResult Index()
         {
-            return View(db.tb_Album.ToList());
+            return View(db.tb_Album.OrderByDescending(x=>x.NgayTao).ToList());
         }
         // GET: /Admin/Album/Details/5
         public ActionResult Details(int? id)

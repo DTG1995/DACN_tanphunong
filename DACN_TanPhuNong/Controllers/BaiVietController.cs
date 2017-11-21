@@ -37,10 +37,10 @@ namespace DACN_TanPhuNong.Controllers
                     ViewBag.Title = GlobalRes.Careers;
                     break;
                 case 2:
-                    ViewBag.Title = GlobalRes.News;
+                    ViewBag.Title = GlobalRes.Conferences;
                     break;
                 case 3:
-                    ViewBag.Title = GlobalRes.Conferences;
+                    ViewBag.Title = GlobalRes.News;
                     break;
                 case 4:
                     ViewBag.Title = GlobalRes.Images + ", Video";
