@@ -169,10 +169,9 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         public ActionResult LienHe()
         {
             ViewBag.ContentLienHeVn =
-                db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHevn").Select(x => x.NoiDungTuyChon).FirstOrDefault();
+                db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHevi").Select(x => x.NoiDungTuyChon).FirstOrDefault();
             ViewBag.ContentLienHeEn =
                 db.tb_TuyChon.Where(x => x.TenTuyChon == "ContentLienHeen").Select(x => x.NoiDungTuyChon).FirstOrDefault();
-            ViewBag.DSSocial = db.tb_TuyChon.Where(x => x.TenTuyChon == "Social").Select(x => x.NoiDungTuyChon).FirstOrDefault();
             return View();
         }
 

@@ -20,18 +20,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
-            var tb_loaisp = db.tb_LoaiSP.Include(t => t.tb_LoaiSP2).ToList().
-                Select(x => new tb_LoaiSP
-                {
-                    MaLoaiSP = x.MaLoaiSP,
-                    NguoiThem = x.NguoiThem,
-                    LoaiCha = x.LoaiCha,
-                    TrangThai = x.TrangThai,
-                    tb_LoaiSP1 = x.tb_LoaiSP1,
-                    tb_LoaiSP2 = x.tb_LoaiSP2,
-                    tb_LoaiSPTrans = x.tb_LoaiSPTrans.Where(y => y.NgonNgu == lang).ToList()
-                });
-
+            
             
             var tb_sanpham = db.tb_SanPham.Where(x=>x.TrangThai??false).Include(t => t.tb_LoaiSP).ToList().
                 Select(x=>new tb_SanPham{
@@ -164,7 +153,6 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 db.Entry(tb_sanpham).State = EntityState.Modified;
                 db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Sản phẩm", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa sản phẩm\""  + "\"", MaDoiTuong = tb_sanpham.MaSP });
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
             tb_SanPhamTrans tb_spVi = new tb_SanPhamTrans();

@@ -121,33 +121,51 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         [AdminFilter(AllowPermit = "0,1")]
         public ActionResult Edit([Bind(Include="MaLoaiSP,TenLoaiSP,MoTa,LoaiCha,TrangThai")] tb_LoaiSP tb_loaisp)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(tb_loaisp).State = EntityState.Modified;
-                db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Loại Sản Phẩm", MaDoiTuong = tb_loaisp.MaLoaiSP, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm loại sản phẩm \"" + "\"" });
+                if (ModelState.IsValid)
+                {
+                    db.Entry(tb_loaisp).State = EntityState.Modified;
+                    db.tb_NhatKy.Add(new tb_NhatKy
+                    {
+                        NguoiDung = (string) Session["username"],
+                        DoiTuong = "Loại Sản Phẩm",
+                        MaDoiTuong = tb_loaisp.MaLoaiSP,
+                        ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Thêm loại sản phẩm \"" + "\""
+                    });
+                    db.SaveChanges();
+
+                }
+                // ViewBag.LoaiCha = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_loaisp.LoaiCha);
+
+                tb_LoaiSPTrans lspVi =
+                    db.tb_LoaiSPTrans.FirstOrDefault(x => x.MaLoaiSP == tb_loaisp.MaLoaiSP && x.NgonNgu == "vi");
+                lspVi = lspVi ?? new tb_LoaiSPTrans();
+                lspVi.TenLoaiSPTrans = Request.Params["tenVn"];
+
+                lspVi.MoTaTrans = Request.Params["moTaVn"];
+                lspVi.MaLoaiSP = tb_loaisp.MaLoaiSP;
+                lspVi.NgonNgu = "vi";
+
+                tb_LoaiSPTrans lspEn =
+                    db.tb_LoaiSPTrans.FirstOrDefault(x => x.MaLoaiSP == tb_loaisp.MaLoaiSP && x.NgonNgu == "en");
+                lspEn = lspEn ?? new tb_LoaiSPTrans();
+                lspEn.TenLoaiSPTrans = Request.Params["tenEn"];
+                lspEn.MoTaTrans = Request.Params["moTaEn"];
+                lspEn.MaLoaiSP = tb_loaisp.MaLoaiSP;
+                lspEn.NgonNgu = "en";
+                db.Entry(lspVi).State = EntityState.Modified;
+                db.Entry(lspEn).State = EntityState.Modified;
                 db.SaveChanges();
+                string lang = Request.RequestContext.RouteData.Values["lang"] as string ?? "vi";
+                ViewBag.LoaiCha = new SelectList(db.tb_LoaiSPTrans.Where(x => x.NgonNgu == lang), "MaLoaiSP",
+                    "TenLoaiSPTrans", tb_loaisp.LoaiCha);
                 return RedirectToAction("Index");
             }
-           // ViewBag.LoaiCha = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_loaisp.LoaiCha);
-
-            tb_LoaiSPTrans lspVi = db.tb_LoaiSPTrans.Where(x => x.MaLoaiSP == tb_loaisp.MaLoaiSP && x.NgonNgu == "vi").FirstOrDefault();
-            lspVi = lspVi ?? new tb_LoaiSPTrans();
-            lspVi.TenLoaiSPTrans = Request.Params["tenVn"];
-            
-            lspVi.MoTaTrans = Request.Params["moTaVn"];
-            lspVi.MaLoaiSP = tb_loaisp.MaLoaiSP;
-            lspVi.NgonNgu = "vi";
-
-            tb_LoaiSPTrans lspEn = db.tb_LoaiSPTrans.Where(x => x.MaLoaiSP == tb_loaisp.MaLoaiSP && x.NgonNgu == "en").FirstOrDefault();
-            lspEn = lspEn ?? new tb_LoaiSPTrans();
-            lspEn.TenLoaiSPTrans = Request.Params["tenEn"];
-            lspEn.MoTaTrans = Request.Params["moTaEn"];
-            lspEn.MaLoaiSP = tb_loaisp.MaLoaiSP;
-            lspEn.NgonNgu = "en";
-            db.Entry(lspVi).State = EntityState.Modified;
-            db.Entry(lspEn).State = EntityState.Modified;
-            db.SaveChanges();
-            return View(tb_loaisp);
+            catch (Exception ex)
+            {
+                return View(tb_loaisp);
+            }
         }
 
         // GET: /Admin/LoaiSP/Delete/5

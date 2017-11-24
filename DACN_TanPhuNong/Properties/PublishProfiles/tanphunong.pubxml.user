@@ -214,7 +214,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/Abouts.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 09:46:42</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/Footer.cshtml">
       <publishTime>11/20/2017 16:47:10</publishTime>
@@ -250,7 +250,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="bin/DACN_TanPhuNong.dll">
-      <publishTime>11/21/2017 09:56:02</publishTime>
+      <publishTime>11/23/2017 21:05:31</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -331,7 +331,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="bin/vi/DACN_TanPhuNong.resources.dll">
-      <publishTime>11/21/2017 09:56:02</publishTime>
+      <publishTime>11/23/2017 21:05:31</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -1918,7 +1918,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="Views/Albums/Details.cshtml">
-      <publishTime>11/21/2017 09:55:28</publishTime>
+      <publishTime>11/22/2017 22:21:03</publishTime>
     </File>
     <File Include="Views/Albums/Index.cshtml">
       <publishTime>11/20/2017 12:43:52</publishTime>
