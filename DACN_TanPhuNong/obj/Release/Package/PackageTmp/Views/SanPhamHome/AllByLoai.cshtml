@@ -32,7 +32,6 @@
         position: relative;
         height:300px;
         text-align:center;
-        margin-bottom: 10px;
     }
 
     .image {
@@ -64,7 +63,20 @@
     .uu-diem .doc-them {
         text-align: center;
     }
-
+    .name-product {
+         top: 80%;
+         font-weight: bold;
+         color: #000;
+         background: #524f4fc7;
+         width: 95%;
+         position: absolute;
+         left:2.5%;
+         height: auto;
+        min-height: 40px;
+    }
+    .product-image {
+        height: 80%;
+    }
 </style>
 
 
@@ -72,33 +84,33 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;">
-    <div class="container">
-        <div class="row" style="margin:auto; margin-top:10px;">
-                <label for="sel1" class="col-md-3">@GlobalRes.Category:</label>
-                <div class="col-md-8">
-                    <select class="form-control" id="categoryID" onchange="chuyenTrang()">
-                        <option value="@ViewBag.LoaiCurrent.MaLoaiSP" @(ViewBag.LoaiCurrent.MaLoaiSP == ViewBag.IDCurrent?"selected":"")>Tất cả</option>
-                        @foreach (tb_LoaiSPTrans item in ViewBag.ListLSP)
-                        {
-                            <option value="@item.MaLoaiSP" @(item.MaLoaiSP == ViewBag.IDCurrent ? "selected" : "")>
-                                @item.TenLoaiSPTrans
-                            </option>
-                        }
+    <div class="container" style="background:#ffffffad; margin-bottom: 40px; margin-top: 40px;">
+        <div class="row" style="margin:auto; margin-top:10px; display: none;">
+            <label for="sel1" class="col-md-3">@GlobalRes.Category:</label>
+            <div class="col-md-8">
+                <select class="form-control" id="categoryID" onchange="chuyenTrang()">
+                    <option value="@ViewBag.LoaiCurrent.MaLoaiSP" @(ViewBag.LoaiCurrent.MaLoaiSP == ViewBag.IDCurrent ? "selected" : "")>Tất cả</option>
+                    @foreach (tb_LoaiSPTrans item in ViewBag.ListLSP)
+                    {
+                        <option value="@item.MaLoaiSP" @(item.MaLoaiSP == ViewBag.IDCurrent ? "selected" : "")>
+                            @item.TenLoaiSPTrans
+                        </option>
+                    }
 
-                    </select>
-                </div>
-        </div>
-        <div class="row content-product">
-                        
-                <h3 class="title-category" id="title-category" style="text-align:center;">Tất cả</h3>
-                <div class="row" id="list-product" style="min-height: 350px">
-                   
-                </div>
-                <ul class="pagination" id="mypagination">
-                    
-                </ul>
+                </select>
             </div>
         </div>
+        <div class="row content-product">
+
+            <h3 class="title-category" id="title-category" style="text-align:center; display: none;">Tất cả</h3>
+            <div class="row" id="list-product" style="min-height: 350px">
+
+            </div>
+            <ul class="pagination" id="mypagination"></ul>
+        </div>
+    </div>
+
+
 
 </div>
 @Styles.Render("~/Content/jquery.webui-popover.min.css")

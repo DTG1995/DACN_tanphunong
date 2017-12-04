@@ -46,13 +46,49 @@
         width:100%;
         text-align:center;
     }
+    #owl-Sp {
+         margin-bottom: 1.75rem;
+        background: white;
+        padding: 30px;
+    }
+    #owl-Sp .sp-lq {
+        position: relative;
+        height:300px;
+        text-align:center;
+        margin-bottom: 10px;
+        
+    } 
+    .image {
+        height:100%;
+        width:auto;
+        max-width:100%
+    }
+    .name-product {
+         top: 80%;
+         font-weight: bold;
+         color: #000;
+         background: #524f4fc7;
+         width: 95%;
+         position: absolute;
+         left:2.5%;
+         height: auto;
+        min-height: 40px;
+    }
+    .owl-carousel .owl-item img {
+        display: unset;
+        width: unset;
+    }
+    .owl-carousel .owl-nav .owl-prev, .owl-carousel .owl-nav .owl-next {
+        display: none !important;
+    }
+
 </style>
 <div class="row" style="    background: url(/images/Slide-Nen/21.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     padding: 50px;">
-    <div class="container">
+    <div class="container" style="background: white;">
         <div class="row">
             <div class="title-post">
                 <img src="@Model.HinhAnh" style="height: 350px;" />
@@ -61,28 +97,42 @@
                 <h3 class="title-text">@spTran.TenSanPhamTrans</h3>
                 <div class="main-content">
                     <h5><b>@GlobalRes.uu_diem</b></h5>
-                    @Html.Raw(spTran.UuDienTrans.Replace("\r\n","<br/>"))
-                    <br />
+                    @Html.Raw(spTran.UuDienTrans.Replace("\r\n", "<br/>"))
+                    <br/>
                     <h5><b>@GlobalRes.dac_diem</b></h5>
                     @Html.Raw(spTran.DacDiemTrans)
-                    <br />
+                    <br/>
                     <h5><b>@GlobalRes.thanh_phan</b></h5>
                     @Html.Raw(spTran.ThanhPhanChinhTrans)
-                    <br />
+                    <br/>
                     <h5><b>@GlobalRes.luu_y</b></h5>
                     @Html.Raw(spTran.LuuYTrans)
-                    <br />
+                    <br/>
                     <h5><b>@GlobalRes.quy_cach_dong_goi:</b></h5>@Model.QuyCachDongGoi
-                    <br />
+                    <br/>
                     <h5><b>@GlobalRes.xuat_xu:</b></h5>@Model.XuatXu
                     <br/>
                     <h5><b>@GlobalRes.cach_dung</b></h5>
                     @Html.Raw(spTran.CachDungTrans)
                 </div>
                 <div class="property">
-                    
+
                 </div>
-               
+
+            </div>
+            <div class="row" style="background: white;">
+                <h4 style="padding-left: 30px;"><b>Sản phẩm liên quan:</b></h4>
+                <div id="owl-Sp" class="owl-carousel">
+                    @foreach (tb_SanPham sp in ViewBag.SpLienQuan)
+                    {
+                        <div class="sp-lq">
+                            <img src="@sp.HinhAnh"  alt="@(sp.tb_SanPhamTrans.FirstOrDefault() != null ? sp.tb_SanPhamTrans.FirstOrDefault().TenSanPhamTrans : "")" class="image">
+                            <a class="name-product" href="@Url.RouteUrl("sanphamdetails", new {id = sp.MaSP, title = UrlEncode.ToFriendlyUrl(sp.tb_SanPhamTrans.FirstOrDefault() != null ? sp.tb_SanPhamTrans.FirstOrDefault().TenSanPhamTrans : "")})">
+                                @(sp.tb_SanPhamTrans.FirstOrDefault() != null ? sp.tb_SanPhamTrans.FirstOrDefault().TenSanPhamTrans : "")
+                            </a>
+                        </div>
+                    }
+                </div>
             </div>
             <div class="row">
                 <div class="fb-comments" data-width="100%" data-numposts="5"></div>
@@ -91,4 +141,33 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+        $('#owl-Sp').owlCarousel({
+            nav: false,
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 2,
+                    nav: true
+                },
+                768: {
+                    items: 3,
+                    nav: true
+                },
+                900: {
+                    items: 4,
+                    nav: true
+                }
+            }
 
+
+        });
+    });
+</script>

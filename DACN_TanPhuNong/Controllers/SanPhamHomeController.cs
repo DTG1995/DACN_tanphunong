@@ -94,9 +94,9 @@ namespace DACN_TanPhuNong.Controllers
                     string uudiem = spTran.UuDienTrans.Length > 150
                         ? spTran.UuDienTrans.Substring(0, 147) + "..."
                         : spTran.UuDienTrans;
-                    strlistsp +="<div class=\"col-lg-3 col-md-3 col-sm-4 col-xs-12 item-product\" data-id='product"+listSP[i].MaSP+"'>"+
-                        "<img src=\""+listSP[i].HinhAnh+"\" alt=\"Avatar\" class=\"image\">"+
-                        "<a href=\"" + Url.RouteUrl("SanPhamDetails", new { id = listSP[i].MaSP, title = UrlEncode.ToFriendlyUrl(spTran.TenSanPhamTrans) }) + "\" style=\"top: 70%;font-weight: bold;color: white;background: #524f4fc7;width: 95%;position: absolute;left:2.5%;height: 20%;\">" +
+                    strlistsp +="<div class=\"col-lg-3 col-md-3 col-sm-4 col-xs-12 item-product\" data-id='product"+listSP[i].MaSP+"'><div class=\"product-image\">"+
+                        "<img src=\""+listSP[i].HinhAnh+"\" alt=\"Avatar\" class=\"image\"></div>"+
+                        "<a class=\"name-product\" href=\"" + Url.RouteUrl("SanPhamDetails", new { id = listSP[i].MaSP, title = UrlEncode.ToFriendlyUrl(spTran.TenSanPhamTrans) }) + "\">" +
                        spTran.TenSanPhamTrans+
                                       "</a></div>";
                     strlistsp += "<div class='product-uudiem' id='product" +  listSP[i].MaSP + "'>" +
@@ -152,6 +152,22 @@ namespace DACN_TanPhuNong.Controllers
                         sanPham.tb_SanPhamTrans = db.tb_SanPhamTrans.Where(x => x.NgonNgu == lang && x.MaSP == id).ToList();
                     }
                 }
+
+                var spLienQuan =
+                    db.tb_SanPham.Where(x => x.MaLoai == sanPham.MaLoai && x.MaSP != sanPham.MaSP)
+                        .OrderBy(r => Guid.NewGuid())
+                        .Take(6).ToList();
+                foreach (tb_SanPham sp in spLienQuan)
+                {
+                    var spTran = sp.tb_SanPhamTrans.Where(y => y.NgonNgu == lang).ToList();
+                    if (spTran != null && string.IsNullOrWhiteSpace(spTran.FirstOrDefault().TenSanPhamTrans))
+                    {
+                        lang = lang == "en" ? "vi" : "en";
+                        spTran = sp.tb_SanPhamTrans.Where(y => y.NgonNgu == lang).ToList();
+                    }
+                    sp.tb_SanPhamTrans = spTran;
+                }
+                ViewBag.SpLienQuan = spLienQuan;
                 return View(sanPham);
             }
             return PartialView("Error");

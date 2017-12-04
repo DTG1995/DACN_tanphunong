@@ -32,6 +32,7 @@
 
                             <div class="form-group">
                                 <label class="control-label col-md-2">Tên album</label>
+                                <div class="col-md-8">
                                     @Html.TextBoxFor(model => model.TenAlbum, new { @class="form-control" })
                                     @Html.ValidationMessageFor(model => model.TenAlbum)
                                 </div>
@@ -57,11 +58,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="@GlobalRes.Save_Change" class="btn btn-default" />
-                                </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="@GlobalRes.Save_Change" class="btn btn-default"/>
                             </div>
+                        </div>
                         </div>
                     }
                     <div>
@@ -73,6 +74,6 @@
             <!-- /.box -->
         </div>
         <!-- /.col -->
-
+        </div>
     <!-- /.row -->
 </section>

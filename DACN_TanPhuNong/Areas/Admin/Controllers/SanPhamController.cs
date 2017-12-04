@@ -154,8 +154,15 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Sản phẩm", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa sản phẩm\""  + "\"", MaDoiTuong = tb_sanpham.MaSP });
                 db.SaveChanges();
             }
+            bool add = false;
+            tb_SanPhamTrans tb_spVi =
+                db.tb_SanPhamTrans.FirstOrDefault(x => x.NgonNgu == "vi" && x.MaSP == tb_sanpham.MaSP);
 
-            tb_SanPhamTrans tb_spVi = new tb_SanPhamTrans();
+            if (tb_spVi == null)
+            {
+                tb_spVi = new tb_SanPhamTrans();
+                add = true;
+            }
             tb_spVi.NgonNgu = "vi";
             tb_spVi.MaSP = tb_sanpham.MaSP;
             tb_spVi.TenSanPhamTrans = Request.Params["tenSPVn"];
@@ -164,8 +171,18 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             tb_spVi.ThanhPhanChinhTrans = Request.Params["tpChinhVn"];
             tb_spVi.LuuYTrans = Request.Params["luuYVn"];
             tb_spVi.CachDungTrans = Request.Params["cachDungVn"];
-            db.tb_SanPhamTrans.Add(tb_spVi);
-            tb_SanPhamTrans tb_SpEn = new tb_SanPhamTrans();
+            if(add)
+                db.tb_SanPhamTrans.Add(tb_spVi);
+            else db.Entry(tb_spVi).State = EntityState.Modified;
+            tb_SanPhamTrans tb_SpEn =
+                db.tb_SanPhamTrans.FirstOrDefault(x => x.NgonNgu == "en" && x.MaSP == tb_sanpham.MaSP);
+            add = false;
+            if (tb_SpEn == null)
+            {
+                tb_SpEn = new tb_SanPhamTrans();
+                add = true;
+            }
+
             tb_SpEn.NgonNgu = "en";
             tb_SpEn.MaSP = tb_sanpham.MaSP;
             tb_SpEn.TenSanPhamTrans = Request.Params["tenSPEn"];
@@ -175,8 +192,14 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             tb_SpEn.LuuYTrans = Request.Params["luuYEn"];
             tb_SpEn.CachDungTrans = Request.Params["cachDungEn"];
             db.tb_SanPhamTrans.Add(tb_SpEn);
-            db.SaveChanges();
+            if (add)
+                db.tb_SanPhamTrans.Add(tb_SpEn);
+            else db.Entry(tb_SpEn).State = EntityState.Modified;
 
+            if (db.SaveChanges()>0)
+                return RedirectToAction("Index");
+            ViewBag.SpVi = tb_spVi;
+            ViewBag.SpEn = tb_SpEn;
             ViewBag.MaLoai = new SelectList(db.tb_LoaiSP, "MaLoaiSP", "TenLoaiSP", tb_sanpham.MaLoai);
             return View(tb_sanpham);
         }

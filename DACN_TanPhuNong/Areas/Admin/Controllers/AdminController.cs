@@ -27,7 +27,7 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 case 1:
                     return RedirectToAction("Index", "SanPham");
                 case 2:
-                    return RedirectToAction("Index", "BaiViet");
+                    return RedirectToAction("Index", "Conferences");
                 default:
                     return RedirectToAction("Index", "TuyenDung");
             }

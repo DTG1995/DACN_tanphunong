@@ -89,8 +89,11 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AdminFilter(AllowPermit = "0")]
-        public ActionResult Edit([Bind(Include="TenDangNhap,TrangThai,LoaiND,ThoiGianDNCuoi")] tb_NguoiDung tb_nguoidung)
+        public ActionResult Edit([Bind(Include="TenDangNhap,TrangThai,LoaiND")] tb_NguoiDung tb_nguoidung)
         {
+
+            
+
             var loaiND = Request.Params.GetValues("LoaiND");
             if (loaiND != null)
             {
@@ -103,7 +106,10 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
-                db.Entry(tb_nguoidung).State = EntityState.Modified;
+                var tb_nguoiDung = db.tb_NguoiDung.Find(tb_nguoidung.TenDangNhap);
+                tb_nguoidung.TrangThai = tb_nguoidung.TrangThai;
+                tb_nguoiDung.LoaiND = tb_nguoidung.LoaiND;
+                db.Entry(tb_nguoiDung).State = EntityState.Modified;
                 db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Người dùng", ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa người dùng \"" + tb_nguoidung.TenDangNhap + "\"" });
                 db.SaveChanges();
                 return RedirectToAction("Index");

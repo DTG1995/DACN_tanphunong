@@ -19,229 +19,229 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Admin/TriAn.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Admin/_Menu.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Delete.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/25/2017 17:23:28</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Album/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Conferences/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Details.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiNguQuanLy/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Delete.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Details.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/DoiTac/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ImageVideo/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Delete.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Details.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/LoaiSP/Index.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Delete.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Details.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Index.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/Login.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/PhanQuyen.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NguoiDung/SavePhanQuyen.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Areas/Admin/Views/NhatKy/Index.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/PhanHoi/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Promotions/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Create.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Delete.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/SanPham/Index.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Shared/_LeftMenu.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/28/2017 02:44:11</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/ThongBao/SetCode.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Delete.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Details.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/TuyenDung/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/Abouts.cshtml">
-      <publishTime>11/24/2017 09:46:42</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/Footer.cshtml">
-      <publishTime>11/20/2017 16:47:10</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/Index.cshtml">
-      <publishTime>11/21/2017 09:32:12</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/UngDung/LienHe.cshtml">
-      <publishTime>11/20/2017 17:29:42</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Create.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Delete.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Details.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Edit.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/Videos/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/web.config">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Areas/Admin/Views/_ViewStart.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -250,13 +250,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="bin/DACN_TanPhuNong.dll">
-      <publishTime>11/23/2017 21:05:31</publishTime>
+      <publishTime>12/05/2017 00:08:01</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -304,10 +304,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="bin/PagedList.dll">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="bin/PagedList.Mvc.dll">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -331,13 +331,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="bin/vi/DACN_TanPhuNong.resources.dll">
-      <publishTime>11/23/2017 21:05:31</publishTime>
+      <publishTime>12/05/2017 00:08:01</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Content/admin/AdminLTE.min.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/admin/bootstrap-toggle.min.css">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -355,13 +355,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/component.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/default.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/fonts/fontawesome-webfont.eot">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -397,28 +397,28 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Content/jquery.webui-popover.min.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/lightgallery.min.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/main.css">
-      <publishTime>11/20/2017 20:53:56</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/nivo-slider.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/owl-custom.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/owl.carousel.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/owl.theme.default.min.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Content/PagedList.css">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -442,40 +442,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.svg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.woff">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="fonts/lg.eot">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="fonts/lg.svg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="fonts/lg.ttf">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="fonts/lg.woff">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="images/25-5-5-bag.jpg">
-      <publishTime>11/20/2017 12:42:24</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Albums/maxresdefault.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Application/loading.gif">
-      <publishTime>11/20/2017 15:55:09</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/background.png">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -499,94 +499,94 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="images/DSDoiTac/bayer.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/bm.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/cico.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/concovang.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/hai.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/longthanh.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/mappacific.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/realStrong.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/seasol.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSDoiTac/sundat.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/DSQL/20659014.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/en_tron.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/en_vuong.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/hai.png">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="images/hinh-nen-lich-su.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_1892.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_1897.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_1921.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_1979.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_2021.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_2039.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_2044.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_2046.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_2050.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_2058.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/HoiNghiKH2015/SAM_2059.JPG">
-      <publishTime>11/21/2017 09:51:07</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/img01.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/img02.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/img03.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/img09.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/logo-tan-phu-nong.png">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -598,19 +598,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="images/lua-mach.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/mappacific.png">
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="images/maxresdefault.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/PhanBon/realstrong11.11.11.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/PhanBon/realstrong4.3.2.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/realStrong.png">
       <publishTime>11/20/2017 12:43:52</publishTime>
@@ -619,46 +619,46 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:43:52</publishTime>
     </File>
     <File Include="images/Slide-Nen/1.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/123123213.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/16.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/18.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/2.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/20.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/21.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/22.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/3.jpg">
       <publishTime>11/20/2017 19:18:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/9.jpg">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/cachua.png">
-      <publishTime>11/20/2017 19:28:41</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/carot.jpg">
-      <publishTime>11/20/2017 19:28:41</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/dau-ca.jpg">
-      <publishTime>11/20/2017 19:18:03</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/Slide-Nen/dautay.jpg">
-      <publishTime>11/20/2017 19:32:51</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/slider-3-976x366-976x289.jpg">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -670,31 +670,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="images/vi_tron.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="images/vi_vuong.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="img/loading.gif">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="img/Thumbs.db">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="img/video-play.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="img/vimeo-play.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="img/youtube-play.png">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
     <File Include="Scripts/admin/adminlte.min.js">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -1879,103 +1879,103 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/jquery-3.2.1.slim.min.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/jquery.mousewheel.min.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/jquery.nivo.slider.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/jquery.webui-popover.min.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/jquery1.10.1.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/jssor.slider.min.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/lightgallery-all.min.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/modernizr.custom.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/owl.carousel.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/picturefill.min.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/popper.min.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Scripts/toucheffects.js">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Albums/Details.cshtml">
-      <publishTime>11/22/2017 22:21:03</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Albums/Index.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/BaiViet/Detail.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/BaiViet/Index.cshtml">
-      <publishTime>11/20/2017 16:19:03</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/BaiViet/InputCodeInternal.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/BaiViet/thongBaoNoiBo.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/DoiTacHome/DanhSachDoiTac.cshtml">
-      <publishTime>11/20/2017 21:10:16</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Views/Home/Abouts.cshtml">
-      <publishTime>11/20/2017 21:39:42</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/20/2017 21:37:44</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Home/LienHe.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Views/Home/SlideShow.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Home/TriAn.cshtml">
-      <publishTime>11/20/2017 21:39:24</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Home/_Footer.cshtml">
-      <publishTime>11/20/2017 18:59:27</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Home/_SlideShow.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/PhanHoiHome/GuiPhanHoi.cshtml">
-      <publishTime>11/20/2017 17:54:03</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/SanPhamHome/AllByLoai.cshtml">
-      <publishTime>11/20/2017 21:40:53</publishTime>
+      <publishTime>12/05/2017 00:06:38</publishTime>
     </File>
     <File Include="Views/SanPhamHome/Details.cshtml">
-      <publishTime>11/20/2017 16:03:49</publishTime>
+      <publishTime>11/28/2017 11:54:36</publishTime>
     </File>
     <File Include="Views/SanPhamHome/getListProductsByCategory.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/SanPhamHome/Index.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -1984,19 +1984,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/21/2017 09:29:48</publishTime>
+      <publishTime>11/27/2017 22:48:02</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutHome.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Views/Shared/_MenuSP.cshtml">
-      <publishTime>11/20/2017 15:40:21</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/Shared/_SlideShow.cshtml">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/TinTucHome/Details.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
@@ -2011,16 +2011,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Views/Video/Index.cshtml">
-      <publishTime>11/20/2017 21:45:46</publishTime>
+      <publishTime>11/27/2017 22:47:06</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>11/20/2017 12:43:52</publishTime>
+      <publishTime>11/24/2017 10:05:25</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>11/20/2017 12:42:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/21/2017 09:56:02</publishTime>
+      <publishTime>11/24/2017 10:05:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

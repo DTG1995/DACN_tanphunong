@@ -201,6 +201,8 @@ namespace DACN_TanPhuNong.Areas.Admin.Controllers
                 db.tb_NhatKy.Add(new tb_NhatKy { NguoiDung = (string)Session["username"], DoiTuong = "Trang liên hệ", MaDoiTuong = tuyChon.MaTuyChon, ThaoTac = DateTime.Now.ToString("dd/MM/yyy hh:mm:ss") + " - Sửa nội dung trang liên hệ" });
             }
             db.SaveChanges();
+            ViewBag.ContentLienHeVn = txtContactVn;
+            ViewBag.ContentLienHeEn = txtContactEn;
             return View();
         }
 
